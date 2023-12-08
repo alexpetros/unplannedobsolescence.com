@@ -1,0 +1,56 @@
+:root {
+  --text-color: #333;
+}
+
+body {
+  margin: 40px auto;
+  max-width: 650px;
+  line-height: 1.6;
+  font-size: 18px;
+  color: var(--text-color);
+  padding: 0 10px
+}
+
+h1, h2, h3, .subheader {
+  margin: 20px 0;
+  line-height: 1.2
+}
+
+header a {
+  color: var(--text-color);
+}
+
+header a:visited {
+  color: var(--text-color);
+}
+
+header h1 {
+  margin: 0;
+}
+
+header a.title {
+  text-decoration: none;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+header ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding-left: 0;
+}
+
+header ul li {
+  margin-right: 1rem;
+}
+
+.blog-list {
+  padding-left: 0;
+}
+
+.blog-list li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+}
