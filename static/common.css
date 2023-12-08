@@ -3,6 +3,7 @@
 }
 
 body {
+  font-family: Verdana;
   margin: 40px auto;
   max-width: 650px;
   line-height: 1.6;
@@ -11,7 +12,13 @@ body {
   padding: 0 10px
 }
 
-h1, h2, h3, .subheader {
+h1, h2, h3 {
+  font-family: Georgia;
+  margin: 20px 0;
+  line-height: 1.2
+}
+
+.subheader {
   margin: 20px 0;
   line-height: 1.2
 }
@@ -25,12 +32,11 @@ header a:visited {
 }
 
 header h1 {
-  margin: 0;
+  font-size: 48px;
 }
 
 header a.title {
   text-decoration: none;
-  font-size: 48px;
   font-weight: bold;
 }
 
@@ -38,7 +44,7 @@ header ul {
   list-style: none;
   display: flex;
   flex-direction: row;
-  margin: 0;
+  margin: 20px 0;
   padding-left: 0;
 }
 
@@ -52,5 +58,5 @@ header ul li {
 
 .blog-list li {
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 150px 1fr;
 }

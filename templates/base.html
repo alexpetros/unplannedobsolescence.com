@@ -2,7 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Unplanned Obsolescence</title>
+<title>
+{% if page.title -%}
+{{ page.title }}
+{% elif section.title -%}
+{{ section.title }}
+{% else -%}
+Unplanned Obsolescence
+{% endif -%}
+</title>
 
 <style></style>
 <link rel="stylesheet" href="/common.css">
