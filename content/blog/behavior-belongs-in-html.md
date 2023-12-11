@@ -376,6 +376,8 @@ If you only want to do it for one or two buttons, though, just use `onclick`. I 
 
 # Notes
 
+* I like [this solution](https://github.com/whatwg/html/issues/2271) to the attribute namespacing
+  problem by the way, h/t to [Deniz](https://denizaksimsek.com/en/).
 * Implementing the `tooShortMessage` and related attributes is left as an exercise to the reader.
 * Even better would probably be `type=alert`, because that extends the [existing
   semantics](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#type), but I really
