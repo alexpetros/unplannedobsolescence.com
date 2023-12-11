@@ -198,12 +198,12 @@ HTML itself:
 
 Instead of adding new messages in JavaScript, you write them on the input itself. That's better, for
 a couple reasons:
-* It's legible. Where is the "input too short" message defined? In `tooShortMessage`.
-* It's easy to change the message, potentially even for nontechnical owners.
-* The logic can be re-used without re-using the messages themselves; different inputs can have
-  different message just a one-line attribute
-* The interface automatically implements the [aria-live](https://w3c.github.io/aria/#aria-live) role
-  that is appropriate for a validation message
+* The code is legible. Where is the "input too short" message defined? In `tooShortMessage`.
+* The [behavior is local](https://htmx.org/essays/locality-of-behaviour/). It's impossible *not* to
+  see that someone changed the message, and where they did it.
+* The logic can be trivially re-used on different inputs
+* The interface automatically implements the [aria-live](https://w3c.github.io/aria/#aria-live)
+  designation that is appropriate for a validation message (in this case, `polite`)
 
 In some sense these are all the same advantage: they give HTML richer semantics.
 
@@ -259,5 +259,6 @@ If you only want to do it for one or two buttons, though, just use `onclick`. I 
   This article should be understood as a defense of that interface choice, and an encouragement that
   other JS libraries consider the same.
 * Ironically, attribute interfaces have a much better case against being defined inline than the
-  `document.getElementById` style of adding functionality, because it can actually be re-used
-  generically across elements.
+  `document.getElementById` style of adding functionality, because the code that enables the
+  interfaces can actually be re-used generically across elements.
+* No I didn't use `data-` attributes. Be reasonable.
