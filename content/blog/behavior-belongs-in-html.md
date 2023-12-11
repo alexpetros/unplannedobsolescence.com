@@ -96,8 +96,9 @@ worked](https://web.archive.org/web/20040426014304/http://www.google.com/) for a
 
 This is functionality that the HTML defined. The page does something interactive—it makes a network
 request using your input, when you click the button—and no JavaScript was involved. It's easy to
-read, semantic, and will work in every web browser forever. And it demonstrates that the entire
-concept of "HTML defines the layout, JS defines the functionality" is definitionally incorrect.
+read, semantic, and will work in every web browser forever. Most importantly, it demonstrates that
+the entire concept of "HTML defines the layout, JS defines the functionality" is definitionally
+incorrect.
 
 ## Enhancing the semantics
 The problem with doing everything this way is that the functionality of HTML is extraordinarily
@@ -218,14 +219,136 @@ JavaScript](https://www.youtube.com/watch?v=co4EsnwAM1Q&t=110s)—but if we star
 JavaScript libraries to enrich HTML's semantics, rather than replace them, we might get a lot more
 mileage out of both.
 
-## Taking HTML seriously
+Keep in mind that, at this stage, the custom semantics I'm using are still purely theoretical.
+We'll talk about forwards compatibility, `data-` attributes, and all the hard details in a moment.
 The first task is to acknowledge that HTML, as a *hyper*text markup language, is inherently
 functional: the "hyper" denotes all the extra functionality, like links and forms, that we add to
 the text. You need to [take HTML
 seriously](https://intercoolerjs.org/2020/01/14/taking-html-seriously) to build good interfaces for
-it. Once we do that, the task ahead is to figure out how best to augment its limited semantics with
-our own.
+it.
 
+Once we do that, the task ahead is to figure out how best to augment its limited semantics with our
+own. That part is hard.
+
+## Back to reality
+Okay, so if we want to enrich HTML's semantics, what are the right ways to do it?
+
+The main concern here is that as HTML is both a living standard and a mercilessly backwards
+compatible one (it's a remarkable accomplishment that [the first website
+ever](http://info.cern.ch/hypertext/WWW/TheProject.html) is still online and displays perfectly on
+modern web browsers). So if I add `tooShortMessage` to my input element, and then a couple years in
+the future [WHATWG](https://whatwg.org/) adds a new `tooShortMessage` attribute, the page will start
+to break in unexpected ways.
+
+[Microformats](https://microformats.org/) are a very old standard that still gets some use today,
+perhaps most notably as part of the [Webmentions specification](https://www.w3.org/TR/webmention/).
+They let you add add properties as class declarations, like this:
+
+```html
+<a class="p-name u-url" href="https://alexpetros.com">Alex Petros</a>
+```
+
+Something parsing the webpage will know that this link isn't just a random link, it's a link with my
+name as the text (`p-name`), and that person's home page as the URL (`u-url`). This is nifty but
+very limited. You could not implement a custom message using class names like this.
+
+HTML solves this problem by reserving the `data-` prefix for [custom
+attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*). This works
+fine, and some custom attribute libraries like [Turbo](https://turbo.hotwired.dev/) embrace it. Take
+this example from [their
+documentation](https://turbo.hotwired.dev/handbook/drive#requiring-confirmation-for-a-visit), which
+uses the `data-turbo-method` attribute to change a link's method from GET to DELETE (I make no
+claims about whether that's a thing you *should* do):
+
+```html
+<a href="/articles/54" data-turbo-method="delete">Delete the article</a>
+```
+
+And that works! That will never get overwritten by future updates to the HTML standard. If you want
+to write your whole attribute library like that, you can.
+
+If I sound a little ambivalent about that, it's because I think everything about `data-*`
+attributes, from their name to [the examples people use when they write about
+them](https://hacks.mozilla.org/2012/10/using-data-attributes-in-javascript-and-css/), suggests that
+they are meant to store data, not behavior. You can of course just barrel ahead and extend HTML with
+it, but I think the name and the verbosity really does limit people's imagination and discourage
+them from building systems with it. If you say that data attribues are for ["data that should be
+associated with a particular element but need not have any defined
+meaning,"](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) then
+people will use them that way.
+
+We know this is true because some very popular JavaScript libraries eschew the `data-` attributes
+altogether and just pick attribute names that are very *unlikely* to be added to HTML.
+[Alpine.js](https://alpinejs.dev/) prefixes its 15 custom attributes with `x-` (e.g. `x-on` and
+`x-if`); [htmx](https://htmx.org/) does the same with `hx-` (although htmx does support `data-hx-`
+versions of all its attributes, to be nice). This is how you make a button that toggles some
+property using Alpine.js:
+
+```html
+<button x-on:click="open = ! open">Toggle</button>
+```
+
+This is, in my opinion, the right general idea, even though I (subjectively) dislike almost
+everything about it. I find the `open = ! open` sort of weird (it's a global variable I guess?),
+having to namespace with `x-` is still a kludge, and overall it deviates from HTML semantics in a
+way I don't vibe with. It's a *very* safe bet that WHATWG is not going to add `x-on:click`, but it's
+also, at the time of this writing, not a guarantee.
+
+## Custom attributes are (still) the way
+
+In 2009, during the HTML5 specification process, John Allsop advocated for taking seriously the
+possibility of custom attributes in his blog ["Semantics in HTML
+5"](https://alistapart.com/article/semanticsinhtml5).
+
+> Instead of new elements, HTML 5 should adopt a number of new attributes. Each of these attributes
+> would relate to a category or type of semantics. For example, as I’ve detailed in another article,
+> HTML includes structural semantics, rhetorical semantics, role semantics (adopted from XHTML), and
+> other classes or categories of semantics.
+>
+> These new attributes could then be used much as the class attribute is used: to attach to an element
+> semantics that describe the nature of the element, or to add metadata about the element.
+
+He includes a couple examples, like one where you markup a paragraph as being ironic ([people do this
+all the time](https://en.wikipedia.org/wiki/Irony_punctuation), informally, with stuff like "/s"):
+
+```html
+<p rhetoric="irony">He’s a fantastic person.</p>
+```
+
+Or this one that would let you specify times in a machine-parsable format (later solved with the
+introduction of the [`<time>`
+element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time)):
+
+```html
+<span equivalent=“2009-05-01”>May Day next year</span>
+```
+
+This was the right path. The thing says what it is, and specifies machine-parsable semantics in the
+most human-readable way. There are still a lot of question that need to be answered to make this
+work properly, which Allsop also acknowledged at the time:
+
+> I titled this section “some thoughts on a solution” because a significant amount of work needs to
+> be done to really develop a workable solution. Open questions include the following.
+>
+> * How many distinct semantic attributes should there be? Should these categories be extensible,
+and if so, how?
+> * How are vocabularies determined?
+> * Do we simply invent the terms we want, in much the same way that developers have been using
+class values, or should the possible values all be determined by a standardized specification? Or
+should there be a mechanism for inventing (and hopefully sharing) vocabularies, using some kind of
+profile?
+> * If we have a conflict between two vocabularies, such that two identical terms are defined by two
+different vocabularies, how is this resolved?
+> * Do we need a form of name spacing, or does some other mechanism exist?
+
+Many of these questions still don't have good answers, because the field of web development mostly
+let this question go stale during its "screw it, JavaScript everything" phase. You don't need to
+extend the behavior of a form if you [rewrite it every
+time](https://legacy.reactjs.org/docs/forms.html#controlled-components). As we start to exit that
+era, I propose that we pick up where Allsop left off and begin doing to the work making HTML a
+safely extensible hypertext system.
+
+## Okay Alex, how would you extended the button?
 Remember the button from the beginning?
 
 <button onclick="alert('I\'m back!')">Click me</button>
@@ -242,7 +365,7 @@ message button.
 const buttons = querySelectorAll('button[alert]')
 buttons.forEach(btn => {
   // Get the message property of the button
-  const message = btn.getAttribute('message')
+  const message = btn.getAttribute('type')
   // Set the button to alert that message when clicked
   btn.addEventListener('click', () => { alert(message) })
 })
@@ -254,11 +377,15 @@ If you only want to do it for one or two buttons, though, just use `onclick`. I 
 # Notes
 
 * Implementing the `tooShortMessage` and related attributes is left as an exercise to the reader.
-* Some JavaScript libraries do use attribute interfaces, like [htmx](https://htmx.org/) (disclosure,
-  I am a maintainer), [Alpine.js](https://alpinejs.dev/), and [Turbo](https://turbo.hotwired.dev/).
-  This article should be understood as a defense of that interface choice, and an encouragement that
-  other JS libraries consider the same.
+* Even better would probably be `type=alert`, because that extends the [existing
+  semantics](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#type), but I really
+  don't want to get into how you'd approach namespacing that for forwards compatibility.
 * Ironically, attribute interfaces have a much better case against being defined inline than the
   `document.getElementById` style of adding functionality, because the code that enables the
   interfaces can actually be re-used generically across elements.
-* No I didn't use `data-` attributes. Be reasonable.
+* Some people think custom semantics is an oxymoron, because if it's not in the HTML standard it's
+  not "semantic". That's not really what semantics are. Semantics describe the expressive power of
+  something. Think of it like a language: whether something is or isn't a language has nothing to do
+  with how many people speak it; that only affects how useful learning that language is going to be.
+  User-defined semantics may be non-*standard* (at least until they adopted officially), but they
+  are still semantics).
