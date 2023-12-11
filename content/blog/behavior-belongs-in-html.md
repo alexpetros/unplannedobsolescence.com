@@ -1,6 +1,7 @@
 +++
 title = "Behavior Belongs in the HTML"
-date = 2023-12-10
+description = "Some thoughts on doing the right thing now that we've tried everything else."
+date = 2023-12-11
 +++
 
 When you click the button below, it's going to show you a little message.
@@ -59,8 +60,9 @@ HTML/CSS/JS split is a textbook example of it. From Wikipedia (at the time of th
 > HTML is mainly used for organization of webpage content, CSS is used for definition of
 > content presentation style, and JS defines how the content interacts and behaves with the user.
 
-In this conception of the web page, HTML is essentially the scaffolding that you dress up with CSS
-(for style) and JS (for interactivity). But HTML is inherently interactive, too. It's sufficiently
+Separation of Concerns is a great principle, but I think the drew the line in the wrong place. In
+this conception of the web page, HTML is essentially the scaffolding that you dress up with CSS (for
+style) and JS (for interactivity). But HTML is inherently interactive, too. It's sufficiently
 interactive to power billion-dollar businesses without a single line of JavaScript.
 
 Let's say you want to set up a text box and a search button so that people can search the web.
@@ -91,14 +93,14 @@ That button doesn't do anything; the text goes nowhere. But if you replace the `
 
 then clicking the button submits your input as a query, and navigates to the result. So if you're on
 `http://example.com` and the text box has `cats` in it, clicking submit will navigate you to
-`http://example.com/search?q=cats`. This is exactly how [the Google homepage
-worked](https://web.archive.org/web/20040426014304/http://www.google.com/) for a long time.
+`http://example.com/search?q=cats`. The Google homepage [worked exactly like
+this](https://web.archive.org/web/20040426014304/http://www.google.com/) for a very long time.
 
-This is functionality that the HTML defined. The page does something interactive—it makes a network
-request using your input, when you click the button—and no JavaScript was involved. It's easy to
-read, semantic, and will work in every web browser forever. Most importantly, it demonstrates that
-the entire concept of "HTML defines the layout, JS defines the functionality" is definitionally
-incorrect.
+HTML defined that functionality in its entirety. The page does something interactive—it makes a
+network request using your input, when you click the button—and no JavaScript was involved. It's
+easy to read, semantic, and will work in every web browser forever. Most importantly, it
+demonstrates that the entire concept of "HTML defines the layout, JS defines the functionality" is
+definitionally incorrect.
 
 ## Enhancing the semantics
 The problem with doing everything this way is that the functionality of HTML is extraordinarily
@@ -187,10 +189,10 @@ HTML itself:
          name="mail"
          required
          minlength="8"
-         messageElement="#email-error"
-         valueMissingMessage="You need to enter an email address."
-         typeMismatchMessage="Entered value needs to be an email address."
-         tooShortMessage="Email should be at least ${email.minLength} characters; you entered ${email.value.length}."
+         message-target="#email-error"
+         value-missing-message="You need to enter an email address."
+         type-mismatch-message="Entered value needs to be an email address."
+         too-short-message="Email should be at least ${email.minLength} characters; you entered ${email.value.length}."
   >
   <span id=email-error></span>
   <button>Submit</button>
@@ -199,7 +201,7 @@ HTML itself:
 
 Instead of adding new messages in JavaScript, you write them on the input itself. That's better, for
 a couple reasons:
-* The code is legible. Where is the "input too short" message defined? In `tooShortMessage`.
+* The code is legible. Where is the "input too short" message defined? In `too-short-messsage`.
 * The [behavior is local](https://htmx.org/essays/locality-of-behaviour/). It's impossible *not* to
   see that someone changed the message, and where they did it.
 * The logic can be trivially re-used on different inputs
@@ -211,8 +213,8 @@ In some sense these are all the same advantage: they give HTML richer semantics.
 Hopefully you're howling at your computer screen about this. "You didn't solve anything! Doing
 validation is complex and you just magic wanded it away by designing a perfect interface for it."
 Yes. Exactly. That is what interfaces are supposed to do. Better semantics make it possible for the
-programmer to describe what they want to happen, and for someone else to take care of the details
-for them.
+programmer to describe what the element does, and for someone else to take care of the details for
+them.
 
 I'm not saying you're not going to have to write JavaScript—[someone's got to write
 JavaScript](https://www.youtube.com/watch?v=co4EsnwAM1Q&t=110s)—but if we start writing our
@@ -236,9 +238,9 @@ Okay, so if we want to enrich HTML's semantics, what are the right ways to do it
 The main concern here is that as HTML is both a living standard and a mercilessly backwards
 compatible one (it's a remarkable accomplishment that [the first website
 ever](http://info.cern.ch/hypertext/WWW/TheProject.html) is still online and displays perfectly on
-modern web browsers). So if I add `tooShortMessage` to my input element, and then a couple years in
-the future [WHATWG](https://whatwg.org/) adds a new `tooShortMessage` attribute, the page will start
-to break in unexpected ways.
+modern web browsers). So if I add `too-short-messsage` to my input element, and then a couple years
+in the future [WHATWG](https://whatwg.org/) adds a new `too-short-messsage` attribute, the page will
+start to break in unexpected ways.
 
 [Microformats](https://microformats.org/) are a very old standard that still gets some use today,
 perhaps most notably as part of the [Webmentions specification](https://www.w3.org/TR/webmention/).
@@ -265,24 +267,27 @@ claims about whether that's a thing you *should* do):
 ```
 
 And that works! That will never get overwritten by future updates to the HTML standard. If you want
-to write your whole attribute library like that, you can.
+to write your whole attribute library that way, you can.
 
-If I sound a little ambivalent about that, it's because I think everything about `data-*`
-attributes, from their name to [the examples people use when they write about
-them](https://hacks.mozilla.org/2012/10/using-data-attributes-in-javascript-and-css/), suggests that
+If I sound a little ambivalent about it, it's because I think everything about `data-*` attributes,
+from their name to [the examples people
+use](https://hacks.mozilla.org/2012/10/using-data-attributes-in-javascript-and-css/), suggests that
 they are meant to store data, not behavior. You can of course just barrel ahead and extend HTML with
-it, but I think the name and the verbosity really does limit people's imagination and discourage
-them from building systems with it. If you say that data attribues are for ["data that should be
-associated with a particular element but need not have any defined
+it, but the name and the verbosity really does discourage people from building semantics with it. If
+you say that data attribues are for ["data that should be associated with a particular element but
+need not have any defined
 meaning,"](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) then
 people will use them that way.
 
 We know this is true because some very popular JavaScript libraries eschew the `data-` attributes
-altogether and just pick attribute names that are very *unlikely* to be added to HTML.
-[Alpine.js](https://alpinejs.dev/) prefixes its 15 custom attributes with `x-` (e.g. `x-on` and
-`x-if`); [htmx](https://htmx.org/) does the same with `hx-` (although htmx does support `data-hx-`
-versions of all its attributes, to be nice). This is how you make a button that toggles some
-property using Alpine.js:
+altogether and just add custom attributes with prefixes that are very *unlikely* to be added to
+HTML. [Classic AngularJS](https://angularjs.org/) uses `ng-`, which is still all over the internet
+today; [Alpine.js](https://alpinejs.dev/) prefixes its 15 custom attributes with `x-`;
+[htmx](https://htmx.org/) does the same with `hx-` (although AngularJS and htmx both support
+prepending *their* prefix with `data-`, just for the pedants).
+
+Browsers have supported this, unofficially for ages, and it also works well. Here's a button that
+toggles some arbitrary property using Alpine.js:
 
 ```html
 <button x-on:click="open = ! open">Toggle</button>
@@ -290,9 +295,9 @@ property using Alpine.js:
 
 This is, in my opinion, the right general idea, even though I (subjectively) dislike almost
 everything about it. I find the `open = ! open` sort of weird (it's a global variable I guess?),
-having to namespace with `x-` is still a kludge, and overall it deviates from HTML semantics in a
-way I don't vibe with. It's a *very* safe bet that WHATWG is not going to add `x-on:click`, but it's
-also, at the time of this writing, not a guarantee.
+having to namespace with `x-` is still a small kludge, and overall it deviates from HTML semantics
+in a way I don't vibe with. It's a *very* safe bet that WHATWG is not going to add `x-on:click`, but
+it's also, at the time of this writing, not a guarantee.
 
 ## Custom attributes are (still) the way
 
@@ -308,14 +313,15 @@ possibility of custom attributes in his blog ["Semantics in HTML
 > These new attributes could then be used much as the class attribute is used: to attach to an element
 > semantics that describe the nature of the element, or to add metadata about the element.
 
-He includes a couple examples, like one where you markup a paragraph as being ironic ([people do this
-all the time](https://en.wikipedia.org/wiki/Irony_punctuation), informally, with stuff like "/s"):
+He includes a couple examples, like one where you markup a paragraph as being ironic (I thought this
+was a ridiculous example until I remembered that [people actually do this all the
+time](https://en.wikipedia.org/wiki/Irony_punctuation), informally, with stuff like "/s"):
 
 ```html
 <p rhetoric="irony">He’s a fantastic person.</p>
 ```
 
-Or this one that would let you specify times in a machine-parsable format (later solved with the
+Or this one that would let you specify times in a machine-paresable format (later solved with the
 introduction of the [`<time>`
 element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time)):
 
@@ -323,9 +329,11 @@ element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time)):
 <span equivalent=“2009-05-01”>May Day next year</span>
 ```
 
-This was the right path. The thing says what it is, and specifies machine-parsable semantics in the
-most human-readable way. There are still a lot of question that need to be answered to make this
-work properly, which Allsop also acknowledged at the time:
+This was the right path. The thing says what it is, and specifies machine-parseable semantics in the
+most human-readable way (although "equivalent" was a terrible name choice in that case).
+
+There are still a lot of questions that need to be answered to make this work properly, which Allsop
+also acknowledged at the time:
 
 > I titled this section “some thoughts on a solution” because a significant amount of work needs to
 > be done to really develop a workable solution. Open questions include the following.
@@ -348,7 +356,14 @@ time](https://legacy.reactjs.org/docs/forms.html#controlled-components). As we s
 era, I propose that we pick up where Allsop left off and begin doing to the work making HTML a
 safely extensible hypertext system.
 
-## Okay Alex, how would you extended the button?
+One thing we can do immediately officially sanction kebab-case attributes, roughly in line with
+[this proposal](https://github.com/whatwg/html/issues/2271) (h/t to [Deniz
+Akşimşek](https://denizaksimsek.com/en/) for showing me this). This would not only bless many of the
+most popular HTML-enhancing frameworks, and therefore huge chunks of existing code on the internet,
+with valid HTML, it would legitimatize the project of extending HTML with user- or library-defined
+semantics.
+
+## Okay Alex, how would you extend that button?
 Remember the button from the beginning?
 
 <button onclick="alert('I\'m back!')">Click me</button>
@@ -372,22 +387,28 @@ buttons.forEach(btn => {
 <script>
 ```
 
-If you only want to do it for one or two buttons, though, just use `onclick`. I promise it's fine.
+This has the advantage of being re-usable across any button in your document. For less trivial
+applications, you can bundle that behavior into a library with a very nice interface (probably with
+a prefix, for now).
+
+If you only need to do it for one or two buttons, though, just use `onclick`. It's less
+code, it doesn't require that you specify an `id`, and it doesn't make you hunt to a different part
+of the codebase to see what it does. Those are all "best practices" in my book.
 
 # Notes
 
-* I like [this solution](https://github.com/whatwg/html/issues/2271) to the attribute namespacing
-  problem by the way, h/t to [Deniz](https://denizaksimsek.com/en/).
 * Implementing the `tooShortMessage` and related attributes is left as an exercise to the reader.
-* Even better would probably be `type=alert`, because that extends the [existing
-  semantics](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#type), but I really
-  don't want to get into how you'd approach namespacing that for forwards compatibility.
+* Even better, for the button example, would probably be `type=alert`, because that extends the
+  [existing semantics](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#type), but I
+  really don't want to get into how you'd approach namespacing that for forwards compatibility.
 * Ironically, attribute interfaces have a much better case against being defined inline than the
   `document.getElementById` style of adding functionality, because the code that enables the
   interfaces can actually be re-used generically across elements.
-* Some people think custom semantics is an oxymoron, because if it's not in the HTML standard it's
+* Some people think "custom semantics" is an oxymoron, because if it's not in the HTML standard it's
   not "semantic". That's not really what semantics are. Semantics describe the expressive power of
   something. Think of it like a language: whether something is or isn't a language has nothing to do
   with how many people speak it; that only affects how useful learning that language is going to be.
   User-defined semantics may be non-*standard* (at least until they adopted officially), but they
-  are still semantics).
+  are still semantics.
+* A lot of people *really* hate seeing even tiny amounts of JS syntax in attribute declarations. I
+  think this is a little silly, but I do understand it. I'll write on that subject in the future.

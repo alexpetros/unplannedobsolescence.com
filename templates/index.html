@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 
+{% block head %}
+<meta property="og:site_name" content="Unplanned Obsolescence">
+<meta name="og:title" content="Unplanned Obsolescence">
+<meta name="description" content="A blog by Alex Petros about trying to write software that doesn't rot">
+<meta name="og:description" content="A blog by Alex Petros about trying to write software that doesn't rot">
+{% endblock head %}
+
 {% block content %}
 {% set blog_section = get_section(path="blog/_index.md") %}
 

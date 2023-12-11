@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 
+{% block head %}
+<meta property="og:site_name" content="Unplanned Obsolescence">
+<meta name="og:title" content="{{ page.title }}">
+<meta name="description" content="{{ page.description }}">
+<meta name="og:description" content="{{ page.description }}">
+{% endblock head %}
+
 {% block content %}
 
 <h1>{{ page.title }}</h1>
