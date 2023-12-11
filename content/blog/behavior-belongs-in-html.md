@@ -14,7 +14,7 @@ using an event listener.
 This is how you'd do it with an inline handler:
 
 ```html
-<button onclick="alert('You clicked me :]')">Click me</button>
+<button onclick="alert('I was clicked!')">Click me</button>
 ```
 
 And this is how you'd do it with an event listener:
