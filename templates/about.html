@@ -1,5 +1,29 @@
 {% extends "base.html" %}
 
+{% block head %}
+<meta property="og:site_name" content="Unplanned Obsolescence">
+<meta name="og:title" content="About this website">
+<meta name="description" content="A blog by Alex Petros about trying to write software that doesn't rot">
+<meta name="og:description" content="A blog by Alex Petros about trying to write software that doesn't rot">
+{% endblock head %}
+
+
 {% block content %}
 <h1>About this website</h1>
+
+<p>
+<cite>Unplanned Obsolescence</cite> is a blog from <a href="https://alexpetros.com/">Alex
+  Petros</a>. It's his second blog, because his <a href="https://thefloatingcontinent.com/">first
+  blog</a> didn't feel like the right place to rant about software lifespans, open source
+development, and HTML.
+
+<p>
+Professionally, Alex is a core maintainer for <a href="https://htmx.org/">htmx</a> and software
+engineer based in New York City. He is currently freelancing, building software infrastructure for
+non-software companies, developing a set of practices for building software infrastructure that
+lasts a <em>really</em> long time with <em>very</em> little maintenance.
+
+<p>
+At some point he would like to do the same for municpal, state, and federal governments.
+
 {% endblock content %}
