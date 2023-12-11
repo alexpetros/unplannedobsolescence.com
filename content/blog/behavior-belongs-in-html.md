@@ -64,7 +64,7 @@ In this conception of the web page, HTML is essentially the scaffolding that you
 interactive to power billion-dollar businesses without a single line of JavaScript.
 
 Let's say you want to set up a text box and a search button so that people can search the web.
-You'd start with an `<input type=text>` for the text box, and a `button` to search.
+You'd start with an `<input type=text>` for the text box, and a `<button>` to search.
 
 ```html
 <div>
@@ -79,8 +79,8 @@ On the page it looks like this:
   <button>Search</button>
 </div>
 
-That button doesn't do anything; the text goes nowhere. But if you replace the `div` with a `form`,
-like so:
+That button doesn't do anything; the text goes nowhere. But if you replace the `<div>` with a
+`<form>`, like so:
 
 ```html
 <form method=/search action=GET>
@@ -94,17 +94,16 @@ then clicking the button submits your input as a query, and navigates to the res
 `http://example.com/search?q=cats`. This is exactly how [the Google homepage
 worked](https://web.archive.org/web/20040426014304/http://www.google.com/) for a long time.
 
-This is functionality that the HTML defined. The page does something interactive—it made a network
-request using your input, when you clicked the button—and no JavaScript was involved. It's easy to
-read, semantic, and will work in every web browser forever. And it demonstrates that the
-entire concept of "HTML defines the layout, JS defines the functionality" is definitionally
-incorrect.
+This is functionality that the HTML defined. The page does something interactive—it makes a network
+request using your input, when you click the button—and no JavaScript was involved. It's easy to
+read, semantic, and will work in every web browser forever. And it demonstrates that the entire
+concept of "HTML defines the layout, JS defines the functionality" is definitionally incorrect.
 
 ## Enhancing the semantics
 The problem with doing everything this way is that the functionality of HTML is extraordinarily
 limited, and to augment that functionality we need JavaScript. Form validation is a great example.
 
-This form is a lot like the previous one, only now it asks an email address of at least 8
+This form is a lot like the previous one, only now it asks for an email address of at least 8
 characters:
 
 ```html
@@ -114,7 +113,8 @@ characters:
 </form>
 ```
 
-That will get the job done, sort of. But it won't let you customize how the user is informed about
+That will get the job done, sort of. It will keep the user from submitting something that is too
+short, or doesn't look like an email, but it won't let you customize how the user is informed about
 the requirements of the email address. This form, adapted for clarity from the MDN page on [form
 validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#validating_forms_using_javascript),
 demonstrates how to do that:
@@ -167,7 +167,7 @@ function showError() {
 }
 ```
 
-That code does the following things:
+That code enhances the HTML so that it does the following things:
 
 * If the user submits an invalid email, show them an error message
 * If the email was empty, show "You need to enter an email address."
@@ -214,21 +214,50 @@ programmer to describe what they want to happen, and for someone else to take ca
 for them.
 
 I'm not saying you're not going to have to write JavaScript—[someone's got to write
-JavaScript](https://www.youtube.com/watch?v=co4EsnwAM1Q&t=110s)—but the base case-scenario if we
-start writing more interfaces this way is that you can re-use someone else's JavaScript; the worst
-case-scenario is that you can re-use your own.
-
-Not everyone is going to want the same things out of an interface, of course, but that's the
-inherent problem with declarative interfaces, and the subject for another blog post. In the
-meantime, there are *a lot* of people who just want to customize the validation messages on their
-forms. They shouldn't have to write event listeners callbacks in order to do so.
+JavaScript](https://www.youtube.com/watch?v=co4EsnwAM1Q&t=110s)—but if we start writing our
+JavaScript libraries to enrich HTML's semantics, rather than replace them, we might get a lot more
+mileage out of both.
 
 ## Taking HTML seriously
 The first task is to acknowledge that HTML, as a *hyper*text markup language, is inherently
 functional: the "hyper" denotes all the extra functionality, like links and forms, that we add to
 the text. You need to [take HTML
 seriously](https://intercoolerjs.org/2020/01/14/taking-html-seriously) to build good interfaces for
-it. Once we do that, the task ahead is to figure out how best to augment its limited built-in
-functionality.
+it. Once we do that, the task ahead is to figure out how best to augment its limited semantics with
+our own.
 
+Remember the button from the beginning?
 
+<button onclick="alert('I\'m back!')">Click me</button>
+
+If you want to make a lot of buttons that display click messages, the best way to do that isn't with
+`onclick` or an event listener, it's to enhance the button so that you can turn any button into a
+message button.
+
+```html
+<button alert message="I was clicked">Click me</button>
+
+<script>
+// Get all the buttons with the 'alert' attribute
+const buttons = querySelectorAll('button[alert]')
+buttons.forEach(btn => {
+  // Get the message property of the button
+  const message = btn.getAttribute('message')
+  // Set the button to alert that message when clicked
+  btn.addEventListener('click', () => { alert(message) })
+})
+<script>
+```
+
+If you only want to do it for one or two buttons, though, just use `onclick`. I promise it's fine.
+
+# Notes
+
+* Implementing the `tooShortMessage` and related attributes is left as an exercise to the reader.
+* Some JavaScript libraries do use attribute interfaces, like [htmx](https://htmx.org/) (disclosure,
+  I am a maintainer), [Alpine.js](https://alpinejs.dev/), and [Turbo](https://turbo.hotwired.dev/).
+  This article should be understood as a defense of that interface choice, and an encouragement that
+  other JS libraries consider the same.
+* Ironically, attribute interfaces have a much better case against being defined inline than the
+  `document.getElementById` style of adding functionality, because it can actually be re-used
+  generically across elements.
