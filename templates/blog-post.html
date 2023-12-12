@@ -5,6 +5,7 @@
 <meta name="og:title" content="{{ page.title }}">
 <meta name="description" content="{{ page.description }}">
 <meta name="og:description" content="{{ page.description }}">
+<meta name="og:image" content="{{ page.path | safe }}{{ page.extra.image }}">
 {% endblock head %}
 
 {% block content %}
