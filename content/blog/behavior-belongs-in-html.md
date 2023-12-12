@@ -356,7 +356,7 @@ time](https://legacy.reactjs.org/docs/forms.html#controlled-components). As we s
 era, I propose that we pick up where Allsop left off and begin doing to the work making HTML a
 safely extensible hypertext system.
 
-One thing we can do immediately officially sanction kebab-case attributes, roughly in line with
+One thing we can do immediately officially sanction is kebab-case attributes, roughly in line with
 [this proposal](https://github.com/whatwg/html/issues/2271) (h/t to [Deniz
 Akşimşek](https://denizaksimsek.com/en/) for showing me this). This would not only bless many of the
 most popular HTML-enhancing frameworks, and therefore huge chunks of existing code on the internet,
@@ -412,3 +412,5 @@ of the codebase to see what it does. Those are all "best practices" in my book.
   are still semantics.
 * A lot of people *really* hate seeing even tiny amounts of JS syntax in attribute declarations. I
   think this is a little silly, but I do understand it. I'll write on that subject in the future.
+
+Discuss this blog on: [HackerNews](https://news.ycombinator.com/item?id=38607038)
