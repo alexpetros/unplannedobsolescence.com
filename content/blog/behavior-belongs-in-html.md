@@ -70,7 +70,7 @@ You'd start with an `<input type=text>` for the text box, and a `<button>` to se
 
 ```html
 <div>
-  <input type=text name=query>
+  <input type=text name=q>
   <button>Search</button>
 </div>
 ```
