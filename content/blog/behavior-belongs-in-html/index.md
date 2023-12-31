@@ -399,6 +399,7 @@ code, it doesn't require that you specify an `id`, and it doesn't make you hunt 
 of the codebase to see what it does. Those are all "best practices" in my book.
 
 # Notes
+*Thanks to [Deniz Akşimşek](https://denizaksimsek.com/en/) for reading a draft of this blog*.
 
 * Implementing the `tooShortMessage` and related attributes is left as an exercise to the reader.
 * Even better, for the button example, would probably be `type=alert`, because that extends the
