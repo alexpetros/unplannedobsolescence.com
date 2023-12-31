@@ -160,8 +160,6 @@ The best time to make `ng-*`, `x-*` and `hx-*` legal HTML was in 2017. [The seco
 1. At the risk of wading into the weird holy war around htmx... it's ironic that the libraries most committed to hypermedia—in both [philosophy](https://htmx.org/essays/how-did-rest-come-to-mean-the-opposite-of-rest/) and [practice](https://htmx.org/essays/a-response-to-rich-harris/)—are the only ones writing invalid HTML. And it's completely unnecessary.
 1. Happy New Year!
 
-Discuss this blog on: [HackerNews](https://news.ycombinator.com/item?id=38826103)
-
 <!--
 Everything after this point is adapted from Eric Meyer's blog post.
 Read it here: https://meyerweb.com/eric/thoughts/2023/11/01/blinded-by-the-light-dom/
