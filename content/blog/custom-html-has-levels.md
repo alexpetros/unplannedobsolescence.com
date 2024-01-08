@@ -1,6 +1,6 @@
 +++
 title = "Custom HTML Has Levels To It"
-description = "A framework for describing what script tag JavaScript libraries have known for a decade: custom attributes are the simplest way to layer functionality on top of HTML."
+description = "Why custom attributes are the simplest way to layer functionality on top of HTML."
 date = 2023-12-31
 +++
 
