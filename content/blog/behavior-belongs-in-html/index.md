@@ -383,7 +383,7 @@ message button.
 const buttons = querySelectorAll('button[alert]')
 buttons.forEach(btn => {
   // Get the message property of the button
-  const message = btn.getAttribute('alert')
+  const message = btn.getAttribute('message')
   // Set the button to alert that message when clicked
   btn.addEventListener('click', () => { alert(message) })
 })
