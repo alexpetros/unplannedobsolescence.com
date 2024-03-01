@@ -218,11 +218,11 @@ Softening the learning curve means making the common things easy and not introdu
 
 # Notes
 
-*Thanks to [Nathaniel Sabanski](https://github.com/gnat) and [Al Sweigart](https://inventwithpython.com/) for their feedback on a draft of this blog.*
+*Thanks to [Nathaniel Sabanski](https://github.com/gnat) and [Al Sweigart](https://inventwithpython.com/) for their feedback on a draft of this blog. I wrote this blog at [Recurse Center](https://www.recurse.com/scout/click?t=044d120abf1c334d0b2a3132634eb025), a terrific programming community that you should check out.*
 
 - My example invoice generator is not meant to be put online, so it doesn't escape text to prevent XSS attacks, or do the other [web security basics](https://htmx.org/essays/web-security-basics-with-htmx).
 - Admittedly, some of PHP's design decisions really lend themselves to insecure code. For starters, they really need [a short echo tag](https://www.php.net/manual/en/language.basic-syntax.phptags.php) that auto-escapes.
-- I'm probably not going to start doing professional work in PHP—the language is interesting feels kludgy to me, and the value of the defaults diminishes as a greater percentage of the code becomes business logic—but I am definitely going to do more web art in PHP. I especially like how compact and shareable it can be, which has tremendous value for certain types of code.
+- At this time, I don't think I'm going to start defaulting to PHP for client work. I'm very comfortable in JS for general-purpose dynamic programming, and JS has a bunch of other useful web built-ins that PHP does not. I am definitely going to do more web art in PHP, though. I especially like how compact and shareable it can be, which has tremendous value for certain types of code.
 - PHP is also missing a bunch of stuff I consider really important to writing RESTFUL web services, that makes pre-processing your requests close to mandatory. Big ones for me include [removing the `.php` file extension](https://www.w3.org/Provider/Style/URI) from the URL, and PUT/DELETE support.
 - Yes, I'm aware of well-known opinion-haver David Heinemeier Hansson's other opinions. Some of them are right and some of them are wrong.
 - More languages should have a "thing" that they are "for." Maybe I'll write about how awk rekindled my love for programming next.
