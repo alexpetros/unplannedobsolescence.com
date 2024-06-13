@@ -4,7 +4,6 @@ description = "Some thoughts on doing the right thing now that we've tried every
 date = 2023-12-11
 
 [extra]
-image = "basic-form.png"
 +++
 
 When you click the button below, it's going to show you a little message.

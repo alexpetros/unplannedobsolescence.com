@@ -4,7 +4,7 @@ description = "Why custom attributes are the simplest way to layer functionality
 date = 2023-12-31
 +++
 
-The comment I received most frequently on "[Behavior Belongs in the HTML](@/blog/behavior-belongs-in-html/index.md)" was: "don't Web Components solve this?"
+The comment I received most frequently on "[Behavior Belongs in the HTML](@/blog/behavior-belongs-in-html.md)" was: "don't Web Components solve this?"
 
 Web Components aren't an interface. They are... well, [a lot of things](https://github.com/WICG/webcomponents/blob/1b75f7516e9901c26f1eb639d929aa82402c2fe0/README.md), including: [the Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM), [HTML templates](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template), and a bunch of JavaScript APIs. But if what you mean is "custom elements," then the answer is no. If you want to customize the behavior of an element, you shouldn't have to wrap it in a new one.
 
@@ -133,7 +133,7 @@ You can quibble about what degree of modification constitutes "new meaning"—th
 Adding a new element is still more difficult than adding a new attribute, but in exchange for the extra syntax, we get increased power that suits the complexity of the task.
 
 ## Fence the cowpaths
-There are good reasons for using all of these levels, but only Deviation Level 1 lacks the appropriate support in legal HTML (`data-` attributes are insufficient, for reasons described by [me here](@/blog/behavior-belongs-in-html/index.md#back-to-reality) and better [Joshua Wise here](https://github.com/whatwg/html/issues/2271#issuecomment-744188324)).
+There are good reasons for using all of these levels, but only Deviation Level 1 lacks the appropriate support in legal HTML (`data-` attributes are insufficient, for reasons described by [me here](@/blog/behavior-belongs-in-html.md#back-to-reality) and better [Joshua Wise here](https://github.com/whatwg/html/issues/2271#issuecomment-744188324)).
 
 When you talk about the need for better interfaces, you always get some comment along the lines of "well the thing you're describing isn't really that bad and people can just do it this other way." That might be true. But if it's worse than the alternative, people will use the alternative.
 
