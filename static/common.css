@@ -1,5 +1,7 @@
 :root {
   --text-color: #333;
+  --aside-color: #29627e;
+  --body-max-width: 650px;
 }
 
 html {
@@ -9,7 +11,7 @@ html {
 body {
   font-family: Verdana;
   margin: 40px auto;
-  max-width: 650px;
+  max-width: var(--body-max-width);
   line-height: 1.6;
   font-size: 16px;
   color: var(--text-color);
@@ -72,6 +74,23 @@ header ul li {
 .blog-list li {
   display: grid;
   grid-template-columns: 150px 1fr;
+}
+
+aside {
+  width: 20%;
+  right: 4rem;
+  position: absolute;
+  font-style: italic;
+  color:  var(--aside-color);
+}
+
+@media (max-width: 1400px) {
+  aside {
+    position: static;
+    width: 100%;
+    padding: 10px;
+    border: 2px var(--aside-color) dotted;
+  }
 }
 
 blockquote {
