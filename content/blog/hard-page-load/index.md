@@ -1,7 +1,7 @@
 +++
 title = "Who's Afraid of a Hard Page Load?"
 description = ""
-date = 2024-07-17
+date = 2024-07-16
 +++
 
 While I'm not going to settle the Single-Page Web Application (SPA) debate in a blog post, there is
