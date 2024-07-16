@@ -3,9 +3,11 @@ base_url = "https://unplannedobsolescence.com"
 
 compile_sass = false
 
-generate_feed = true
-
 author = "Alexander Petros"
+
+smart_punctuation = true
+
+generate_feed = true
 
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true

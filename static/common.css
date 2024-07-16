@@ -21,7 +21,22 @@ body {
 h1, h2, h3 {
   font-family: Georgia;
   margin: 20px 0;
-  line-height: 1.2
+  line-height: 1.2;
+}
+
+figure {
+  width: 80%;
+  margin: auto;
+}
+
+figure img {
+  display: block;
+}
+
+figure figcaption {
+  display: block;
+  color: gray;
+  text-align: center;
 }
 
 .zola-anchor {
@@ -77,19 +92,29 @@ header ul li {
 }
 
 aside {
-  width: 20%;
-  right: 4rem;
-  position: absolute;
-  font-style: italic;
+  border: 2px var(--aside-color) dotted;
+  box-sizing: border-box;
   color:  var(--aside-color);
+  font-style: italic;
+  padding: 10px;
+  width: 100%;
 }
 
-@media (max-width: 1400px) {
+aside:nth-of-type(odd) {
+  right: 3%;
+}
+
+aside:nth-of-type(even) {
+  left: 3%;
+}
+
+@media (min-width: 1250px) {
   aside {
-    position: static;
-    width: 100%;
-    padding: 10px;
-    border: 2px var(--aside-color) dotted;
+    border: none;
+    position: absolute;
+    width: 20%;
+    /* minor hack until I can figure out how to position it relative to the previous paragraph. */
+    margin-top: -5rem;
   }
 }
 
