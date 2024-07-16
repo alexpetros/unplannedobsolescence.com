@@ -25,12 +25,13 @@ h1, h2, h3 {
 }
 
 figure {
-  width: 80%;
+  width: 90%;
   margin: auto;
 }
 
 figure img {
   display: block;
+  max-width: 90%;
 }
 
 figure figcaption {
