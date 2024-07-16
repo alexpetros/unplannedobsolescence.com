@@ -149,6 +149,7 @@ Some things you have to consider with SPAs:
   button again?
 - What happens when users try to open a link in a new tab?
 - What happens when users users copy the link from the address bar and send it to a friend?
+- Where does the page focus go when it navigates?
 
 You can engineer your way out of basically all the problems I've described here, but it takes
 enormous effort. And maintenance on the pile of libraries required to get back basic browser
