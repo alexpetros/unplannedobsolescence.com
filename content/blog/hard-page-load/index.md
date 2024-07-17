@@ -193,12 +193,12 @@ setup. It always pays off in the long run.
 When I worked at the Washington Post, I worked on the interactive map that they used for live
 election night coverage. [Watch my former boss, Jeremy Bowers, clicking around it the
 livestream](https://www.youtube.com/live/czuu6s0gew4?si=Ch_Lp0YS1iBzyIYN&t=5628). Here's me and
-[Dylan Friedman](https://dylanfreedman.com/), in front of an early version:
+[Dylan Freedman](https://dylanfreedman.com/), in front of an early version:
 
 <figure>
   <img src="/blog/hard-page-load/alex-dylan-election-map.jpg"
        width=500
-       alt="Alex Petros and Dylan Friedman in front of a big screen with a gray map on it,
+       alt="Alex Petros and Dylan Freedman in front of a big screen with a gray map on it,
        at the Washington Post offices"
        >
   <figcaption>
