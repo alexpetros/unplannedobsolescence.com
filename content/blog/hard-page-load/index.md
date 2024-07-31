@@ -65,8 +65,8 @@ button will usually load the cached version of the page I was just on.
 If it's an SPA, however, in all likelihood clicking the back button will take me a different, mostly
 blank page, and now I'm just stuck. When the internet comes back, I'll refresh the page and
 hopefully land in the same place, but maybe not. In fact, my whole attitude towards a website
-changes if feels like an SPA. Subconciously, I know that I have to baby it, and only use it in the
-most optimal network conditions. The smoothness of a web application is an anti-indicator of its
+changes if it feels like an SPA. Subconsciously, I know that I have to baby it, and only use it in
+the most optimal network conditions. The smoothness of a web application is an anti-indicator of its
 reliability and predictability as a web page.
 
 That anti-indicator holds even in situations without unreliable internet. As a user, I'm always
