@@ -135,6 +135,18 @@ blockquote:before {
   vertical-align: -0.4em;
 }
 
+cite.article {
+  font-style: normal;
+}
+
+cite.article::before {
+  content: "\201C";
+}
+
+cite.article::after {
+  content: "\201D";
+}
+
 code:not(pre code) {
   background-color: lightgray;
   padding: 0 .25rem;
