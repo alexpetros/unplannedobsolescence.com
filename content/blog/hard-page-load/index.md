@@ -10,7 +10,7 @@ them because of the "modern," responsive feel.
 
 SPAs achieve their signature feel using partial page replacement: adding or removing DOM elements
 instead of loading a new page. Partial page replacement is a very useful feature—I'm [working on an
-HTML standards proposal](https://github.com/alexpetros/triptych) for it right now—but SPAs typically
+HTML standards proposal](https://alexanderpetros.com/triptych/) for it right now—but SPAs typically
 use them for *everything*, including page navigation, which causes a lot of problems.
 
 The way this works is that rather than letting the browser load a new page when the user clicks an
