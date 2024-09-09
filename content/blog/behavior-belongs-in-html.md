@@ -1,6 +1,6 @@
 +++
 title = "Behavior Belongs in the HTML"
-description = "Some thoughts on doing the right thing now that we've tried everything else."
+description = "Separation of concerns is a great principle, but you're drawing the line in the wrong place."
 date = 2023-12-11
 
 [extra]
@@ -62,7 +62,7 @@ HTML/CSS/JS split is a textbook example of it. From Wikipedia (at the time of th
 > HTML is mainly used for organization of webpage content, CSS is used for definition of
 > content presentation style, and JS defines how the content interacts and behaves with the user.
 
-Separation of Concerns is a great principle, but I think the drew the line in the wrong place. In
+Separation of Concerns is a great principle, but I think they drew the line in the wrong place. In
 this conception of the web page, HTML is essentially the scaffolding that you dress up with CSS (for
 style) and JS (for interactivity). But HTML is inherently interactive, too. It's sufficiently
 interactive to power billion-dollar businesses without a single line of JavaScript.

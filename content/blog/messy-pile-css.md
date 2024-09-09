@@ -1,6 +1,6 @@
 +++
 title = "The Messy Pile"
-description = ""
+description = "Better CSS leads to better HTML"
 date = 2024-08-01
 +++
 
