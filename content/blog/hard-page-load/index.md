@@ -1,6 +1,6 @@
 +++
 title = "Who's Afraid of a Hard Page Load?"
-description = "Single-Page Applications (SPAs) are almost always a worse user experience."
+description = "Single-Page Applications (SPAs) are a worse user experience."
 date = 2024-07-16
 +++
 
