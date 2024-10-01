@@ -179,9 +179,16 @@ Building good websites requires dropping the sugar high of `hx-boost` and saying
 Whenever I bring it up, he says: "I like hx-boost."
 
 I think Carson's perspective is that `hx-boost` is too important to the htmx funnel to explicitly disavow.
-I don't know if I event disagree with that, and either way, I would never advocate for it to be removed, because backwards compatibility is more important.
+Curious beginners slap `hx-boost` onto their links and see an instant "smoothness" upgrade.
+I don't know if I even disagree with that—it certainly is an easy way to get started, and maybe that's more important.
+In any case, I would never advocate for it to be removed, because backwards compatibility is more important.
 
-But I'm writing this because people always ask me for help with `hx-boost` problems, and the only way to fully resolve those is to stop using it.
+
+For what it's worth, my opposition to hx-boost stems from my own experience as a beginner.
+hx-boost broke the back button in a way I didn't understand, and removing it fixed my problem.
+This was my a-ha moment about "hard" links, and multi-page architectures in general: the ephemeral scripting environment reduces the surface area for complexity.
+
+But I'm writing this because people frequently ask for help with `hx-boost` problems, and they deserve a fully-realized explanation for why I feel that the only way to properly resolve those problems is to stop using it.
 
 ## Is there ever a time I should use hx-boost?
 
@@ -196,3 +203,15 @@ for most people, who just want to add a little interactivity to their webpage, a
 
 `hx-boost` should be a understood as a finnicky tool, only to be broken out in very specific circumstances, if you know what you're doing.
 For most pages, [stick with simple](https://grugbrain.dev/#grug-on-complexity): a [regular link](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a).
+
+# Notes
+
+* htmx community member Delaney Gillilan has his own hypermedia framework called [datastar](https://data-star.dev/) which uses server-side events to drive page updates.
+Each event from the server is processed by datastar and merged into the page in the appropriate place.
+It's good to take on the complexity of DOM morphing if you're working on the kinds of real-time applications that Delaney does (I saw an amazing 3D graphics demo from him at UtahJS);
+it's not a thing we should be burdening beginners and more traditional hypertext documents with.
+
+* Both [datastar](https://data-star.dev/essays/another_dependency#fn:1) and [turbo](https://dev.37signals.com/a-happier-happy-path-in-turbo-with-morphing/) (from 37signals) use Carson's [idiomorph](https://github.com/bigskysoftware/idiomorph) algorithm to merge updates into the page, but Carson ended up rejecting idiomorph as the default merging algorithm for htmx, because it was too complicated!
+The default [htmx swap strategy](https://htmx.org/attributes/hx-swap/) is to just wipe away what's inside the `innerHTML` and replace it with the response—not unlike how the default page navigation is to wipe away the environment and give you a fresh one.
+Simple, but effective.
+
