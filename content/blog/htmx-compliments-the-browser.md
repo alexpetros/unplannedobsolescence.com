@@ -4,6 +4,7 @@ description = "You just need to set your cache headers correctly (and start trus
 date = 2024-10-01
 
 [extra]
+hidden = true
 +++
 
 Hello!
