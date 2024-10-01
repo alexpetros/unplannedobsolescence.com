@@ -44,7 +44,7 @@ Exactly what merits a targeted update versus a link to a new page depends on wha
 
 <!-- which is among the [htmx-inspired features](https://alexanderpetros.com/triptych) that Carson and I are [working on getting into HTML proper](https://alexanderpetros.com/triptych/form-http-methods). -->
 
-Unfortunately, a lot of the beginner guides, including the *Hypermedia Systems* book, suggest that you can get started easily by "upgrading" your links with `hx-boost`.
+Unfortunately, a lot of the beginner guides suggest that you can get started easily by "upgrading" your links with `hx-boost`.
 I think this is a bad idea.
 
 <!-- <aside> -->
