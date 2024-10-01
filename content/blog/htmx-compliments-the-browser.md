@@ -14,8 +14,8 @@ You're probably here for one of two reasons:
 * You're new to [htmx](https://htmx.org/) and struggling with how to structure your website to make it feel responsive
 * You asked for help fixing a problem with the [`hx-boost`](https://htmx.org/attributes/hx-boost/) attribute
 
-I believe that htmx is beginning of a sea-change in how we build for the web (this is why I volunteer as one of the maintainers).
-I do, however, have a small problem with the way that we teach it to beginners, which can cause the two stumbling blocks above.
+I believe that htmx is beginning of a sea-change in how we build for the web.
+But, like any new (or new to some people) approach, there are still some gaps in how we teach it to beginners, which can create the two stumbling blocks above.
 
 ## How should we teach it beginners?
 
@@ -38,7 +38,8 @@ You can then use htmx to update the pitch count, the scoreboard, and the stats e
 Your website's home page might have all the currently-playing games on it, with just the number of runs scored in each game; those can update with htmx too.
 Clicking on the game should navigates to that game's page, and loads the more detailed view.
 
-What I'm trying to emphasize with this example is that while htmx is amazing for targeted page updates, I highly discourage using it to take over *all* page navigation.
+While htmx is amazing for targeted page updates, I highly discourage using it to take over *all* page navigation.
+Instead, use it to add interactivity to a multi-page application that is already well-structured with URLs.
 Exactly what merits a targeted update versus a link to a new page depends on what you're building, but you should have a mental model that distinguishes between them in some capacity.
 
 <!-- which is among the [htmx-inspired features](https://alexanderpetros.com/triptych) that Carson and I are [working on getting into HTML proper](https://alexanderpetros.com/triptych/form-http-methods). -->
@@ -50,7 +51,7 @@ I think this is a bad idea.
 <!-- One of the reason I am familiar with the limitations of the History API is because the Triptych polyfill <a href="https://github.com/alexpetros/triptych?tab=readme-ov-file#limitations">has them too</a>. -->
 <!-- </aside> -->
 
-## In case I don't have the full context, what exactly is hx-boost?
+## What exactly is hx-boost?
 
 [`hx-boost`](https://htmx.org/attributes/hx-boost/) is a feature of the converts a "regular" link into a "boosted" link:
 
@@ -150,7 +151,7 @@ If I don't even want to include a version number—maybe for a file like `styles
 
 Again, basically every static file server supports this pattern.
 
-### Use same-origin links to automatically stop page repaints
+### Use same-origin links to get partial page updates
 
 This website ([unplannedobsolescence.com](/)) uses exclusively regular links, and if you click around up top you'll see that the header largely stays in place.
 This happens automatically now, for same-origin links to pages with the same structure and stylesheets (like I showed you above).
@@ -172,7 +173,7 @@ Page history, loading bars, the back button, the cancel button, the URL bar, etc
 [In the long run, the browser always wins.](@/blog/hard-page-load/index.md#in-the-long-run-the-browser-always-wins)
 
 
-## Why does hx-boost exist then, if you think it's so bad?
+## Why does hx-boost exist then?
 
 htmx was created during a period in which it seemed like SPAs were the inevitable future of web development.
 To compete in that environment, it had to demonstrate that it could replicate what most people considered to be the killer feature of SPAs: not repainting the whole page.
