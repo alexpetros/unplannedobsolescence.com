@@ -1,6 +1,6 @@
 +++
 title = "Do Not Use Hx-boost"
-description = ""
+description = "You just need to set your cache headers correctly (and start trusting the browser again)."
 date = 2024-10-01
 
 [extra]
@@ -55,7 +55,7 @@ If you replace this process with an ad-hoc, scripting-based navigation, you remo
 
 ## What should I do instead?
 
-Use regular links. `hx-boost` promises to replicate the experience of a regular link; skip the middle man and just use them.
+Use [regular links](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a). `hx-boost` promises to replicate the experience of a regular link; skip the middleman and just use them.
 
 ## What about the benefits of hx-boost?
 
@@ -131,7 +131,8 @@ the same cannot be said for everyone who tried to replace that functionality wit
 
 ### I want the page to have the best performance possible
 
-Using standard HTML features allows the browser to optimize performance and UX in ways that JavaScript is categorically incapable of doing.
+Using standard HTML features allows the browser to optimize performance and UX in ways that JavaScript is categorically incapable of.
+Every time the browser updates it is getting better at loading, parsing, and rendering webpages.
 Page history, loading bars, the back button, the cancel button, the URL bar, etc., all work correctly, by default, every time, on every browser.
 
 [In the long run, the browser always wins.](@/blog/hard-page-load/index.md#in-the-long-run-the-browser-always-wins)
@@ -184,8 +185,12 @@ But I'm writing this because people always ask me for help with `hx-boost` probl
 
 My friend [Aram](https://aramzs.xyz/) made a website called [Song Obsessed](https://songobsessed.com) that has a persistent music player which holds its state even as you navigate around the site.
 `hx-boost` is a good fit for this because it allows you to construct your website as a series of URLs; you can just slap `hx-boost` on everything and, with a little tweaking, you can get htmx to leave the music player alone while replacing the rest of the page.
-You still lost the reliability inherent in the hard page load, but you get genuinely novel functionality in exchange, which is a good trade.
-
+You still lost the reliability inherent in the hard page load, but you get genuinely novel functionality in exchange, which is a good trade in this case.
 Until HTML has an API for you to keep content like persistent across page navigations, `hx-boost` is a decent way to get that done.
-But there is a better-than-decent chance that you came to htmx not to replicate MySpace, but to accomplish something much simpler (simplicity is, after all, [a core virtue](https://grugbrain.dev/) widely espoused by the htmx community).
-To that end, `hx-boost` should be a understood as a finnicky tool, only to be broken out in very specific circumstances.
+
+This demonstrates the core problem with `hx-boost`: it's actually an <em>advanced</em> tool masquerading as a simple one.
+Aram is a highly experienced web developer who's using `hx-boost` to push the boundaries of what's possible with page navigations;
+for most people, who just want to add a little interactivity to their webpage, all `hx-boost` does is degrade the page's performance.
+
+`hx-boost` should be a understood as a finnicky tool, only to be broken out in very specific circumstances, if you know what you're doing.
+For most pages, [stick with simple](https://grugbrain.dev/#grug-on-complexity): a [regular link](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a).
