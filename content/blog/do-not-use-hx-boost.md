@@ -1,5 +1,5 @@
 +++
-title = "Do Not Use Hx-boost"
+title = "Do Not Use hx-boost"
 description = "You just need to set your cache headers correctly (and start trusting the browser again)."
 date = 2024-10-01
 
