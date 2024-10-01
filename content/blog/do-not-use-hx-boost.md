@@ -107,7 +107,7 @@ If I want to upgrade everyone to a new version, I just change the version number
 
 Then all my users' browses will consider it a new file and ask for the server for it again.
 
-If I don't even want to include a version number—maybe for a file like `stylesheet.css`—you can use a URL query.
+If I don't even want to include a version number—maybe for a file like `stylesheet.css`—I can use a URL query.
 
 ```html
 <!-- The browser will consider these two different files,
@@ -129,7 +129,7 @@ Here's the Chrome team [announcing this feature](https://developer.chrome.com/bl
 
 Chrome 76 came out four years ago, in 2019.
 Everyone who built their website with regular links got a significant, free performance upgrade to their website pushed out to billions of people;
-the same cannot be said for everyone who tried to replace that functionality with JavaScript.
+the same is not true for everyone who tried to replace that functionality with JavaScript.
 
 ### I want the page to have the best performance possible
 
