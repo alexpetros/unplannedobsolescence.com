@@ -87,9 +87,18 @@ header ul li {
   padding-left: 0;
 }
 
+.blog-list a {
+  display: inline-block;
+}
+
+.blog-list time {
+  font-family: monospace;
+}
+
 .blog-list li {
   display: grid;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 1fr 2fr;
+  margin: 5px 0;
 }
 
 aside {

@@ -9,9 +9,11 @@
   {% for page in section.pages %}
   {%- if not page.extra or page.extra.hidden != true %}
   <li>
-    <div>{{ page.date }}</div>
-    <div><a href="{{ page.permalink | safe }}">{{ page.title }}</a></div>
+    <time datetime={{page.date}}>{{ page.date | date(format="%b %d, %Y") }}</time>
+    <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
   </li>
   {% endif %}
   {% endfor %}
-</ul>{% endblock content %}
+</ul>
+
+{% endblock content %}
