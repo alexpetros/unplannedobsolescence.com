@@ -129,6 +129,14 @@ Chrome 76 came out four years ago, in 2019.
 Everyone who built their website with regular links got a significant, free performance upgrade to their website pushed out to billions of people;
 the same cannot be said for everyone who tried to replace that functionality with JavaScript.
 
+### I want the page to have the best performance possible
+
+Using standard HTML features allows the browser to optimize performance and UX in ways that JavaScript is categorically incapable of doing.
+Page history, loading bars, the back button, the cancel button, the URL bar, etc., all work correctly, by default, every time, on every browser.
+
+[In the long run, the browser always wins.](@/blog/hard-page-load/index.md#in-the-long-run-the-browser-always-wins)
+
+
 ## What's even the point of htmx then? Does htmx suck?
 
 htmx is incredible and the beginning of a complete sea-change in how we build for the web. I am one of the htmx maintainers.
@@ -162,7 +170,7 @@ Building good websites requires dropping the sugar high of `hx-boost` and saying
 
 Whenever I bring it up, he says: "I like hx-boost."
 
-I think his perspective is that `hx-boost` is too important to the htmx funnel to explicitly disavow.
+I think Carson's perspective is that `hx-boost` is too important to the htmx funnel to explicitly disavow.
 I don't know if I event disagree with that, and either way, I would never advocate for it to be removed, because backwards compatibility is more important.
 
 But I'm writing this because people always ask me for help with `hx-boost` problems, and the only way to fully resolve those is to stop using it.
