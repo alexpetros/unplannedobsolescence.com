@@ -1,7 +1,7 @@
 +++
 title = "htmx Compliments the Browser"
 description = "How to build great websites with htmx by learning a couple browser features alongside it."
-date = 2024-10-01
+date = 2024-10-02
 
 [extra]
 hidden = true
