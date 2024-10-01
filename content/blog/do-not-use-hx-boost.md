@@ -67,7 +67,9 @@ When the server sends the browser a file, it can also send a unique string that 
 The next time you try to load that file (after, for instance, navigating to a new page that uses the same CSS or JS), the browser asks your server, "is it still this one?", and sends that ETag string.
 If the file hasn't changed, the server just responds with a [304 Not Modified](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/304) header and the browser users its cached version.
 
-In most cases, this is process is essentially instantaneous. The browser has to talk to the server anyway to get whatever info is on the next page, and it's [re-using the same TCP connection](https://www.rfc-editor.org/rfc/rfc2616#section-8.1) to do so.
+In most cases, this is process adds essentially nothing to your load times.
+The browser has to talk to the server anyway to get whatever info is on the next page, and it's [re-using the same TCP connection](https://www.rfc-editor.org/rfc/rfc2616#section-8.1) to do so.
+The GET -> 304 back-and-forth is a handful of extra bytes on an already-open socket.
 
 But if you don't want the browser to even *ask*, you can do that do by setting a single cache header.
 
