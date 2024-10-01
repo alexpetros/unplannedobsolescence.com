@@ -1,6 +1,6 @@
 +++
 title = "htmx Compliments the Browser"
-description = "You just need to set your cache headers correctly (and start trusting the browser again)."
+description = "How to build great websites with htmx by learning a couple browser features alongside it."
 date = 2024-10-01
 
 [extra]
