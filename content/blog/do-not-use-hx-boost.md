@@ -162,7 +162,12 @@ htmx was created during a period in which it seemed like SPAs were the inevitabl
 To compete in that environment, it had to demonstrate that it could replicate what most people considered to be the killer feature of SPAs: not repainting the whole page.
 I believe, in 2024, that [this creates a worse experience for both users and developers](@/blog/hard-page-load/index.md).
 
-Now that htmx has proven itself in the mindshare ecosystem, and people are more sick of SPAs, I think the time has come to make the harder, but ultimately more impactful case: HTML and HTTP have the features required to build the vast, vast majority of website functionality; they're easier to use than the scripting alternatives, and they last longer with much less maintenance.
+Now that htmx has proven itself in the mindshare ecosystem, and developers are starting to trust multi-page websites again, I think the time has come to make the harder, but ultimately more impactful case: HTML and HTTP have the features required to build the vast, vast majority of website functionality; they're easier to use than the scripting alternatives, and they last longer with much less maintenance.
+
+<aside>
+Users always trusted multi-page websites, by the way.
+We're just now starting to listen again.
+</aside>
 
 Building good websites requires dropping the sugar high of `hx-boost` and saying "here's how to use a cache header."
 
