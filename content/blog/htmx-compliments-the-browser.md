@@ -1,27 +1,57 @@
 +++
-title = "Do Not Use hx-boost"
+title = "htmx Compliments the Browser"
 description = "You just need to set your cache headers correctly (and start trusting the browser again)."
 date = 2024-10-01
 
 [extra]
-hidden = true
 +++
 
 Hello!
 
-You're probably here because you asked me (or someone who agrees with me) for help fixing a problem with the [`hx-boost`](https://htmx.org/attributes/hx-boost/) attribute.
-Here's the simplest answer: do not use `hx-boost`.
-It's doing nothing but getting in your way, and any problem you think it's solving can be solved much more simply using other means.
+You're probably here for one of two reasons:
 
-First of all, just try it.
-Please.
-Literally just remove `hx-boost=true` from all your attributes and see if it fixes every single problem you have.
-Then come back and read the rest of the article.
+* You're new to [htmx](https://htmx.org/) and struggling with how to structure your website to make it feel responsive
+* You asked for help fixing a problem with the [`hx-boost`](https://htmx.org/attributes/hx-boost/) attribute
+
+I believe that htmx is beginning of a sea-change in how we build for the web (this is why I volunteer as one of the maintainers).
+I do, however, have a small problem with the way that we teach it to beginners, which can cause the two stumbling blocks above.
+
+## How should we teach it beginners?
+
+In my opinion, most websites should be using htmx for page updates that:
+
+1. Users would not expect to see on a refresh i.e. emphemeral fetches
+2. Add info that *would* be present on a new, full-page load
+
+Everything else should use regular links and regular forms that do standard, full-page navigations.
+
+<aside>
+You also currently need htmx (or an equivalent library) to enable support for PUT and DELETE on forms.
+More in that in the <a href="#notes">notes section.</a>
+<!-- But, in most cases, you should have the server respond with an `HX-Redirect` header so that, instead of doing a partial page replacement, the browser does a full-page navigation. -->
+</aside>
+
+Let's say you're making a website that shows today's baseball games, and you want it to update the stats live.
+Each game should live at its own URL, clicking that URL should load the full page with the current count, scoreboard, and stats.
+You can then use htmx to update the pitch count, the scoreboard, and the stats each time something happens.
+Your website's home page might have all the currently-playing games on it, with just the number of runs scored in each game; those can update with htmx too.
+Clicking on the game should navigates to that game's page, and loads the more detailed view.
+
+What I'm trying to emphasize with this example is that while htmx is amazing for targeted page updates, I highly discourage using it to take over *all* page navigation.
+Exactly what merits a targeted update versus a link to a new page depends on what you're building, but you should have a mental model that distinguishes between them in some capacity.
+
+<!-- which is among the [htmx-inspired features](https://alexanderpetros.com/triptych) that Carson and I are [working on getting into HTML proper](https://alexanderpetros.com/triptych/form-http-methods). -->
+
+Unfortunately, a lot of the beginner guides, including the *Hypermedia Systems* book, suggest that you can get started easily by "upgrading" your links with `hx-boost`.
+I think this is a bad idea.
+
+<!-- <aside> -->
+<!-- One of the reason I am familiar with the limitations of the History API is because the Triptych polyfill <a href="https://github.com/alexpetros/triptych?tab=readme-ov-file#limitations">has them too</a>. -->
+<!-- </aside> -->
 
 ## In case I don't have the full context, what exactly is hx-boost?
 
-`hx-boost` is a feature of the [htmx JavaScript library](https://htmx.org/).
-It's a single attribute that converts a "regular" link into a "boosted" link.
+[`hx-boost`](https://htmx.org/attributes/hx-boost/) is a feature of the converts a "regular" link into a "boosted" link:
 
 ```html
 <!-- normal link -->
@@ -32,10 +62,11 @@ It's a single attribute that converts a "regular" link into a "boosted" link.
 ```
 
 Instead of doing a full page navigation when the "boosted" link is clicked, htmx will issue an HTTP request to the link's URL and replace the `<body>` of the page with the content of the response.
-In theory, this perfectly mimics the functionality of a normal link, but feels "smoother" due to only partially repainting the page.
-It is sometimes billed as an easy entrypoint into htmx.
+In theory, this feels "smoother" because it only repaints part of the page, mimicking the feel of a Single-Page Application (SPA).
 
-## Why shouldn't I use it?
+## What's wrong with hx-boost?
+
+The problems it solves are better solved by other means, and it creates a lot of problems on its own.
 
 Use `hx-boost` long enough, and something will go wrong.
 You'll click the back button and see only a partial page update;
@@ -52,16 +83,16 @@ This is a very good thing.
 It means that every additional script you include on the page has a standardized way to keep track of what's happening.
 If you replace this process with an ad-hoc, scripting-based navigation, you remove access to that common language for every other library on your page, and you also initiate a long-lived JavaScript environment that is likely to eventually enter a bad state of some kind.
 
-
 ## What should I do instead?
 
-Use [regular links](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a). `hx-boost` promises to replicate the experience of a regular link; skip the middleman and just use them.
+Use [regular links](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a). `hx-boost` promises to enhance the experience of a regular link; skip the middleman and just use them.
 
 ## What about the benefits of hx-boost?
 
-The purported benefits of `hx-boost` can be better achieved through other means:
+The first time you use `hx-boost`, it feels magical to have the page update "seamlessly" like that, but you can achieve all the same benefits, without the headaches, using the browser features.
 
-### I don't want to re-download JS and CSS on each click
+### Send cache headers to re-use CSS and JS across page loads
+
 Basically all static file servers support [ETags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag).
 When the server sends the browser a file, it can also send a unique string that identifies *that version* of the file.
 The next time you try to load that file (after, for instance, navigating to a new page that uses the same CSS or JS), the browser asks your server, "is it still this one?", and sends that ETag string.
@@ -118,10 +149,10 @@ If I don't even want to include a version number—maybe for a file like `styles
 
 Again, basically every static file server supports this pattern.
 
-### I don't want the whole page to repaint
+### Use same-origin links to automatically stop page repaints
 
-If you have your cache headers set properly, browsers don't do this anymore.
 This website ([unplannedobsolescence.com](/)) uses exclusively regular links, and if you click around up top you'll see that the header largely stays in place.
+This happens automatically now, for same-origin links to pages with the same structure and stylesheets (like I showed you above).
 
 Here's the Chrome team [announcing this feature](https://developer.chrome.com/blog/paint-holding):
 
@@ -131,7 +162,7 @@ Chrome 76 came out four years ago, in 2019.
 Everyone who built their website with regular links got a significant, free performance upgrade to their website pushed out to billions of people;
 the same is not true for everyone who tried to replace that functionality with JavaScript.
 
-### I want the page to have the best performance possible
+### Leverage HTML for free performance upgrades
 
 Using standard HTML features allows the browser to optimize performance and UX in ways that JavaScript is categorically incapable of.
 Every time the browser updates it is getting better at loading, parsing, and rendering webpages.
@@ -140,26 +171,7 @@ Page history, loading bars, the back button, the cancel button, the URL bar, etc
 [In the long run, the browser always wins.](@/blog/hard-page-load/index.md#in-the-long-run-the-browser-always-wins)
 
 
-## What's even the point of htmx then? Does htmx suck?
-
-htmx is incredible and the beginning of a complete sea-change in how we build for the web. I am one of the htmx maintainers.
-
-In my opinion, you should be using htmx to enable changes on the page that either:
-
-1. Users would not expect to see on a refresh i.e. emphemeral fetches
-2. Updates info that *would* be present on a new, full-page load
-
-For example: if your page shows a baseball score, you might use htmx to update it live.
-A full-page reload would obviously show the current score, but you don't need to be reloading the whole page for each pitch;
-use htmx to update the count and the scoreboard.
-
-You also currently need htmx (or an equivalent library) to enable support for PUT and DELETE on forms, which is among the [htmx-inspired features](https://alexanderpetros.com/triptych) that Carson and I are [working on getting into HTML proper](https://alexanderpetros.com/triptych/form-http-methods).
-
-<aside>
-One of the reason I am familiar with the limitations of the History API is because the Triptych polyfill <a href="https://github.com/alexpetros/triptych?tab=readme-ov-file#limitations">has them too</a>.
-</aside>
-
-## Why does it exist then, if you think it's so bad?
+## Why does hx-boost exist then, if you think it's so bad?
 
 htmx was created during a period in which it seemed like SPAs were the inevitable future of web development.
 To compete in that environment, it had to demonstrate that it could replicate what most people considered to be the killer feature of SPAs: not repainting the whole page.
