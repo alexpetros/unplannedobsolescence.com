@@ -64,10 +64,11 @@ The purported benefits of `hx-boost` can be better achieved through other means:
 ### I don't want to re-download JS and CSS on each click
 Basically all static file servers support [ETags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag).
 When the server sends the browser a file, it can also send a unique string that identifies *that version* of the file.
-The next time you try to load that file (after, for instance, navigating to a new page that uses the same CSS or JS file), the browser asks your server, "is it still this one?", and send that string.
+The next time you try to load that file (after, for instance, navigating to a new page that uses the same CSS or JS), the browser asks your server, "is it still this one?", and sends that ETag string.
 If the file hasn't changed, the server just responds with a [304 Not Modified](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/304) header and the browser users its cached version.
 
-In most cases, this is essentially instantaneous (because you have to talk to the server anyway to get whatever info is on the next page).
+In most cases, this is process is essentially instantaneous. The browser has to talk to the server anyway to get whatever info is on the next page, and it's [re-using the same TCP connection](https://www.rfc-editor.org/rfc/rfc2616#section-8.1) to do so.
+
 But if you don't want the browser to even *ask*, you can do that do by setting a single cache header.
 
 Here's how I load htmx in all the websites where I use it.
@@ -78,7 +79,7 @@ I include a script tag like this in the header:
 <script src="/htmx-1.9.3.js"></script>
 ```
 
-And then when the user loads it, the browser will send the HTTP request `GET /htmx-1.9.3.js` to my server.
+When the user loads the page for the very first time, their browser sends the HTTP request `GET /htmx-1.9.3.js` to my server.
 The server will send back something like this in response:
 
 ```http
@@ -91,9 +92,20 @@ content-type: application/javascript; charset=UTF-8
 ```
 
 That says: "download htmx 1.9.3 from my server exactly once, and then never ask me for it again for *a full calendar year*."
-htmx 1.9.3 is never going to change, but if I want to upgrade to a new version, I just change the version number in the URL, and then the browser will consider it a new file and ask for it again.
+From that point on, for one year, every time that browser loads webpage at that domain that includes htmx 1.9.3, the browser won't even ask the server for it, it'll just use the saved version.
+If I want to upgrade everyone to a new version, I just change the version number in the URL:
 
-If I don't even want to include a version number—maybe for a file like `stylesheet.css`—you can hack the version process by using a URL query.
+```html
+<!-- From this... -->
+<script src="/htmx-1.9.3.js"></script>
+
+<!-- ...to this -->
+<script src="/htmx-1.9.4.js"></script>
+```
+
+Then all my users' browses will consider it a new file and ask for the server for it again.
+
+If I don't even want to include a version number—maybe for a file like `stylesheet.css`—you can use a URL query.
 
 ```html
 <!-- The browser will consider these two different files,
@@ -106,14 +118,16 @@ Again, basically every static file server supports this pattern.
 
 ### I don't want the whole page to repaint
 
-If you have your cache headers set properly, browsers [don't do this anymore](https://developer.chrome.com/blog/paint-holding).
-This website uses exclusively regular links, and if you click around up top you'll see that the header largely stays in place.
+If you have your cache headers set properly, browsers don't do this anymore.
+This website ([unplannedobsolescence.com](/)) uses exclusively regular links, and if you click around up top you'll see that the header largely stays in place.
 
-The most important part of that blog post is this line:
+Here's the Chrome team [announcing this feature](https://developer.chrome.com/blog/paint-holding):
 
 > Try Paint Holding in Chrome Canary (Chrome 76) and let us know what you think. Developers shouldn't have to worry about making any modifications to their pages to take advantage of it.
 
-Everyone who built their website with regular links gets a free upgrade to their website pushed out to billions of people; the same cannot be said for everyone who tried to replace that functionality with JavaScript.
+Chrome 76 came out four years ago, in 2019.
+Everyone who built their website with regular links got a significant, free performance upgrade to their website pushed out to billions of people;
+the same cannot be said for everyone who tried to replace that functionality with JavaScript.
 
 ## What's even the point of htmx then? Does htmx suck?
 
@@ -122,25 +136,36 @@ htmx is incredible and the beginning of a complete sea-change in how we build fo
 In my opinion, you should be using htmx to enable changes on the page that either:
 
 1. Users would not expect to see on a refresh i.e. emphemeral fetches
-2. Represent updated info that *would* be present on a new, full-page load
+2. Updates info that *would* be present on a new, full-page load
 
-For example: if your page shows a current sports score, you might use htmx to update it live.
-A full-page reload would obviously show the current score, but you don't need to be reloading the whole page for each update.
+For example: if your page shows a baseball score, you might use htmx to update it live.
+A full-page reload would obviously show the current score, but you don't need to be reloading the whole page for each pitch;
+use htmx to update the count and the scoreboard.
 
 You also currently need htmx (or an equivalent library) to enable support for PUT and DELETE on forms, which is among the [htmx-inspired features](https://alexanderpetros.com/triptych) that Carson and I are [working on getting into HTML proper](https://alexanderpetros.com/triptych/form-http-methods).
 
-## Why does this exist then, if you think it's so bad?
+<aside>
+One of the reason I am familiar with the limitations of the History API is because the Triptych polyfill <a href="https://github.com/alexpetros/triptych?tab=readme-ov-file#limitations">has them too</a>.
+</aside>
+
+## Why does it exist then, if you think it's so bad?
 
 htmx was created during a period in which it seemed like SPAs were the inevitable future of web development.
 To compete in that environment, it had to demonstrate that it could replicate what most people considered to be the killer feature of SPAs: not repainting the whole page.
 I believe, in 2024, that [this creates a worse experience for both users and developers](@/blog/hard-page-load/index.md).
 
-Now that htmx has proven itself in the mindshare ecosystem, and people are more sick of SPAs, I think the time has come to make the harder, but ultimately more impactful case: HTML and HTTP have the features required to build the vast, vast majority of website functionality, and they're easier to use than the scripting alternatives.
-Doing so requires dropping the suger high of `hx-boost` and saying "here's how to use a cache header."
+Now that htmx has proven itself in the mindshare ecosystem, and people are more sick of SPAs, I think the time has come to make the harder, but ultimately more impactful case: HTML and HTTP have the features required to build the vast, vast majority of website functionality; they're easier to use than the scripting alternatives, and they last longer with much less maintenance.
+
+Building good websites requires dropping the sugar high of `hx-boost` and saying "here's how to use a cache header."
 
 ## What is htmx creator Carson's take on this?
 
 Whenever I bring it up, he says: "I like hx-boost."
+
+I think his perspective is that `hx-boost` is too important to the htmx funnel to explicitly disavow.
+I don't know if I event disagree with that, and either way, I would never advocate for it to be removed, because backwards compatibility is more important.
+
+But I'm writing this because people always ask me for help with `hx-boost` problems, and the only way to fully resolve those is to stop using it.
 
 ## Is there ever a time I should use hx-boost?
 
@@ -148,6 +173,6 @@ My friend [Aram](https://aramzs.xyz/) made a website called [Song Obsessed](http
 `hx-boost` is a good fit for this because it allows you to construct your website as a series of URLs; you can just slap `hx-boost` on everything and, with a little tweaking, you can get htmx to leave the music player alone while replacing the rest of the page.
 You still lost the reliability inherent in the hard page load, but you get genuinely novel functionality in exchange, which is a good trade.
 
-Until HTML has an API for you to keep content like persistent this across page navigations, `hx-boost` is a decent way to get that done.
+Until HTML has an API for you to keep content like persistent across page navigations, `hx-boost` is a decent way to get that done.
 But there is a better-than-decent chance that you came to htmx not to replicate MySpace, but to accomplish something much simpler (simplicity is, after all, [a core virtue](https://grugbrain.dev/) widely espoused by the htmx community).
 To that end, `hx-boost` should be a understood as a finnicky tool, only to be broken out in very specific circumstances.
