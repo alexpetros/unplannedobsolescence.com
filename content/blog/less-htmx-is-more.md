@@ -35,7 +35,7 @@ Let's say you're making a website that shows today's baseball games, and you wan
 Here's how I would approach that.
 
 The website's home page should have all the currently-playing games on it, showing the live score for each one.
-Each of those live scoreboards uses htmx to poll the server at regular intervals for updates.
+Each of those live scoreboards uses htmx to [poll the server](https://htmx.org/attributes/hx-trigger/#polling) at regular intervals for updates.
 Clicking on the scoreboard title (which is a regular `<a>` link) takes you to that game's page, at its own URL.
 The game page has not just the score, but the pitch count, the game's full box score, and so on;
 these update with htmx as well.
