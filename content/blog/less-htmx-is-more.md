@@ -1,57 +1,57 @@
 +++
-title = "htmx Compliments the Browser"
+title = "Less htmx is More"
 description = "How to build great websites with htmx by learning a couple browser features alongside it."
 date = 2024-10-02
 
-[extra]
-hidden = true
 +++
 
-Hello!
+It's been two years since I wrote my first production webservice with [htmx](https://htmx.org).
+Two years is not a very long time, but early indicators suggest that the software projects I've written with htmx are a much better experience for users, and orders of magnitude easier to maintain, than the software projects they replaced.
+They are likely to remain useful for longer than anything else I've ever written (so far).
+Pretty good!
 
-You're probably here for one of two reasons:
+Like any new tool, especially a tool that got popular [as quickly as htmx](https://risingstars.js.org/2023/en#section-framework), there are differing schools of thought on how best to use it.
+My approach—which I believe necessary to achieve the results described above—requires you to internalize something that htmx certainly hints at, but doesn't enforce: use plain HTML *wherever possible*.
 
-* You're new to [htmx](https://htmx.org/) and struggling with how to structure your website to make it feel responsive
-* You asked for help fixing a problem with the [`hx-boost`](https://htmx.org/attributes/hx-boost/) attribute
+Once you get the hang of it, htmx starts pushing you in this direction anyway, and you start reaching for htmx less and less.
+It requires a mindset shift though, especially if you're not accustomed to [building page behavior with HTML features](@/blog/behavior-belongs-in-html.md).
 
-I believe that htmx is beginning of a sea-change in how we build for the web.
-But, like any new (or new to some people) approach, there are still some gaps in how we teach it to beginners, which can create the two stumbling blocks above.
 
-## How should we teach it beginners?
+## How should we use htmx?
 
-In my opinion, most websites should be using htmx for page updates that:
+In my opinion, most websites should be using htmx for:
 
-1. Users would not expect to see on a refresh i.e. emphemeral fetches
-2. Add info that *would* be present on a new, full-page load
+1. Updates that users would not expect to see on a refresh (emphemeral content)
+2. Updates that would *also* be present on a new, full-page load
 
-Everything else should use regular links and regular forms that do standard, full-page navigations.
+Everything else should use [regular links](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) and [regular forms](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) that do standard, full-page navigations.
 
 <aside>
-You also currently need htmx (or an equivalent library) to enable support for PUT and DELETE on forms.
+You also currently need htmx (or an equivalent library) to enable support for PUT and DELETE on regular forms.
 More in that in the <a href="#notes">notes section.</a>
-<!-- But, in most cases, you should have the server respond with an `HX-Redirect` header so that, instead of doing a partial page replacement, the browser does a full-page navigation. -->
 </aside>
 
 Let's say you're making a website that shows today's baseball games, and you want it to update the stats live.
-Each game should live at its own URL, clicking that URL should load the full page with the current count, scoreboard, and stats.
-You can then use htmx to update the pitch count, the scoreboard, and the stats each time something happens.
-Your website's home page might have all the currently-playing games on it, with just the number of runs scored in each game; those can update with htmx too.
-Clicking on the game should navigates to that game's page, and loads the more detailed view.
+Here's how I would approach that.
 
+The website's home page should have all the currently-playing games on it, showing the live score for each one.
+Each of those live scoreboards uses htmx to poll the server at regular intervals for updates.
+Clicking on the scoreboard title (which is a regular `<a>` link) takes you to that game's page, at its own URL.
+The game page has not just the score, but the pitch count, the game's full box score, and so on;
+these update with htmx as well.
+
+The idea here is that the website still has a sound URL structure, which is managed by the core browser functionality, while interactivity is carefully layered on top, with targeted updates.
+Exactly what merits a targeted update versus a new page depends on what you're building, but you should have a mental model that distinguishes between them in some capacity.
+
+<aside>
+Some might say that this is the difference between a <a href="https://htmx.org/essays/is-htmx-another-javascript-framework/">library and a framework</a>.
+</aside>
+
+Unfortunately, a lot of the beginner guides suggest that you can get started easily by "upgrading" all your links with `hx-boost`.
+I disagree with this.
 While htmx is amazing for targeted page updates, I highly discourage using it to take over *all* page navigation.
-Instead, use it to add interactivity to a multi-page application that is already well-structured with URLs.
-Exactly what merits a targeted update versus a link to a new page depends on what you're building, but you should have a mental model that distinguishes between them in some capacity.
 
-<!-- which is among the [htmx-inspired features](https://alexanderpetros.com/triptych) that Carson and I are [working on getting into HTML proper](https://alexanderpetros.com/triptych/form-http-methods). -->
-
-Unfortunately, a lot of the beginner guides suggest that you can get started easily by "upgrading" your links with `hx-boost`.
-I think this is a bad idea.
-
-<!-- <aside> -->
-<!-- One of the reason I am familiar with the limitations of the History API is because the Triptych polyfill <a href="https://github.com/alexpetros/triptych?tab=readme-ov-file#limitations">has them too</a>. -->
-<!-- </aside> -->
-
-## What exactly is hx-boost?
+## What is hx-boost?
 
 [`hx-boost`](https://htmx.org/attributes/hx-boost/) is a feature of the converts a "regular" link into a "boosted" link:
 
@@ -85,19 +85,24 @@ This is a very good thing.
 It means that every additional script you include on the page has a standardized way to keep track of what's happening.
 If you replace this process with an ad-hoc, scripting-based navigation, you remove access to that common language for every other library on your page, and you also initiate a long-lived JavaScript environment that is likely to eventually enter a bad state of some kind.
 
+This problem is inherent to SPAs, and it can only be resolved by not writing SPAs.
+So don't use the attribute that turns your htmx site into an SPA.
+
 ## What should I do instead?
 
 Use [regular links](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a). `hx-boost` promises to enhance the experience of a regular link; skip the middleman and just use them.
 
+[Regular links are a better user experience and developer experience](@/blog/hard-page-load/index.md), full stop.
+
 ## What about the benefits of hx-boost?
 
-The first time you use `hx-boost`, it feels magical to have the page update "seamlessly" like that, but you can achieve all the same benefits, without the headaches, using the browser features.
+The first time you use `hx-boost`, it feels magical to have the page update "seamlessly" like that, but you can achieve all the same benefits, without the headaches, using browser features.
 
 ### Send cache headers to re-use CSS and JS across page loads
 
 Basically all static file servers support [ETags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag).
 When the server sends the browser a file, it can also send a unique string that identifies *that version* of the file.
-The next time you try to load that file (after, for instance, navigating to a new page that uses the same CSS or JS), the browser asks your server, "is it still this one?", and sends that ETag string.
+The next time you try to load that file (after, for instance, navigating to a new page that uses the same CSS), the browser asks your server, "is it still this one?", and sends that ETag string.
 If the file hasn't changed, the server just responds with a [304 Not Modified](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/304) header and the browser users its cached version.
 
 In most cases, this is process adds essentially nothing to your load times.
@@ -127,7 +132,7 @@ content-type: application/javascript; charset=UTF-8
 ```
 
 That says: "download htmx 1.9.3 from my server exactly once, and then never ask me for it again for *a full calendar year*."
-From that point on, for one year, every time that browser loads webpage at that domain that includes htmx 1.9.3, the browser won't even ask the server for it, it'll just use the saved version.
+From that point on, for one year, every time that browser loads a page at the same domain that includes htmx 1.9.3, the browser won't even ask the server for it, it'll just use the saved version.
 If I want to upgrade everyone to a new version, I just change the version number in the URL:
 
 ```html
@@ -138,7 +143,7 @@ If I want to upgrade everyone to a new version, I just change the version number
 <script src="/htmx-1.9.4.js"></script>
 ```
 
-Then all my users' browses will consider it a new file and ask for the server for it again.
+The next time each of my users loads that page, their browsers will see that the page requires a new file it doesn't have, and ask for the server for it again.
 
 If I don't even want to include a version number—maybe for a file like `stylesheet.css`—I can use a URL query.
 
@@ -177,55 +182,41 @@ Page history, loading bars, the back button, the cancel button, the URL bar, etc
 
 htmx was created during a period in which it seemed like SPAs were the inevitable future of web development.
 To compete in that environment, it had to demonstrate that it could replicate what most people considered to be the killer feature of SPAs: not repainting the whole page.
-I believe, in 2024, that [this creates a worse experience for both users and developers](@/blog/hard-page-load/index.md).
+If this was ever necessary—I'm skeptical—it's sure not necessary anymore.
 
 Now that htmx has proven itself in the mindshare ecosystem, and developers are starting to trust multi-page websites again, I think the time has come to make the harder, but ultimately more impactful case: HTML and HTTP have the features required to build the vast, vast majority of website functionality; they're easier to use than the scripting alternatives, and they last longer with much less maintenance.
 
 <aside>
 Users always trusted multi-page websites, by the way.
-We're just now starting to listen again.
+We're just now starting to listen to them again.
 </aside>
 
 Building good websites requires dropping the sugar high of `hx-boost` and saying "here's how to use a cache header."
 
-## What is htmx creator Carson's take on this?
-
-Whenever I bring it up, he says: "I like hx-boost."
-
-I think Carson's perspective is that `hx-boost` is too important to the htmx funnel to explicitly disavow.
-Curious beginners slap `hx-boost` onto their links and see an instant "smoothness" upgrade.
-I don't know if I even disagree with that—it certainly is an easy way to get started, and maybe that's more important.
-In any case, I would never advocate for it to be removed, because backwards compatibility is more important.
-
-
-For what it's worth, my opposition to hx-boost stems from my own experience as a beginner.
-hx-boost broke the back button in a way I didn't understand, and removing it fixed my problem.
-This was my a-ha moment about "hard" links, and multi-page architectures in general: the ephemeral scripting environment reduces the surface area for complexity.
-
-But I'm writing this because people frequently ask for help with `hx-boost` problems, and they deserve a fully-realized explanation for why I feel that the only way to properly resolve those problems is to stop using it.
-
-## Is there ever a time I should use hx-boost?
+## Is there ever a time I should use htmx to make an SPA?
 
 My friend [Aram](https://aramzs.xyz/) made a website called [Song Obsessed](https://songobsessed.com) that has a persistent music player which holds its state even as you navigate around the site.
 `hx-boost` is a good fit for this because it allows you to construct your website as a series of URLs; you can just slap `hx-boost` on everything and, with a little tweaking, you can get htmx to leave the music player alone while replacing the rest of the page.
 You still lost the reliability inherent in the hard page load, but you get genuinely novel functionality in exchange, which is a good trade in this case.
-Until HTML has an API for you to keep content like persistent across page navigations, `hx-boost` is a decent way to get that done.
+Until HTML has an API to keep live content persistent across page navigations, some SPA functionality is required to make that happen.
 
-This demonstrates the core problem with `hx-boost`: it's actually an <em>advanced</em> tool masquerading as a simple one.
+SPAs are an <em>advanced</em> tool that the industry deceptively marketed as a simple one.
 Aram is a highly experienced web developer who's using `hx-boost` to push the boundaries of what's possible with page navigations;
-for most people, who just want to add a little interactivity to their webpage, all `hx-boost` does is degrade the page's performance.
+Most people, who just want to add a little interactivity to their webpage, should [stick with the simplest tool available](https://grugbrain.dev/#grug-on-complexity): a [regular link](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a).
 
-`hx-boost` should be a understood as a finnicky tool, only to be broken out in very specific circumstances, if you know what you're doing.
-For most pages, [stick with simple](https://grugbrain.dev/#grug-on-complexity): a [regular link](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a).
+
+*Thanks to Carson Gross his for feedback on a draft of this article.*
 
 # Notes
 
-* htmx community member Delaney Gillilan has his own hypermedia framework called [datastar](https://data-star.dev/) which uses server-side events to drive page updates.
-Each event from the server is processed by datastar and merged into the page in the appropriate place.
-It's good to take on the complexity of DOM morphing if you're working on the kinds of real-time applications that Delaney does (I saw an amazing 3D graphics demo from him at UtahJS);
-it's not a thing we should be burdening beginners and more traditional hypertext documents with.
-
-* Both [datastar](https://data-star.dev/essays/another_dependency#fn:1) and [turbo](https://dev.37signals.com/a-happier-happy-path-in-turbo-with-morphing/) (from 37signals) use Carson's [idiomorph](https://github.com/bigskysoftware/idiomorph) algorithm to merge updates into the page, but Carson ended up rejecting idiomorph as the default merging algorithm for htmx, because it was too complicated!
+* [Triptych](https://alexanderpetros.com/triptych/)—the HTML proposals that Carson and I are working on—would render htmx obsolete for the type of website I describe here.
+More advanced htmx features, like the ones used to great effect by [David Guillot and Contexte](https://david.guillot.me/en/posts/tech/following-up-mother-of-all-htmx-demos/), will still require htmx for the foreseeable future.
+* To add PUT (and DELETE) support to "regular" forms with htmx, add [`hx-put`](https://htmx.org/attributes/hx-put/) to the form, and then have the server respond with status code 200 and an [`HX-Redirect`](https://htmx.org/headers/hx-redirect/) header;
+instead of doing partial page replacement, htmx will tell the browser to do a full-page navigation.
+This mimics the POST-Redirect-GET pattern, but uses a header instead of a 303 response.
+* Ideally, htmx would be able to intercept a normal 303 response and use the `location` header, instead of a custom header, but because of limitations in the fetch API (`manual` redirects [hide all the headers](https://developer.mozilla.org/en-US/docs/Web/API/RequestInit#redirect)), it can't.
+I don't totally understand what security purpose this servers, to be honest, but it's a bit of a shame, because it means that [you can't make a proper polyfill](https://github.com/alexpetros/triptych?tab=readme-ov-file#limitations) for PUT and DELETE forms.
+* Both [turbo](https://dev.37signals.com/a-happier-happy-path-in-turbo-with-morphing/) and [datastar](https://data-star.dev/essays/another_dependency#fn:1) use Carson's [idiomorph](https://github.com/bigskysoftware/idiomorph) algorithm to merge updates into the page, but Carson ended up rejecting idiomorph as the default merging algorithm for htmx, because it was too complicated—even though he's the one who created it in the first place!
 The default [htmx swap strategy](https://htmx.org/attributes/hx-swap/) is to just wipe away what's inside the `innerHTML` and replace it with the response—not unlike how the default page navigation is to wipe away the environment and give you a fresh one.
-Simple, but effective.
+Simple; effective.
 
