@@ -83,7 +83,8 @@ In practice, this is virtually impossible to get right, and is so annoying to im
 The core problem is that with normal page navigation, each link you click resets the JavaScript environment and triggers a full set of page [lifecycle events](https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event).
 This is a very good thing.
 It means that every additional script you include on the page has a standardized way to keep track of what's happening.
-If you replace this process with an ad-hoc, scripting-based navigation, you remove access to that common language for every other library on your page, and you also initiate a long-lived JavaScript environment that is likely to eventually enter a bad state of some kind.
+If you replace this process with an ad-hoc, scripting-based navigation, you remove access to that common language for every other library on your page.
+You also initiate a long-lived JavaScript environment that is likely to eventually enter a bad state of some kind.
 
 This problem is inherent to SPAs, and it can only be resolved by not writing SPAs.
 So don't use the attribute that turns your htmx site into an SPA.
@@ -109,7 +110,7 @@ In most cases, this is process adds essentially nothing to your load times.
 The browser has to talk to the server anyway to get whatever info is on the next page, and it's [re-using the same TCP connection](https://www.rfc-editor.org/rfc/rfc2616#section-8.1) to do so.
 The GET -> 304 back-and-forth is a handful of extra bytes on an already-open socket.
 
-But if you don't want the browser to even *ask*, you can do that do by setting a single cache header.
+But if you don't want the browser to even *ask*, you can do that do by setting a [cache control header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control#response_directives).
 
 Here's how I load htmx in all the websites where I use it.
 We'll use version 1.9.3 as an example.
