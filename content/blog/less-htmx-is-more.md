@@ -53,7 +53,7 @@ While htmx is amazing for targeted page updates, I highly discourage using it to
 
 ## What is hx-boost?
 
-[`hx-boost`](https://htmx.org/attributes/hx-boost/) is a feature of the converts a "regular" link into a "boosted" link:
+[`hx-boost`](https://htmx.org/attributes/hx-boost/) is an attribute that converts a "regular" link into a "boosted" link:
 
 ```html
 <!-- normal link -->
