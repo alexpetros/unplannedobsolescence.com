@@ -44,7 +44,7 @@ The idea here is that the website still has a sound URL structure, which is mana
 Exactly what merits a targeted update versus a new page depends on what you're building, but you should have a mental model that distinguishes between them in some capacity.
 
 <aside>
-Some might say that this is the difference between a <a href="https://htmx.org/essays/is-htmx-another-javascript-framework/">library and a framework</a>.
+Using htmx to enable specific, isolated functionality, rather than letting it drive the overall experience, is arguably <a href="https://htmx.org/essays/is-htmx-another-javascript-framework/">using it like a library, instead of a framework</a>.
 </aside>
 
 Unfortunately, a lot of the beginner guides suggest that you can get started easily by "upgrading" all your links with `hx-boost`.
@@ -206,7 +206,7 @@ Aram is a highly experienced web developer who's using `hx-boost` to push the bo
 Most people, who just want to add a little interactivity to their webpage, should [stick with the simplest tool available](https://grugbrain.dev/#grug-on-complexity): a [regular link](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a).
 
 
-*Thanks to Carson Gross his for feedback on a draft of this article.*
+*Thanks to Carson Gross his for feedback on a draft of this article. Comments available on [lobste.rs](https://lobste.rs/s/1uv7e4/less_htmx_is_more)*
 
 # Notes
 
