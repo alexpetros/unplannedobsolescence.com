@@ -176,8 +176,7 @@ Here I'm going to be annoying and note that the Nike website is kinda slow.
 Meanwhile, the browser marches on, improving the UX of every website that uses basic HTML semantics.
 For instance: browsers often *don't* repaint full pages anymore. Try browsing
 [Wikipedia](https://en.wikipedia.org/wiki/Web_browser) (or [my blog](/)) on a decent internet
-connection and notice how rarely the common elements flash (I can't find *any* documentation for
-this feature, but it definitely exists). And, if the connection isn't fast, then the browser shows
+connection and notice how rarely the common elements flash (this feature is called ["paint holding"](https://developer.chrome.com/blog/paint-holding)). And, if the connection isn't fast, then the browser shows
 a loading bar! It's a win for users, and one of the many ways that sticking with the web primitives
 rewards developers over time.
 
@@ -224,7 +223,7 @@ I had so much fun learning Svelte for this that I used to as the basis for
 htmx.
 
 *Thanks to [Mani Sundararajan](https://www.itsrainingmani.dev/) for his feedback on a draft of this
-post.*
+post; thanks to [Deniz Akşimşek](https://denizaksimsek.com/en/) for digging up the paint holding blog.*
 
 # Notes
 - When *is* a good time to do partial page replacements? Either a) to add new information that would
