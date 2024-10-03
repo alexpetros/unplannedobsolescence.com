@@ -44,7 +44,7 @@ The idea here is that the website still has a sound URL structure, which is mana
 Exactly what merits a targeted update versus a new page depends on what you're building, but you should have a mental model that distinguishes between them in some capacity.
 
 <aside>
-Using htmx to enable specific, isolated functionality, rather than letting it drive the overall experience, is arguably <a href="https://htmx.org/essays/is-htmx-another-javascript-framework/">using it like a library, instead of a framework</a>.
+Using htmx to enable specific, isolated functionality—rather than letting it drive the overall experience—is arguably <a href="https://htmx.org/essays/is-htmx-another-javascript-framework/">using it like a library, instead of a framework</a>.
 </aside>
 
 Unfortunately, a lot of the beginner guides suggest that you can get started easily by "upgrading" all your links with `hx-boost`.
