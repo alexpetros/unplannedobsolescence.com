@@ -19,10 +19,10 @@ It requires a mindset shift though, especially if you're not accustomed to [buil
 
 ## How should we use htmx?
 
-In my opinion, most websites should be using htmx for:
+In my opinion, most websites should be using htmx for either:
 
-1. Updates that users would not expect to see on a refresh (emphemeral content)
-2. Updates that would *also* be present on a new, full-page load
+1. Updates that users would not expect to see on a refresh (or a new page load)
+2. Updates that would *also* be present on a refresh (or a new page load)
 
 Everything else should use [regular links](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) and [regular forms](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) that do standard, full-page navigations.
 
