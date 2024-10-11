@@ -1,5 +1,5 @@
 +++
-title = "Talk: \"The Life & Death of htmx\""
+title = "The Life & Death of htmx"
 description = "Three small proposals to enhance the expressive power of HTML"
 date = 2024-06-13
 +++
