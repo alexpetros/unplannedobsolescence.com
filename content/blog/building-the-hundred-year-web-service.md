@@ -1,6 +1,6 @@
 +++
-title = "Talk: \"Building the Hundred-Year Web Service\""
-description = ""
+title = "Building the Hundred-Year Web Service"
+description = "How to build software infrastucture that lasts a very long time"
 date = 2024-10-11
 +++
 
