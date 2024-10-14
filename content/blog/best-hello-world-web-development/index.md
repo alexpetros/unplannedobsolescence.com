@@ -57,7 +57,7 @@ The thing that first got me interested in PHP in the first place is a comment th
 
 > \[...] the other inspiration, which was from PHP, where you literally could do a one line thing that said, “Print hello world,” and it would show a web page. It would show Hello World on a web page. You just drop that file into the correct folder, and you were on the web \[...] I think to this day still unsurpassed ease of Hello World.
 
-He's right—this is an unsurpassed ease of Hello World. It is certainly not surpassed by Ruby on Rails, the ["Getting Started" guide](https://guides.rubyonrails.org/getting_started.html) for which not only requires installing ruby, SQLite, and Rails itself, but also has you run an initialization command (`rails new blog`) that creates a [genuinely shocking number of files and directories](view-source:https://guides.rubyonrails.org/getting_started.html#creating-the-blog-application):
+He's right—this is an unsurpassed ease of Hello World. It is certainly not surpassed by Ruby on Rails, the ["Getting Started" guide](https://guides.rubyonrails.org/getting_started.html) for which not only requires installing ruby, SQLite, and Rails itself, but also has you run an initialization command (`rails new blog`) that creates a [genuinely shocking number of files and directories](https://guides.rubyonrails.org/getting_started.html#creating-the-blog-application):
 
 ```
 $ rails new blog 2>&1 >/dev/null
