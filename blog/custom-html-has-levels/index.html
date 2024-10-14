@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.png">
+<link rel="shortcut icon" href="/favicon-128.png">
+
+<meta property="og:site_name" content="Unplanned Obsolescence">
+<meta name="og:title" content="Custom HTML Has Levels To It">
+<meta name="description" content="Why custom attributes are the simplest way to layer functionality on top of HTML.">
+<meta name="og:description" content="Why custom attributes are the simplest way to layer functionality on top of HTML.">
+
+
+<title>
+Custom HTML Has Levels To It
+</title>
+
+<style></style>
+<link rel="stylesheet" href="/common.css?id=1">
+
+<header>
+  <h1><a class=title href="/">Unplanned Obsolescence</a></h1>
+  <nav>
+  <ul>
+    <li><a href=/blog>Blog</a>
+    <li><a href=/about>About</a>
+    <li><a href=/atom.xml>RSS</a>
+  </ul>
+  </nav>
+</header>
+
+<hr>
+
+
+
+<h1>Custom HTML Has Levels To It</h1>
+<p class="subtitle"><strong>December 31, 2023</strong></p>
+
+<p>The comment I received most frequently on &quot;<a href="https://unplannedobsolescence.com/blog/behavior-belongs-in-html/">Behavior Belongs in the HTML</a>&quot; was: &quot;don't Web Components solve this?&quot;</p>
+<p>Web Components aren't an interface. They are... well, <a href="https://github.com/WICG/webcomponents/blob/1b75f7516e9901c26f1eb639d929aa82402c2fe0/README.md">a lot of things</a>, including: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM">the Shadow DOM</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">HTML templates</a>, and a bunch of JavaScript APIs. But if what you mean is &quot;custom elements,&quot; then the answer is no. If you want to customize the behavior of an element, you shouldn't have to wrap it in a new one.</p>
+<p>To illustrate, I'm going to use the example that Chris Ferdinandi arrives at in &quot;<a href="https://gomakethings.com/html-web-components/">HTML Web Components</a>.&quot; He uses Web Components to make a form that, when it's submitted, replaces the <code>#item-list</code> element with the response body, instead of navigating to a new page:</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">ajax-form </span><span style="color:#d08770;">target</span><span>=&quot;</span><span style="color:#a3be8c;">#item-list</span><span>&quot;&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">form </span><span style="color:#d08770;">method</span><span>=&quot;</span><span style="color:#a3be8c;">post</span><span>&quot; </span><span style="color:#d08770;">action</span><span>=&quot;</span><span style="color:#a3be8c;">/subscribe</span><span>&quot;&gt;
+</span><span>    &lt;</span><span style="color:#bf616a;">input </span><span style="color:#d08770;">type</span><span>=&quot;</span><span style="color:#a3be8c;">email</span><span>&quot; </span><span style="color:#8fa1b3;">id</span><span>=&quot;</span><span style="color:#a3be8c;">email</span><span>&quot; </span><span style="color:#d08770;">name</span><span>=&quot;</span><span style="color:#a3be8c;">email</span><span>&quot;&gt;
+</span><span>    &lt;</span><span style="color:#bf616a;">button</span><span>&gt;Subscribe&lt;/</span><span style="color:#bf616a;">button</span><span>&gt;
+</span><span>  &lt;/</span><span style="color:#bf616a;">form</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">ajax-form</span><span>&gt;
+</span></code></pre>
+<p>This is great! Its declarative interface is easy to understand, and the form will work in the old, standard way if JavaScript is turned off (a concept called &quot;progressive enhancement&quot;). There's just one problem with it: that wrapper element, <code>&lt;ajax-form&gt;</code>, is totally superfluous.</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">form </span><span style="color:#d08770;">method</span><span>=&quot;</span><span style="color:#a3be8c;">post</span><span>&quot; </span><span style="color:#d08770;">action</span><span>=&quot;</span><span style="color:#a3be8c;">/subscribe</span><span>&quot; </span><span style="color:#d08770;">target</span><span>=&quot;</span><span style="color:#a3be8c;">#item-list</span><span>&quot;&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">input </span><span style="color:#d08770;">type</span><span>=&quot;</span><span style="color:#a3be8c;">email</span><span>&quot; </span><span style="color:#8fa1b3;">id</span><span>=&quot;</span><span style="color:#a3be8c;">email</span><span>&quot; </span><span style="color:#d08770;">name</span><span>=&quot;</span><span style="color:#a3be8c;">email</span><span>&quot;&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">button</span><span>&gt;Subscribe&lt;/</span><span style="color:#bf616a;">button</span><span>&gt;
+</span><span>&lt;</span><span style="color:#bf616a;">form</span><span>&gt;
+</span></code></pre>
+<p>In my version, I removed <code>&lt;ajax-form&gt;</code> and put the <code>target</code> attribute on the form itself. It has the same functionality and same fallback capability, but without any nesting (you'd want to use a slightly different name than &quot;target,&quot; but more on that later).</p>
+<!-- (I'm aware that Ferdinandi is demonstrating how to use Web Components using their existing interface; I'm aware that Web Components have useful JavaScript APIs that custom attributes do not; I'm making a point about how HTML should support an easier way to accomplish the same task) -->
+<p>If all you need to do is augment the functionality of a single DOM node, custom attributes are a better interface for it, for a couple reasons:</p>
+<ol>
+<li><strong>A flatter document is easier to read</strong> - I'm not saying you have to write all your HTML <a href="http://lofi.limo/blog/write-html-right">like this guy</a>, but to the extent that you can flatten your document without loss of structure, you should.</li>
+<li><strong>Surrounding with tags is a hassle</strong> - Yes, even with a good text editor, adding, editing and removing surrounding tags is annoying, compared to editing an attribute.</li>
+<li><strong>It's closer to the default semantics</strong> - The markup (and DOM tree!) reflects that I'm slightly changing how the form works, not nesting the form inside a different form.</li>
+</ol>
+<p>Attributes are a demonstrably superior interface for customizing HTML elements—which is why when WHATWG adds behavior to existing elements, it does so by adding new attributes, not new tags to wrap them with. Using tag wrappers to alter the behavior of existing elements is a kludge, required only because HTML doesn't properly support custom attributes. As Ferdinandi himself says: &quot;what I love about Web Components is that you can easily customize behavior with custom attributes.&quot; You shouldn't need Web Components for that.</p>
+<p>Incidentally, <code>target</code> in the above example is identical to <a href="https://htmx.org/attributes/hx-target/">htmx's <code>hx-target</code></a> attribute, which also goes directly on the form.</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">form </span><span style="color:#d08770;">hx-post</span><span>=&quot;</span><span style="color:#a3be8c;">/subscribe</span><span>&quot; </span><span style="color:#d08770;">hx-target</span><span>=&quot;</span><span style="color:#a3be8c;">#item-list</span><span>&quot;&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">input </span><span style="color:#d08770;">type</span><span>=&quot;</span><span style="color:#a3be8c;">email</span><span>&quot; </span><span style="color:#8fa1b3;">id</span><span>=&quot;</span><span style="color:#a3be8c;">email</span><span>&quot; </span><span style="color:#d08770;">name</span><span>=&quot;</span><span style="color:#a3be8c;">email</span><span>&quot;&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">button</span><span>&gt;Subscribe&lt;/</span><span style="color:#bf616a;">button</span><span>&gt;
+</span><span>&lt;</span><span style="color:#bf616a;">form</span><span>&gt;
+</span></code></pre>
+<p>In my time as an htmx maintainer, no one has ever asked &quot;why can't I wrap the form with a new element instead?&quot;</p>
+<h2 id="custom-attributes-fill-the-semantic-deviation-gap"><a class="zola-anchor" href="#custom-attributes-fill-the-semantic-deviation-gap" aria-label="Anchor link for: custom-attributes-fill-the-semantic-deviation-gap">Custom attributes fill the semantic deviation gap</a></h2>
+<p>My theory of custom attributes is that they are missing link between standard HTML and custom (web) components. They allow library authors to increase the capabilities of HTML, but in exchange for limiting those extensions to existing HTML elements, they get to borrow most of the existing elements' semantic power.</p>
+<p>I think of it in levels, where each number represents a jump in the amount you are deviating from HTML's default semantics:</p>
+<ol start=0>
+<li>Using standard HTML
+<li>Using standard HTML elements with custom behavior
+<li>Using custom HTML elements
+<li>Using elements of some other framework that compiles down to HTML
+</ol>
+<p>Ideally, you want to deviate as little as possible, because each successive level of semantic deviation represents a responsibility that you have inherited from the browser:</p>
+<ol start=0>
+<li>The browser understands everything
+<li>The browser knows what this element is, but not how it works
+<li>The browser knows neither what this element is nor how it works
+<li>All of the above, only now it's the framework's responsibility, not yours
+</ol>
+<p>So when you add a custom attribute to a form to change its behavior, your browser no longer controls that element's functionality, but <em>it still knows that it's a form</em>. That means you get all the built-in browser form features with no additional work, including autocomplete, screen reader functionality, and predictable refresh behavior—much better than if just made your own form-like component.</p>
+<h2 id="these-features-go-to-level-2"><a class="zola-anchor" href="#these-features-go-to-level-2" aria-label="Anchor link for: these-features-go-to-level-2">These features go to Level 2</a></h2>
+<p>Sometimes you really do need to go to Deviation Level 2, and create not just new behavior but a new <em>thing</em>. Here's an example I adapted from Eric Meyer's &quot;<a href="https://meyerweb.com/eric/thoughts/2023/11/01/blinded-by-the-light-dom/">Blinded by the Light DOM</a>,&quot; which I'm embedding directly inside my page because making your own web site is cool and I get to do that:</p>
+<font-slider unit=em target=".preview span">
+  <label for=title-size>Title Font Size</label>
+  <input id=title-size type=range min=0.5 max=4 step=0.1 value=2>
+</font-slider>
+<div class=preview>
+  <span>Unplanned Obsolescence</span>
+</div>
+<p>This is a <code>&lt;font-slider&gt;</code>. It's a custom element that combines a <code>&lt;label&gt;</code> and a <code>&lt;input type=range&gt;</code> to make entirely new thing: a reset-able slider that controls font size. Take a moment to read the HTML interface for it.</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span style="color:#65737e;">&lt;!--
+</span><span style="color:#65737e;">I&#39;m deliberately not including any of the CSS or JS, because this blog
+</span><span style="color:#65737e;">is about HTML interfaces. See the link above or View Source for the rest.
+</span><span style="color:#65737e;">--&gt;
+</span><span>&lt;</span><span style="color:#bf616a;">font-slider </span><span style="color:#d08770;">unit</span><span>=</span><span style="color:#a3be8c;">em </span><span style="color:#d08770;">target</span><span>=&quot;</span><span style="color:#a3be8c;">.preview span</span><span>&quot;&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">label </span><span style="color:#d08770;">for</span><span>=</span><span style="color:#a3be8c;">title-size</span><span>&gt;Title font size&lt;/</span><span style="color:#bf616a;">label</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">input </span><span style="color:#8fa1b3;">id</span><span>=</span><span style="color:#a3be8c;">title-size </span><span style="color:#d08770;">type</span><span>=</span><span style="color:#a3be8c;">range </span><span style="color:#d08770;">min</span><span>=</span><span style="color:#a3be8c;">0.5 </span><span style="color:#d08770;">max</span><span>=</span><span style="color:#a3be8c;">4 </span><span style="color:#d08770;">step</span><span>=</span><span style="color:#a3be8c;">0.1 </span><span style="color:#d08770;">value</span><span>=</span><span style="color:#a3be8c;">2</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">font-slider</span><span>&gt;
+</span><span>
+</span><span>&lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span>=</span><span style="color:#a3be8c;">preview</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">span</span><span>&gt;Unplanned Obsolescence&lt;/</span><span style="color:#bf616a;">span</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
+</span></code></pre>
+<p>In &quot;<a href="http://127.0.0.1:1111/blog/behavior-belongs-in-html/#enhancing-the-semantics">Behavior Belongs in the HTML</a>,&quot; I emphasized how the attribute controls (<code>unit</code>, <code>target</code>, <code>max</code>) are easy to edit even if you don't know how they're implemented. Still true! But this time I want you to think about what the existence of <code>&lt;font-slider&gt;</code> adds to this markup. What new <em>meaning</em> it creates. What the HTML is <em>saying</em> to you.</p>
+<p>It's saying that the label and the input function together as a &quot;font slider&quot;—in which the value of the input will be used for the CSS on the page. That's entirely different from what they mean when they're together inside a <code>&lt;form&gt;</code> tag, where the value of that input will be used as a parameter in a network request.</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span style="color:#65737e;">&lt;!-- This is just a labeled slider; it could control anything --&gt;
+</span><span>&lt;</span><span style="color:#bf616a;">label </span><span style="color:#d08770;">for</span><span>=</span><span style="color:#a3be8c;">random-range</span><span>&gt;Some slider&lt;/</span><span style="color:#bf616a;">label</span><span>&gt;
+</span><span>&lt;</span><span style="color:#bf616a;">input </span><span style="color:#8fa1b3;">id</span><span>=</span><span style="color:#a3be8c;">random-range </span><span style="color:#d08770;">type</span><span>=</span><span style="color:#a3be8c;">range</span><span>&gt;
+</span><span>
+</span><span style="color:#65737e;">&lt;!-- This is a form slider; its value will be submitted to a server --&gt;
+</span><span>&lt;</span><span style="color:#bf616a;">form</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">label </span><span style="color:#d08770;">for</span><span>=</span><span style="color:#a3be8c;">form-range</span><span>&gt;Input value&lt;/</span><span style="color:#bf616a;">label</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">input </span><span style="color:#8fa1b3;">id</span><span>=</span><span style="color:#a3be8c;">form-range </span><span style="color:#d08770;">type</span><span>=</span><span style="color:#a3be8c;">range</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">form</span><span>&gt;
+</span><span>
+</span><span style="color:#65737e;">&lt;!-- This is a font slider; its value sets font sizes on the page --&gt;
+</span><span>&lt;</span><span style="color:#bf616a;">font-slider</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">label </span><span style="color:#d08770;">for</span><span>=</span><span style="color:#a3be8c;">font-range</span><span>&gt;Font size&lt;/</span><span style="color:#bf616a;">label</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">input </span><span style="color:#8fa1b3;">id</span><span>=</span><span style="color:#a3be8c;">font-range </span><span style="color:#d08770;">type</span><span>=</span><span style="color:#a3be8c;">range</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">font-slider</span><span>&gt;
+</span></code></pre>
+<p>The difference between <code>&lt;font-slider&gt;</code> and <code>&lt;ajax-form&gt;</code> is that the former establishes a new meaning for its subtree (this labeled input changes the font) and the latter retains the overall meaning of its subtree (the form still makes an HTTP request and displays the response to the user) while slightly modifying its behavior (this form will will display its response in the current page instead of a new one).</p>
+<p>You can quibble about what degree of modification constitutes &quot;new meaning&quot;—that's language for ya—but what matters is that there real tradeoffs at each deviation level. Library authors who only want to enhance existing elements (whatever that means to them) see this, and—correctly—decide that their library will be easier to use if it is based in custom attributes rather than Web Components.</p>
+<p>Adding a new element is still more difficult than adding a new attribute, but in exchange for the extra syntax, we get increased power that suits the complexity of the task.</p>
+<h2 id="fence-the-cowpaths"><a class="zola-anchor" href="#fence-the-cowpaths" aria-label="Anchor link for: fence-the-cowpaths">Fence the cowpaths</a></h2>
+<p>There are good reasons for using all of these levels, but only Deviation Level 1 lacks the appropriate support in legal HTML (<code>data-</code> attributes are insufficient, for reasons described by <a href="https://unplannedobsolescence.com/blog/behavior-belongs-in-html/#back-to-reality">me here</a> and better <a href="https://github.com/whatwg/html/issues/2271#issuecomment-744188324">Joshua Wise here</a>).</p>
+<p>When you talk about the need for better interfaces, you always get some comment along the lines of &quot;well the thing you're describing isn't really that bad and people can just do it this other way.&quot; That might be true. But if it's worse than the alternative, people will use the alternative.</p>
+<p>A significant chunk of the web development community lives happily at Deviation Level 4; they understand HTML not as an authorship language, but as a compile target, and interact with HTML semantics only insofar as they are relevant for understanding the behavior of React, or Svelte, or LiveView. Staying in framework-land offers real ergonomic benefits for writing HTML-like markup, in addition to the actual reactive functionality that people ostensibly use the frameworks for.</p>
+<!-- (I will leave it to future blogs posts to convince you that there are many cases where writing plain HTML matters ([but here's a hint](https://htmx.org/essays/no-build-step/)). -->
+<p>If you think writing HTML directly should be encouraged (an argument for a future blog post), then it's important that HTML's ergonomics keep up with that of its competitors, where backwards compatibility and good sense permit.</p>
+<p>Fortunately, there's an extremely easy way to do this: <a href="https://github.com/whatwg/html/issues/2271">save kebab-case attributes for custom behavior</a>. This has excellent symmetry with kebab-case <em>elements</em>  already being reserved for users; instantly blesses multiple, significant JS libraries with valid markup; and encourages a field of HTML innovation whose utility is so self-evident that it has managed to develop in spite of official discouragement. As the OP, <a href="https://lea.verou.me/">Lea Verou</a>, wrote in 2017:</p>
+<blockquote>
+<p>The more commonplace invalid HTML becomes, the less authors care about authoring valid HTML. Validation becomes pointless in their eyes if they see tons of perfectly good use cases being invalid.</p>
+</blockquote>
+<p>I won't rehash the debate on that WHATWG issue here, but I want to emphasize one point in particular: making custom kebab-case attributes legal is something that can and should be decided on its own merits, independent of what JavaScript interface you build to interact with it. Verou recently put forward <a href="https://github.com/WICG/webcomponents/issues/1029">a proposal</a> for an <code>Attribute</code> class that makes use of a lot of the same ideas as Web Components. That looks great—and hard. Hard to get right, hard to get consensus on, hard to get Google or Apple to commit to building. Reserving just the names, however, is a much smaller problem space, and can be done without convincing a billion-dollar company that it's worth their time.</p>
+<p>The best time to make <code>ng-*</code>, <code>x-*</code> and <code>hx-*</code> legal HTML was in 2017. <a href="https://github.com/whatwg/html/issues/2271#issuecomment-1863139169">The second best time is now</a>.</p>
+<h1 id="notes"><a class="zola-anchor" href="#notes" aria-label="Anchor link for: notes">Notes</a></h1>
+<p><em>Thanks to <a href="https://unmodernweb.com/">Katrina Scialdone</a> for reading a draft of this blog</em>.</p>
+<ol>
+<li>Copying Eric Meyer's <code>&lt;super-slider&gt;</code> (I changed it to <code>&lt;font-slider&gt;</code> to make the semantic point a little better) was eye-openingly easy. I just dumped the <code>&lt;style&gt;</code> and <code>&lt;script&gt;</code> tags from JS Fiddle he embedded and it worked perfectly. That's the future—we're just working on the interface.</li>
+<li>Web Components aren't an interface—<a href="https://daverupert.com/2023/07/why-not-webcomponents/">not one for users anyway</a>—but if you want to see what a good declarative interface for Web Components might look like, check out Katrina's in-progress <a href="https://github.com/kgscialdone/facet">Facet library</a>.</li>
+<li>Supposedly, Web Components are in use <a href="https://web-highlights.com/blog/are-web-components-dead/">all over the place</a> (probably because they're so reliable to re-use and embed), but &quot;writing custom HTML elements&quot; is what &quot;Web Components&quot; sounds like it should mean, and I expect that's what a lot of people are thinking about when they ask why Web Components haven't taken off.</li>
+<li>At the risk of wading into the weird holy war around htmx... it's ironic that the libraries most committed to hypermedia—in both <a href="https://htmx.org/essays/how-did-rest-come-to-mean-the-opposite-of-rest/">philosophy</a> and <a href="https://htmx.org/essays/a-response-to-rich-harris/">practice</a>—are the only ones writing invalid HTML. And it's completely unnecessary.</li>
+<li>Happy New Year!</li>
+</ol>
+<!--
+Everything after this point is adapted from Eric Meyer's blog post.
+Read it here: https://meyerweb.com/eric/thoughts/2023/11/01/blinded-by-the-light-dom/
+-->
+<style>
+.preview {
+  border: 1px solid;
+  padding: 1em;
+  background: #eee;
+}
+.preview span {
+  font-weight: bold;
+  font-size: 2em;
+  margin: 0;
+}
+font-slider {
+  display: flex;
+  align-items: center;
+  margin-block: 1em;
+}
+font-slider input[type="range"] {
+  margin-inline: 0.25em 1px;
+}
+font-slider .readout {
+  width: 3em;
+  margin-inline: 0.25em;
+  padding-inline: 0.5em;
+  border: 1px solid #0003;
+  background: #EEE;
+  font: 1em monospace;
+  text-align: center;
+}
+
+</style>
+<script>
+class fontSlider extends HTMLElement {
+  connectedCallback() {
+    let targets = document.querySelectorAll(this.getAttribute("target"));
+    let unit = this.getAttribute("unit");
+
+    let slider = this.querySelector('input[type="range"]');
+    for (const targetEl of targets) {
+      slider.addEventListener("input", (e) => {
+        targetEl.style.setProperty("font-size", slider.value + unit);
+        readout.textContent = slider.value + unit;
+      });
+    }
+
+    let reset = slider.getAttribute("value");
+    let resetter = document.createElement("button");
+    resetter.textContent = "↺";
+    resetter.setAttribute("title", reset + unit);
+    resetter.addEventListener("click", (e) => {
+      slider.value = reset;
+      slider.dispatchEvent(
+        new MouseEvent("input", { view: window, bubbles: false })
+      );
+    });
+    slider.after(resetter);
+
+    let label = this.querySelector("label");
+    let readout = document.createElement("span");
+    readout.classList.add("readout");
+    readout.textContent = slider.value + unit;
+    label.after(readout);
+
+    if (!label.getAttribute("for") && slider.getAttribute("id")) {
+      label.setAttribute("for", slider.getAttribute("id"));
+    }
+    if (label.getAttribute("for") && !slider.getAttribute("id")) {
+      slider.setAttribute("id", label.getAttribute("for"));
+    }
+    if (!label.getAttribute("for") && !slider.getAttribute("id")) {
+      let connector = label.textContent.replace(" ", "_");
+      label.setAttribute("for", connector);
+      slider.setAttribute("id", connector);
+    }
+  }
+}
+
+customElements.define("font-slider", fontSlider);
+</script>
+
+
+

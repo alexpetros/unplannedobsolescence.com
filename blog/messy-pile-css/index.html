@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.png">
+<link rel="shortcut icon" href="/favicon-128.png">
+
+<meta property="og:site_name" content="Unplanned Obsolescence">
+<meta name="og:title" content="The Messy Pile">
+<meta name="description" content="Better CSS leads to better HTML">
+<meta name="og:description" content="Better CSS leads to better HTML">
+
+
+<title>
+The Messy Pile
+</title>
+
+<style></style>
+<link rel="stylesheet" href="/common.css?id=1">
+
+<header>
+  <h1><a class=title href="/">Unplanned Obsolescence</a></h1>
+  <nav>
+  <ul>
+    <li><a href=/blog>Blog</a>
+    <li><a href=/about>About</a>
+    <li><a href=/atom.xml>RSS</a>
+  </ul>
+  </nav>
+</header>
+
+<hr>
+
+
+
+<h1>The Messy Pile</h1>
+<p class="subtitle"><strong>August 01, 2024</strong></p>
+
+<p>A couple months ago I was sitting next to <a href="https://ivywong.dev">Ivy Wong</a> and I saw them working on
+a dropdown menu so cute that I immediately asked how they did it.</p>
+<p>It looked something like this:</p>
+<style>
+ul.base {
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+  width: fit-content;
+}
+
+.base li {
+  background-color: bisque;
+  border: 2px black solid;
+  margin: 5px 0;
+  text-align: center;
+  width: 200px;
+}
+
+.messy-pile li:nth-child(odd) {
+  transform: rotate(1deg);
+}
+
+.messy-pile li:nth-child(even) {
+  transform: rotate(-1deg);
+}
+</style>
+<ul class="base messy-pile">
+  <li>Home
+  <li>New
+  <li>Pages
+  <li>Logout
+</ul>
+<p>I call this the Messy Pile, and I think it's brilliant. It has lots of personality without breaking
+the basic utility and structure of a menu list.
+Internally, it feels haphazard; externally, it takes up a very normal box shape on the page, which
+easily fits in both desktop and mobile views.</p>
+<ul class="base messy-pile" style="border: 2px solid red;">
+  <li>Home
+  <li>New
+  <li>Pages
+  <li>Logout
+</ul>
+<p>Let's make it together. We'll start with just a regular list of items:</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">ul </span><span style="color:#d08770;">class</span><span>=</span><span style="color:#a3be8c;">messy-pile</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">li</span><span>&gt;Home
+</span><span>  &lt;</span><span style="color:#bf616a;">li</span><span>&gt;New
+</span><span>  &lt;</span><span style="color:#bf616a;">li</span><span>&gt;Pages
+</span><span>  &lt;</span><span style="color:#bf616a;">li</span><span>&gt;Logout
+</span><span>&lt;/</span><span style="color:#bf616a;">ul</span><span>&gt;
+</span></code></pre>
+<ul>
+  <li>Home
+  <li>New
+  <li>Pages
+  <li>Logout
+</ul>
+<p>And then add some CSS to make them orderly boxes:</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">style</span><span>&gt;
+</span><span style="color:#8fa1b3;">.</span><span style="color:#d08770;">messy-pile </span><span>{
+</span><span>  list-style-type: none;
+</span><span>  margin: </span><span style="color:#d08770;">0 </span><span>auto;
+</span><span>  padding: </span><span style="color:#d08770;">0</span><span>;
+</span><span>  width: fit-content;
+</span><span>}
+</span><span>
+</span><span style="color:#8fa1b3;">.</span><span style="color:#d08770;">messy-pile </span><span style="color:#bf616a;">li </span><span>{
+</span><span>  background-color: bisque;
+</span><span>  border: </span><span style="color:#d08770;">2px </span><span>black solid;
+</span><span>  margin: </span><span style="color:#d08770;">5px 0</span><span>;
+</span><span>  text-align: center;
+</span><span>  width: </span><span style="color:#d08770;">200px</span><span>;
+</span><span>}
+</span><span>&lt;/</span><span style="color:#bf616a;">style</span><span>&gt;
+</span></code></pre>
+<ul class="base">
+  <li>Home
+  <li>New
+  <li>Pages
+  <li>Logout
+</ul>
+<p>And finally, we rotate the boxes, one degree clockwise for the odd-numbered items, and counterclockwise for the even-numbered ones:</p>
+<pre data-lang="css" style="background-color:#2b303b;color:#c0c5ce;" class="language-css "><code class="language-css" data-lang="css"><span style="color:#8fa1b3;">.</span><span style="color:#d08770;">messy-pile </span><span style="color:#bf616a;">li</span><span style="color:#8fa1b3;">:</span><span style="color:#b48ead;">nth-child(odd) </span><span>{
+</span><span>  transform: </span><span style="color:#96b5b4;">rotate</span><span>(</span><span style="color:#d08770;">1deg</span><span>);
+</span><span>}
+</span><span>
+</span><span style="color:#8fa1b3;">.</span><span style="color:#d08770;">messy-pile </span><span style="color:#bf616a;">li</span><span style="color:#8fa1b3;">:</span><span style="color:#b48ead;">nth-child(even) </span><span>{
+</span><span>  transform: </span><span style="color:#96b5b4;">rotate</span><span>(</span><span style="color:#d08770;">-1deg</span><span>);
+</span><span>}
+</span></code></pre>
+<p>And you get these cute tilted boxes!</p>
+<ul class="base messy-pile">
+  <li>Home
+  <li>New
+  <li>Pages
+  <li>Logout
+</ul>
+<h2 id="better-css-leads-to-better-html"><a class="zola-anchor" href="#better-css-leads-to-better-html" aria-label="Anchor link for: better-css-leads-to-better-html">Better CSS Leads to Better HTML</a></h2>
+<p>Ivy's dense yet simple implementation of this pattern highlights something that took me a long time to learn: it's only possible to write good HTML if you write good CSS.</p>
+<p>If you showed someone this design and asked them to implement it, it's easy to imagine an implementation that looks like this:</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span>=</span><span style="color:#a3be8c;">messy-pile-container</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span>=&quot;</span><span style="color:#a3be8c;">messy-pile-item left</span><span>&quot;&gt;Home&lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span>=&quot;</span><span style="color:#a3be8c;">messy-pile-item right</span><span>&quot;&gt;New&lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span>=&quot;</span><span style="color:#a3be8c;">messy-pile-item left</span><span>&quot;&gt;Pages&lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span>=&quot;</span><span style="color:#a3be8c;">messy-pile-item right</span><span>&quot;&gt;Logout&lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
+</span><span>
+</span><span style="color:#65737e;">&lt;!-- the common styling is omitted for brevity --&gt;
+</span><span>&lt;</span><span style="color:#bf616a;">style</span><span>&gt;
+</span><span style="color:#8fa1b3;">.</span><span style="color:#d08770;">messy-pile-item</span><span style="color:#8fa1b3;">.</span><span style="color:#d08770;">left </span><span>{ transform: </span><span style="color:#96b5b4;">rotate</span><span>(</span><span style="color:#d08770;">1deg</span><span>); }
+</span><span style="color:#8fa1b3;">.</span><span style="color:#d08770;">messy-pile-item</span><span style="color:#8fa1b3;">.</span><span style="color:#d08770;">right </span><span>{ transform: </span><span style="color:#96b5b4;">rotate</span><span>(</span><span style="color:#d08770;">-1deg</span><span>); }
+</span><span>&lt;/</span><span style="color:#bf616a;">style</span><span>&gt;
+</span></code></pre>
+<p>I could definitely have written that depending on when in my career you asked me to do it.
+So what's better about this one?</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">ul </span><span style="color:#d08770;">class</span><span>=</span><span style="color:#a3be8c;">messy-pile</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">li</span><span>&gt;Home
+</span><span>  &lt;</span><span style="color:#bf616a;">li</span><span>&gt;New
+</span><span>  &lt;</span><span style="color:#bf616a;">li</span><span>&gt;Pages
+</span><span>  &lt;</span><span style="color:#bf616a;">li</span><span>&gt;Logout
+</span><span>&lt;/</span><span style="color:#bf616a;">ul</span><span>&gt;
+</span><span>
+</span><span style="color:#65737e;">&lt;!-- the common styling is omitted for brevity --&gt;
+</span><span>&lt;</span><span style="color:#bf616a;">style</span><span>&gt;
+</span><span style="color:#8fa1b3;">.</span><span style="color:#d08770;">messy-pile </span><span style="color:#bf616a;">li</span><span style="color:#8fa1b3;">:</span><span style="color:#b48ead;">nth-child(odd) </span><span>{ transform: </span><span style="color:#96b5b4;">rotate</span><span>(</span><span style="color:#d08770;">1deg</span><span>); }
+</span><span style="color:#8fa1b3;">.</span><span style="color:#d08770;">messy-pile </span><span style="color:#bf616a;">li</span><span style="color:#8fa1b3;">:</span><span style="color:#b48ead;">nth-child(even) </span><span>{ transform: </span><span style="color:#96b5b4;">rotate</span><span>(</span><span style="color:#d08770;">-1deg</span><span>); }
+</span><span>&lt;/</span><span style="color:#bf616a;">style</span><span>&gt;
+</span></code></pre>
+<p>An obvious reason is that using the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child"><code>:nth-child()</code></a> pseudo-class (along with its <code>odd</code> and <code>even</code> keyword values) ensures that the pattern will automatically apply to an arbitrary number of items, as opposed to manually switching between  <code>left</code> and <code>right</code> classes.</p>
+<p>Add new items, or move existing ones, and they'll all stay perfectly arranged, without touching the CSS.</p>
+<ul class="base messy-pile">
+  <li>Home
+  <li>New
+  <li>Friends
+  <li>Pages
+  <li>Explore
+  <li>Logout
+</ul>
+<p>A subtler reason is that writing better CSS lets us move redundant information out of the HTML, dramatically simplifying it.
+In doing so, we take advantage of both CSS features and HTML semantics.</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">ul </span><span style="color:#d08770;">class</span><span>=</span><span style="color:#a3be8c;">messy-pile</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">li</span><span>&gt;Home
+</span><span>  &lt;</span><span style="color:#bf616a;">li</span><span>&gt;New
+</span><span>  &lt;</span><span style="color:#bf616a;">li</span><span>&gt;Pages
+</span><span>  &lt;</span><span style="color:#bf616a;">li</span><span>&gt;Logout
+</span><span>&lt;/</span><span style="color:#bf616a;">ul</span><span>&gt;
+</span></code></pre>
+<p>This is the only HTML in our example.
+You'll notice that it's just a regular <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul">unordered list</a>.
+Its purpose is immediately clear and it's not visually dense in the slightest.
+The only concession we've made to the styling is a single class, <code>messy-pile</code>.</p>
+<p>The list semantics give us a natural way to style this component,
+Lists <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul#technical_summary">pretty much</a> only have <code>&lt;li&gt;</code> children, so we can style the list itself with <code>.messy-pile</code> and the items with <code>.messy-pile li</code>.
+There's very little we have to add to the HTML to make this work.</p>
+<p>HTML semantics are often discussed in the context of making it easier for user agents (browsers, accessibility tech, etc.) to understand what your web page is trying to accomplish—but they also make it easier for <em>you</em> (and future readers of your code) to understand what your web page is trying to accomplish.</p>
+<p>Here's the other sample implementation from before; it does the same thing but with most of the HTML semantics removed.</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span>=</span><span style="color:#a3be8c;">messy-pile-container</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span>=</span><span style="color:#a3be8c;">messy-pile-item</span><span>&gt;Home&lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span>=</span><span style="color:#a3be8c;">messy-pile-item</span><span>&gt;New&lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span>=</span><span style="color:#a3be8c;">messy-pile-item</span><span>&gt;Pages&lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span>=</span><span style="color:#a3be8c;">messy-pile-item</span><span>&gt;Logout&lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
+</span></code></pre>
+<p>This is much worse.
+We have to add classes to both the container and the list item, since <code>&lt;div&gt;</code> is a generic element that could contain lots of things, including other <code>&lt;div&gt;</code>s.
+The additional visual weight takes more time to read, feels bad to look at, and has none of the same accessibility properties.</p>
+<p>This example is trivial—the version with the divs is still very intelligible—but as you start to layer on additional concepts, it gets out of hand quickly. For instance, the items in this example are mean to be a menu bar, so they all have to be links. With a list, that's still pretty easy to read:</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span style="color:#65737e;">&lt;!-- With a list --&gt;
+</span><span>&lt;</span><span style="color:#bf616a;">ul </span><span style="color:#d08770;">class</span><span>=</span><span style="color:#a3be8c;">messy-pile</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">li</span><span>&gt; &lt;</span><span style="color:#bf616a;">a </span><span style="color:#d08770;">href</span><span>=</span><span style="color:#a3be8c;">/home</span><span>&gt;Home&lt;/</span><span style="color:#bf616a;">a</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">li</span><span>&gt; &lt;</span><span style="color:#bf616a;">a </span><span style="color:#d08770;">href</span><span>=</span><span style="color:#a3be8c;">/new</span><span>&gt;New&lt;/</span><span style="color:#bf616a;">a</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">li</span><span>&gt; &lt;</span><span style="color:#bf616a;">a </span><span style="color:#d08770;">href</span><span>=</span><span style="color:#a3be8c;">/pages</span><span>&gt;Pages&lt;/</span><span style="color:#bf616a;">a</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">li</span><span>&gt; &lt;</span><span style="color:#bf616a;">a </span><span style="color:#d08770;">href</span><span>=</span><span style="color:#a3be8c;">/logout</span><span>&gt;Logout&lt;/</span><span style="color:#bf616a;">a</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">ul</span><span>&gt;
+</span></code></pre>
+<p>Definitely busier, but still easy to follow.
+How does it look with divs?</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span style="color:#65737e;">&lt;!-- With divs --&gt;
+</span><span>&lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span>=</span><span style="color:#a3be8c;">messy-pile-container</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span>=</span><span style="color:#a3be8c;">messy-pile-item</span><span>&gt;
+</span><span>    &lt;</span><span style="color:#bf616a;">a </span><span style="color:#d08770;">href</span><span>=</span><span style="color:#a3be8c;">/home</span><span>&gt;Home&lt;/</span><span style="color:#bf616a;">a</span><span>&gt;
+</span><span>  &lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span>=</span><span style="color:#a3be8c;">messy-pile-item</span><span>&gt;
+</span><span>    &lt;</span><span style="color:#bf616a;">a </span><span style="color:#d08770;">href</span><span>=</span><span style="color:#a3be8c;">/new</span><span>&gt;New&lt;/</span><span style="color:#bf616a;">a</span><span>&gt;
+</span><span>  &lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span>=</span><span style="color:#a3be8c;">messy-pile-item</span><span>&gt;
+</span><span>    &lt;</span><span style="color:#bf616a;">a </span><span style="color:#d08770;">href</span><span>=</span><span style="color:#a3be8c;">/new</span><span>&gt;Pages&lt;/</span><span style="color:#bf616a;">a</span><span>&gt;
+</span><span>  &lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span>=</span><span style="color:#a3be8c;">messy-pile-item</span><span>&gt;
+</span><span>    &lt;</span><span style="color:#bf616a;">a </span><span style="color:#d08770;">href</span><span>=</span><span style="color:#a3be8c;">/logout</span><span>&gt;Logout&lt;/</span><span style="color:#bf616a;">a</span><span>&gt;
+</span><span>  &lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
+</span></code></pre>
+<p>Oh. It's starting to become XML (derogatory).</p>
+<p>I'm being a little cheeky here by <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li#technical_summary">omitting the closing tags</a> for <code>&lt;li&gt;</code> elements to keep the <code>&lt;a&gt;</code> tags on the same line, while not doing the same for the <code>&lt;div&gt;</code>s.
+But that's also my point!
+<code>&lt;li&gt;</code> tags can be closed automatically, <code>&lt;div&gt;</code> tags can't.
+Knowing HTML semantics lets you express your ideas more concisely, which in turn gives you more room to layer on new ideas before you start to feel the pressure to refactor.</p>
+<p>Meanwhile, the div version looks and feels like a compile target—which is exactly why lots of people treat it as one.
+When your HTML is lots of divs and classes, then higher level abstractions like <a href="https://react.dev/learn/your-first-component">React Components</a> are necessary to make the code you're writing intelligible again.
+Many people start from the assumptions that these abstractions are necessary because they've only ever seen code that's painful to write without them.</p>
+<h2 id="but-does-it-scale"><a class="zola-anchor" href="#but-does-it-scale" aria-label="Anchor link for: but-does-it-scale">But Does It Scale?</a></h2>
+<p>The reason we adopt additional abstractions on top of HTML semantics is because eventually the thing we're trying to describe gets more complicated.
+It happens even with the most beautifully-written HTML.
+Reality—or at least the little piece of the reality that we're trying to make easier with software—is complicated.</p>
+<p>So if you're reading this and thinking, &quot;sure, but what I'm doing could never be done with plain HTML and CSS,&quot; I humbly suggest that you give it a try.
+You won't know what HTML and CSS can and can't accomplish until you actually try to push their limits for your use-case, forcing yourself to find those native features.
+I, personally, have found that they go a lot farther than I previously thought.</p>
+<p>Complex page layouts are going to require compromises—the trick is to use the tools available to you to push those compromises as far out as possible.
+The better you know your tools, the farther you can get before you have to fashion new ones, and the simpler the abstractions you develop are going to be.</p>
+<p><em>This blog is about an interaction that Ivy and I had at the <a href="https://www.recurse.com/scout/click?t=044d120abf1c334d0b2a3132634eb025">Recurse Center</a>. If you love programming and are interested in expanding your horizons, you should check it out.</em></p>
+<h1 id="notes"><a class="zola-anchor" href="#notes" aria-label="Anchor link for: notes">Notes</a></h1>
+<ul>
+<li>If the unclosed <code>&lt;li&gt;</code> tags bother you, check out Aaron Parks' <cite class=article><a href="http://lofi.limo/blog/write-html-right">Write HTML Right</a>.</cite>
+You may or may not want to write all your HTML that way, but it will hopefully break you out of the idea that HTML should look like XML. Markdown doesn't make you close bullets, why should HTML?</li>
+<li><a href="https://getbem.com/">BEM</a> is one popular methodology (among many) for scaling up CSS.
+If your project and org chart are operating at a scale that BEM helps with, by all means use it, but I am personally of the opinion that strict conventions tend to age poorly as the language naturally develops internal mechanisms to deal with the problems that the conventions were originally built to solve—that's basically the argument of this whole blog.</li>
+<li>Also, <code>&lt;button class=&quot;button&quot;&gt;</code> makes me want to die. That simply can't be the best way to write CSS.</li>
+<li>Speaking of scaling: keep in mind that scaling developers is not a business requirement; scaling your ability to improve the website is.
+If you make it easier for a couple developers to manage all the frontend tasks, you don't need to be siloing them so much.
+This is true both &quot;vertically&quot; (<a href="https://htmx.org/essays/a-real-world-react-to-htmx-port/#dev-team-makeup">frontend vs backend</a>), and horizontally (different teams working on different parts of the same page).</li>
+<li>On the other end of the spectrum is the <a href="https://csszengarden.com/">CSS Zen Garden</a>, which demonstrates how the same HTML can be used to create dramatically different-looking layouts, just by swapping out the stylesheet.
+You certainly <em>don't</em> need your website to be ready for arbitrary stylesheets—and I'm not skilled enough with CSS to pull that off anyway—but you should shoot for a website with sufficiently sane HTML structure that it would easy enough to follow if it had <em>no</em> styling.</li>
+<li>I used a modified Messy Pile for the <code>&lt;aside&gt;</code>s in <a href="https://unplannedobsolescence.com/blog/hard-page-load/">my last blog post</a> You have to be on desktop with a wide enough window to see it applied.</li>
+</ul>
+
+
+

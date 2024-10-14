@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.png">
+<link rel="shortcut icon" href="/favicon-128.png">
+
+<meta property="og:site_name" content="Unplanned Obsolescence">
+<meta name="og:title" content="Behavior Belongs in the HTML">
+<meta name="description" content="Separation of concerns is a great principle, but you&#x27;re drawing the line in the wrong place.">
+<meta name="og:description" content="Separation of concerns is a great principle, but you&#x27;re drawing the line in the wrong place.">
+
+
+<title>
+Behavior Belongs in the HTML
+</title>
+
+<style></style>
+<link rel="stylesheet" href="/common.css?id=1">
+
+<header>
+  <h1><a class=title href="/">Unplanned Obsolescence</a></h1>
+  <nav>
+  <ul>
+    <li><a href=/blog>Blog</a>
+    <li><a href=/about>About</a>
+    <li><a href=/atom.xml>RSS</a>
+  </ul>
+  </nav>
+</header>
+
+<hr>
+
+
+
+<h1>Behavior Belongs in the HTML</h1>
+<p class="subtitle"><strong>December 11, 2023</strong></p>
+
+<p>When you click the button below, it's going to show you a little message.</p>
+<p><button onclick="alert('I was clicked!')">Click me</button></p>
+<p>Showing a pop-up when the user clicks a button isn't something the button supports on its own; you
+have to code it. There are two ways to attach custom functionality to an HTML element: inline, or
+using an event listener.</p>
+<p>This is how you'd do it with an inline handler:</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">button </span><span style="color:#d08770;">onclick</span><span>=&quot;</span><span style="color:#bf616a;">alert</span><span>(&#39;</span><span style="color:#a3be8c;">I was clicked!</span><span>&#39;)&quot;&gt;Click me&lt;/</span><span style="color:#bf616a;">button</span><span>&gt;
+</span></code></pre>
+<p>And this is how you'd do it with an event listener:</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">button</span><span>&gt;Click me&lt;/</span><span style="color:#bf616a;">button</span><span>&gt;
+</span><span>
+</span><span>&lt;</span><span style="color:#bf616a;">script</span><span>&gt;
+</span><span style="color:#b48ead;">const </span><span style="color:#bf616a;">btn </span><span>= document.</span><span style="color:#bf616a;">querySelector</span><span>(&quot;</span><span style="color:#a3be8c;">button</span><span>&quot;)
+</span><span>
+</span><span style="color:#bf616a;">btn</span><span>.</span><span style="color:#bf616a;">addEventListener</span><span>(&quot;</span><span style="color:#a3be8c;">click</span><span>&quot;, () </span><span style="color:#b48ead;">=&gt; </span><span>{
+</span><span>  </span><span style="color:#bf616a;">alert</span><span>(&#39;</span><span style="color:#a3be8c;">I was clicked!</span><span>&#39;)
+</span><span>})
+</span><span>&lt;/</span><span style="color:#bf616a;">script</span><span>&gt;
+</span></code></pre>
+<p>If you've never thought about this before, your likely reaction is that the first example (inline)
+seems better. It takes up way less space and puts all the relevant information right on the button.
+Not so, according to the experts. The MDN Web Docs have this to say about
+<a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#inline_event_handlers_%E2%80%94_dont_use_these">using inline event handlers</a>:</p>
+<blockquote>
+<p>You can find HTML attribute equivalents for many of the event handler properties; however, you
+shouldn't use these — they are considered bad practice. It might seem easy to use an event
+handler attribute if you are doing something really quick, but they quickly become unmanageable
+and inefficient.</p>
+</blockquote>
+<p>Or, in case that wasn't clear enough:</p>
+<blockquote>
+<p><strong>You should never use the HTML event handler attributes</strong> — those are outdated, and using them is bad
+practice. (emphasis theirs)</p>
+</blockquote>
+<p>This is, in my polite opinion, completely wrong. The novices are right on this one. MDN is a
+tremendous resource, and I understand why they recommend the second form, but combating this
+particular ideology is essential to rehabilitating HTML's full functionality, and building durable
+applications with it. I'll explain.</p>
+<h2 id="form-and-function"><a class="zola-anchor" href="#form-and-function" aria-label="Anchor link for: form-and-function">&lt;form&gt; and function</a></h2>
+<p>MDN does not want you to use inline event handlers because they don't want you to mix form (HTML)
+and function (JS). This is a programming principle called <a href="https://en.wikipedia.org/wiki/Separation_of_concerns#HTML,_CSS,_JavaScript">Separation of
+Concerns</a> and the
+HTML/CSS/JS split is a textbook example of it. From Wikipedia (at the time of this writing):</p>
+<blockquote>
+<p>HTML is mainly used for organization of webpage content, CSS is used for definition of
+content presentation style, and JS defines how the content interacts and behaves with the user.</p>
+</blockquote>
+<p>Separation of Concerns is a great principle, but I think they drew the line in the wrong place. In
+this conception of the web page, HTML is essentially the scaffolding that you dress up with CSS (for
+style) and JS (for interactivity). But HTML is inherently interactive, too. It's sufficiently
+interactive to power billion-dollar businesses without a single line of JavaScript.</p>
+<p>Let's say you want to set up a text box and a search button so that people can search the web.
+You'd start with an <code>&lt;input type=text&gt;</code> for the text box, and a <code>&lt;button&gt;</code> to search.</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">div</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">input </span><span style="color:#d08770;">type</span><span>=</span><span style="color:#a3be8c;">text </span><span style="color:#d08770;">name</span><span>=</span><span style="color:#a3be8c;">q</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">button</span><span>&gt;Search&lt;/</span><span style="color:#bf616a;">button</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">div</span><span>&gt;
+</span></code></pre>
+<p>On the page it looks like this:</p>
+<div>
+  <input type=text>
+  <button>Search</button>
+</div>
+<p>That button doesn't do anything; the text goes nowhere. But if you replace the <code>&lt;div&gt;</code> with a
+<code>&lt;form&gt;</code>, like so:</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">form </span><span style="color:#d08770;">method</span><span>=</span><span style="color:#a3be8c;">/search </span><span style="color:#d08770;">action</span><span>=</span><span style="color:#a3be8c;">GET</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">input </span><span style="color:#d08770;">type</span><span>=</span><span style="color:#a3be8c;">text </span><span style="color:#d08770;">name</span><span>=</span><span style="color:#a3be8c;">q</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">button</span><span>&gt;Search&lt;/</span><span style="color:#bf616a;">button</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">form</span><span>&gt;
+</span></code></pre>
+<p>then clicking the button submits your input as a query, and navigates to the result. So if you're on
+<code>http://example.com</code> and the text box has <code>cats</code> in it, clicking submit will navigate you to
+<code>http://example.com/search?q=cats</code>. The Google homepage <a href="https://web.archive.org/web/20040426014304/http://www.google.com/">worked exactly like
+this</a> for a very long time.</p>
+<p>HTML defined that functionality in its entirety. The page does something interactive—it makes a
+network request using your input, when you click the button—and no JavaScript was involved. It's
+easy to read, semantic, and will work in every web browser forever. Most importantly, it
+demonstrates that the entire concept of &quot;HTML defines the layout, JS defines the functionality&quot; is
+definitionally incorrect.</p>
+<h2 id="enhancing-the-semantics"><a class="zola-anchor" href="#enhancing-the-semantics" aria-label="Anchor link for: enhancing-the-semantics">Enhancing the semantics</a></h2>
+<p>The problem with doing everything this way is that the functionality of HTML is extraordinarily
+limited, and to augment that functionality we need JavaScript. Form validation is a great example.</p>
+<p>This form is a lot like the previous one, only now it asks for an email address of at least 8
+characters:</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">form</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">input </span><span style="color:#d08770;">type</span><span>=&quot;</span><span style="color:#a3be8c;">email</span><span>&quot; </span><span style="color:#8fa1b3;">id</span><span>=&quot;</span><span style="color:#a3be8c;">mail</span><span>&quot; </span><span style="color:#d08770;">name</span><span>=&quot;</span><span style="color:#a3be8c;">mail</span><span>&quot; </span><span style="color:#d08770;">required minlength</span><span>=&quot;</span><span style="color:#a3be8c;">8</span><span>&quot; /&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">button</span><span>&gt;Submit&lt;/</span><span style="color:#bf616a;">button</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">form</span><span>&gt;
+</span></code></pre>
+<p>That will get the job done, sort of. It will keep the user from submitting something that is too
+short, or doesn't look like an email, but it won't let you customize how the user is informed about
+the requirements of the email address. This form, adapted for clarity from the MDN page on <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#validating_forms_using_javascript">form
+validation</a>,
+demonstrates how to do that:</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">form </span><span style="color:#d08770;">novalidate</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">input </span><span style="color:#d08770;">type</span><span>=&quot;</span><span style="color:#a3be8c;">email</span><span>&quot; </span><span style="color:#8fa1b3;">id</span><span>=&quot;</span><span style="color:#a3be8c;">mail</span><span>&quot; </span><span style="color:#d08770;">name</span><span>=&quot;</span><span style="color:#a3be8c;">mail</span><span>&quot; </span><span style="color:#d08770;">required minlength</span><span>=&quot;</span><span style="color:#a3be8c;">8</span><span>&quot; /&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">span </span><span style="color:#d08770;">class</span><span>=&quot;</span><span style="color:#a3be8c;">error</span><span>&quot; </span><span style="color:#d08770;">aria-live</span><span>=&quot;</span><span style="color:#a3be8c;">polite</span><span>&quot;&gt;&lt;/</span><span style="color:#bf616a;">span</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">button</span><span>&gt;Submit&lt;/</span><span style="color:#bf616a;">button</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">form</span><span>&gt;
+</span></code></pre>
+<p>Now there is a <code>&lt;span&gt;</code> that starts off empty, but will be populated with an error message if the
+email is invalid. There's also a <code>novalidate</code> attribute on the form that tells the browser not to do
+HTML's built-in validation because we're going to do it all ourselves in JavaScript. And here is the
+JavaScript that decides what the message is going to be, and adds it to the span.</p>
+<pre data-lang="js" style="background-color:#2b303b;color:#c0c5ce;" class="language-js "><code class="language-js" data-lang="js"><span style="color:#b48ead;">const </span><span style="color:#bf616a;">form </span><span>= document.</span><span style="color:#96b5b4;">querySelector</span><span>(&quot;</span><span style="color:#a3be8c;">form</span><span>&quot;);
+</span><span style="color:#b48ead;">const </span><span style="color:#bf616a;">email </span><span>= document.</span><span style="color:#96b5b4;">getElementById</span><span>(&quot;</span><span style="color:#a3be8c;">mail</span><span>&quot;);
+</span><span style="color:#b48ead;">const </span><span style="color:#bf616a;">emailError </span><span>= document.</span><span style="color:#96b5b4;">querySelector</span><span>(&quot;</span><span style="color:#a3be8c;">#mail + span.error</span><span>&quot;);
+</span><span>
+</span><span style="color:#bf616a;">email</span><span>.</span><span style="color:#96b5b4;">addEventListener</span><span>(&quot;</span><span style="color:#a3be8c;">input</span><span>&quot;, (</span><span style="color:#bf616a;">event</span><span>) </span><span style="color:#b48ead;">=&gt; </span><span>{
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">if </span><span>(</span><span style="color:#bf616a;">email</span><span>.</span><span style="color:#bf616a;">validity</span><span>.</span><span style="color:#bf616a;">valid</span><span>) {
+</span><span>    </span><span style="color:#bf616a;">emailError</span><span>.</span><span style="color:#bf616a;">textContent </span><span>= &quot;&quot;;
+</span><span>    </span><span style="color:#bf616a;">emailError</span><span>.className = &quot;</span><span style="color:#a3be8c;">error</span><span>&quot;;
+</span><span>  } </span><span style="color:#b48ead;">else </span><span>{
+</span><span>    </span><span style="color:#8fa1b3;">showError</span><span>();
+</span><span>  }
+</span><span>});
+</span><span>
+</span><span style="color:#bf616a;">form</span><span>.</span><span style="color:#96b5b4;">addEventListener</span><span>(&quot;</span><span style="color:#a3be8c;">submit</span><span>&quot;, (</span><span style="color:#bf616a;">event</span><span>) </span><span style="color:#b48ead;">=&gt; </span><span>{
+</span><span>  </span><span style="color:#b48ead;">if </span><span>(!</span><span style="color:#bf616a;">email</span><span>.</span><span style="color:#bf616a;">validity</span><span>.</span><span style="color:#bf616a;">valid</span><span>) {
+</span><span>    </span><span style="color:#8fa1b3;">showError</span><span>();
+</span><span>    event.</span><span style="color:#96b5b4;">preventDefault</span><span>();
+</span><span>  }
+</span><span>});
+</span><span>
+</span><span style="color:#b48ead;">function </span><span style="color:#8fa1b3;">showError</span><span>() {
+</span><span>  </span><span style="color:#b48ead;">if </span><span>(</span><span style="color:#bf616a;">email</span><span>.</span><span style="color:#bf616a;">validity</span><span>.</span><span style="color:#bf616a;">valueMissing</span><span>) {
+</span><span>    </span><span style="color:#bf616a;">emailError</span><span>.</span><span style="color:#bf616a;">textContent </span><span>= &quot;</span><span style="color:#a3be8c;">You need to enter an email address.</span><span>&quot;;
+</span><span>  } </span><span style="color:#b48ead;">else if </span><span>(</span><span style="color:#bf616a;">email</span><span>.</span><span style="color:#bf616a;">validity</span><span>.</span><span style="color:#bf616a;">typeMismatch</span><span>) {
+</span><span>    </span><span style="color:#bf616a;">emailError</span><span>.</span><span style="color:#bf616a;">textContent </span><span>= &quot;</span><span style="color:#a3be8c;">Entered value needs to be an email address.</span><span>&quot;;
+</span><span>  } </span><span style="color:#b48ead;">else if </span><span>(</span><span style="color:#bf616a;">email</span><span>.</span><span style="color:#bf616a;">validity</span><span>.</span><span style="color:#bf616a;">tooShort</span><span>) {
+</span><span>    </span><span style="color:#bf616a;">emailError</span><span>.</span><span style="color:#bf616a;">textContent </span><span>= `</span><span style="color:#a3be8c;">Email should be at least ${</span><span style="color:#bf616a;">email</span><span style="color:#a3be8c;">.</span><span style="color:#bf616a;">minLength</span><span style="color:#a3be8c;">} characters; you entered ${</span><span style="color:#bf616a;">email</span><span style="color:#a3be8c;">.value.length}.</span><span>`;
+</span><span>  }
+</span><span>
+</span><span>  </span><span style="color:#bf616a;">emailError</span><span>.className = &quot;</span><span style="color:#a3be8c;">error active</span><span>&quot;;
+</span><span>}
+</span></code></pre>
+<p>That code enhances the HTML so that it does the following things:</p>
+<ul>
+<li>If the user submits an invalid email, show them an error message</li>
+<li>If the email was empty, show &quot;You need to enter an email address.&quot;</li>
+<li>If the email was too short, show &quot;Email should be at least 8 characters; you entered X&quot; (where X
+is the number of characters they entered)</li>
+<li>If the email was not an email, show &quot;Entered value needs to be an email address.&quot;</li>
+<li>When the user starts typing, remove the error message</li>
+</ul>
+<p>All those things aren't built into HTML, which is why you have to write them in JavaScript. A lot of
+JavaScript. But what if they were? Hypothetically, you could design the following interface in the
+HTML itself:</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">form</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">input </span><span style="color:#d08770;">type</span><span>=&quot;</span><span style="color:#a3be8c;">email</span><span>&quot;
+</span><span>         </span><span style="color:#d08770;">name</span><span>=&quot;</span><span style="color:#a3be8c;">mail</span><span>&quot;
+</span><span>         </span><span style="color:#d08770;">required
+</span><span>         </span><span style="color:#d08770;">minlength</span><span>=&quot;</span><span style="color:#a3be8c;">8</span><span>&quot;
+</span><span>         </span><span style="color:#d08770;">message-target</span><span>=&quot;</span><span style="color:#a3be8c;">#email-error</span><span>&quot;
+</span><span>         </span><span style="color:#d08770;">value-missing-message</span><span>=&quot;</span><span style="color:#a3be8c;">You need to enter an email address.</span><span>&quot;
+</span><span>         </span><span style="color:#d08770;">type-mismatch-message</span><span>=&quot;</span><span style="color:#a3be8c;">Entered value needs to be an email address.</span><span>&quot;
+</span><span>         </span><span style="color:#d08770;">too-short-message</span><span>=&quot;</span><span style="color:#a3be8c;">Email should be at least ${email.minLength} characters; you entered ${email.value.length}.</span><span>&quot;
+</span><span>  &gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">span </span><span style="color:#8fa1b3;">id</span><span>=</span><span style="color:#a3be8c;">email-error</span><span>&gt;&lt;/</span><span style="color:#bf616a;">span</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#bf616a;">button</span><span>&gt;Submit&lt;/</span><span style="color:#bf616a;">button</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">form</span><span>&gt;
+</span></code></pre>
+<p>Instead of adding new messages in JavaScript, you write them on the input itself. That's better, for
+a couple reasons:</p>
+<ul>
+<li>The code is legible. Where is the &quot;input too short&quot; message defined? In <code>too-short-messsage</code>.</li>
+<li>The <a href="https://htmx.org/essays/locality-of-behaviour/">behavior is local</a>. It's impossible <em>not</em> to
+see that someone changed the message, and where they did it.</li>
+<li>The logic can be trivially re-used on different inputs</li>
+<li>The interface automatically implements the <a href="https://w3c.github.io/aria/#aria-live">aria-live</a>
+designation that is appropriate for a validation message (in this case, <code>polite</code>)</li>
+</ul>
+<p>In some sense these are all the same advantage: they give HTML richer semantics.</p>
+<p>Hopefully you're howling at your computer screen about this. &quot;You didn't solve anything! Doing
+validation is complex and you just magic wanded it away by designing a perfect interface for it.&quot;
+Yes. Exactly. That is what interfaces are supposed to do. Better semantics make it possible for the
+programmer to describe what the element does, and for someone else to take care of the details for
+them.</p>
+<p>I'm not saying you're not going to have to write JavaScript—<a href="https://www.youtube.com/watch?v=co4EsnwAM1Q&amp;t=110s">someone's got to write
+JavaScript</a>—but if we start writing our
+JavaScript libraries to enrich HTML's semantics, rather than replace them, we might get a lot more
+mileage out of both.</p>
+<p>Keep in mind that, at this stage, the custom semantics I'm using are still purely theoretical.
+We'll talk about forwards compatibility, <code>data-</code> attributes, and all the hard details in a moment.
+The first task is to acknowledge that HTML, as a <em>hyper</em>text markup language, is inherently
+functional: the &quot;hyper&quot; denotes all the extra functionality, like links and forms, that we add to
+the text. You need to <a href="https://intercoolerjs.org/2020/01/14/taking-html-seriously">take HTML
+seriously</a> to build good interfaces for
+it.</p>
+<p>Once we do that, the task ahead is to figure out how best to augment its limited semantics with our
+own. That part is hard.</p>
+<h2 id="back-to-reality"><a class="zola-anchor" href="#back-to-reality" aria-label="Anchor link for: back-to-reality">Back to reality</a></h2>
+<p>Okay, so if we want to enrich HTML's semantics, what are the right ways to do it?</p>
+<p>The main concern here is that as HTML is both a living standard and a mercilessly backwards
+compatible one (it's a remarkable accomplishment that <a href="http://info.cern.ch/hypertext/WWW/TheProject.html">the first website
+ever</a> is still online and displays perfectly on
+modern web browsers). So if I add <code>too-short-messsage</code> to my input element, and then a couple years
+in the future <a href="https://whatwg.org/">WHATWG</a> adds a new <code>too-short-messsage</code> attribute, the page will
+start to break in unexpected ways.</p>
+<p><a href="https://microformats.org/">Microformats</a> are a very old standard that still gets some use today,
+perhaps most notably as part of the <a href="https://www.w3.org/TR/webmention/">Webmentions specification</a>.
+They let you add add properties as class declarations, like this:</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">a </span><span style="color:#d08770;">class</span><span>=&quot;</span><span style="color:#a3be8c;">p-name u-url</span><span>&quot; </span><span style="color:#d08770;">href</span><span>=&quot;</span><span style="color:#a3be8c;">https://alexpetros.com</span><span>&quot;&gt;Alex Petros&lt;/</span><span style="color:#bf616a;">a</span><span>&gt;
+</span></code></pre>
+<p>Something parsing the webpage will know that this link isn't just a random link, it's a link with my
+name as the text (<code>p-name</code>), and that person's home page as the URL (<code>u-url</code>). This is nifty but
+very limited. You could not implement a custom message using class names like this.</p>
+<p>HTML solves this problem by reserving the <code>data-</code> prefix for <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*">custom
+attributes</a>. This works
+fine, and some custom attribute libraries like <a href="https://turbo.hotwired.dev/">Turbo</a> embrace it. Take
+this example from <a href="https://turbo.hotwired.dev/handbook/drive#requiring-confirmation-for-a-visit">their
+documentation</a>, which
+uses the <code>data-turbo-method</code> attribute to change a link's method from GET to DELETE (I make no
+claims about whether that's a thing you <em>should</em> do):</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">a </span><span style="color:#d08770;">href</span><span>=&quot;</span><span style="color:#a3be8c;">/articles/54</span><span>&quot; </span><span style="color:#d08770;">data-turbo-method</span><span>=&quot;</span><span style="color:#a3be8c;">delete</span><span>&quot;&gt;Delete the article&lt;/</span><span style="color:#bf616a;">a</span><span>&gt;
+</span></code></pre>
+<p>And that works! That will never get overwritten by future updates to the HTML standard. If you want
+to write your whole attribute library that way, you can.</p>
+<p>If I sound a little ambivalent about it, it's because I think everything about <code>data-*</code> attributes,
+from their name to <a href="https://hacks.mozilla.org/2012/10/using-data-attributes-in-javascript-and-css/">the examples people
+use</a>, suggests that
+they are meant to store data, not behavior. You can of course just barrel ahead and extend HTML with
+it, but the name and the verbosity really does discourage people from building semantics with it. If
+you say that data attribues are for <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">&quot;data that should be associated with a particular element but
+need not have any defined
+meaning,&quot;</a> then
+people will use them that way.</p>
+<p>We know this is true because some very popular JavaScript libraries eschew the <code>data-</code> attributes
+altogether and just add custom attributes with prefixes that are very <em>unlikely</em> to be added to
+HTML. <a href="https://angularjs.org/">Classic AngularJS</a> uses <code>ng-</code>, which is still all over the internet
+today; <a href="https://alpinejs.dev/">Alpine.js</a> prefixes its 15 custom attributes with <code>x-</code>;
+<a href="https://htmx.org/">htmx</a> does the same with <code>hx-</code> (although AngularJS and htmx both support
+prepending <em>their</em> prefix with <code>data-</code>, just for the pedants).</p>
+<p>Browsers have supported this, unofficially for ages, and it also works well. Here's a button that
+toggles some arbitrary property using Alpine.js:</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">button </span><span style="color:#d08770;">x-on:click</span><span>=&quot;</span><span style="color:#a3be8c;">open = ! open</span><span>&quot;&gt;Toggle&lt;/</span><span style="color:#bf616a;">button</span><span>&gt;
+</span></code></pre>
+<p>This is, in my opinion, the right general idea, even though I (subjectively) dislike almost
+everything about it. I find the <code>open = ! open</code> sort of weird (it's a global variable I guess?),
+having to namespace with <code>x-</code> is still a small kludge, and overall it deviates from HTML semantics
+in a way I don't vibe with. It's a <em>very</em> safe bet that WHATWG is not going to add <code>x-on:click</code>, but
+it's also, at the time of this writing, not a guarantee.</p>
+<h2 id="custom-attributes-are-still-the-way"><a class="zola-anchor" href="#custom-attributes-are-still-the-way" aria-label="Anchor link for: custom-attributes-are-still-the-way">Custom attributes are (still) the way</a></h2>
+<p>In 2009, during the HTML5 specification process, John Allsop advocated for taking seriously the
+possibility of custom attributes in his blog <a href="https://alistapart.com/article/semanticsinhtml5">&quot;Semantics in HTML
+5&quot;</a>.</p>
+<blockquote>
+<p>Instead of new elements, HTML 5 should adopt a number of new attributes. Each of these attributes
+would relate to a category or type of semantics. For example, as I’ve detailed in another article,
+HTML includes structural semantics, rhetorical semantics, role semantics (adopted from XHTML), and
+other classes or categories of semantics.</p>
+<p>These new attributes could then be used much as the class attribute is used: to attach to an element
+semantics that describe the nature of the element, or to add metadata about the element.</p>
+</blockquote>
+<p>He includes a couple examples, like one where you markup a paragraph as being ironic (I thought this
+was a ridiculous example until I remembered that <a href="https://en.wikipedia.org/wiki/Irony_punctuation">people actually do this all the
+time</a>, informally, with stuff like &quot;/s&quot;):</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">p </span><span style="color:#d08770;">rhetoric</span><span>=&quot;</span><span style="color:#a3be8c;">irony</span><span>&quot;&gt;He’s a fantastic person.&lt;/</span><span style="color:#bf616a;">p</span><span>&gt;
+</span></code></pre>
+<p>Or this one that would let you specify times in a machine-paresable format (later solved with the
+introduction of the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time"><code>&lt;time&gt;</code>
+element</a>):</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">span </span><span style="color:#d08770;">equivalent</span><span>=</span><span style="color:#a3be8c;">“2009-05-01”</span><span>&gt;May Day next year&lt;/</span><span style="color:#bf616a;">span</span><span>&gt;
+</span></code></pre>
+<p>This was the right path. The thing says what it is, and specifies machine-parseable semantics in the
+most human-readable way (although &quot;equivalent&quot; was a terrible name choice in that case).</p>
+<p>There are still a lot of questions that need to be answered to make this work properly, which Allsop
+also acknowledged at the time:</p>
+<blockquote>
+<p>I titled this section “some thoughts on a solution” because a significant amount of work needs to
+be done to really develop a workable solution. Open questions include the following.</p>
+<ul>
+<li>How many distinct semantic attributes should there be? Should these categories be extensible,
+and if so, how?</li>
+<li>How are vocabularies determined?</li>
+<li>Do we simply invent the terms we want, in much the same way that developers have been using
+class values, or should the possible values all be determined by a standardized specification? Or
+should there be a mechanism for inventing (and hopefully sharing) vocabularies, using some kind of
+profile?</li>
+<li>If we have a conflict between two vocabularies, such that two identical terms are defined by two
+different vocabularies, how is this resolved?</li>
+<li>Do we need a form of name spacing, or does some other mechanism exist?</li>
+</ul>
+</blockquote>
+<p>Many of these questions still don't have good answers, because the field of web development mostly
+let this question go stale during its &quot;screw it, JavaScript everything&quot; phase. You don't need to
+extend the behavior of a form if you <a href="https://legacy.reactjs.org/docs/forms.html#controlled-components">rewrite it every
+time</a>. As we start to exit that
+era, I propose that we pick up where Allsop left off and begin doing to the work making HTML a
+safely extensible hypertext system.</p>
+<p>One thing we can do immediately officially sanction is kebab-case attributes, roughly in line with
+<a href="https://github.com/whatwg/html/issues/2271">this proposal</a> (h/t to <a href="https://denizaksimsek.com/en/">Deniz
+Akşimşek</a> for showing me this). This would not only bless many of the
+most popular HTML-enhancing frameworks, and therefore huge chunks of existing code on the internet,
+with valid HTML, it would legitimatize the project of extending HTML with user- or library-defined
+semantics.</p>
+<h2 id="okay-alex-how-would-you-extend-that-button"><a class="zola-anchor" href="#okay-alex-how-would-you-extend-that-button" aria-label="Anchor link for: okay-alex-how-would-you-extend-that-button">Okay Alex, how would you extend that button?</a></h2>
+<p>Remember the button from the beginning?</p>
+<p><button onclick="alert('I\'m back!')">Click me</button></p>
+<p>If you want to make a lot of buttons that display click messages, the best way to do that isn't with
+<code>onclick</code> or an event listener, it's to enhance the button so that you can turn any button into a
+message button.</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">button </span><span style="color:#d08770;">alert message</span><span>=&quot;</span><span style="color:#a3be8c;">I was clicked</span><span>&quot;&gt;Click me&lt;/</span><span style="color:#bf616a;">button</span><span>&gt;
+</span><span>
+</span><span>&lt;</span><span style="color:#bf616a;">script</span><span>&gt;
+</span><span style="color:#65737e;">// Get all the buttons with the &#39;alert&#39; attribute
+</span><span style="color:#b48ead;">const </span><span style="color:#bf616a;">buttons </span><span>= </span><span style="color:#bf616a;">querySelectorAll</span><span>(&#39;</span><span style="color:#a3be8c;">button[alert]</span><span>&#39;)
+</span><span style="color:#bf616a;">buttons</span><span>.</span><span style="color:#bf616a;">forEach</span><span>(btn </span><span style="color:#b48ead;">=&gt; </span><span>{
+</span><span>  </span><span style="color:#65737e;">// Get the message property of the button
+</span><span>  </span><span style="color:#b48ead;">const </span><span style="color:#bf616a;">message </span><span>= </span><span style="color:#bf616a;">btn</span><span>.</span><span style="color:#bf616a;">getAttribute</span><span>(&#39;</span><span style="color:#a3be8c;">message</span><span>&#39;)
+</span><span>  </span><span style="color:#65737e;">// Set the button to alert that message when clicked
+</span><span>  </span><span style="color:#bf616a;">btn</span><span>.</span><span style="color:#bf616a;">addEventListener</span><span>(&#39;</span><span style="color:#a3be8c;">click</span><span>&#39;, () </span><span style="color:#b48ead;">=&gt; </span><span>{ </span><span style="color:#bf616a;">alert</span><span>(</span><span style="color:#bf616a;">message</span><span>) })
+</span><span>})
+</span><span>&lt;</span><span style="color:#bf616a;">script</span><span>&gt;
+</span></code></pre>
+<p>This has the advantage of being re-usable across any button in your document. For less trivial
+applications, you can bundle that behavior into a library with a very nice interface (probably with
+a prefix, for now).</p>
+<p>If you only need to do it for one or two buttons, though, just use <code>onclick</code>. It's less
+code, it doesn't require that you specify an <code>id</code>, and it doesn't make you hunt to a different part
+of the codebase to see what it does. Those are all &quot;best practices&quot; in my book.</p>
+<h1 id="notes"><a class="zola-anchor" href="#notes" aria-label="Anchor link for: notes">Notes</a></h1>
+<p><em>Thanks to <a href="https://denizaksimsek.com/en/">Deniz Akşimşek</a> for reading a draft of this blog</em>.</p>
+<ul>
+<li>Implementing the <code>tooShortMessage</code> and related attributes is left as an exercise to the reader.</li>
+<li>Even better, for the button example, would probably be <code>type=alert</code>, because that extends the
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#type">existing semantics</a>, but I
+really don't want to get into how you'd approach namespacing that for forwards compatibility.</li>
+<li>Ironically, attribute interfaces have a much better case against being defined inline than the
+<code>document.getElementById</code> style of adding functionality, because the code that enables the
+interfaces can actually be re-used generically across elements.</li>
+<li>Some people think &quot;custom semantics&quot; is an oxymoron, because if it's not in the HTML standard it's
+not &quot;semantic&quot;. That's not really what semantics are. Semantics describe the expressive power of
+something. Think of it like a language: whether something is or isn't a language has nothing to do
+with how many people speak it; that only affects how useful learning that language is going to be.
+User-defined semantics may be non-<em>standard</em> (at least until they adopted officially), but they
+are still semantics.</li>
+<li>A lot of people <em>really</em> hate seeing even tiny amounts of JS syntax in attribute declarations. I
+think this is a little silly, but I do understand it. I'll write on that subject in the future.</li>
+</ul>
+<p>Discuss this blog on: <a href="https://news.ycombinator.com/item?id=38607038">HackerNews</a></p>
+
+
+
