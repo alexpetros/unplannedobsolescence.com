@@ -3,6 +3,7 @@ base_url = "https://unplannedobsolescence.com"
 
 compile_sass = false
 
+title = "Unplanned Obsolescence"
 author = "Alexander Petros"
 
 smart_punctuation = true
