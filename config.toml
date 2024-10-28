@@ -4,6 +4,7 @@ base_url = "https://unplannedobsolescence.com"
 compile_sass = false
 
 title = "Unplanned Obsolescence"
+description = "A blog about trying to write software that doesn't rot"
 author = "Alexander Petros"
 
 smart_punctuation = true
