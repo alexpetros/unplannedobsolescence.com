@@ -379,14 +379,14 @@ message button.
 
 <script>
 // Get all the buttons with the 'alert' attribute
-const buttons = querySelectorAll('button[alert]')
+const buttons = document.querySelectorAll('button[alert]')
 buttons.forEach(btn => {
   // Get the message property of the button
   const message = btn.getAttribute('message')
   // Set the button to alert that message when clicked
   btn.addEventListener('click', () => { alert(message) })
 })
-<script>
+</script>
 ```
 
 This has the advantage of being re-usable across any button in your document. For less trivial
