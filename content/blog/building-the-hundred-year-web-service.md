@@ -35,7 +35,7 @@ This talk takes seriously the idea that something you put online today could rem
 ## tl;dw
 
 1. [Use SQLite](https://blog.wesleyac.com/posts/consider-sqlite)
-2. Describe the actions of your service with [HTTP verbs and methods](https://alexanderpetros.com/triptych/form-http-methods#REST-in%20Practice) as much as possible
+2. Describe the actions of your service with [HTTP verbs](https://alexanderpetros.com/triptych/form-http-methods#REST-in%20Practice) as much as possible
 3. Write plain HTML (with templates); enhance it sparsely; use isolated scripts.
 
 There are a lot of specifics in the second half of the talk, and [this blog you're reading now](/blog) has other explainers that synthesize with that design philosophy.
