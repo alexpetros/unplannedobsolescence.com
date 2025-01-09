@@ -8,7 +8,7 @@ build:
 
 .PHONY: deploy
 deploy: build
-	rsync -r ./public mrg:/var/www/unplannedobsolescence.com
+	rsync -r --delete ./public mrg:/var/www/unplannedobsolescence.com
 
 .PHONY: clean
 clean:
