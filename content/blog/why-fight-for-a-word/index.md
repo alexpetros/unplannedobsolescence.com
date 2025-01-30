@@ -1,5 +1,5 @@
 +++
-title = "Why Fight For a Word"
+title = "Why Fight for a Word"
 description = "On picking your pedantry battles."
 date = 2025-01-31
 
@@ -172,9 +172,9 @@ I firmly believe its possibly to build that with architectures that are just as 
 Doing so just requires improving on HTML, and improving on REST.
 
 What does REST have to say about the importance of HTTP methods like "put" and "post"?
-Not much, it turns out, and what little Fielding wrote about them is often contradictory.
+Not much, it turns out, and what little Fielding wrote about them is [often contradictory](https://alexanderpetros.com/triptych/form-http-methods#ref-27).
 But I think HTTP methods are <em>very</em> important to scaling the grammar of interactivity, because
-additional HTTP methods lets you describe additional actions on the same resource.
+[adding additional HTTP methods lets you describe additional actions on the same resource](https://alexanderpetros.com/triptych/form-http-methods#application-server-permissions).
 That makes it possible to build more complex applications with simple URL schemas, adding to the self-descriptive power of the hypertext while preserving REST's core constraints.
 
 So I'm working on that.
@@ -209,9 +209,12 @@ But if I'm wrong, well, at least I'll leave something behind that someone else c
 [2021](https://htmx.org/essays/rest-explained/),
 [2022](https://htmx.org/essays/how-did-rest-come-to-mean-the-opposite-of-rest/),
 [2023](https://htmx.org/essays/hateoas/)).
-* The whole notion of a universal grammar is a little hard to wrap one's head around because, well, someone has to agree out-of-band on what that grammar is, which seems to defeat the point a little.
+* The whole notion of a universal grammar is a little hard to wrap one's head around because, well, someone has to agree out-of-band on what that grammar is, which seems to defeat the point.
 For the sake of simplicity, assume here that it's the [web baseline](https://developer.mozilla.org/en-US/blog/baseline-unified-view-stable-web-features/).
 But how and why we agree on that grammar is an important (and somewhat under-developed) concept in REST.
+* I do believe, unfortunately, that at this point the [Richardson Maturity Model](https://martinfowler.com/articles/richardsonMaturityModel.html) impedes our ability to move forward with REST, since it blesses JSON APIs with a sort of "mostly REST" status (Level 2) that is not terribly useful (it's just a JSON API); all of the interesting properties of *representational* state transfer happen at "Level 3."
+Fowler more or less acknowledges this in the conclusion.
+
 
 <!-- # Cutting Floor -->
 
