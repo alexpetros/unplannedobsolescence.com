@@ -1,7 +1,7 @@
 +++
 title = "Why Fight For a Word"
 description = "On picking your pedantry battles."
-date = 2025-01-12
+date = 2025-01-31
 
 [extra]
 hidden=true
