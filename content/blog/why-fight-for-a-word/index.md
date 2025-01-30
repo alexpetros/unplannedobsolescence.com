@@ -31,7 +31,7 @@ Feel free to <a href="#rest-is-an-intellectual-heritage">skip to the next sectio
 ## One more (short) REST explainer
 
 REST stands for "Representational State Transfer."
-It's an academic term from [Roy Fielding's PhD dissertation](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm) that describes the fundamental constraints that, in his view, made the World Wide Web a successful distributed system.
+It's an academic term from [Roy Fielding's PhD dissertation](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm), describing the fundamental constraints that, in Fielding's view, made the World Wide Web a successful distributed system.
 Web browsers don't _always_ follow his constraints ([Fielding is not a fan of cookies](https://ics.uci.edu/~fielding/pubs/dissertation/evaluation.htm#sec_6_3_4_2)), but for the most part they do, and the thesis is about why that works.
 
 Here are the main constraints that make the web RESTful:
@@ -133,7 +133,7 @@ Period. Is there some broken manual somewhere that needs to be fixed?
 I don't know, Roy, maybe there is a broken manual.
 Maybe you needed to explain this somewhere other than _a PhD dissertation_, a famously non-approachable format.
 
-Evidently I'm not the only one who felt this way, because Fielding [published a response to this criticism](https://roy.gbiv.com/untangled/2008/specialization) just four days later:
+Fielding [publishes a response to this criticism](https://roy.gbiv.com/untangled/2008/specialization) just four days later:
 
 > So, when you find it hard to understand what I have written, please don’t think of it as talking above your head or just too philosophical to be worth your time. I am writing this way because I think the subject deserves a particular form of precision. Instead, take the time to look up the terms. Think of it as an opportunity to learn something new, not because I said so, but because it will do you some personal good to better understand the depth of our field. Not just the details of what I wrote, but the background knowledge implied by all the strange terms that I used to write it.
 >
