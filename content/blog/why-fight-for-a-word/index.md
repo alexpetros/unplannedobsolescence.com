@@ -58,20 +58,22 @@ That probably seems natural to you now, because HTML exists and it works, but at
 Let's re-use [Carson Gross' bank account example](https://htmx.org/essays/how-did-rest-come-to-mean-the-opposite-of-rest/#the-crux-of-rest-the-uniform-interface-hateoas), because it helped click the concept into place for me:
 
 ```html
+<!DOCTYPE html>
+<title>Alex's Bank Account</title>
+
 <div>Account number: 12345</div>
 <div>Balance: $100.00 USD</div>
 <div>Links:
     <a href="/accounts/12345/deposits">deposits</a>
     <a href="/accounts/12345/withdrawals">withdrawals</a>
     <a href="/accounts/12345/transfers">transfers</a>
-    <a href="/accounts/12345/close-requests">close-requests</a>
 </div>
 ```
 
 That's the HTML page for a bank account.
 The browser, upon receiving that response, will render the following:
 
-<iframe src="/blog/why-fight-for-a-word/html-api.html" width=300 height=200>
+<iframe src="/blog/why-fight-for-a-word/bank-account.html" width=300 height=200>
 </iframe>
 
 Notice how the API response describes __the current state__ (your bank balance) and __what actions the user can take to alter that state__ (the links) in a format that the user can understand and interact with.
