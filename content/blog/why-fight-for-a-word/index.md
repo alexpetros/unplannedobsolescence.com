@@ -24,8 +24,8 @@ To move hypertext forward, we have to build on the best work in the field, and t
 This blog isn't really about REST, but I find concrete examples helpful, so, one more time, here's what REST is.
 
 <aside>
-A lot of my readers are also htmx blog readers, where REST comes up a lot.
-Feel free to <a href="#rest-is-an-intellectual-heritage">skip to the next section</a> if you already feel comfortable with it.
+A lot of my readers are also htmx blog readers, which has lots of REST explainers.
+Feel free to <a href="#rest-is-an-intellectual-heritage">skip to the next section</a> if you already feel comfortable with the concept.
 </aside>
 
 ## One more (short) REST explainer
@@ -160,25 +160,29 @@ How are we supposed to stand on the shoulders of giants whose names we don't kno
 
 ## REST is worth building on
 
-HTML, and the RESTful architecture it is designed for, worked well enough to build rich, interconnected information systems, with basic interactive elements.
-And it's still very useful for evaluating the quality of those systems.
+HTML, and the RESTful architecture it is designed for, works well enough to build rich, interconnected information systems, with basic interactive elements.
+And it remains very useful for evaluating the quality of those systems.
+
 Generally speaking, reliable web applications stick as closely to hypertext APIs as possible, because self-description is inherently more resilient than coupling.
-Take the time to understand REST, and you'll start to see these patterns for yourself.
+There are lots of ways you can build modern web applications within these parameters.
+If you take the time to understand REST, you'll start to see these patterns for yourself.
 
 But the web has evolved to require more complex interactivity.
 I firmly believe its possibly to build that with architectures that are just as sturdy as plain old Web 1.0 sites are.
-Doing so requires improving on HTML, and improving on REST.
+Doing so just requires improving on HTML, and improving on REST.
 
 What does REST have to say about the importance of HTTP methods like "put" and "post"?
-It turns out, not much, and what little Fielding wrote about them is often contradictory.
-But I think HTTP methods are <em>very</em> important to scaling the grammar of interactivity; they make it possible to build more complex applications with simple, self-describing APIs.
+Not much, it turns out, and what little Fielding wrote about them is often contradictory.
+But I think HTTP methods are <em>very</em> important to scaling the grammar of interactivity, because
+additional HTTP methods lets you describe additional actions on the same resource.
+That makes it possible to build more complex applications with simple URL schemas, adding to the self-descriptive power of the hypertext while preserving REST's core constraints.
 
-So now I'm thinking about that.
-I reading the web specs, and the theses, and the blog posts of the great web thinkers and I'm trying to make something new.
-I think that I live in the generation where it becomes possible to make [web services as reliable as bridges](@/blog/building-the-hundred-year-web-service.md).
+So I'm working on that.
+I reading the web specs, the theses, the blog posts of the great web thinkers, learn what they learned, and add on to it.
+I think that I live in the generation where it becomes possible to use those principles to make [web services as durable as bridges](@/blog/building-the-hundred-year-web-service.md).
 We'll see.
 
-But if I'm wrong, well, hopefully I leave something behind for someone else to keep building on.
+But if I'm wrong, well, at least I'll leave something behind that someone else can keep building on.
 
 <!-- It's not that "true REST has never been tried." -->
 <!-- Just the opposite actually. -->
