@@ -15,7 +15,7 @@ body {
   line-height: 1.6;
   font-size: 16px;
   color: var(--text-color);
-  padding: 0 10px;
+  padding: 0 10px 70px 10px;
 }
 
 h1, h2, h3 {
@@ -159,6 +159,11 @@ cite.article::after {
 code:not(pre code) {
   background-color: lightgray;
   padding: 0 .25rem;
+}
+
+iframe {
+  display: block;
+  margin: 10px auto;
 }
 
 /*
