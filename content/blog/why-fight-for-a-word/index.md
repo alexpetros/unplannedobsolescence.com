@@ -160,12 +160,12 @@ How are we supposed to stand on the shoulders of giants whose names we don't kno
 
 ## REST is worth building on
 
-HTML, and the RESTful architecture it is designed for, works well enough to build rich, interconnected information systems, with basic interactive elements.
-And it remains very useful for evaluating the quality of those systems.
+The HTML we have today works well enough to build rich, interconnected information systems, with basic interactive elements.
+And REST remains very useful for evaluating the quality of those systems.
 
+<aside>
 Generally speaking, reliable web applications stick as closely to hypertext APIs as possible, because self-description is inherently more resilient than coupling.
-There are lots of ways you can build modern web applications within these parameters.
-If you take the time to understand REST, you'll start to see these patterns for yourself.
+</aside>
 
 But the web has evolved to require more complex interactivity.
 I firmly believe its possibly to build that with architectures that are just as sturdy as plain old Web 1.0 sites are.
