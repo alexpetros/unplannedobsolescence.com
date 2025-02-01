@@ -8,18 +8,14 @@ hidden=true
 +++
 
 A central concept to HTML, and hypertext theory more generally, is something called Representational State Transfer, a.k.a. REST.
-Over at htmx, a lot of the writing we do is based on REST theory.
+Over at htmx, a lot of the [writing we do](https://htmx.org/essays) is based on REST theory.
 
-[REST is a widely misunderstood term,](https://htmx.org/essays/how-did-rest-come-to-mean-the-opposite-of-rest/)
-and if you point that out to people, you will be told, repeatedly and occasionally quite irately: who cares?
-REST has a new meaning now—maybe it's the opposite of what it used to be, but the point of words is to be understood. Just pick a new word and spare us the lecture.
+[REST is a widely misunderstood term](https://htmx.org/essays/how-did-rest-come-to-mean-the-opposite-of-rest/),
+and if you point that out to people, you will be told, repeatedly and sometimes quite irately: who cares?
+REST has a new meaning now—use words the way people understand them and spare us the lecture.
 
-That criticism is compelling—who among us isn't a little [descriptivist](https://en.wikipedia.org/wiki/Linguistic_description) at heart—but it's self-defeating.
-Yes, language is meant to be understood.
-That's why sometimes the original, more precise meaning of a word is necessary to communicate something that the more common meaning can't capture.
-
-That's the case with REST.
-To move hypertext forward, we have to build on the best work in the field, and that's impossible to do without engaging with what they said and how they said it.
+That criticism is compelling—who among us isn't a little [descriptivist](https://en.wikipedia.org/wiki/Linguistic_description) at heart—but it sometimes the original, more precise meaning of a word is necessary to communicate something that the more common meaning can't capture.
+To move hypertext forward, we have to build on the best work that our predecessors have done in the field, and that's impossible to do without engaging with what they said and how they said it.
 
 This blog isn't really about REST, but I find concrete examples helpful, so, one more time, here's what REST is.
 
@@ -171,9 +167,9 @@ But the web has evolved to require more complex interactivity.
 I firmly believe its possibly to build that with architectures that are just as sturdy as plain old Web 1.0 sites are.
 Doing so just requires improving on HTML, and improving on REST.
 
-What does REST have to say about the importance of HTTP methods like "put" and "post"?
-Not much, it turns out, and what little Fielding wrote about them is [often contradictory](https://alexanderpetros.com/triptych/form-http-methods#ref-27).
-But I think HTTP methods are <em>very</em> important to scaling the grammar of interactivity, because
+
+For instance, REST has [very little to say](https://alexanderpetros.com/triptych/form-http-methods#ref-27) about the purpose of HTTP methods like "put" and "post."
+But I think HTTP methods are <em>highly</em> important to scaling the grammar of interactivity, because
 [adding additional HTTP methods lets you describe additional actions on the same resource](https://alexanderpetros.com/triptych/form-http-methods#application-server-permissions).
 That makes it possible to build more complex applications with simple URL schemas, adding to the self-descriptive power of the hypertext while preserving REST's core constraints.
 
@@ -200,6 +196,8 @@ But if I'm wrong, well, at least I'll leave something behind that someone else c
 <!-- So the point of learning REST is exactly what fielding intended it to be: a means of analyzing the -->
 <!-- current architecture of the World Wide Web, and noting its deficiencies. -->
 <!-- It's great that the web platform has applications that deviate wildly from distributed hypermedia. -->
+
+*Thanks to Carson Gross for his feedback on a draft of this article.*
 
 # Notes
 
