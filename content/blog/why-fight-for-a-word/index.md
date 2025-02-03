@@ -2,9 +2,6 @@
 title = "Why Fight for a Word"
 description = "On picking your pedantry battles."
 date = 2025-02-03
-
-[extra]
-hidden=true
 +++
 
 A central concept to HTML, and hypertext theory more generally, is something called Representational State Transfer, a.k.a. REST.
