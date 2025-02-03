@@ -1,5 +1,5 @@
 +++
-title = "Why Fight for a Word"
+title = "Why Insist on a Word"
 description = "On picking your pedantry battles."
 date = 2025-02-03
 +++
