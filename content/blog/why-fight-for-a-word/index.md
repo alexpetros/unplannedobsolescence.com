@@ -1,7 +1,7 @@
 +++
 title = "Why Fight for a Word"
 description = "On picking your pedantry battles."
-date = 2025-01-31
+date = 2025-02-03
 
 [extra]
 hidden=true
@@ -15,9 +15,9 @@ and if you point that out to people, you will be told, repeatedly and sometimes 
 REST has a new meaning now—use words the way people understand them and spare us the lecture.
 
 That criticism is compelling—who among us isn't a little [descriptivist](https://en.wikipedia.org/wiki/Linguistic_description) at heart—but it sometimes the original, more precise meaning of a word is necessary to communicate something that the more common meaning can't capture.
-To move hypertext forward, we have to build on the best work that our predecessors have done in the field, and that's impossible to do without engaging with what they said and how they said it.
+To move hypertext forward, we have to build on the best work of our predecessors in the field, and that's impossible to do without engaging with what they said and how they said it.
 
-This blog isn't really about REST, but I find concrete examples helpful, so, one more time, here's what REST is.
+So here's what REST is, and why it matters that we call it that.
 
 <aside>
 A lot of my readers are also htmx blog readers, which has lots of REST explainers.
@@ -28,17 +28,17 @@ Feel free to <a href="#rest-is-an-intellectual-heritage">skip to the next sectio
 
 REST stands for "Representational State Transfer."
 It's an academic term from [Roy Fielding's PhD dissertation](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm), describing the fundamental constraints that, in Fielding's view, made the World Wide Web a successful distributed system.
-Web browsers don't _always_ follow his constraints ([Fielding is not a fan of cookies](https://ics.uci.edu/~fielding/pubs/dissertation/evaluation.htm#sec_6_3_4_2)), but for the most part they do, and the thesis is about why that works.
+Web browsers don't _always_ follow his constraints ([Fielding is not a fan of cookies](https://ics.uci.edu/~fielding/pubs/dissertation/evaluation.htm#sec_6_3_4_2)), but for the most part they do, and the thesis explains why that works.
 
 Here are the main constraints that make the web RESTful:
 
-* A client-server architectural style
-* Requests are stateless; the client sends all relevant information each time
+* A client-server architecture
+* Stateless requests; the client sends all relevant information each time
 * The server can specify whether a response is cacheable
 * The client and server communicate using a uniform interface
 
 The first three are pretty intuitive.
-The last one is craaaaazzzyyyyy.
+The last one is craaaaazzyyyyy.
 It means that the server can't control which client you're going to use to talk to it, so it has to describe its interface using some standard grammar.
 On the web, that's HTML.
 
@@ -51,7 +51,7 @@ See also: apps on your phone.
 
 That probably seems natural to you now, because HTML exists and it works, but at the time it was revolutionary to imagine that not only would one markup language would be sufficient to describe completely different applications—like banking or mapping or email—but that the server would describe what the user is allowed to do, from scratch, on *every single network request*.
 
-Let's re-use [Carson Gross' bank account example](https://htmx.org/essays/how-did-rest-come-to-mean-the-opposite-of-rest/#the-crux-of-rest-the-uniform-interface-hateoas), because it helped click the concept into place for me:
+Let's re-use the bank account example from ["How Did REST Come To Mean The Opposite of REST?"](https://htmx.org/essays/how-did-rest-come-to-mean-the-opposite-of-rest/#the-crux-of-rest-the-uniform-interface-hateoas) by Carson Gross.
 
 ```html
 <!DOCTYPE html>
@@ -67,7 +67,7 @@ Let's re-use [Carson Gross' bank account example](https://htmx.org/essays/how-di
 ```
 
 That's the HTML page for a bank account.
-The browser, upon receiving that response, will render the following:
+The browser, upon receiving that, will render the following:
 
 <iframe src="/blog/why-fight-for-a-word/bank-account.html" width=300 height=200>
 </iframe>
@@ -141,13 +141,12 @@ The second is that it is correct.
 
 Now, obviously, it is ridiculous to complain that no one understands you and also explicitly disavow the work of explaining it at a more approachable level.
 But if he is in fact speaking exclusively to hypermedia experts, then he's right that using the terms precisely is necessary to convey those concepts correctly.
-Fielding concludes:
 
+Fielding concludes:
 > Fortunately, there are more than enough people who are specialist enough to understand what I have written (even when they disagree with it) and care enough about the subject to explain it to others in more concrete terms.
 
-Got me there, Roy.
-
-Although, I only got here because Leonard Richardson incorporated the ideas from Fielding's thesis into a talk called ["Justice Will Take Us Millions Of Intricate Moves,"](https://www.crummy.com/writing/speaking/2008-QCon/) which broke the ideas down into "a formal vocabulary for talking about what you get when you put HTTP, URIs, and HTML together".
+And he's right, that happened too.
+Leonard Richardson incorporated the ideas from Fielding's thesis into a talk called ["Justice Will Take Us Millions Of Intricate Moves,"](https://www.crummy.com/writing/speaking/2008-QCon/) which broke the ideas down into "a formal vocabulary for talking about what you get when you put HTTP, URIs, and HTML together".
 Martin Fowler saw that talk and explained it in a blog post, formalizing the ["Richardson Maturity Model."](https://martinfowler.com/articles/richardsonMaturityModel.html)
 Carson Gross read Fowler's blog and used the Richardson Maturity Model to explain [how REST came to mean the opposite of REST](https://htmx.org/essays/how-did-rest-come-to-mean-the-opposite-of-rest/).
 
@@ -161,41 +160,24 @@ And REST remains very useful for evaluating the quality of those systems.
 
 <aside>
 Generally speaking, reliable web applications stick as closely to hypertext APIs as possible, because self-description is inherently more resilient than coupling.
+
 </aside>
 
 But the web has evolved to require more complex interactivity.
 I firmly believe its possibly to build that with architectures that are just as sturdy as plain old Web 1.0 sites are.
 Doing so just requires improving on HTML, and improving on REST.
 
-
-For instance, REST has [very little to say](https://alexanderpetros.com/triptych/form-http-methods#ref-27) about the purpose of HTTP methods like "put" and "post."
-But I think HTTP methods are <em>highly</em> important to scaling the grammar of interactivity, because
+For instance, REST has [little to say](https://alexanderpetros.com/triptych/form-http-methods#ref-27) about the purpose of HTTP methods like "put" and "post."
+But I think HTTP methods are <em>very</em> important, because
 [adding additional HTTP methods lets you describe additional actions on the same resource](https://alexanderpetros.com/triptych/form-http-methods#application-server-permissions).
 That makes it possible to build more complex applications with simple URL schemas, adding to the self-descriptive power of the hypertext while preserving REST's core constraints.
 
 So I'm working on that.
-I reading the web specs, the theses, the blog posts of the great web thinkers, learn what they learned, and add on to it.
+I reading the web specs, the theses, and the blog posts of the great web thinkers, learning what they learned, and trying to add on to it.
 I think that I live in the generation where it becomes possible to use those principles to make [web services as durable as bridges](@/blog/building-the-hundred-year-web-service.md).
 We'll see.
 
-But if I'm wrong, well, at least I'll leave something behind that someone else can keep building on.
-
-<!-- It's not that "true REST has never been tried." -->
-<!-- Just the opposite actually. -->
-<!-- You use websites built with RESTful design principles every day. -->
-<!-- Anytime you click a link, it fetches some HTML, and then renders that HTML on a new page—that's REST. -->
-<!-- It's just regular websites. -->
-<!-- [It's easier for developers](@/blog/less-htmx-is-more.md); [it's better for users](@/blog/hard-page-load/index.md); it works really well. -->
-
-<!-- The interesting question is: what _doesn't_ work well with REST? -->
-<!-- Where did Fielding's prescriptions fail, and why? -->
-<!-- If you believe, as I do, that REST constraints aid the development of resilient web services (maybe ones that), then the hypermedia of yesterday and today must adapt to power the web services of tomorrow. -->
-
-<!-- I believe that it can. [And it won't take much](https://alexanderpetros.com/triptych/). -->
-
-<!-- So the point of learning REST is exactly what fielding intended it to be: a means of analyzing the -->
-<!-- current architecture of the World Wide Web, and noting its deficiencies. -->
-<!-- It's great that the web platform has applications that deviate wildly from distributed hypermedia. -->
+But if I'm wrong, well, at least I'm using words that make my work easier to find in the future, whenever the time is right.
 
 *Thanks to Carson Gross for his feedback on a draft of this article.*
 
@@ -207,42 +189,11 @@ But if I'm wrong, well, at least I'll leave something behind that someone else c
 [2021](https://htmx.org/essays/rest-explained/),
 [2022](https://htmx.org/essays/how-did-rest-come-to-mean-the-opposite-of-rest/),
 [2023](https://htmx.org/essays/hateoas/)).
-* The whole notion of a universal grammar is a little hard to wrap one's head around because, well, someone has to agree out-of-band on what that grammar is, which seems to defeat the point.
-For the sake of simplicity, assume here that it's the [web baseline](https://developer.mozilla.org/en-US/blog/baseline-unified-view-stable-web-features/).
-But how and why we agree on that grammar is an important (and somewhat under-developed) concept in REST.
-* I do believe, unfortunately, that at this point the [Richardson Maturity Model](https://martinfowler.com/articles/richardsonMaturityModel.html) impedes our ability to move forward with REST, since it blesses JSON APIs with a sort of "mostly REST" status (Level 2) that is not terribly useful (it's just a JSON API); all of the interesting properties of *representational* state transfer happen at "Level 3."
+* "REST was good idea but it doesn't work in practice" is a very funny talking point to me because RESTful web practices were wildly successful.
+It's the web!
+REST is literally just regular websites.
+REST has a lot of room to improve as an accessible set of guidelines for evaluating the efficacy of distributed hypertext systems, but that's what I'm trying to change.
+* I do believe, unfortunately, that the [Richardson Maturity Model](https://martinfowler.com/articles/richardsonMaturityModel.html) impedes our ability to move forward with REST, since it blesses JSON APIs with a sort of "mostly REST" status (Level 2) that is not terribly useful (it's just a JSON API); all of the interesting properties of *representational* state transfer come with the hypermedia representation (Level 3).
 Fowler more or less acknowledges this in the conclusion.
-
-
-<!-- # Cutting Floor -->
-
-<!-- ## Why REST, specifically, is worth explaining -->
-
-<!-- Once you understand that REST has to be hypertext ("REpresentational" is half the acronym, after all), you have a new conceptual tool for analyzing why some web development tasks are easy and others are hard. -->
-
-<!-- Most people think REST means a JSON API that uses [HTTP Methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) properly. -->
-<!-- Why is that interesting or important? -->
-<!-- It's not. -->
-<!-- It's just a JSON API with some additional grammar. -->
-
-<!-- Deploying applications with heavy client-side logic and state is hard. -->
-<!-- Deploys have to consider how all the existing clients (everyone with the webpage loaded, in a tab or in their cache) will interact with the new server. -->
-<!-- Are you going to invalidate all their clients and force a new download? -->
-<!-- That's going to be disruptive to the user. -->
-<!-- Or maybe continue supporting the old API alongside the new? -->
-<!-- When and how are you going to migrate those clients forward? -->
-
-<!-- These are problems you have because the APIs are not self-describing—each API call relies on client logic to interpret them, and the client needs to change alongside any server changes. -->
-
-<!-- A RESTful web application has a much easier time of it. -->
-<!-- Users who still have the old site loaded click a link, the whole page disappears, and the server has a blank slate upon which to serve them a new page. -->
-<!-- Were they looking at a page that the old server rendered? -->
-<!-- Doesn't matter! -->
-<!-- The new page makes zero assumptions about whatever was there before; -->
-<!-- it doesn't even *know* what was there before. -->
-<!-- As long as the URL is valid, the user will get the expected experience. -->
-
-<!-- That's the power of transferring **the state and its representation as one**. -->
-<!-- It doesn't remove *all* your problems (what about old URLs?), but it removes some of them, and that helps. -->
 
 
