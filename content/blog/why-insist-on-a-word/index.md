@@ -11,7 +11,7 @@ Over at htmx, a lot of the [writing we do](https://htmx.org/essays) is based on 
 and if you point that out to people, you will be told, repeatedly and sometimes quite irately: who cares?
 REST has a new meaning now—use words the way people understand them and spare us the lecture.
 
-That criticism is compelling—who among us isn't a little [descriptivist](https://en.wikipedia.org/wiki/Linguistic_description) at heart—but it sometimes the original, more precise meaning of a word is necessary to communicate something that the more common meaning can't capture.
+That criticism is compelling—who among us isn't a little [descriptivist](https://en.wikipedia.org/wiki/Linguistic_description) at heart—but sometimes the original, more precise meaning of a word is necessary to communicate something that the more common meaning can't capture.
 To move hypertext forward, we have to build on the best work of our predecessors in the field, and that's impossible to do without engaging with what they said and how they said it.
 
 So here's what REST is, and why it matters that we call it that.
@@ -66,7 +66,7 @@ Let's re-use the bank account example from ["How Did REST Come To Mean The Oppos
 That's the HTML page for a bank account.
 The browser, upon receiving that, will render the following:
 
-<iframe src="/blog/why-fight-for-a-word/bank-account.html" width=300 height=200>
+<iframe src="./bank-account.html" width=300 height=200>
 </iframe>
 
 Notice how the API response describes __the current state__ (your bank balance) and __what actions the user can take to alter that state__ (the links) in a format that the user can understand and interact with.
@@ -92,7 +92,7 @@ This is in contrast with a JSON API (commonly, incorrectly, called RESTful), whi
 Why isn't that self-describing?
 Well, here's what the browser will render if you send that.
 
-<iframe src="/blog/why-fight-for-a-word/json-api.json" width=300 height=200>
+<iframe src="./json-api.json" width=300 height=200>
 </iframe>
 
 The client (the browser) doesn't know what to do with any of that information.
@@ -170,7 +170,7 @@ But I think HTTP methods are <em>very</em> important, because
 That makes it possible to build more complex applications with simple URL schemas, adding to the self-descriptive power of the hypertext while preserving REST's core constraints.
 
 So I'm working on that.
-I reading the web specs, the theses, and the blog posts of the great web thinkers, learning what they learned, and trying to add on to it.
+I'm reading the web specs, the theses, and the blog posts of the great web thinkers, learning what they learned, and trying to add on to it.
 I think that I live in the generation where it becomes possible to use those principles to make [web services as durable as bridges](@/blog/building-the-hundred-year-web-service.md).
 We'll see.
 
