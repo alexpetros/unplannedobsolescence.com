@@ -130,7 +130,7 @@ Fielding [publishes a response to this criticism](https://roy.gbiv.com/untangled
 
 > So, when you find it hard to understand what I have written, please don’t think of it as talking above your head or just too philosophical to be worth your time. I am writing this way because I think the subject deserves a particular form of precision. Instead, take the time to look up the terms. Think of it as an opportunity to learn something new, not because I said so, but because it will do you some personal good to better understand the depth of our field. Not just the details of what I wrote, but the background knowledge implied by all the strange terms that I used to write it.
 >
-> Others will try to decipher what I have written in ways that are more direct or applicable to some practical concern of today. I probably won’t, because I am too busy grappling with the next topic, preparing for a conference, writing another standard, traveling to some distant place, or just doing the little things that let me feel I have I earned my paycheck.
+> Others will try to decipher what I have written in ways that are more direct or applicable to some practical concern of today. I probably won’t, because I am too busy grappling with the next topic, preparing for a conference, writing another standard, traveling to some distant place, or just doing the little things that let me feel I have [...] earned my paycheck.
 
 Two things stick out to me about this excerpt.
 The first is that it is wildly pompous.
@@ -161,7 +161,7 @@ Generally speaking, reliable web applications stick as closely to hypertext APIs
 </aside>
 
 But the web has evolved to require more complex interactivity.
-I firmly believe its possibly to build that with architectures that are just as sturdy as plain old Web 1.0 sites are.
+I firmly believe it is possible to build that with architectures that are just as sturdy as plain old Web 1.0 sites are.
 Doing so just requires improving on HTML, and improving on REST.
 
 For instance, REST has [little to say](https://alexanderpetros.com/triptych/form-http-methods#ref-27) about the purpose of HTTP methods like "put" and "post."
