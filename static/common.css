@@ -110,6 +110,10 @@ aside {
   width: 100%;
 }
 
+aside em {
+  font-style: normal;
+}
+
 aside:nth-of-type(odd) {
   right: 3%;
 }
@@ -171,14 +175,38 @@ iframe {
  * https://www.getzola.org/documentation/content/syntax-highlighting/#styling-codeblocks
  */
 pre {
-  padding: 1rem;
+  position: relative;
   font-size: 14px;
-  overflow: auto;
+}
+
+pre[data-name]::before {
+  border-radius: 0.25rem 0.25rem;
+  font-size: 12px;
+  letter-spacing: .05rem;
+  padding: .1rem .5rem;
+  position: absolute;
+  margin-top: 0;
+  width: fit-content;
+  top: -1rem;
+  right: .5rem;
+  /* left: 5.5rem; */
+  /* text-align: right; */
+  content: attr(data-name);
+  background: lightgrey;
+  color: var(--text-color);
+  visibility: visible;
 }
 
 pre[data-linenos] {
   padding: 1rem 0;
 }
+
+pre code {
+  padding: 1rem;
+  display: block;
+  overflow-x: auto;
+}
+
 pre table td {
   padding: 0;
 }
@@ -196,3 +224,4 @@ pre table {
   width: 100%;
   border-collapse: collapse;
 }
+
