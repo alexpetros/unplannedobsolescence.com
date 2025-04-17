@@ -200,7 +200,7 @@ But this is a good one, and it's mostly true: **do not give multiple names to th
 * Software Engineering is an almost entirely abstract practice, so it's not always obvious whether two concepts constitute the same concept—especially since they're all concepts someone made up.
 Properly unplacking *that* requires layers of philosophy that I, unfortunately, do not have ready to go.
 I think Plato is probably the right place to start?
-* I recently has a situation in which my database conventions lost to a more important constraint.
+* I recently had a situation where my database conventions lost to a more important constraint.
 In SQL databases I like to give all primary keys unique names (i.e. `users.user_id` instead of `users.id`), since that lets you take advantage of the `USING` syntax.
 In an ActivityPub application I'm working on, this rule lost to the naming rule, because ActivityPub *does* use [`id` as an identifier](https://www.w3.org/TR/activitypub/#actor-objects) for every possible type of object.
 I figured that out a little late and did go through the effort to write the migration; this turned out to be the right call.
