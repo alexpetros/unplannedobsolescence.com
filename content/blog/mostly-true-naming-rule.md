@@ -1,10 +1,7 @@
 +++
 title = "The Mostly True Naming Rule"
 description = "A common-sense naming convention that usually works."
-date = 2025-04-17
-
-[extra]
-hidden = true
+date = 2025-04-19
 +++
 
 Naming things properly is [very hard to do](https://martinfowler.com/bliki/TwoHardThings.html), so, as programmers, we come up with little rules to help us.
@@ -15,7 +12,7 @@ These rules are often inconsistent.
 * Constants should be all caps in [Java](https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html) but not [Scala](https://docs.scala-lang.org/style/naming-conventions.html#constants-values-variable-and-methods)
 
 And these are all relatively similar programming languages.
-Naming conventions start to diverge wildly when you start talking about languages like SQL, or HTML, or COBOL.
+Naming conventions start to diverge wildly when you start talking about languages like SQL, HTML, or COBOL.
 
 [Reasonable people](https://peps.python.org/pep-0008/#a-foolish-consistency-is-the-hobgoblin-of-little-minds) understand that these rules [are more what you'd call guidelines](https://www.youtube.com/watch?v=k9ojK9Q_ARE), and that being consistent in your conventions is generally the most important thing.
 I do have a naming rule that I like, though, one which is mostly applicable everywhere.
@@ -109,7 +106,40 @@ I think functions and variables are different enough, conceptually, that it does
 But feel free!
 </aside>
 
-## Takeaways
+## Why Names Matter
+
+Unix tools have this idea that text is the universal interface between programs.
+`grep`, `awk`, `find`, `xargs`, and so on are all built to talk to each other via text.
+Code works the same way, and the philosophy originates from the same place—`grep`, for instance, originated as a command in the text editor `ed`.
+
+The longer that I've been doing this, the more I've come to rely on text search as my primary method for navigating codebases.
+That's because it's always available—the program will always described in text.
+If I'm fast at finding things with search, I can navigate anything without much onboarding, even if I'm unfamiliar with the programming language or paradigm.
+
+When I'm going to be working in a programming language long enough, I usually set up an LSP integration, so I can go-to-definition and things like that.
+But even when I have the LSP set up, there are always cases that it simply can't handle, or that require increasingly complex configurations.
+Does the LSP know about the database schema?
+The templating language?
+How all these things connect?
+
+<aside>
+There only language where I would remotely believe that is Java.
+But even then—it's kinda finnicky!
+IntelliJ is usually a sea of red on moderately-complex codebases until I figure out which three settings to toggle.
+</aside>
+
+Nunjucks, the templating engine in this case study, does not have any LSP integrations that I'm aware of (nor does it need one).
+So if a brand new contributor is trying to figure out how the "Individual Gear" list is created, they're gonna have a much easier time if the fuzzy search for "individualgear" turns up a clear cross-section of that idea—from the database schema, to the backend logic, to the HTML template.
+Much better than sending them on a breadcrumb goose chase through my disjointed thought process.
+
+<aside>
+Multiple students (presumably learning React-based web development) have contributed to this project with basically no onboarding help.
+</aside>
+
+Clear ideas beget clear names.
+If you're having trouble keeping consistent, it's a sign that you need to take a second to think through your plans.
+
+## How Not To Rename Things
 
 Codebases, like the rings on a tree, reflect the varying conditions that produced them over time.
 For this application:
@@ -122,7 +152,7 @@ So here's a couple of the knots.
 
 ### If you're not willing to change it everywhere, don't change it anywhere
 
-One lesson from this case study is not to switch between "individual" and "member," at random.
+One lesson from this case study is to not randomly switch between "individual" and "member,"
 That happened because I wanted to change what the thing was called, but didn't feel like doing the migrations and grepping required to do it properly.
 It's reasonable to change the name, it's reasonable not to change the name—but pick one.
 Otherwise: [squish like grape](https://www.youtube.com/watch?v=dhAJ2PL3_XY).
@@ -165,7 +195,7 @@ As much as possible, `first_name` should always be `first_name`.
 
 Many ORMs (the libraries that translate database queries into application logic) will perform a casing translation for you (see: [Hibernate](https://www.baeldung.com/hibernate-naming-strategy), [Sequelize](https://sequelize.org/docs/v6/other-topics/naming-strategies/)).
 This, too, is an opportunity for strange bugs, in which queries fail because the casing translation doesn't work the way you, or the ORM, expected.
-It's an obvious error once you see it, but reading through strange, auto-generated SQL (if the stack trace even includes that by default), is a chore.
+It's an obvious error once you see it, but reading through strange, auto-generated SQL (if the stack trace even includes that by default) is a chore.
 
 <aside>I picked Hibernate and Sequelize as examples because I got hit with this exact problem in both of those ORMs.</aside>
 
@@ -188,21 +218,17 @@ Java is the language that most tempts you to come up with abbreviated names for 
 Java also has such great tooling that it's easy to tell yourself that code inspection will never fail to find the thing you're looking for.
 Write the whole thing out and your future self will thank you while typing CMD+SHIFT+F into IntelliJ.
 
-## Conclusion
-
-I'm confident there are situations when it's wise to assign multiple names to the same concept.
-As I lead with, there simply aren't any hard rules in coding.
-
-But this is a good one, and it's mostly true: **do not give multiple names to the same thing**.
-
 # Notes
 
-* Software Engineering is an almost entirely abstract practice, so it's not always obvious whether two concepts constitute the same concept—especially since they're all concepts someone made up.
+* Software Engineering is an almost entirely abstract practice, so it's not always obvious whether two concepts constitute the same concept—they're all just concepts someone made up.
 Properly unplacking *that* requires layers of philosophy that I, unfortunately, do not have ready to go.
 I think Plato is probably the right place to start?
 * I recently had a situation where my database conventions lost to a more important constraint.
 In SQL databases I like to give all primary keys unique names (i.e. `users.user_id` instead of `users.id`), since that lets you take advantage of the `USING` syntax.
-In an ActivityPub application I'm working on, this rule lost to the naming rule, because ActivityPub *does* use [`id` as an identifier](https://www.w3.org/TR/activitypub/#actor-objects) for every possible type of object.
+In an ActivityPub application I'm working on, this rule lost to the naming rule, because ActivityPub uses [`id` as an identifier](https://www.w3.org/TR/activitypub/#actor-objects) for every possible type of object.
 I figured that out a little late and did go through the effort to write the migration; this turned out to be the right call.
-* I'm mildly curious if anyone will respond to this by saying that they've never searched their codebase for an identifier, preferring instead to rely on LSP go-to-definition or (*sigh*) hoping the AI tool won't miss anything.
-Even if that's true, text is the universal interface through which we interact with almost all code; navigating code at that level (as text) is an essential skill that makes you comfortable even in unfamiliar languages and environments.
+* In a different project, I used go and [templ](https://templ.guide/), because I met Adrian at Big Sky Dev Con (he's very nice).
+Templ has very good LSP support, which I took the time to set up.
+However, going to templ definitions took me to templ's auto-generated source code, not the code I was looking to modify.
+Irritating!
+I never bothered to figure out if that could be fixed because searching for usages by text was basically as fast.
