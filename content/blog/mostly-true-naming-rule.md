@@ -220,6 +220,8 @@ Write the whole thing out and your future self will thank you while typing CMD+S
 
 # Notes
 
+*Thanks to [Morry Kolman](https://wttdotm.com) and [Katrina Scialdone](https://unmodernweb.com/) for reading a draft of this blog*.
+
 * Software Engineering is an almost entirely abstract practice, so it's not always obvious whether two concepts constitute the same concept—they're all just concepts someone made up.
 Properly unplacking *that* requires layers of philosophy that I, unfortunately, do not have ready to go.
 I think Plato is probably the right place to start?
