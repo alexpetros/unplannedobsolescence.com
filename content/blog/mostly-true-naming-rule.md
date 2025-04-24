@@ -139,7 +139,7 @@ Multiple students (presumably learning React-based web development) have contrib
 Clear ideas beget clear names.
 If you're having trouble keeping consistent, it's a sign that you need to take a second to think through your plans.
 
-## How Not To Rename Things
+## Tips for staying consistent
 
 Codebases, like the rings on a tree, reflect the varying conditions that produced them over time.
 For this application:
@@ -150,7 +150,7 @@ For this application:
 In general, it's important to have grace for the process by which a codebase grows, which necessarily leaves behind knots and scars as indicators of progress.
 So here's a couple of the knots.
 
-### If you're not willing to change it everywhere, don't change it anywhere
+### If you change it once, change it everywhere
 
 One lesson from this case study is to not randomly switch between "individual" and "member,"
 That happened because I wanted to change what the thing was called, but didn't feel like doing the migrations and grepping required to do it properly.
