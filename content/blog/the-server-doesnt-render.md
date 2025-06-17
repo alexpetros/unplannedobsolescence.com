@@ -1,6 +1,6 @@
 +++
 title = "The Server Doesn't Render Anything"
-description = ""
+description = "You can make a website with nothing but string concatenation."
 date = 2025-06-17
 
 [extra]
@@ -13,8 +13,8 @@ make a server that responds to HTTP requests with HTML text.
 [That is the most durable, cost-effective, and user-friendly way to build a web service](@/blog/hard-page-load/index.md).
 Most web services should be built this way absent an excellent reason not to.
 
-Upon hearing this, present-day web developers often reply "oh, you like server-side rendering," to which I usually wince and answer "more or less."
-You have to pick your battles when chipping away at a decade of mis-education.
+Upon hearing this, web developers often reply "oh, you like server-side rendering," to which I usually wince and answer "more or less."
+You have to pick your battles when chipping away at a decade of miseducation.
 At least people know what I'm talking about.
 
 But "server-side rendering" is a horrible term.
@@ -122,12 +122,13 @@ Let's drop in on the part where they talk about [measuring text](https://browser
 Okay.
 
 Just getting a couple letters on the page requires layout math that most web developers have never even considered.
-All this is learn-able (that's what the book is for), but web rendering is astoundingly complex.
+All this is learnable (that's what the book is for), but web rendering is astoundingly complex.
 Imagine trying to implement [kerning](https://en.wikipedia.org/wiki/Kerning);
 instead, you get it for free.
 
 The reason not to call HTML text generation "rendering" is because rendering really *is* a difficult, complicated problem, it's just not one the website author ever has to think about.
-The experts have taken care of it and put the required software in every person's pocket.
+Browser engineers have taken care of it.
+The required software in every person's pocket.
 
 All the website author has to do is print text surrounded by tags—no math required.
 
@@ -245,32 +246,62 @@ From this perspective, the HTML API is a software-to-software communication prot
 the software that the server is talking to is the **user's browser**, instead of a client-side JavaScript application.
 The user's browser reads the HTML API, and renders it as a Graphical User Interface (GUI).
 
-## Making real websites
+## The website is the easy part
 
-This is comically basic stuff, but you have to understand: a decade of developers were taught that when you want to make a real website, you need to install React.
-The message was that websites are hard, and React is taking care of the hard parts for you.
-Serious developers use React.
+When making real websites—rather than scripts—you want to use tools that are slightly more advanced than string joins.
+A good place to start is with a [template engine](https://htmx.org/essays/template-fragments/#known-template-fragment-implementations).
+
+Template engines are libraries for generating structured text.
+[Jinja](https://en.wikipedia.org/wiki/Jinja_(template_engine)) is a very common one.
+It lets you build HTML strings with basic control flow, like "for" loops.
+
+```jinja
+<h1>NYC Boroughs</h1>
+<ul>
+  {% for borough in boroughs %}
+  <li>{{ borough }}
+  {% endfor %}
+</ul>
+```
+
+Jinja is cross-platform now, but there are many templating libraries with syntax that feels native to a particular language (e.g. [rust](https://maud.lambda.xyz/), [zig](https://github.com/nektro/zig-pek), [ocaml](https://github.com/yawaramin/dream-html), [common lisp](https://edicl.github.io/html-template/)).
+This is one of the great advantages of starting from "HTML is text"—you can use [whatever programming language you like best](https://htmx.org/essays/hypermedia-on-whatever-youd-like/).
+
+It's important to use templates for professional web development because they are equipped with [secure defaults for escaping user-generated content](https://htmx.org/essays/web-security-basics-with-htmx/#always-use-an-auto-escaping-template-engine). (Essentially all content you dynamically insert into an HTML document should be escaped.)
+They also have [nice affordances](https://htmx.org/essays/template-fragments/) for code re-use.
+
+One of the best things about templates, however, is that they are *easy to understand*.
+They are a highly straightfoward automation for building text output.
+If text is missing, or escaped improperly, or in the wrong place, it's usually quite simple to debug why.
+
+These days, [ReactJS supports HTML APIs](https://react.dev/reference/rsc/server-components), but [a tremendously complicated architecture](https://overreacted.io/jsx-over-the-wire) is required to do so.
+React essentially transforms all your UX logic into [progressively-loaded JSON](https://overreacted.io/progressive-json/) and then back into HTML;
+it's HTML generation with a bunch of additional intermediate steps.
+Why do at all that when you could just generate the HTML in the first place?
+
+> React Server Components are the React team’s answer to the question that plagued the team throughout the 2010s. “How to do data fetching in React?”
+
+Because you [want to use React](https://overreacted.io/one-roundtrip-per-navigation/#rsc).
+
+If you love React and love using it—by all means.
+Just don't mistake the complexity of React Server Components for complexity that is inherent to the web platform.
+Without the requirement to use React, a stateless hypertext API ([also known as a REST API](https://htmx.org/essays/how-did-rest-come-to-mean-the-opposite-of-rest/)), can achieve similar ([better?](https://infrequently.org/2023/02/the-market-for-lemons/)) performance, without that complexity.
 
 Websites are not hard.
-There are many pitfalls to building a dynamic web service with logins, databases, user-generated content, and all that—this is a profession, after all—but the website part, the expression of your server's data as an interface in the user's browser, is quite easy.
+There are many pitfalls to building a dynamic web service with logins, databases, user-generated content, and all that (it's a professional skillset).
+The website part, however, the expression of your server's data as an interface to be rendered by the user's browser, is quite easy.
 You really can do it with almost no specialized tools.
 
-It's important to understand this.
-Not because of gimmicks like building a `<ul>` with string joins, but because it enables you to deploy simpler tools to accomplish more powerful things.
+After all, it's basically just string joins.
 
-<aside>The gimmicks are fun too.</aside>
-
-Instead of React, try HTML APIs with a [template engine](https://htmx.org/essays/template-fragments/#known-template-fragment-implementations).
-They're [universally available](https://htmx.org/essays/hypermedia-on-whatever-youd-like/) (often with semantics that fit your [favorite](https://github.com/nektro/zig-pek) [niche](https://aantron.github.io/dream/#templates) [language](https://edicl.github.io/html-template/)),
-have [helpful affordances](https://htmx.org/essays/template-fragments/) for API code re-use,
-and are equipped with [secure defaults for user-generated content](https://htmx.org/essays/web-security-basics-with-htmx/#always-use-an-auto-escaping-template-engine).
-And the dramatically simpler technology is dramatically easier to debug.
-
-After all, they're basically just doing string joins.
+*Thanks to [Meghan Denny](https://mlog.nektro.net/) and Carson Gross for their feedback on drafts of this post.*
 
 # Notes
 
+* A lot of Dan Abramov's writing is very insightful—["Progressive JSON"](https://overreacted.io/progressive-json/) in particular is worth a read.
+* Template engines can have [static type checking](https://templ.guide/) too.
+* While I will never understand the mind of the person who wants to build web applications in prolog, [they are among us](https://www.metalevel.at/prolog/web), and they've built the tooling for it.
 * In experience, React advocates are quite defensive about the idea that anyone has ever suggested React was necessary for use-cases where a simple `<form>` would do.
 I don't want to tilt at strawmen, so I'll just say that I'm aware of that perspective, and I don't think it's true.
-* All the examples in this blog are static text, but if you want interactivity: `<a>`, `<button>`, `<script>`, and so on.
-* People who learned web development prior to ~2016 have no trouble with this concept. I usually just say "it's like Rails," or "it's Java Server Pages."
+* All the examples in this blog are static text, but interactivity is just a `<a>`, `<button>`, or `<script>` tag away.
+* People who learned web development prior to ~2016 have no trouble with this concept. I usually just say "it's like [Rails](https://guides.rubyonrails.org/layouts_and_rendering.html)," or "it's [Java Server Pages](https://en.wikipedia.org/wiki/Jakarta_Server_Pages)." (If you're building in Java today though, check out [Thymeleaf](https://www.thymeleaf.org/).)
