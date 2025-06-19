@@ -2,9 +2,6 @@
 title = "The Server Doesn't Render Anything"
 description = "You can make a website with nothing but string concatenation."
 date = 2025-06-17
-
-[extra]
-hidden = true
 +++
 
 
@@ -122,7 +119,7 @@ Let's drop in on the part where they talk about [measuring text](https://browser
 Okay.
 
 Just getting a couple letters on the page requires layout math that most web developers have never even considered.
-All this is learnable (that's what the book is for), but web rendering is astoundingly complex.
+All this is learnable (that's what the book is for), but web rendering is [astoundingly complex](https://blog.hypersect.com/improving-the-font-pipeline/).
 Imagine trying to implement [kerning](https://en.wikipedia.org/wiki/Kerning);
 instead, you get it for free.
 
@@ -150,7 +147,7 @@ boroughs = [
 # Using simple string operations,
 # we can express this list as HTML
 LIST = "<li>".join(boroughs)
-WEBPAGE = "<h1>NYC Boroughs</h1><ul><li>" + LIST + "<ul>"
+WEBPAGE = "<h1>NYC Boroughs</h1><ul><li>" + LIST + "</ul>"
 
 ```
 
@@ -161,10 +158,10 @@ Learn a couple HTML elements and you can use basic string operations to build an
 The resulting text isn't very pretty outside the browser, but inside the browser, it gets the job done.
 
 ```html
-<h1>NYC Boroughs</h1><ul><li>The Bronx<li>Manhattan<li>Staten Island<li>Brooklyn<li>Queens</ul>
+<h1>NYC Boroughs</h1><ul><li>The Bronx<li>Manhattan<li>Brooklyn<li>Queens<li>Staten Island</ul>
 ```
 
-<iframe style="height: 250px" srcdoc="<h1>NYC Boroughs</h1><ul><li>The Bronx<li>Manhattan<li>Staten Island<li>Brooklyn<li>Queens</ul>"></iframe>
+<iframe style="height: 250px" srcdoc="<h1>NYC Boroughs</h1><ul><li>The Bronx<li>Manhattan<li>Brooklyn<li>Queens<li>Staten Island</ul>"></iframe>
 
 You could, of course, choose to express the same dataset as JSON, using the same techniques.
 
@@ -215,9 +212,9 @@ Take a look at the NYC Boroughs list in both JSON and HTML, side-by-side.
 <ul>
   <li>The Bronx
   <li>Manhattan
-  <li>Staten Island
   <li>Brooklyn
   <li>Queens
+  <li>Staten Island
 </ul>
 ```
 
@@ -235,7 +232,7 @@ Take a look at the NYC Boroughs list in both JSON and HTML, side-by-side.
 
 Neither of these is actually intended to be read by the end-user. The end-user is supposed to see a formatted list!
 
-<iframe style="height: 250px" srcdoc="<h1>NYC Boroughs</h1><ul><li>The Bronx<li>Manhattan<li>Staten Island<li>Brooklyn<li>Queens</ul>"></iframe>
+<iframe style="height: 250px" srcdoc="<h1>NYC Boroughs</h1><ul><li>The Bronx<li>Manhattan<li>Brooklyn<li>Queens<li>Staten Island</ul>"></iframe>
 
 HTML is a hypermedia format, so it contains structured data *and* a standard interface that the browser can render.
 JSON APIs only encode the data; they lack the representation.
@@ -271,7 +268,7 @@ It's important to use templates for professional web development because they ar
 They also have [nice affordances](https://htmx.org/essays/template-fragments/) for code re-use.
 
 One of the best things about templates, however, is that they are *easy to understand*.
-They are a highly straightfoward automation for building text output.
+They are a straightfoward, stateless automation for building text output.
 If text is missing, or escaped improperly, or in the wrong place, it's usually quite simple to debug why.
 
 These days, [ReactJS supports HTML APIs](https://react.dev/reference/rsc/server-components), but [a tremendously complicated architecture](https://overreacted.io/jsx-over-the-wire) is required to do so.
