@@ -14,6 +14,8 @@ iframe {
 My [UtahJS](https://utahjs.com/) talk, ["Building the Hundred-Year Web Service"](https://www.youtube.com/watch?v=lASLZ9TgXyc), was put online this week!
 It's about how to build software infrastructure that lasts a very long time.
 
+<!-- more -->
+
 If you're not a software engineer (very unlikely that you're reading this blog if so, but it's possible) the first 11 minutes of the talk are non-technical, and have some insights about the future of the internet that I hope to expand on soon, in other contexts.
 So it's worth watching up until that point, before I start explaining to web developers how I think they should be making web services.
 

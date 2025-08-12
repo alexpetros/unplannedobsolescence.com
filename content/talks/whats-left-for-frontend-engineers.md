@@ -13,6 +13,8 @@ iframe {
 
 I went back to Bozeman!
 
+<!-- more -->
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/z7M2inHiT4Y?si=FVOp0xVAx2lUSuem" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <!-- A couple months ago <a href="https://deniz.aksimsek.tr/en/">Deniz Akşimşek</a> made an offhand comment to me: -->
