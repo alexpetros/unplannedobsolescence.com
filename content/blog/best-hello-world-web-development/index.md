@@ -4,8 +4,11 @@ description = "PHP is still one of the best ways to get started on the web."
 date = 2024-02-29
 +++
 
+<!-- more -->
+
 ## The Classic Hello World
 Here's how you make a webpage that says "Hello World" in PHP:
+
 
 ```php
 Hello World

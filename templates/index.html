@@ -12,17 +12,32 @@
 {% block content %}
 {% set blog_section = get_section(path="blog/_index.md") %}
 
-<div class=subheader>I'm Alex Petros and this is my blog about trying to write software that doesn't rot.</div>
-<h1>Recent posts</h1>
-<ul class=blog-list>
-  {% for page in blog_section.pages %}
+<div class=subheader>
+  I'm Alex Petros and this is my blog about trying to write software that doesn't rot.
+</div>
+
+<h1>Recent Blogs</h1>
+
+<main class="homepage-list">
+  {% for page in blog_section.pages | slice(end=10) %}
   {%- if not page.extra or page.extra.hidden != true %}
-  <li>
-    <time datetime={{page.date}}>{{ page.date | date(format="%b %d, %Y") }}</time>
-    <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
-  </li>
+  <article>
+    <h2><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h2>
+    <time datetime={{page.date}}>
+      {{ page.date | date(format="%b %d, %Y") }}
+    </time>
+    <section class=content>
+    {{ page.summary | safe }}
+    </section>
+  </article>
+
   {% endif %}
   {% endfor %}
-</ul>
+
+  <hr>
+
+  <p><a href="/blog">See all blogs</a></p>
+</main>
+
 {% endblock content %}
 

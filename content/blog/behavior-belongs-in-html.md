@@ -8,6 +8,8 @@ date = 2023-12-11
 
 When you click the button below, it's going to show you a little message.
 
+<!-- more -->
+
 <button onclick="alert('I was clicked!')">Click me</button>
 
 Showing a pop-up when the user clicks a button isn't something the button supports on its own; you

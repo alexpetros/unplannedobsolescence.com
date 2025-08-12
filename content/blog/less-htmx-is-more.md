@@ -13,6 +13,7 @@ Pretty good!
 Like any new tool, especially a tool that got popular [as quickly as htmx](https://risingstars.js.org/2023/en#section-framework), there are differing schools of thought on how best to use it.
 My approach—which I believe necessary to achieve the results described above—requires you to internalize something that htmx certainly hints at, but doesn't enforce: use plain HTML *wherever possible*.
 
+<!-- more -->
 Once you get the hang of it, htmx starts pushing you in this direction anyway, and you start reaching for htmx less and less.
 It requires a mindset shift though, especially if you're not accustomed to [building page behavior with HTML features](@/blog/behavior-belongs-in-html.md).
 

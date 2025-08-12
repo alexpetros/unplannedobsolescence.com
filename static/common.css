@@ -83,23 +83,47 @@ header ul li {
   margin-right: 1rem;
 }
 
+.homepage-list {
+  padding-left: 0;
+
+  article {
+    margin: 2rem 0;
+  }
+
+  time {
+    font-family: monospace;
+  }
+}
+
 .blog-list {
   padding-left: 0;
+
+  a {
+    display: inline-block;
+  }
+
+  time {
+    font-family: monospace;
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin: .5rem 0;
+  }
 }
 
-.blog-list a {
-  display: inline-block;
+@media (max-width: 800px) {
+  .blog-list li {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-list a {
+    order: -1;
+  }
 }
 
-.blog-list time {
-  font-family: monospace;
-}
 
-.blog-list li {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  margin: 5px 0;
-}
 
 aside {
   border: 2px var(--aside-color) dotted;

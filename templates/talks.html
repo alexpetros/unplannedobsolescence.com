@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>
+  {{ section.title }}
+</h1>
+
+<ul class=blog-list>
+  {% for page in section.pages %}
+  {%- if not page.extra or page.extra.hidden != true %}
+  <li>
+    <time datetime={{page.date}}>{{ page.date | date(format="%b %d, %Y") }}</time>
+    <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
+  </li>
+  {% endif %}
+  {% endfor %}
+</ul>
+
+{% endblock content %}

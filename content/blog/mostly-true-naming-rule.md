@@ -7,6 +7,8 @@ date = 2025-04-19
 Naming things properly is [very hard to do](https://martinfowler.com/bliki/TwoHardThings.html), so, as programmers, we come up with little rules to help us.
 These rules are often inconsistent.
 
+<!-- more -->
+
 * Variables should be snake case (e.g. `last_name`) in [Python](https://peps.python.org/pep-0008/#function-and-variable-names) but camel case (e.g. `lastName`) in [JavaScript](https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Writing_style_guide/Code_style_guide/JavaScript)
 * Names should be snake case in Python, except [classes](https://peps.python.org/pep-0008/#class-names) and [exceptions](https://peps.python.org/pep-0008/#exception-names), which are camel case
 * Constants should be all caps in [Java](https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html) but not [Scala](https://docs.scala-lang.org/style/naming-conventions.html#constants-values-variable-and-methods)
@@ -144,7 +146,7 @@ If you're having trouble keeping consistent, it's a sign that you need to take a
 Codebases, like the rings on a tree, reflect the varying conditions that produced them over time.
 For this application:
 
-1. I was re-writing an existing MongoDB + ReactJS app to [SQLite + htmx](@/blog/building-the-hundred-year-web-service.md)
+1. I was re-writing an existing MongoDB + ReactJS app to [SQLite + htmx](@/talks/building-the-hundred-year-web-service.md)
 2. This was my first time doing #1 and I was learning patterns for it as I progressed
 
 In general, it's important to have grace for the process by which a codebase grows, which necessarily leaves behind knots and scars as indicators of progress.

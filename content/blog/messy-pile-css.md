@@ -4,8 +4,9 @@ description = "Better CSS leads to better HTML"
 date = 2024-08-01
 +++
 
-A couple months ago I was sitting next to [Ivy Wong](https://ivywong.dev) and I saw them working on
-a dropdown menu so cute that I immediately asked how they did it.
+A couple months ago I was sitting next to [Ivy Wong](https://ivywong.dev) and I saw them working on a dropdown menu so cute that I immediately asked how they did it.
+
+<!-- more -->
 
 It looked something like this:
 

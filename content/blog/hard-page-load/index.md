@@ -8,10 +8,13 @@ While I'm not going to settle the Single-Page Web Application (SPA) debate in a 
 one claim about SPAs that routinely goes unchallenged, and it drives me nuts: that users prefer
 them because of the "modern," responsive feel.
 
+<!-- more -->
+
 SPAs achieve their signature feel using partial page replacement: adding or removing DOM elements
 instead of loading a new page. Partial page replacement is a very useful feature—I'm [working on an
 HTML standards proposal](https://alexanderpetros.com/triptych/) for it right now—but SPAs typically
 use them for *everything*, including page navigation, which causes a lot of problems.
+
 
 The way this works is that rather than letting the browser load a new page when the user clicks an
 `<a>` tag, SPAs simulate page navigation by fetching with JavaScript, updating the page, and using

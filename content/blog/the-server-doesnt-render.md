@@ -7,17 +7,21 @@ date = 2025-06-17
 
 When I advise people on how they should structure a web service, I always start from the same place:
 make a server that responds to HTTP requests with HTML text.
+<!-- more -->
 [That is the most durable, cost-effective, and user-friendly way to build a web service](@/blog/hard-page-load/index.md).
 Most web services should be built this way absent an excellent reason not to.
+
 
 Upon hearing this, web developers often reply "oh, you like server-side rendering," to which I usually wince and answer "more or less."
 You have to pick your battles when chipping away at a decade of miseducation.
 At least people know what I'm talking about.
 
+
 But "server-side rendering" is a horrible term.
 It implies that the server is not just doing *more* work, but doing *hard* work, work that's best left to the experts.
 None of this is true.
 You, too, can do server-side "rendering," with essentially no effort, in whatever programming language you prefer.
+
 
 Once you understand that, you'll start to see the web the way I do: as the simplest, easiest, and most powerful interface for computation ever created.
 

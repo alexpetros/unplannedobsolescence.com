@@ -1,7 +1,7 @@
 +++
-title = "Blog"
+title = "Talks"
 sort_by = "date"
-template = "blog.html"
+template = "talks.html"
 page_template = "blog-post.html"
 insert_anchor_links = "heading"
 +++

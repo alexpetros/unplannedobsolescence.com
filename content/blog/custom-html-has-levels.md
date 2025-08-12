@@ -6,6 +6,8 @@ date = 2023-12-31
 
 The comment I received most frequently on "[Behavior Belongs in the HTML](@/blog/behavior-belongs-in-html.md)" was: "don't Web Components solve this?"
 
+<!-- more -->
+
 Web Components aren't an interface. They are... well, [a lot of things](https://github.com/WICG/webcomponents/blob/1b75f7516e9901c26f1eb639d929aa82402c2fe0/README.md), including: [the Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM), [HTML templates](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template), and a bunch of JavaScript APIs. But if what you mean is "custom elements," then the answer is no. If you want to customize the behavior of an element, you shouldn't have to wrap it in a new one.
 
 To illustrate, I'm going to use the example that Chris Ferdinandi arrives at in "[HTML Web Components](https://gomakethings.com/html-web-components/)." He uses Web Components to make a form that, when it's submitted, replaces the `#item-list` element with the response body, instead of navigating to a new page:
