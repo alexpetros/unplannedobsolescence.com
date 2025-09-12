@@ -15,28 +15,33 @@
 {% set pages = blog_section.pages | concat(with=talks_section.pages) %}
 
 <div class=subheader>
-  I'm Alex Petros and this is my blog about trying to write software that doesn't rot.
+  I'm Alexander Petros and this is my blog about trying to write software that doesn't rot.
 </div>
 
-<h1>Recent Blogs</h1>
-
-<main class="homepage-list">
-  {% for page in pages | sort(attribute="date") | reverse %}
+<section class="article-list">
+  <h2>Recent</h2>
+  {% for page in pages | sort(attribute="date") | reverse | slice(end=5) %}
   {%- if not page.extra or page.extra.hidden != true %}
   <article>
-    <h2><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h2>
+    <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
     <time datetime={{page.date}}>
       {{ page.date | date(format="%b %d, %Y") }}
     </time>
-    <section class=content>
-    {{ page.summary | safe }}
-    </section>
   </article>
-
   {% endif %}
   {% endfor %}
+</section>
 
-</main>
+<section class="article-list">
+  <h2>Popular</h2>
+  <article><a href="/blog/hard-page-load">Who's Afraid of a Hard Page Load?</a></article>
+  <article><a href="/talks/building-the-hundred-year-web-service/">Building the Hundred-Year Web Service</a></article>
+  <article><a href="/blog/less-htmx-is-more">Less htmx is More</a></article>
+  <article><a href="/talks/life-and-death-of-htmx/">The Life & Death of htmx</a></article>
+  <article><a href="/blog/behavior-belongs-in-html/">Behavior Belongs in the HTML</a></article>
+
+
+</section>
 
 {% endblock content %}
 
