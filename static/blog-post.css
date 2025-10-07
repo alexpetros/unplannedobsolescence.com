@@ -92,6 +92,34 @@ iframe {
   margin: 10px auto;
 }
 
+/* Thanks nektro! */
+table.as-grid-table {
+  display: grid;
+  border-collapse: collapse;
+
+  & tbody {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / 4;
+
+    & tr {
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: 1 / 4;
+
+      & th {
+        text-align: left;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+      }
+
+      & td {
+        display: block;
+      }
+    }
+  }
+}
+
 /*
  * Zola said to include this to make code blocks look good
  * https://www.getzola.org/documentation/content/syntax-highlighting/#styling-codeblocks
