@@ -28,8 +28,9 @@ aside {
   box-sizing: border-box;
   color:  var(--aside-color);
   font-style: italic;
-  padding: 10px;
+  padding: .5rem;
   width: 100%;
+  margin: 1rem 0;
 }
 
 aside em {
@@ -83,6 +84,7 @@ cite.article::after {
 }
 
 code:not(pre code) {
+  border-radius: 3px;
   background-color: lightgray;
   padding: 0 .25rem;
 }
@@ -96,6 +98,7 @@ iframe {
 table.as-grid-table {
   display: grid;
   border-collapse: collapse;
+  margin: 0 1.3rem;
 
   & tbody {
     display: grid;
