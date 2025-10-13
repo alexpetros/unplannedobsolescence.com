@@ -53,6 +53,10 @@ aside:nth-of-type(even) {
     /* minor hack until I can figure out how to position it relative to the previous paragraph. */
     margin-top: -5rem;
   }
+
+  table.as-grid-table {
+    margin: 0 1.3rem;
+  }
 }
 
 blockquote {
@@ -98,28 +102,32 @@ iframe {
 table.as-grid-table {
   display: grid;
   border-collapse: collapse;
-  margin: 0 1.3rem;
 
-  & tbody {
+  tbody {
     display: grid;
     grid-template-columns: subgrid;
     grid-column: 1 / 4;
 
-    & tr {
+    tr {
       display: grid;
       grid-template-columns: subgrid;
       grid-column: 1 / 4;
+      column-gap: .5rem;
 
-      & th {
+      th {
         text-align: left;
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
       }
 
-      & td {
+      td {
         display: block;
       }
     }
+
+    tr:first-child {
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+    }
+
   }
 }
 
