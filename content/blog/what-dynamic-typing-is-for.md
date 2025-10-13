@@ -182,11 +182,11 @@ In theory, this reduces the number of languages that one needs to learn to work 
 </table>
 
 The problem is that it usually doesn't work.
-Expressing DSLs in general-purpose programming syntax does not free you from having to understand the DSL—you can't actually use `styled-components` without understanding CSS.
-So now a prospective developer has to both understand CSS and a new CSS syntax that only applies to the `styled-components` library.
+Expressing DSLs in general-purpose programming syntax does not free you from having to understand the DSL—you can't actually use styled-components without understanding CSS.
+So now a prospective developer has to both understand CSS and a new CSS syntax that only applies to the styled-components library.
 
 <aside>
-I got hit with that library in a job interview a while back, and I spent five minutes trying to figure out how to express <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator">child selectors</a> before the interviewer took pity on me and was like "don't worry, I can tell you know CSS works."
+I got hit with that library in a job interview a while back, and I spent five minutes trying to figure out how to express <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator">child selectors</a> before the interviewer took pity on me and was like "don't worry, I can tell you know CSS."
 Which I do!
 Let me write it!
 </aside>
@@ -226,8 +226,8 @@ const Button = styled.button({
 ```
 
 Plus, you've also tossed the web's backwards compatibility guarantees.
-I picked `styled-components` because it's very popular.
-If you built a website with `styled-components` in [2019](https://styled-components.com/releases#v4.4.0), didn't think about the styles for a couple years, and then tried to upgrade it in [2023](https://styled-components.com/releases#v6.0.2), you would be two major versions behind.
+I picked styled-components because it's very popular.
+If you built a website with styled-components in [2019](https://styled-components.com/releases#v4.4.0), didn't think about the styles for a couple years, and then tried to upgrade it in [2023](https://styled-components.com/releases#v6.0.2), you would be two major versions behind.
 Good luck with the [migration guide](https://styled-components.com/docs/faqs#what-do-i-need-to-do-to-migrate-to-v6).
 CSS files, on the other hand, [are evergreen](https://htmx.org/essays/no-build-step/).
 
@@ -249,7 +249,7 @@ that's a core value proposition for [hypermedia-driven development](https://htmx
 I happen to like JavaScript though, and sometimes write services in NodeJS, so, at least in theory, I could still use JSX if I wanted to.
 
 What I prefer, and what I encourage hypermedia-curious NodeJS developers to do, is use a [template engine](https://htmx.org/essays/web-security-basics-with-htmx/#always-use-an-auto-escaping-template-engine).
-This bit of production code I wrote for an events company uses [Nunjucks](https://mozilla.github.io/nunjucks/), template engine [I once (fondly!) called "abandonware" on stage](@/talks/building-the-hundred-year-web-service.md).
+This bit of production code I wrote for an events company uses [Nunjucks](https://mozilla.github.io/nunjucks/), a template engine [I once (fondly!) called "abandonware" on stage](@/talks/building-the-hundred-year-web-service.md).
 Other libraries that support [Jinja](https://jinja.palletsprojects.com/en/stable/)-like syntax are available in pretty much any programming language.
 ```html
 <h2>Upcoming Events</h2>
