@@ -1,10 +1,7 @@
 +++
-title = "What Dynamic Programming Languages are For"
-description = ""
+title = "What Dynamic Typing Is For"
+description = "How dynamic typing makes DSL-driven development easy, and what can be done to bring static typing up to par."
 date = 2025-10-12
-
-[extra]
-hidden=true
 +++
 
 <style>
