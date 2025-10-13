@@ -7,6 +7,12 @@ date = 2025-10-12
 hidden=true
 +++
 
+<style>
+.languages {
+  grid-template-columns: 1fr 1fr fit-content(60%);
+}
+</style>
+
 *Unplanned Obsolescence* is a blog is about writing maintainable, long-lasting software.
 It also frequently touts—or is, at the very least, not inherently hostile to—writing software in dynamically-typed programming languages.
 
@@ -50,9 +56,9 @@ There's no way to know without looking at the implementation (or, less reliably,
 That doesn't mean there isn't an answer!
 A request with no `"token"` cookie [will return `undefined`](https://expressjs.com/en/4x/api.html#req.cookies).
 That results in a `get_user_by_token(undefined)` call, which returns `undefined` (the function checks for that).
-`undefined` is a [falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) value in JavaScript, so the conditional evaluates to false and throws an AuthorizationError.
+`undefined` is a [falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) value in JavaScript, so the conditional evaluates to false and throws an `AuthorizationError`.
 
-The code does work and it's very readable, but you have to do a fair amount of digging to ensure that it works reliably.
+The code works and it's very readable, but you have to do a fair amount of digging to ensure that it works reliably.
 That's a cost that gets paid in the future, anytime the "missing token" code path needs to be understood or modified.
 That cost reduces the maintainability of the service.
 
@@ -95,12 +101,12 @@ Putting aside the question of which one I prefer to write, if I find myself in c
 Conceding that, *ceteris paribus*, static typing is good for software maintainability, one of the reasons that I like dynamically-typed languages is that they encourage a style I find important for web services in particular: writing to the DSL.
 
 A DSL (domain-specific language) is programming language that's designed for a specific problem area.
-This is in contrast with what we typically call "general-purpose programming languages" (e.g. Java, JavaScript, Python, Rust), which can reasonably applied to most programming tasks.
+This is in contrast to what we typically call "general-purpose programming languages" (e.g. Java, JavaScript, Python, Rust), which can reasonably applied to most programming tasks.
 
 Most web services have to contend with at least three DSLs: HTML, CSS, and SQL.
 A web service with a JavaScript backend has to interface with, at a *minimum*, four programming languages: one general-purpose and three DSLs.
 
-<table class="as-grid-table">
+<table class="as-grid-table languages">
   <tr><th>Language    <th>DSL? <th>Purpose
   <tr><td>HTML        <td>Yes  <td>Website layout <a href="/blog/behavior-belongs-in-html">and functionality</a>
   <tr><td>SQL         <td>Yes  <td>Data persistence and retrieval
@@ -110,7 +116,7 @@ A web service with a JavaScript backend has to interface with, at a *minimum*, f
 
 If you have the audacity to use [something other than JavaScript](https://htmx.org/essays/hypermedia-on-whatever-youd-like/) on the server, then that number goes up to five, because you still need JavaScript to augment HTML.
 
-<table class="as-grid-table">
+<table class="as-grid-table languages">
   <tr><th>Language    <th>DSL? <th>Purpose
   <tr><td>HTML        <td>Yes  <td>Website layout <a href="/blog/behavior-belongs-in-html">and functionality</a>
   <tr><td>SQL         <td>Yes  <td>Data persistence and retrieval
@@ -122,7 +128,9 @@ If you have the audacity to use [something other than JavaScript](https://htmx.o
 That's a lot of languages!
 How are we supposed to find developers who can do *all this stuff*?
 
-## Expanding the bounds
+## Two Approaches to Language Proliferation
+
+### Expanding The Bounds
 
 The answer that a big chunk of the industry settled on is to build APIs so that the domains of the DSLs can be described in the general-purpose programming language.
 
@@ -170,7 +178,7 @@ This is a tactic I call "expanding the bounds" of the programming language.
 In an effort to reduce complexity, you try to make one language express everything about the project.
 In theory, this reduces the number of languages that one needs to learn to work on it.
 
-<table class="as-grid-table">
+<table class="as-grid-table languages">
   <tr><th>Language    <th>DSL? <th>Purpose
   <tr><td>SQL         <td>Yes  <td>Data persistence and retrieval
   <tr><td>JavaScript  <td>No   <td>Server logic, website layout, <br>website functionality, and website design
@@ -186,7 +194,7 @@ Which I do!
 Let me write it!
 </aside>
 
-<table class="as-grid-table">
+<table class="as-grid-table languages">
   <tr><th>Language                <th>DSL? <th>Purpose
   <tr><td>HTML                    <td>Yes  <td>Website layout and functionality
   <tr><td>JSX                     <td>Yes  <td>Website layout and functionality
@@ -229,7 +237,7 @@ CSS files, on the other hand, [are evergreen](https://htmx.org/essays/no-build-s
 Of course, one of the reasons for introducing JSX or CSS-in-JS is that they add functionality, like dynamic population of values.
 That's an important problem, but I prefer a different solution.
 
-## Building Good Boundaries
+### Building Good Boundaries
 
 Instead of expanding the bounds of the general-purpose language so that it can express everything, another strategy is to build strong and simple API boundaries between the DSLs.
 Some benefits of this approach include:
@@ -239,14 +247,13 @@ Some benefits of this approach include:
 1. The skills gained by writing DSLs are more more transferable
 
 The following example uses a JavaScript backend.
-A lot of enthusiasm for htmx is driven by communities like [Django](https://forum.djangoproject.com/t/adding-template-fragments-or-partials-for-the-dtl/21500) and [Spring Boot](https://github.com/wimdeblauwe/htmx-spring-boot) developers who are thrilled to no longer be bolting on a JavaScript frontend to their website;
+A lot of enthusiasm for [htmx](https://htmx.org/) (the software library I co-maintain) is driven by communities like [Django](https://forum.djangoproject.com/t/adding-template-fragments-or-partials-for-the-dtl/21500) and [Spring Boot](https://github.com/wimdeblauwe/htmx-spring-boot) developers, who are thrilled to no longer be bolting on a JavaScript frontend to their website;
 that's a core value proposition for [hypermedia-driven development](https://htmx.org/essays/hypermedia-driven-applications/).
 I happen to like JavaScript though, and sometimes write services in NodeJS, so, at least in theory, I could still use JSX if I wanted to.
 
-What I prefer, and what I encourage hypermedia-curious Node developers to do, is use a [template engine](https://htmx.org/essays/web-security-basics-with-htmx/#always-use-an-auto-escaping-template-engine).
-Here's a bit of production code I wrote for an events company.
-It uses [Nunjucks](https://mozilla.github.io/nunjucks/), a [Jinja](https://jinja.palletsprojects.com/en/stable/)-like template engine I once (fondly!) [called "abandonware" on stage](@/talks/building-the-hundred-year-web-service.md).
-
+What I prefer, and what I encourage hypermedia-curious NodeJS developers to do, is use a [template engine](https://htmx.org/essays/web-security-basics-with-htmx/#always-use-an-auto-escaping-template-engine).
+This bit of production code I wrote for an events company uses [Nunjucks](https://mozilla.github.io/nunjucks/), template engine [I once (fondly!) called "abandonware" on stage](@/talks/building-the-hundred-year-web-service.md).
+Other libraries that support [Jinja](https://jinja.palletsprojects.com/en/stable/)-like syntax are available in pretty much any programming language.
 ```html
 <h2>Upcoming Events</h2>
 <table>
@@ -290,26 +297,28 @@ This strategy really shines when you start stringing it together with SQL.
 Let's replace that database function call with an actual query, using an interface similar to [`better-sqlite3`](https://github.com/WiseLibs/better-sqlite3).
 
 ```js
-const events = db.all(`
-  SELECT event_id, name location, date, registration_deadline
-  FROM events
-  WHERE date start_date >= date('now')
-  ORDER BY start_date ASC
-`
+function getEvent(req) {
+  const events = db.all(`
+    SELECT event_id, name location, date, registration_deadline
+    FROM events
+    WHERE date start_date >= date('now')
+    ORDER BY start_date ASC
+  `
 
-req.render('events.html', { events })
+  req.render('events.html', { events })
+}
 ```
 
 I *know* the above code is not everybody's taste, but I think it's marvelous.
 You get to write all parts of the application in the language best suited to each: HTML for the frontend and SQL for the queries.
-And if you need to do any additional logic between the database and the template, you still can.
+And if you need to do any additional logic between the database and the template, JavaScript is still right there.
 
 One result of this style is that it increases the percentage of your service that is specified declaratively.
 The database schema and query are declarative, as is the HTML template.
-Essentially the only imperative code is the glue that moves that query result into the template: two statements in total.
+The only imperative code in the function is the glue that moves that query result into the template: two statements in total.
 
 <aside>
-I'll try to stay focused, but I have to note that declarative languages generally have phenomenal backwards compatibility guarantees, HTML and SQL in particular.
+Declarative languages tend to have better backwards compatibility guarantees, but HTML and SQL in particular are phenomenal in this regard.
 </aside>
 
 Debugging is also dramatically easier.
@@ -336,14 +345,13 @@ You'd rather the bug be a malformatted SQL query or HTML template, because those
 
 When combined with the router-driven style described in [Building The Hundred-Year Web Service](@/talks/building-the-hundred-year-web-service.md),
 you get simple and debuggable web systems.
-Each HTTP request is a relatively isolated function call; it takes some parameters, runs an SQL query, and returns some HTML.
+Each HTTP request is a relatively isolated function call: it takes some parameters, runs an SQL query, and returns some HTML.
 
 In essence, dynamically-typed languages help you write the least amount of server code possible, leaning heavily on the DSLs that define web programming while validating small amounts of server code via means other than static type checking.
 
 ## Raising the Inference Bar
 
-
-To finish, let's take a look at the equivalent code in Rust, using [rusqlite](https://github.com/rusqlite/rusqlite):
+To finish, let's take a look at the equivalent code in Rust, using [rusqlite](https://github.com/rusqlite/rusqlite), [minjina](https://github.com/mitsuhiko/minijinja), and a quasi-hypothetical server implementation:
 
 ```rust
 #[derive(Serialize, Deserialize)]
@@ -383,7 +391,7 @@ The important part is that this blows.
 
 Most of the complexity comes from the need to tell Rust exactly how to unpack that SQL result into a typed data structure, and then into an HTML template.
 The `Event` struct is declared so that Rust knows to expect a `String` for `event_id`.
-The derive macros create a representation that mininja knows how to serialize.
+The derive macros create a representation that minijinja knows how to serialize.
 It's tedious.
 
 <!-- But you also lose the obligation of specifying those conversions manually, which is very handy because SQL, JavaScript, and HTML all have different type systems (a topic for another blog post), and specifying those conversions is quite tedious. -->
@@ -416,42 +424,21 @@ Is there a better one?
 
 I believe there is.
 The compiler should understand the DSLs I'm writing and automatically map them to types it understands.
-If it needs more information (like a database schema) to figure that out, that information can be provided.
+If it needs more information—like a database schema—to figure that out, that information can be provided.
 
-Queries correspond to a specific database schemas—the programming language can infer that `events.name` is of type `SQLITE_TEXT`.
+Queries correspond to columns with known types—the programming language can infer that `events.name` is of type `SQLITE_TEXT`.
 HTML has [context-dependent escaping rules](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html#output-encoding)—the programming language can validate that `events.name` is being used in a valid element and escape it correctly.
 
-Now, if I make a database migration that would render my usage of a dependent variable in my HTML template invalid, the compiler show an error.
-All without losing the advantages of writing the expressive, interoperable, and backwards-compatible DSLs.
+With this functionality in the compiler, if I make a database migration that would render my usage of a dependent variable in my HTML template invalid, the compiler show an error.
+All without losing the advantages of writing the expressive, interoperable, and backwards-compatible DSLs the comprise web development.
 
-Dynamically-typed languages show us how easy web services can be when we ditch the unnecessary abstractions.
+Dynamically-typed languages show us how easy web development can be when we ditch the unnecessary abstractions.
 Now we need tooling to make it just as easy in statically-typed languages too.
 
 # Notes
 *Thanks to [Meghan Denny](https://mlog.nektro.net/) for her feedback on a draft of this blog.*
 
 * Language extensions that just translate the syntax are alright by me, like generating HTML with [s-expressions](https://github.com/weavejester/hiccup), [ocaml functions](https://yawaramin.github.io/dream-html/), or [zig comptime functions](https://github.com/nektro/zig-pek). I tend to end up just using templates, but language-native HTML syntax can be done tastefully, and they are probably helpful in the road to achieving the DX I'm describing; I've never seen them done well for SQL.
-* I think [sqlc](https://docs.sqlc.dev/en/stable/tutorials/getting-started-postgresql.html) sort of has the right idea, but I don't like the extra compile step (or go).
-* I don't know as much about compilers as I'd like to, so I have no idea what kind of infrastructure would be required to make this work with existing languages. I assume it would be hard.
-
-<!-- * "But I like tailwind, etc. etc. and I would never have gotten the project done without it!" That's great! This blog is largely concerned with what practices make it more likely that someone else—like a subsequent employee or an open source maintainer—will be able to pick up this software in the future and continue developing it. -->
-
-<!-- # Cutting Floor -->
-
-<!-- Many people choose to deal with these DSLs by expanding the bounds of what their general-purpose programming language is responsible for, such that it abstracts over HTML and SQL entirely. -->
-
-<!-- If you have a React application and save data using the `sequelize` ORM , you are doing this. -->
-
-<!-- ## Harmonize With Your Limitations -->
-<!-- In "Who's Afraid of a Hard Page Load" I wrote: ["the web has seams, let them show."](@/blog/hard-page-load/index.md#the-web-has-seams-let-them-show) -->
-<!-- The specific advice offered in that blog is that (unreliable) network calls are an ironclad fact of browsing the web, and it's far more respectful of your users to do those in a way that affords them the best tools for managing that. -->
-
-<!-- The philosophical point being made is that you will be more successful with design that harmonizes with the limitations of our current software paradigms than with design that pretends they don't exist. -->
-
-<!-- <aside> -->
-<!-- I'm skeptical that pretending web pages are connection-free native apps is ever going to be a good choice for most situations. -->
-<!-- I do think it's possible to improve on SQL and SQL integrations with web servers. -->
-<!-- </aside> -->
-
-<!-- This is possible because the system's architecture acknowledges the inherent boundaries between the client, the server, and the database, and builds with them, not over them. -->
+* [Sqlx](https://github.com/launchbadge/sqlx) and [sqlc](https://docs.sqlc.dev) seem to have the right idea, but I haven't used either because I to stick to SQLite-specific libraries to avoid async database calls.
+* I don't know as much about compilers as I'd like to, so I have no idea what kind of infrastructure would be required to make this work with existing languages in an extensible way. I assume it would be hard.
 
