@@ -20,7 +20,7 @@ These two positions are somewhat at odds.
 Dynamically-typed languages encode less information.
 That's a problem for the person reading the code and trying to figure out what it does.
 
-This is a simplified version of an authentication middleware that I include in most of my web services;
+This is a simplified version of an authentication middleware that I include in most of my web services:
 it checks an HTTP request to see if it corresponds to a logged-in user's session.
 
 ```js
@@ -221,7 +221,7 @@ Expressing this in JavaScript is naturally way clunkier.
 
 ```js,name=JS
 const Button = styled.button({
-  color: 'grey',
+  color: 'gray',
 })
 ```
 
@@ -411,8 +411,8 @@ const events = db.all(`
 req.render('events.html', { events })
 ```
 
-No, we have no idea what any of these types are, but if we run the code and we see some output, it's probably fine.
-By writing the JavaScript version, you are banking that you've made the code so **highly** auditable by hand that the compile-time checks become less necessary.
+Now we have no idea what any of these types are, but if we run the code and we see some output, it's probably fine.
+By writing the JavaScript version, you are banking that you've made the code so highly auditable by hand that the compile-time checks become less necessary.
 In the long run, this is always a bad bet, but at least I'm not writing 150% more code for 10% more compile-time safety.
 
 The "expand the bounds" solution to this is to pull everything into the language's type system: the database schema, the template engine, everything.
@@ -426,7 +426,7 @@ If it needs more information—like a database schema—to figure that out, that
 Queries correspond to columns with known types—the programming language can infer that `events.name` is of type `SQLITE_TEXT`.
 HTML has [context-dependent escaping rules](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html#output-encoding)—the programming language can validate that `events.name` is being used in a valid element and escape it correctly.
 
-With this functionality in the compiler, if I make a database migration that would render my usage of a dependent variable in my HTML template invalid, the compiler show an error.
+With this functionality in the compiler, if I make a database migration that would render my usage of a dependent variable in my HTML template invalid, the compiler will show an error.
 All without losing the advantages of writing the expressive, interoperable, and backwards-compatible DSLs the comprise web development.
 
 Dynamically-typed languages show us how easy web development can be when we ditch the unnecessary abstractions.
