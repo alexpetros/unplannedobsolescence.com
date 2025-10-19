@@ -360,7 +360,7 @@ struct Event {
 }
 
 pub async fn get_events(req: Request) -> ServerResult {
-  let profile = req.db.query_map("
+  let events = req.db.query_map("
     SELECT event_id, name location, date, registration_deadline
     FROM events
     WHERE date start_date >= date('now')
@@ -377,7 +377,8 @@ pub async fn get_events(req: Request) -> ServerResult {
     Ok(event)
   })?;
 
-  let body = req.render("events.html")?;
+  let context = context! { events };
+  let body = req.render("events.html", context)?;
   req.send(body)
 }
 
