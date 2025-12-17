@@ -15,3 +15,8 @@ Add the following to the blog's front matter.
 [extra]
 hidden=true
 ```
+
+## Fonts
+
+The fonts is [Valkyrie](https://mbtype.com/fonts/valkyrie/) by [Matthew Butterick](https://mbtype.com/bio.html).
+It is not committed and needs to be included in `./static/fonts` separately.
