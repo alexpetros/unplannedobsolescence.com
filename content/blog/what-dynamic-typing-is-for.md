@@ -15,7 +15,7 @@ It also frequently toutsâ€”or is, at the very least, not inherently hostile toâ€
 
 These two positions are somewhat at odds.
 
-## Static Typing is Better For Maintainability
+## Static typing is better for maintainability
 
 Dynamically-typed languages encode less information.
 That's a problem for the person reading the code and trying to figure out what it does.
@@ -51,7 +51,7 @@ Will `req.cookies` even exist if there's no cookies at all?
 There's no way to know without looking at the implementation (or, less reliably, the documentation).
 
 That doesn't mean there isn't an answer!
-A request with no `"token"` cookie [will return `undefined`](https://expressjs.com/en/4x/api.html#req.cookies).
+A request with no `token` cookie [will return `undefined`](https://expressjs.com/en/4x/api.html#req.cookies).
 That results in a `get_user_by_token(undefined)` call, which returns `undefined` (the function checks for that).
 `undefined` is a [falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) value in JavaScript, so the conditional evaluates to false and throws an `AuthorizationError`.
 
@@ -125,9 +125,9 @@ If you have the audacity to use [something other than JavaScript](https://htmx.o
 That's a lot of languages!
 How are we supposed to find developers who can do *all this stuff*?
 
-## Two Approaches to Language Proliferation
+## Two approaches to language proliferation
 
-### Expanding The Bounds
+### Expanding the bounds
 
 The answer that a big chunk of the industry settled on is to build APIs so that the domains of the DSLs can be described in the general-purpose programming language.
 
@@ -203,7 +203,7 @@ Let me write it!
 
 <aside>
 I suspect people are going to be more inclined to defend JSX than CSS-in-JS.
-Do you <strong>really</strong> need to know HTML to write JSX?
+Do you <em>really</em> need to know HTML to write JSX?
 Yes, unless you want to re-implement functionality that's built into <code>&lt;a></code>, <code>&lt;form></code> <code>&lt;details></code>, <code>&lt;input></code>, etc.
 Many people waste enormous amounts of time and money doing exactly that.
 </aside>
@@ -234,7 +234,7 @@ CSS files, on the other hand, [are evergreen](https://htmx.org/essays/no-build-s
 Of course, one of the reasons for introducing JSX or CSS-in-JS is that they add functionality, like dynamic population of values.
 That's an important problem, but I prefer a different solution.
 
-### Building Good Boundaries
+### Building good boundaries
 
 Instead of expanding the bounds of the general-purpose language so that it can express everything, another strategy is to build strong and simple API boundaries between the DSLs.
 Some benefits of this approach include:
@@ -346,7 +346,7 @@ Each HTTP request is a relatively isolated function call: it takes some paramete
 
 In essence, dynamically-typed languages help you write the least amount of server code possible, leaning heavily on the DSLs that define web programming while validating small amounts of server code via means other than static type checking.
 
-## Raising the Inference Bar
+## Raising the inference bar
 
 To finish, let's take a look at the equivalent code in Rust, using [rusqlite](https://github.com/rusqlite/rusqlite), [minjina](https://github.com/mitsuhiko/minijinja), and a quasi-hypothetical server implementation:
 
@@ -407,7 +407,7 @@ const events = db.all(`
   FROM events
   WHERE date start_date >= date('now')
   ORDER BY start_date ASC
-`
+`)
 
 req.render('events.html', { events })
 ```

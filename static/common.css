@@ -3,6 +3,13 @@
   --aside-color: #29627e;
   --body-max-width: 650px;
   --link-list-spacing: .25rem;
+
+  --font-logo-size: 48px;
+  --font-h1-size: 28px;
+  --font-h2-size: 22px;
+  --font-h3-size: 19;
+  --font-base-size: 19px;
+  --font-aside-size: 18px;
 }
 
 html {
@@ -10,36 +17,40 @@ html {
 }
 
 body {
-  font-family: Verdana;
+  font-family: valkyrie_b;
   margin: 40px auto;
   max-width: var(--body-max-width);
-  line-height: 1.6;
-  font-size: 16px;
+  line-height: 1.4;
+  font-size: var(--font-base-size);
   color: var(--text-color);
   padding: 0 10px 70px 10px;
 }
 
+header h1 {
+  font-size: var(--font-logo-size);
+}
+
 h1, h2, h3 {
-  font-family: Georgia;
+  font-family: valkyrie_b;
   margin: 20px 0;
   line-height: 1.2;
 }
+
+h1 { font-size: var(--font-h1-size); }
+h2 { font-size: var(--font-h2-size); }
+h3 { font-size: var(--font-h3-size); }
 
 .subheader {
   margin: 20px 0;
   line-height: 1.2
 }
 
-header a {
+a {
   color: var(--text-color);
 }
 
-header a:visited {
+a:visited {
   color: var(--text-color);
-}
-
-header h1 {
-  font-size: 48px;
 }
 
 header a.title {
@@ -69,7 +80,9 @@ header ul li {
   }
 
   time {
-    font-family: monospace;
+    text-align: right;
+    font-feature-settings: "tnum";
+    /* font-family: monospace; */
   }
 }
 
@@ -89,7 +102,8 @@ header ul li {
   }
 
   time {
-    font-family: monospace;
+    text-align: right;
+    font-feature-settings: "tnum";
   }
 
   li {

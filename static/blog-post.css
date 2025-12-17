@@ -26,23 +26,32 @@ figure figcaption {
 aside {
   border: 2px var(--aside-color) dotted;
   box-sizing: border-box;
+  font-size: var(--font-aside-size);
   color:  var(--aside-color);
-  font-style: italic;
+  /* font-style: italic; */
   padding: .5rem;
   width: 100%;
   margin: 1rem 0;
 }
 
-aside em {
-  font-style: normal;
+aside code:not(pre code) {
+  font-size: var(--font-aside-size);
+}
+
+aside a {
+  color:  var(--aside-color);
+}
+
+aside a:visited {
+  color:  var(--aside-color);
 }
 
 aside:nth-of-type(odd) {
-  right: 3%;
+  right: 6%;
 }
 
 aside:nth-of-type(even) {
-  left: 3%;
+  left: 6%;
 }
 
 @media (min-width: 1250px) {
@@ -88,9 +97,8 @@ cite.article::after {
 }
 
 code:not(pre code) {
+  font-size: 1rem;
   border-radius: 3px;
-  background-color: lightgray;
-  padding: 0 .25rem;
 }
 
 iframe {
