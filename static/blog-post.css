@@ -35,6 +35,7 @@ aside {
 }
 
 aside code:not(pre code) {
+  font-family: berkely_mono;
   font-size: var(--font-aside-size);
 }
 
@@ -97,7 +98,8 @@ cite.article::after {
 }
 
 code:not(pre code) {
-  font-size: 1rem;
+  font-family: berkely_mono;
+  font-size: 17px;
   border-radius: 3px;
 }
 
@@ -171,6 +173,8 @@ pre[data-linenos] {
 }
 
 pre code {
+  font-family: berkely_mono;
+  font-size: 14px;
   padding: 1rem;
   display: block;
   overflow-x: auto;

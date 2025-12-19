@@ -1,76 +1,4 @@
 @font-face {
-  font-family: century_supra_a;
-  font-style: normal;
-  font-weight: normal;
-  font-stretch: normal;
-  font-display: auto;
-  src: url('/fonts/century-supra/century_supra_ot_a_regular.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: century_supra_a;
-  font-style: italic;
-  font-weight: normal;
-  font-stretch: normal;
-  font-display: auto;
-  src: url('/fonts/century-supra/century_supra_ot_a_italic.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: century_supra_a;
-  font-style: normal;
-  font-weight: bold;
-  font-stretch: normal;
-  font-display: auto;
-  src: url('/fonts/century-supra/century_supra_ot_a_bold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: century_supra_a;
-  font-style: italic;
-  font-weight: bold;
-  font-stretch: normal;
-  font-display: auto;
-  src: url('/fonts/century-supra/century_supra_ot_a_bold_italic.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: century_supra_b;
-  font-style: normal;
-  font-weight: normal;
-  font-stretch: normal;
-  font-display: auto;
-  src: url('/fonts/century-supra/century_supra_ot_b_regular.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: century_supra_b;
-  font-style: italic;
-  font-weight: normal;
-  font-stretch: normal;
-  font-display: auto;
-  src: url('/fonts/century-supra/century_supra_ot_b_italic.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: century_supra_b;
-  font-style: normal;
-  font-weight: bold;
-  font-stretch: normal;
-  font-display: auto;
-  src: url('/fonts/century-supra/century_supra_ot_b_bold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: century_supra_b;
-  font-style: italic;
-  font-weight: bold;
-  font-stretch: normal;
-  font-display: auto;
-  src: url('/fonts/century-supra/century_supra_ot_b_bold_italic.woff2') format('woff2');
-}
-
-@font-face {
   font-family: valkyrie_a;
   font-style: normal;
   font-weight: normal;
@@ -141,3 +69,40 @@
   font-display: auto;
   src: url('/fonts/valkyrie/valkyrie_ot_b_bold_italic.woff2') format('woff2');
 }
+
+@font-face {
+  font-family: berkely_mono;
+  font-style: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  font-display: auto;
+  src: url('/fonts/berkeley-mono/BerkeleyMono-Regular.woff2') format('truetype');
+}
+
+@font-face {
+  font-family: berkely_mono;
+  font-style: normal;
+  font-weight: bold;
+  font-stretch: normal;
+  font-display: auto;
+  src: url('/fonts/berkeley-mono/BerkeleyMono-Bold.woff2') format('truetype');
+}
+
+@font-face {
+  font-family: berkely_mono;
+  font-style: italic;
+  font-weight: normal;
+  font-stretch: normal;
+  font-display: auto;
+  src: url('/fonts/berkeley-mono/BerkeleyMono-Oblique.woff2') format('truetype');
+}
+
+@font-face {
+  font-family: berkely_mono;
+  font-style: italic;
+  font-weight: bold;
+  font-stretch: normal;
+  font-display: auto;
+  src: url('/fonts/berkeley-mono/BerkeleyMono-Bold-Oblique.woff2') format('truetype');
+}
+
