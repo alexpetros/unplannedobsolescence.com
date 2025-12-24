@@ -1,0 +1,9 @@
+{
+    "account_number": 12345,
+    "balance": {
+        "currency": "usd",
+        "value": 100.00
+     },
+     "status": "good"
+}
+

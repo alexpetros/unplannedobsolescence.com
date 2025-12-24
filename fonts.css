@@ -1,0 +1,72 @@
+@font-face {
+  font-family: open_sans;
+  src: url('./fonts/open-sans/OpenSans-Regular.woff2') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  font-display: normal;
+}
+
+@font-face {
+  font-family: open_sans;
+  src: url('./fonts/open-sans/OpenSans-Italic.woff2') format('truetype');
+  font-style: italic;
+  font-weight: normal;
+  font-stretch: normal;
+  font-display: normal;
+}
+
+@font-face {
+  font-family: open_sans;
+  src: url('./fonts/open-sans/OpenSans-Bold.woff2') format('truetype');
+  font-style: normal;
+  font-weight: bold;
+  font-stretch: normal;
+  font-display: normal;
+}
+
+@font-face {
+  font-family: open_sans;
+  src: url('./fonts/open-sans/OpenSans-BoldItalic.woff2') format('truetype');
+  font-style: italic;
+  font-weight: bold;
+  font-stretch: normal;
+  font-display: normal;
+}
+
+@font-face {
+  font-family: berkely_mono;
+  font-style: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  font-display: auto;
+  src: url('/fonts/berkeley-mono/BerkeleyMono-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: berkely_mono;
+  font-style: normal;
+  font-weight: bold;
+  font-stretch: normal;
+  font-display: auto;
+  src: url('/fonts/berkeley-mono/BerkeleyMono-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: berkely_mono;
+  font-style: italic;
+  font-weight: normal;
+  font-stretch: normal;
+  font-display: auto;
+  src: url('/fonts/berkeley-mono/BerkeleyMono-Oblique.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: berkely_mono;
+  font-style: italic;
+  font-weight: bold;
+  font-stretch: normal;
+  font-display: auto;
+  src: url('/fonts/berkeley-mono/BerkeleyMono-Bold-Oblique.woff2') format('woff2');
+}
+

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="/favicon.png">
+<link rel="shortcut icon" href="/favicon-128.png">
+<link rel="preload" href="/fonts/open-sans/OpenSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/open-sans/OpenSans-Italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/open-sans/OpenSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
+
+<title>
+The Server Doesn&#x27;t Render Anything
+</title>
+<link rel="stylesheet" href="/fonts.css?id=2">
+<link rel="stylesheet" href="/common.css?id=5">
+
+
+<link rel="stylesheet" href="/blog-post.css?id=1">
+
+<meta property="og:site_name" content="Unplanned Obsolescence">
+<meta name="og:title" content="The Server Doesn&#x27;t Render Anything">
+<meta name="description" content="You can make a website with nothing but string concatenation.">
+<meta name="og:description" content="You can make a website with nothing but string concatenation.">
+
+
+
+<header>
+  <h1><a class=title href="/">Unplanned Obsolescence</a></h1>
+  <nav>
+  <ul>
+    <li><a href=/>Home</a>
+    <li><a href=/blog>Blog</a>
+    <li><a href=/talks>Talks</a>
+    <li><a href=/about>About</a>
+    <li><a href=/atom.xml>RSS</a>
+  </ul>
+  </nav>
+</header>
+<hr>
+
+
+
+<h1>The Server Doesn&#x27;t Render Anything</h1>
+<p class="subtitle">June 17, 2025</p>
+
+<p>When I advise people on how they should structure a web service, I always start from the same place:
+make a server that responds to HTTP requests with HTML text.</p>
+<span id="continue-reading"></span>
+<p><a href="https://unplannedobsolescence.com/blog/hard-page-load/">That is the most durable, cost-effective, and user-friendly way to build a web service</a>.
+Most web services should be built this way absent an excellent reason not to.</p>
+<p>Upon hearing this, web developers often reply “oh, you like server-side rendering,” to which I usually wince and answer “more or less.”
+You have to pick your battles when chipping away at a decade of miseducation.
+At least people know what I’m talking about.</p>
+<p>But “server-side rendering” is a horrible term.
+It implies that the server is not just doing <em>more</em> work, but doing <em>hard</em> work, work that’s best left to the experts.
+None of this is true.
+You, too, can do server-side “rendering,” with essentially no effort, in whatever programming language you prefer.</p>
+<p>Once you understand that, you’ll start to see the web the way I do: as the simplest, easiest, and most powerful interface for computation ever created.</p>
+<h2 id="html-is-just-text"><a class="zola-anchor" href="#html-is-just-text" aria-label="Anchor link for: html-is-just-text">HTML is just text</a></h2>
+<p>Wherever you can print text, you can make HTML.</p>
+<p>Here’s an example in Python, which extends Python’s built-in HTTP server so that it responds to every GET request with the same text:
+<code>&lt;h1&gt;Python webpage!&lt;/h1&gt;</code></p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">from </span><span>http.server </span><span style="color:#b48ead;">import </span><span>BaseHTTPRequestHandler, HTTPServer
+</span><span>
+</span><span style="color:#bf616a;">WEBPAGE </span><span>= &quot;</span><span style="color:#a3be8c;">&lt;h1&gt;Python webpage!&lt;/h1&gt;</span><span style="color:#96b5b4;">\n</span><span>&quot;
+</span><span>
+</span><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">HTMLServer</span><span style="color:#eff1f5;">(</span><span style="color:#a3be8c;">BaseHTTPRequestHandler</span><span style="color:#eff1f5;">):
+</span><span>    </span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">do_GET</span><span>(</span><span style="color:#bf616a;">self</span><span>):
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">send_response</span><span>(</span><span style="color:#d08770;">200</span><span>)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">end_headers</span><span>()
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.wfile.</span><span style="color:#bf616a;">write</span><span>(str.</span><span style="color:#bf616a;">encode</span><span>(</span><span style="color:#bf616a;">WEBPAGE</span><span>))
+</span><span>
+</span><span>webServer = </span><span style="color:#bf616a;">HTTPServer</span><span>((&quot;</span><span style="color:#a3be8c;">localhost</span><span>&quot;, </span><span style="color:#d08770;">8080</span><span>), HTMLServer)
+</span><span style="color:#96b5b4;">print</span><span>(&quot;</span><span style="color:#a3be8c;">Server running at http://localhost:8080</span><span>&quot;)
+</span><span>webServer.</span><span style="color:#bf616a;">serve_forever</span><span>()
+</span></code></pre>
+<p>This would be <a href="https://flask.palletsprojects.com/en/stable/quickstart/#a-minimal-application">even simpler</a> with <a href="https://flask.palletsprojects.com">flask</a>, but I’m trying to make a point here by using a basic server without any dependencies.
+There’s no magic that makes HTML text become HTML code.
+We didn’t even set the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Type"><code>Content-Type</code></a> header to <code>text/html</code>.</p>
+<aside>It's good to set the Content-Type header, though, so the browser doesn't have to guess.</aside>
+<p>Run that script and then try interacting with the server via <code>curl</code>.
+You’ll see that it’s just text.</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ curl localhost:8080
+</span><span>&lt;h1&gt;Python webpage!&lt;/h1&gt;
+</span></code></pre>
+<p>What if we open <code>http://localhost:8080</code> in a browser?
+Instead of showing plain text, the browser will render that HTML into something more dynamic.
+The <code>&lt;h1&gt;</code> tags are gone and the remaining text is big and bold.</p>
+<iframe srcdoc="<h1>Python webpage!</h1>"></iframe>
+<p>To incorporate color and a fun font, like we did in <a href="https://unplannedobsolescence.com/blog/best-hello-world-web-development/">“The Best ‘Hello World’ in Web Development,”</a> simply add a <code>&lt;style&gt;</code> tag to the string.</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">from </span><span>http.server </span><span style="color:#b48ead;">import </span><span>BaseHTTPRequestHandler, HTTPServer
+</span><span>
+</span><span style="color:#bf616a;">WEBPAGE </span><span>= &quot;&quot;&quot;
+</span><span style="color:#a3be8c;">&lt;style&gt;
+</span><span style="color:#a3be8c;">body {
+</span><span style="color:#a3be8c;">  background-color: lightblue;
+</span><span style="color:#a3be8c;">  font-family: &#39;Comic Sans MS&#39;, cursive;
+</span><span style="color:#a3be8c;">}
+</span><span style="color:#a3be8c;">&lt;/style&gt;
+</span><span style="color:#a3be8c;">&lt;h1&gt;Python webpage!&lt;/h1&gt;
+</span><span>&quot;&quot;&quot;
+</span><span>
+</span><span style="color:#65737e;"># Server code omitted for clarity
+</span><span>
+</span></code></pre>
+<p>Now <code>curl</code>ing the endpoint will show the additional style tag, and the browser will render the HTML with a nice blue background and a comic sans font.</p>
+<iframe srcdoc="<style>body { background-color: lightblue; font-family: 'Comic Sans MS', cursive; }</style><h1>Python webpage!</h1>"></iframe>
+<h2 id="the-browser-does-the-rendering"><a class="zola-anchor" href="#the-browser-does-the-rendering" aria-label="Anchor link for: the-browser-does-the-rendering">The browser does the rendering</a></h2>
+<p>Did you notice that I used the word “render” twice in the previous section?
+Both times to refer to actions the browser took, namely the transformation of this text—</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>&lt;style&gt;
+</span><span>body {
+</span><span>  background-color: lightblue;
+</span><span>  font-family: &#39;Comic Sans MS&#39;, cursive;
+</span><span>}
+</span><span>&lt;h1&gt;Python webpage!&lt;/h1&gt;
+</span></code></pre>
+<p>—into a webpage.</p>
+<iframe srcdoc="<style>body { background-color: lightblue; font-family: 'Comic Sans MS', cursive; }</style><h1>Python webpage!</h1>"></iframe>
+<p>Even something as “simple” as rendering header text on a blue background is a very complicated process.
+<a href="https://browser.engineering/text.html">Chapter 3</a> of Panchekha &amp; Harrelson’s excellent book, <a href="https://browser.engineering/"><cite>Web Browser Engineering</cite></a>, has a basic introduction to the steps involved.
+Let’s drop in on the part where they talk about <a href="https://browser.engineering/text.html#measuring-text">measuring text</a>:</p>
+<blockquote>
+<p>Remember that <code>bi_times</code> is size-16 Times: why does <code>font.metrics</code> report that it is actually 19 pixels tall?
+Well, first of all, a size of 16 means 16 points, which are defined as 72nds of an inch, not 16 pixels, which your monitor probably has around 100 of per inch.
+Those 16 points measure not the individual letters but the metal blocks the letters were once carved from, so the letters themselves must be less than 16 points.
+In fact, different size-16 fonts have letters of varying heights.</p>
+</blockquote>
+<p>Okay.</p>
+<p>Just getting a couple letters on the page requires layout math that most web developers have never even considered.
+All this is learnable (that’s what the book is for), but web rendering is <a href="https://blog.hypersect.com/improving-the-font-pipeline/">astoundingly complex</a>.
+Imagine trying to implement <a href="https://en.wikipedia.org/wiki/Kerning">kerning</a>;
+instead, you get it for free.</p>
+<p>The reason not to call HTML text generation “rendering” is because rendering really <em>is</em> a difficult, complicated problem, it’s just not one the website author ever has to think about.
+Browser engineers have taken care of it.
+The required software in every person’s pocket.</p>
+<p>All the website author has to do is print text surrounded by tags—no math required.</p>
+<h2 id="expressing-data-as-html"><a class="zola-anchor" href="#expressing-data-as-html" aria-label="Anchor link for: expressing-data-as-html">Expressing data as HTML</a></h2>
+<p>What is the appropriate framing for this concept, if not “server-side rendering?”
+It’s text generation, yes, but more precisely: we are expressing our data as HTML text.
+Not only is this technique universally available without specialized tools, it’s kind of fun!</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span>boroughs = [
+</span><span>  &quot;</span><span style="color:#a3be8c;">The Bronx</span><span>&quot;,
+</span><span>  &quot;</span><span style="color:#a3be8c;">Manhattan</span><span>&quot;,
+</span><span>  &quot;</span><span style="color:#a3be8c;">Brooklyn</span><span>&quot;,
+</span><span>  &quot;</span><span style="color:#a3be8c;">Queens</span><span>&quot;,
+</span><span>  &quot;</span><span style="color:#a3be8c;">Staten Island</span><span>&quot;
+</span><span>]
+</span><span>
+</span><span style="color:#65737e;"># Using simple string operations,
+</span><span style="color:#65737e;"># we can express this list as HTML
+</span><span style="color:#bf616a;">LIST </span><span>= &quot;</span><span style="color:#a3be8c;">&lt;li&gt;</span><span>&quot;.</span><span style="color:#bf616a;">join</span><span>(boroughs)
+</span><span style="color:#bf616a;">WEBPAGE </span><span>= &quot;</span><span style="color:#a3be8c;">&lt;h1&gt;NYC Boroughs&lt;/h1&gt;&lt;ul&gt;&lt;li&gt;</span><span>&quot; + </span><span style="color:#bf616a;">LIST </span><span>+ &quot;</span><span style="color:#a3be8c;">&lt;/ul&gt;</span><span>&quot;
+</span><span>
+</span></code></pre>
+<aside>Notice that I didn't include the closing &lt;/li&gt; tags. HTML doesn't actually require that you close list items, an affordance which is often discouraged but makes list items much easier to generate programatically.</aside>
+<p>Manipulating strings is Coding 101.
+Learn a couple HTML elements and you can use basic string operations to build an interactive view of whatever your code accomplishes.
+The resulting text isn’t very pretty outside the browser, but inside the browser, it gets the job done.</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#c0c5ce;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#bf616a;">h1</span><span>&gt;NYC Boroughs&lt;/</span><span style="color:#bf616a;">h1</span><span>&gt;&lt;</span><span style="color:#bf616a;">ul</span><span>&gt;&lt;</span><span style="color:#bf616a;">li</span><span>&gt;The Bronx&lt;</span><span style="color:#bf616a;">li</span><span>&gt;Manhattan&lt;</span><span style="color:#bf616a;">li</span><span>&gt;Brooklyn&lt;</span><span style="color:#bf616a;">li</span><span>&gt;Queens&lt;</span><span style="color:#bf616a;">li</span><span>&gt;Staten Island&lt;/</span><span style="color:#bf616a;">ul</span><span>&gt;
+</span></code></pre>
+<iframe style="height: 250px" srcdoc="<h1>NYC Boroughs</h1><ul><li>The Bronx<li>Manhattan<li>Brooklyn<li>Queens<li>Staten Island</ul>"></iframe>
+<p>You could, of course, choose to express the same dataset as JSON, using the same techniques.</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span>boroughs = [
+</span><span>  &quot;</span><span style="color:#a3be8c;">The Bronx</span><span>&quot;,
+</span><span>  &quot;</span><span style="color:#a3be8c;">Manhattan</span><span>&quot;,
+</span><span>  &quot;</span><span style="color:#a3be8c;">Brooklyn</span><span>&quot;,
+</span><span>  &quot;</span><span style="color:#a3be8c;">Queens</span><span>&quot;,
+</span><span>  &quot;</span><span style="color:#a3be8c;">Staten Island</span><span>&quot;
+</span><span>]
+</span><span>
+</span><span style="color:#bf616a;">LIST </span><span>= &#39;</span><span style="color:#a3be8c;">&quot;,&quot;</span><span>&#39;.</span><span style="color:#bf616a;">join</span><span>(boroughs)
+</span><span style="color:#bf616a;">WEBPAGE </span><span>= &#39;</span><span style="color:#a3be8c;">{ &quot;nyc_boroughs&quot;: [&quot;</span><span>&#39; + </span><span style="color:#bf616a;">LIST </span><span>+ &#39;</span><span style="color:#a3be8c;">&quot;] }</span><span>&#39;
+</span><span>
+</span><span style="color:#65737e;"># Server code omitted for clarity
+</span></code></pre>
+<p>Although, this doesn’t really accomplish all that much, because <a href="https://unplannedobsolescence.com/blog/why-insist-on-a-word/#one-more-short-rest-explainer">JSON doesn’t have hypermedia controls</a>.
+But it’s at least possible, if you need quick and dirty JSON output and don’t have access to a JSON library for some reason.</p>
+<aside>Obviously you should use python's JSON module for this task, but I have occasionally done stuff like this for personal scripts in bash or awk. It's good to remember you can!</aside>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>{ &quot;</span><span style="color:#a3be8c;">nyc_boroughs</span><span>&quot;: [&quot;</span><span style="color:#a3be8c;">The Bronx</span><span>&quot;,&quot;</span><span style="color:#a3be8c;">Manhattan</span><span>&quot;,&quot;</span><span style="color:#a3be8c;">Brooklyn</span><span>&quot;,&quot;</span><span style="color:#a3be8c;">Queens</span><span>&quot;,&quot;</span><span style="color:#a3be8c;">Staten Island</span><span>&quot; ] }
+</span></code></pre>
+<p>The point is not that you should (necessarily) be generating HTML or JSON via string manipulation, it’s they both operate at similar levels of difficulty and abstraction;
+I object to the term “server-side rendering” because it implies otherwise.</p>
+<p>To start “server-side rendering” all you have to do is format your data as HTML, and return that from the server.</p>
+<h2 id="so-what-do-we-call-this"><a class="zola-anchor" href="#so-what-do-we-call-this" aria-label="Anchor link for: so-what-do-we-call-this">So what do we call this?</a></h2>
+<p>My preferred term is “HTML APIs.”
+Developers are familiar with JSON APIs, and an HTML API works exactly the same way, only it returns HTML, instead of JSON.
+“HTML responses” works too.</p>
+<p>(HTML APIs are also REST APIs, but if you say “REST APIs” then you’ll have to send your coworkers <a href="https://unplannedobsolescence.com/blog/why-insist-on-a-word/">a second article</a>, so save that one for later.)</p>
+<p>A lot of people get hung up on the idea that HTML can’t be an API (Application Programming Interface), because HTML is meant to be read by humans and APIs are meant to be read by computer software.
+But that isn’t <em>quite</em> true.</p>
+<p>Take a look at the NYC Boroughs list in both JSON and HTML, side-by-side.</p>
+<pre data-lang="name" style="background-color:#2b303b;color:#c0c5ce;" class="language-name "><code class="language-name" data-lang="name"><span>&lt;h1&gt;NYC Boroughs&lt;/h1&gt;
+</span><span>&lt;ul&gt;
+</span><span>  &lt;li&gt;The Bronx
+</span><span>  &lt;li&gt;Manhattan
+</span><span>  &lt;li&gt;Brooklyn
+</span><span>  &lt;li&gt;Queens
+</span><span>  &lt;li&gt;Staten Island
+</span><span>&lt;/ul&gt;
+</span></code></pre>
+<pre data-lang="name" style="background-color:#2b303b;color:#c0c5ce;" class="language-name "><code class="language-name" data-lang="name"><span>{
+</span><span>  &quot;nyc_boroughs&quot;: [
+</span><span>    &quot;The Bronx&quot;,
+</span><span>    &quot;Manhattan&quot;,
+</span><span>    &quot;Brooklyn&quot;,
+</span><span>    &quot;Queens&quot;,
+</span><span>    &quot;Staten Island&quot;
+</span><span>  ]
+</span><span>}
+</span></code></pre>
+<p>Neither of these is actually intended to be read by the end-user. The end-user is supposed to see a formatted list!</p>
+<iframe style="height: 250px" srcdoc="<h1>NYC Boroughs</h1><ul><li>The Bronx<li>Manhattan<li>Brooklyn<li>Queens<li>Staten Island</ul>"></iframe>
+<p>HTML is a hypermedia format, so it contains structured data <em>and</em> a standard interface that the browser can render.
+JSON APIs only encode the data; they lack the representation.
+Using an HTML API doesn’t move complexity from the client to the server—it eliminates the less-useful JSON representation altogether.</p>
+<p>From this perspective, the HTML API is a software-to-software communication protocol:
+the software that the server is talking to is the <strong>user’s browser</strong>, instead of a client-side JavaScript application.
+The user’s browser reads the HTML API, and renders it as a Graphical User Interface (GUI).</p>
+<h2 id="the-website-is-the-easy-part"><a class="zola-anchor" href="#the-website-is-the-easy-part" aria-label="Anchor link for: the-website-is-the-easy-part">The website is the easy part</a></h2>
+<p>When making real websites—rather than scripts—you want to use tools that are slightly more advanced than string joins.
+A good place to start is with a <a href="https://htmx.org/essays/template-fragments/#known-template-fragment-implementations">template engine</a>.</p>
+<p>Template engines are libraries for generating structured text.
+<a href="https://en.wikipedia.org/wiki/Jinja_(template_engine)">Jinja</a> is a very common one.
+It lets you build HTML strings with basic control flow, like “for” loops.</p>
+<pre data-lang="jinja" style="background-color:#2b303b;color:#c0c5ce;" class="language-jinja "><code class="language-jinja" data-lang="jinja"><span>&lt;h1&gt;NYC Boroughs&lt;/h1&gt;
+</span><span>&lt;ul&gt;
+</span><span>  {% </span><span style="color:#b48ead;">for </span><span style="color:#bf616a;">borough </span><span style="color:#b48ead;">in </span><span style="color:#bf616a;">boroughs </span><span>%}
+</span><span>  &lt;li&gt;{{ </span><span style="color:#bf616a;">borough </span><span>}}
+</span><span>  {% </span><span style="color:#b48ead;">endfor </span><span>%}
+</span><span>&lt;/ul&gt;
+</span></code></pre>
+<p>Jinja is cross-platform now, but there are many templating libraries with syntax that feels native to a particular language (e.g. <a href="https://maud.lambda.xyz/">rust</a>, <a href="https://github.com/nektro/zig-pek">zig</a>, <a href="https://github.com/yawaramin/dream-html">ocaml</a>, <a href="https://edicl.github.io/html-template/">common lisp</a>).
+This is one of the great advantages of starting from “HTML is text”—you can use <a href="https://htmx.org/essays/hypermedia-on-whatever-youd-like/">whatever programming language you like best</a>.</p>
+<p>It’s important to use templates for professional web development because they are equipped with <a href="https://htmx.org/essays/web-security-basics-with-htmx/#always-use-an-auto-escaping-template-engine">secure defaults for escaping user-generated content</a>. (Essentially all content you dynamically insert into an HTML document should be escaped.)
+They also have <a href="https://htmx.org/essays/template-fragments/">nice affordances</a> for code re-use.</p>
+<p>One of the best things about templates, however, is that they are <em>easy to understand</em>.
+They are a straightfoward, stateless automation for building text output.
+If text is missing, or escaped improperly, or in the wrong place, it’s usually quite simple to debug why.</p>
+<p>These days, <a href="https://react.dev/reference/rsc/server-components">ReactJS supports HTML APIs</a>, but <a href="https://overreacted.io/jsx-over-the-wire">a tremendously complicated architecture</a> is required to do so.
+React essentially transforms all your UX logic into <a href="https://overreacted.io/progressive-json/">progressively-loaded JSON</a> and then back into HTML;
+it’s HTML generation with a bunch of additional intermediate steps.
+Why do at all that when you could just generate the HTML in the first place?</p>
+<blockquote>
+<p>React Server Components are the React team’s answer to the question that plagued the team throughout the 2010s. “How to do data fetching in React?”</p>
+</blockquote>
+<p>Because you <a href="https://overreacted.io/one-roundtrip-per-navigation/#rsc">want to use React</a>.</p>
+<p>If you love React and love using it—by all means.
+Just don’t mistake the complexity of React Server Components for complexity that is inherent to the web platform.
+Without the requirement to use React, a stateless hypertext API (<a href="https://htmx.org/essays/how-did-rest-come-to-mean-the-opposite-of-rest/">also known as a REST API</a>), can achieve similar (<a href="https://infrequently.org/2023/02/the-market-for-lemons/">better?</a>) performance, without that complexity.</p>
+<p>Websites are not hard.
+There are many pitfalls to building a dynamic web service with logins, databases, user-generated content, and all that (it’s a professional skillset).
+The website part, however, the expression of your server’s data as an interface to be rendered by the user’s browser, is quite easy.
+You really can do it with almost no specialized tools.</p>
+<p>After all, it’s basically just string joins.</p>
+<p><em>Thanks to <a href="https://mlog.nektro.net/">Meghan Denny</a> and Carson Gross for their feedback on drafts of this post.</em></p>
+<h1 id="notes"><a class="zola-anchor" href="#notes" aria-label="Anchor link for: notes">Notes</a></h1>
+<ul>
+<li>A lot of Dan Abramov’s writing is very insightful—<a href="https://overreacted.io/progressive-json/">“Progressive JSON”</a> in particular is worth a read.</li>
+<li>Template engines can have <a href="https://templ.guide/">static type checking</a> too.</li>
+<li>While I will never understand the mind of the person who wants to build web applications in prolog, <a href="https://www.metalevel.at/prolog/web">they are among us</a>, and they’ve built the tooling for it.</li>
+<li>In experience, React advocates are quite defensive about the idea that anyone has ever suggested React was necessary for use-cases where a simple <code>&lt;form&gt;</code> would do.
+I don’t want to tilt at strawmen, so I’ll just say that I’m aware of that perspective, and I don’t think it’s true.</li>
+<li>All the examples in this blog are static text, but interactivity is just a <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;script&gt;</code> tag away.</li>
+<li>People who learned web development prior to ~2016 have no trouble with this concept. I usually just say “it’s like <a href="https://guides.rubyonrails.org/layouts_and_rendering.html">Rails</a>,” or “it’s <a href="https://en.wikipedia.org/wiki/Jakarta_Server_Pages">Java Server Pages</a>.” (If you’re building in Java today though, check out <a href="https://www.thymeleaf.org/">Thymeleaf</a>.)</li>
+</ul>
+
+
+
