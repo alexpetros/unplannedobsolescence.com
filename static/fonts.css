@@ -1,6 +1,6 @@
 @font-face {
   font-family: open_sans;
-  src: url('/fonts/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf') format('truetype');
+  src: url('/fonts/Open_Sans/static/OpenSans-Regular.ttf') format('truetype');
   font-style: normal;
   font-weight: normal;
   font-stretch: normal;
@@ -9,9 +9,27 @@
 
 @font-face {
   font-family: open_sans;
-  src: url('/fonts/Open_Sans/OpenSans-Italic-VariableFont_wdth,wght.ttf') format('TrueType');
+  src: url('/fonts/Open_Sans/static/OpenSans-Italic.ttf') format('truetype');
   font-style: italic;
   font-weight: normal;
+  font-stretch: normal;
+  font-display: normal;
+}
+
+@font-face {
+  font-family: open_sans;
+  src: url('/fonts/Open_Sans/static/OpenSans-Bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: bold;
+  font-stretch: normal;
+  font-display: normal;
+}
+
+@font-face {
+  font-family: open_sans;
+  src: url('/fonts/Open_Sans/static/OpenSans-BoldItalic.ttf') format('truetype');
+  font-style: italic;
+  font-weight: bold;
   font-stretch: normal;
   font-display: normal;
 }
