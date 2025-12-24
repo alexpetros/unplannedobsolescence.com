@@ -3,8 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="icon" href="/favicon.png">
 <link rel="shortcut icon" href="/favicon-128.png">
+<link rel="preload" href="/fonts/open-sans/OpenSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/open-sans/OpenSans-Italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/open-sans/OpenSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
+
 <title>
 {% if page.title -%}
 {{ page.title }}
@@ -14,7 +19,7 @@
 Unplanned Obsolescence
 {% endif -%}
 </title>
-<link rel="stylesheet" href="/fonts.css?id=1">
+<link rel="stylesheet" href="/fonts.css?id=2">
 <link rel="stylesheet" href="/common.css?id=5">
 
 {% block head %} {% endblock %}
