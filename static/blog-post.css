@@ -3,7 +3,7 @@ figure {
   margin: auto;
 }
 
-figure img {
+figure > img {
   display: block;
   max-width: 90%;
 }
@@ -12,6 +12,14 @@ figure figcaption {
   display: block;
   color: gray;
   text-align: center;
+}
+
+figure figcaption a {
+  color: gray;
+}
+
+figure figcaption a:visited {
+  color: gray;
 }
 
 .zola-anchor {
@@ -48,11 +56,11 @@ aside a:visited {
 }
 
 aside:nth-of-type(odd) {
-  right: 6%;
+  right: 4%;
 }
 
 aside:nth-of-type(even) {
-  left: 6%;
+  left: 4%;
 }
 
 @media (min-width: 1250px) {

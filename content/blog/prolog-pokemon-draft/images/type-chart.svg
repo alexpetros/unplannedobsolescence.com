@@ -1,0 +1,819 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="492" height="492">
+  <defs>
+  <g id="d">
+    <rect x="90" y="90" width="22" height="22" fill="#00aa00" stroke="#000000"/>
+    <switch><text x="101" y="108" font-size="19.6" text-anchor="middle" fill="#ffffff" font-family="DejaVu Sans, sans-serif" id="trsvg544"><tspan id="trsvg1">2</tspan></text></switch>
+  </g>
+  <g id="e">
+    <rect x="90" y="90" width="22" height="22" fill="#000000"/>
+    <switch><text x="101" y="108" font-size="19.6" text-anchor="middle" fill="#ffffff" font-family="DejaVu Sans, sans-serif" id="trsvg545"><tspan id="trsvg2">0</tspan></text></switch>
+  </g>
+  <g id="f">
+    <rect x="90" y="90" width="22" height="22" fill="#ff0000" stroke="#000000"/>
+    <switch><text x="101" y="108" font-size="19.6" text-anchor="middle" font-family="DejaVu Sans, sans-serif" id="trsvg546"><tspan id="trsvg3">&#xBD;</tspan></text></switch>
+  </g>
+  <linearGradient id="b" y1="0" x1="90" y2="0" x2="465" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#80b3ff" offset="0"/>
+    <stop stop-color="#80b3ff" stop-opacity="0" offset="1"/>
+  </linearGradient>
+  <linearGradient id="a" x1="0" y1="90" x2="0" y2="465" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#ff8080" offset="0"/>
+    <stop stop-color="#ff8080" stop-opacity="0" offset="1"/>
+  </linearGradient>
+  <pattern id="g" width="22" height="22" patternUnits="userSpaceOnUse">
+    <rect width="22" height="22" fill="#fff"/>
+    <path d="m2,0v22M0,2h22" stroke="#000"/>
+  </pattern>
+  </defs>
+  <path d="M0,0 90,90v376H0z" fill="url(#a)"/>
+  <path d="M0,0 90,90h376V0z" fill="url(#b)"/>
+  <g font-size="12" font-weight="700" text-anchor="end" font-family="DejaVu Sans, sans-serif">
+      <switch transform="translate(77,85)">
+          <text systemLanguage="en" id="trsvg547"><tspan id="trsvg4">Attacker</tspan></text>
+          <text systemLanguage="es" id="trsvg548"><tspan id="trsvg5">Atacante</tspan></text>
+          <text systemLanguage="ko" id="trsvg549"><tspan id="trsvg6">&#xACF5;&#xACA9;</tspan></text>
+          
+      <text id="trsvg550-ja" systemLanguage="ja"><tspan id="trsvg7-ja">&#x653B;&#x6483;</tspan></text><text id="trsvg550-yue" systemLanguage="yue"><tspan id="trsvg7-yue">&#x653B;&#x64CA;&#x55F0;&#x65B9;</tspan></text><text id="trsvg550"><tspan id="trsvg7">AT</tspan></text></switch>
+      <switch transform="translate(85,21)">
+          <text systemLanguage="en" id="trsvg551"><tspan id="trsvg8">Defender</tspan></text>
+          <text systemLanguage="es" id="trsvg552"><tspan id="trsvg9">Defensor</tspan></text>
+          <text systemLanguage="ko" id="trsvg553"><tspan id="trsvg10">&#xBC29;&#xC5B4;</tspan></text>
+          
+      <text id="trsvg554-ja" systemLanguage="ja"><tspan id="trsvg11-ja">&#x9632;&#x5FA1;</tspan></text><text id="trsvg554-yue" systemLanguage="yue"><tspan id="trsvg11-yue">&#x9632;&#x5B88;&#x55F0;&#x65B9;</tspan></text><text id="trsvg554"><tspan id="trsvg11">DEF</tspan></text></switch>
+  </g>
+  <g id="s" stroke="#000">
+    <rect ry="11" x="6" y="90" height="22" width="78" fill="#A8A878"/>
+    <rect ry="11" x="6" y="112" height="22" width="78" fill="#F08030"/>
+    <rect ry="11" x="6" y="134" height="22" width="78" fill="#6890F0"/>
+    <rect ry="11" x="6" y="156" height="22" width="78" fill="#78C850"/>
+    <rect ry="11" x="6" y="178" height="22" width="78" fill="#F8D030"/>
+    <rect ry="11" x="6" y="200" height="22" width="78" fill="#98D8D8"/>
+    <rect ry="11" x="6" y="222" height="22" width="78" fill="#C03028"/>
+    <rect ry="11" x="6" y="244" height="22" width="78" fill="#A040A0"/>
+    <rect ry="11" x="6" y="266" height="22" width="78" fill="#E0C068"/>
+    <rect ry="11" x="6" y="288" height="22" width="78" fill="#A890F0"/>
+    <rect ry="11" x="6" y="310" height="22" width="78" fill="#F85888"/>
+    <rect ry="11" x="6" y="332" height="22" width="78" fill="#A8B820"/>
+    <rect ry="11" x="6" y="354" height="22" width="78" fill="#B8A038"/>
+    <rect ry="11" x="6" y="376" height="22" width="78" fill="#705898"/>
+    <rect ry="11" x="6" y="398" height="22" width="78" fill="#7038F8"/>
+    <rect ry="11" x="6" y="420" height="22" width="78" fill="#705848"/>
+    <rect ry="11" x="6" y="442" height="22" width="78" fill="#B8B8D0"/>
+    <rect ry="11" x="6" y="464" height="22" width="78" fill="#EE99AC"/>
+  </g>
+  <use xlink:href="#s" transform="matrix(0,1,1,0,0,0)"/>
+  <g font-size="14" font-weight="bold" text-anchor="end" font-family="DejaVu Sans, sans-serif" fill="#fff">
+    <g transform="translate(79,105)">
+        <switch id="normal"><text systemLanguage="zh-cn" id="trsvg583"><tspan id="trsvg40">&#x4E00;&#x822C;</tspan></text><text systemLanguage="zh-hans" id="trsvg583"><tspan id="trsvg40">&#x4E00;&#x822C;</tspan></text><text systemLanguage="zh-hant" id="trsvg583"><tspan id="trsvg40">&#x4E00;&#x822C;</tspan></text><text systemLanguage="zh-hk" id="trsvg583"><tspan id="trsvg40">&#x4E00;&#x822C;</tspan></text><text systemLanguage="zh-tw" id="trsvg583"><tspan id="trsvg40">&#x4E00;&#x822C;</tspan></text>
+            <text systemLanguage="cs" id="trsvg555"><tspan id="trsvg12">Norm&#xE1;ln&#xED;</tspan></text>
+            <text systemLanguage="da" id="trsvg556"><tspan id="trsvg13">Normal</tspan></text>
+            <text systemLanguage="de" id="trsvg557"><tspan id="trsvg14">Normal</tspan></text>
+            <text systemLanguage="el" font-size="12" id="trsvg558"><tspan id="trsvg15">&#x3A6;&#x3C5;&#x3C3;&#x3B9;&#x3BF;&#x3BB;&#x3BF;&#x3B3;&#x3B9;&#x3BA;&#x3CC;&#x3C2;</tspan></text>
+            <text systemLanguage="en" id="trsvg559"><tspan id="trsvg16">Normal</tspan></text>
+            <text systemLanguage="eo" id="trsvg560"><tspan id="trsvg17">Normala</tspan></text>
+            <text systemLanguage="es" id="trsvg561"><tspan id="trsvg18">Normal</tspan></text>
+            <text systemLanguage="fi" id="trsvg562"><tspan id="trsvg19">Normaali</tspan></text>
+            <text systemLanguage="fr" id="trsvg563"><tspan id="trsvg20">Normal</tspan></text>
+            <text systemLanguage="he" id="trsvg564"><tspan id="trsvg21">&#x5E8;&#x5D2;&#x5D9;&#x5DC;</tspan></text>
+            <text systemLanguage="hi" id="trsvg565"><tspan id="trsvg22">&#x928;&#x949;&#x930;&#x94D;&#x92E;&#x932;</tspan></text>
+            <text systemLanguage="hu" id="trsvg566"><tspan id="trsvg23">Norm&#xE1;l</tspan></text>
+            <text systemLanguage="id" id="trsvg567"><tspan id="trsvg24">Normal</tspan></text>
+            <text systemLanguage="it" id="trsvg568"><tspan id="trsvg25">Normale</tspan></text>
+            <text systemLanguage="ja" id="trsvg569"><tspan id="trsvg26">&#x30CE;&#x30FC;&#x30DE;&#x30EB;</tspan></text>
+            <text systemLanguage="ko" id="trsvg570"><tspan id="trsvg27">&#xB178;&#xB9D0;</tspan></text>
+            <text systemLanguage="lb" id="trsvg571"><tspan id="trsvg28">Normal</tspan></text>
+            <text systemLanguage="ms" id="trsvg572"><tspan id="trsvg29">Biasa</tspan></text>
+            <text systemLanguage="nl" id="trsvg573"><tspan id="trsvg30">Normaal</tspan></text>
+            <text systemLanguage="no" id="trsvg574"><tspan id="trsvg31">Normal</tspan></text>
+            <text systemLanguage="pl" font-size="13" id="trsvg575"><tspan id="trsvg32">Normalny</tspan></text>
+            <text systemLanguage="pt" id="trsvg576"><tspan id="trsvg33">Normal</tspan></text>
+            <text systemLanguage="ro" id="trsvg577"><tspan id="trsvg34">Normal</tspan></text>
+            <text systemLanguage="ru" id="trsvg578"><tspan id="trsvg35">&#x41E;&#x431;&#x44B;&#x447;&#x43D;&#x44B;&#x439;</tspan></text>
+            <text systemLanguage="sv" id="trsvg579"><tspan id="trsvg36">Normal</tspan></text>
+            <text systemLanguage="th" id="trsvg580"><tspan id="trsvg37">&#xE1B;&#xE01;&#xE15;&#xE34;</tspan></text>
+            <text systemLanguage="tr" id="trsvg581"><tspan id="trsvg38">Normal</tspan></text>
+            <text systemLanguage="vi" id="trsvg582"><tspan id="trsvg39">Th&#x1B0;&#x1EDD;ng</tspan></text>
+            
+            
+        <text systemLanguage="zh" id="trsvg583"><tspan id="trsvg40">&#x4E00;&#x822C;</tspan></text><text id="trsvg584-yue" systemLanguage="yue"><tspan id="trsvg41-yue">&#x666E;&#x901A;</tspan></text><text id="trsvg584"><tspan id="trsvg41">Normal</tspan></text></switch>
+    </g>
+    <g transform="translate(79,127)">
+        <switch id="fire"><text systemLanguage="zh-cn" id="trsvg616"><tspan id="trsvg73">&#x706B;</tspan></text><text systemLanguage="zh-hans" id="trsvg616"><tspan id="trsvg73">&#x706B;</tspan></text><text systemLanguage="zh-hant" id="trsvg616"><tspan id="trsvg73">&#x706B;</tspan></text><text systemLanguage="zh-hk" id="trsvg616"><tspan id="trsvg73">&#x706B;</tspan></text><text systemLanguage="zh-tw" id="trsvg616"><tspan id="trsvg73">&#x706B;</tspan></text>
+            <text systemLanguage="bg" id="trsvg585"><tspan id="trsvg42">&#x41E;&#x433;&#x43D;&#x435;&#x43D;&#x438;</tspan></text>
+            <text systemLanguage="cs" id="trsvg586"><tspan id="trsvg43">Ohniv&#xFD;</tspan></text>
+            <text systemLanguage="cy" id="trsvg587"><tspan id="trsvg44">T&#xE2;n</tspan></text>
+            <text systemLanguage="da" id="trsvg588"><tspan id="trsvg45">Ild</tspan></text>
+            <text systemLanguage="de" id="trsvg589"><tspan id="trsvg46">Feuer</tspan></text>
+            <text systemLanguage="el" id="trsvg590"><tspan id="trsvg47">&#x3A6;&#x3C9;&#x3C4;&#x3B9;&#x3AC;&#x3C2;</tspan></text>
+            <text systemLanguage="en" id="trsvg591"><tspan id="trsvg48">Fire</tspan></text>
+            <text systemLanguage="eo" id="trsvg592"><tspan id="trsvg49">Fajra</tspan></text>
+            <text systemLanguage="es" id="trsvg593"><tspan id="trsvg50">Fuego</tspan></text>
+            <text systemLanguage="fi" id="trsvg594"><tspan id="trsvg51">Tuli</tspan></text>
+            <text systemLanguage="fr" id="trsvg595"><tspan id="trsvg52">Feu</tspan></text>
+            <text systemLanguage="he" id="trsvg596"><tspan id="trsvg53">&#x5D0;&#x5E9;</tspan></text>
+            <text systemLanguage="hi" id="trsvg597"><tspan id="trsvg54">&#x92B;&#x93C;&#x93E;&#x92F;&#x930;</tspan></text>
+            <text systemLanguage="hu" id="trsvg598"><tspan id="trsvg55">T&#x171;z</tspan></text>
+            <text systemLanguage="id" id="trsvg599"><tspan id="trsvg56">Api</tspan></text>
+            <text systemLanguage="is" id="trsvg600"><tspan id="trsvg57">Eld</tspan></text>
+            <text systemLanguage="it" id="trsvg601"><tspan id="trsvg58">Fuoco</tspan></text>
+            <text systemLanguage="ja" id="trsvg602"><tspan id="trsvg59">&#x307B;&#x306E;&#x304A;</tspan></text>
+            <text systemLanguage="ko" id="trsvg603"><tspan id="trsvg60">&#xBD88;&#xAF43;</tspan></text>
+            <text systemLanguage="lb" id="trsvg604"><tspan id="trsvg61">Feier</tspan></text>
+            <text systemLanguage="ms" id="trsvg605"><tspan id="trsvg62">Api</tspan></text>
+            <text systemLanguage="nl" id="trsvg606"><tspan id="trsvg63">Vuur</tspan></text>
+            <text systemLanguage="no" id="trsvg607"><tspan id="trsvg64">Ild</tspan></text>
+            <text systemLanguage="pl" id="trsvg608"><tspan id="trsvg65">Ognisty</tspan></text>
+            <text systemLanguage="pt" id="trsvg609"><tspan id="trsvg66">Fogo</tspan></text>
+            <text systemLanguage="ro" id="trsvg610"><tspan id="trsvg67">Foc</tspan></text>
+            <text systemLanguage="ru" id="trsvg611"><tspan id="trsvg68">&#x41E;&#x433;&#x43E;&#x43D;&#x44C;</tspan></text>
+            <text systemLanguage="sv" id="trsvg612"><tspan id="trsvg69">Eld</tspan></text>
+            <text systemLanguage="th" id="trsvg613"><tspan id="trsvg70">&#xE44;&#xE1F;</tspan></text>
+            <text systemLanguage="tr" id="trsvg614"><tspan id="trsvg71">Ate&#x15F;</tspan></text>
+            <text systemLanguage="vi" id="trsvg615"><tspan id="trsvg72">L&#x1EED;a</tspan></text>
+            
+            
+        <text systemLanguage="zh" id="trsvg616"><tspan id="trsvg73">&#x706B;</tspan></text><text id="trsvg617-yue" systemLanguage="yue"><tspan id="trsvg74-yue">&#x706B;</tspan></text><text id="trsvg617"><tspan id="trsvg74">Fire</tspan></text></switch>
+    </g>
+    <g transform="translate(79,149)">
+        <switch id="water"><text systemLanguage="zh-cn" id="trsvg647"><tspan id="trsvg104">&#x6C34;</tspan></text><text systemLanguage="zh-hans" id="trsvg647"><tspan id="trsvg104">&#x6C34;</tspan></text><text systemLanguage="zh-hant" id="trsvg647"><tspan id="trsvg104">&#x6C34;</tspan></text><text systemLanguage="zh-hk" id="trsvg647"><tspan id="trsvg104">&#x6C34;</tspan></text><text systemLanguage="zh-tw" id="trsvg647"><tspan id="trsvg104">&#x6C34;</tspan></text>
+            <text systemLanguage="cs" id="trsvg618"><tspan id="trsvg75">Vodn&#xED;</tspan></text>
+            <text systemLanguage="da" id="trsvg619"><tspan id="trsvg76">Vand</tspan></text>
+            <text systemLanguage="de" id="trsvg620"><tspan id="trsvg77">Wasser</tspan></text>
+            <text systemLanguage="el" id="trsvg621"><tspan id="trsvg78">&#x39D;&#x3B5;&#x3C1;&#x3BF;&#x3CD;</tspan></text>
+            <text systemLanguage="en" id="trsvg622"><tspan id="trsvg79">Water</tspan></text>
+            <text systemLanguage="eo" id="trsvg623"><tspan id="trsvg80">Akva</tspan></text>
+            <text systemLanguage="es" id="trsvg624"><tspan id="trsvg81">Agua</tspan></text>
+            <text systemLanguage="fi" id="trsvg625"><tspan id="trsvg82">Vesi</tspan></text>
+            <text systemLanguage="fr" id="trsvg626"><tspan id="trsvg83">Eau</tspan></text>
+            <text systemLanguage="he" id="trsvg627"><tspan id="trsvg84">&#x5DE;&#x5D9;&#x5DD;</tspan></text>
+            <text systemLanguage="hi" id="trsvg628"><tspan id="trsvg85">&#x935;&#x949;&#x91F;&#x930;</tspan></text>
+            <text systemLanguage="hu" id="trsvg629"><tspan id="trsvg86">V&#xED;z</tspan></text>
+            <text systemLanguage="id" id="trsvg630"><tspan id="trsvg87">Air</tspan></text>
+            <text systemLanguage="is" id="trsvg631"><tspan id="trsvg88">Vatn</tspan></text>
+            <text systemLanguage="it" id="trsvg632"><tspan id="trsvg89">Acqua</tspan></text>
+            <text systemLanguage="ja" id="trsvg633"><tspan id="trsvg90">&#x307F;&#x305A;</tspan></text>
+            <text systemLanguage="ko" id="trsvg634"><tspan id="trsvg91">&#xBB3C;</tspan></text>
+            <text systemLanguage="lb" id="trsvg635"><tspan id="trsvg92">Waasser</tspan></text>
+            <text systemLanguage="ms" id="trsvg636"><tspan id="trsvg93">Air</tspan></text>
+            <text systemLanguage="nl" id="trsvg637"><tspan id="trsvg94">Water</tspan></text>
+            <text systemLanguage="no" id="trsvg638"><tspan id="trsvg95">Vann</tspan></text>
+            <text systemLanguage="pl" id="trsvg639"><tspan id="trsvg96">Wodny</tspan></text>
+            <text systemLanguage="pt" id="trsvg640"><tspan id="trsvg97">&#xC1;gua</tspan></text>
+            <text systemLanguage="ro" id="trsvg641"><tspan id="trsvg98">Ap&#x103;</tspan></text>
+            <text systemLanguage="ru" id="trsvg642"><tspan id="trsvg99">&#x412;&#x43E;&#x434;&#x430;</tspan></text>
+            <text systemLanguage="sv" id="trsvg643"><tspan id="trsvg100">Vatten</tspan></text>
+            <text systemLanguage="th" id="trsvg644"><tspan id="trsvg101">&#xE19;&#xE49;&#xE33;</tspan></text>
+            <text systemLanguage="tr" id="trsvg645"><tspan id="trsvg102">Su</tspan></text>
+            <text systemLanguage="vi" id="trsvg646"><tspan id="trsvg103">N&#x1B0;&#x1EDB;c</tspan></text>
+            
+            
+        <text systemLanguage="zh" id="trsvg647"><tspan id="trsvg104">&#x6C34;</tspan></text><text id="trsvg648-yue" systemLanguage="yue"><tspan id="trsvg105-yue">&#x6C34;</tspan></text><text id="trsvg648"><tspan id="trsvg105">Water</tspan></text></switch>
+    </g>
+    <g transform="translate(79,171)">
+        <switch id="grass"><text systemLanguage="pt-br" id="trsvg672"><tspan id="trsvg129">Planta</tspan></text><text systemLanguage="zh-cn" id="trsvg679"><tspan id="trsvg136">&#x8349;</tspan></text><text systemLanguage="zh-hk" id="trsvg679"><tspan id="trsvg136">&#x8349;</tspan></text><text systemLanguage="zh-tw" id="trsvg679"><tspan id="trsvg136">&#x8349;</tspan></text><text systemLanguage="zh-hans" id="trsvg679"><tspan id="trsvg136">&#x8349;</tspan></text><text systemLanguage="zh-hant" id="trsvg679"><tspan id="trsvg136">&#x8349;</tspan></text>
+            <text systemLanguage="bg" id="trsvg649"><tspan id="trsvg106">&#x420;&#x430;&#x441;&#x442;&#x438;&#x442;&#x435;&#x43B;&#x43D;&#x438;</tspan></text>
+            <text systemLanguage="cs" id="trsvg650"><tspan id="trsvg107">Travn&#xED;</tspan></text>
+            <text systemLanguage="da" id="trsvg651"><tspan id="trsvg108">Gr&#xE6;s</tspan></text>
+            <text systemLanguage="de" id="trsvg652"><tspan id="trsvg109">Pflanze</tspan></text>
+            <text systemLanguage="el" id="trsvg653"><tspan id="trsvg110">&#x3A6;&#x3C5;&#x3C4;&#x3BF;&#x3CD;</tspan></text>
+            <text systemLanguage="en" id="trsvg654"><tspan id="trsvg111">Grass</tspan></text>
+            <text systemLanguage="eo" id="trsvg655"><tspan id="trsvg112">Planta</tspan></text>
+            <text systemLanguage="es" id="trsvg656"><tspan id="trsvg113">Planta</tspan></text>
+            <text systemLanguage="fi" id="trsvg657"><tspan id="trsvg114">Ruoho</tspan></text>
+            <text systemLanguage="fr" id="trsvg658"><tspan id="trsvg115">Plante</tspan></text>
+            <text systemLanguage="he" id="trsvg659"><tspan id="trsvg116">&#x5E2;&#x5E9;&#x5D1;</tspan></text>
+            <text systemLanguage="hi" id="trsvg660"><tspan id="trsvg117">&#x917;&#x94D;&#x930;&#x93E;&#x938;</tspan></text>
+            <text systemLanguage="hu" id="trsvg661"><tspan id="trsvg118">F&#x171;</tspan></text>
+            <text systemLanguage="id" id="trsvg662"><tspan id="trsvg119">Daun</tspan></text>
+            <text systemLanguage="it" id="trsvg663"><tspan id="trsvg120">Erba</tspan></text>
+            <text systemLanguage="ja" id="trsvg664"><tspan id="trsvg121">&#x304F;&#x3055;</tspan></text>
+            <text systemLanguage="ko" id="trsvg665"><tspan id="trsvg122">&#xD480;</tspan></text>
+            <text systemLanguage="lb" id="trsvg666"><tspan id="trsvg123">Gras</tspan></text>
+            <text systemLanguage="ms" id="trsvg667"><tspan id="trsvg124">Rumput</tspan></text>
+            <text systemLanguage="nl" id="trsvg668"><tspan id="trsvg125">Gras</tspan></text>
+            <text systemLanguage="no" id="trsvg669"><tspan id="trsvg126">Gress</tspan></text>
+            <text systemLanguage="pl" font-size="13" id="trsvg670"><tspan id="trsvg127">Trawiasty</tspan></text>
+            <text systemLanguage="pt" id="trsvg671"><tspan id="trsvg128">Erva</tspan></text>
+            
+            <text systemLanguage="ro" id="trsvg673"><tspan id="trsvg130">Iarb&#x103;</tspan></text>
+            <text systemLanguage="ru" id="trsvg674"><tspan id="trsvg131">&#x422;&#x440;&#x430;&#x432;&#x430;</tspan></text>
+            <text systemLanguage="sv" id="trsvg675"><tspan id="trsvg132">Gr&#xE4;s</tspan></text>
+            <text systemLanguage="th" id="trsvg676"><tspan id="trsvg133">&#xE2B;&#xE0D;&#xE49;&#xE32;</tspan></text>
+            <text systemLanguage="tr" id="trsvg677"><tspan id="trsvg134">Bitki</tspan></text>
+            <text systemLanguage="vi" id="trsvg678"><tspan id="trsvg135">C&#x1ECF;</tspan></text>
+            
+            
+        <text systemLanguage="zh" id="trsvg679"><tspan id="trsvg136">&#x8349;</tspan></text><text id="trsvg680-yue" systemLanguage="yue"><tspan id="trsvg137-yue">&#x8349;</tspan></text><text id="trsvg680"><tspan id="trsvg137">Grass</tspan></text></switch>
+    </g>
+    <g fill="#000">
+        <g transform="translate(79,193)">
+            <switch id="electric"><text systemLanguage="zh-hans" id="trsvg707"><tspan id="trsvg164">&#x7535;</tspan></text><text systemLanguage="zh-cn" id="trsvg706"><tspan id="trsvg163">&#x96FB;</tspan></text><text systemLanguage="zh-hk" id="trsvg706"><tspan id="trsvg163">&#x96FB;</tspan></text><text systemLanguage="zh-tw" id="trsvg706"><tspan id="trsvg163">&#x96FB;</tspan></text><text systemLanguage="zh-hant" id="trsvg706"><tspan id="trsvg163">&#x96FB;</tspan></text>
+                <text systemLanguage="cs" font-size="12" id="trsvg681"><tspan id="trsvg138">Elektrick&#xFD;</tspan></text>
+                
+                <text systemLanguage="de" id="trsvg683"><tspan id="trsvg140">Elektro</tspan></text>
+                <text systemLanguage="el" font-size="10" id="trsvg684"><tspan id="trsvg141">&#x397;&#x3BB;&#x3B5;&#x3BA;&#x3C4;&#x3C1;&#x3B9;&#x3C3;&#x3BC;&#x3BF;&#x3CD;</tspan></text>
+                <text systemLanguage="en" id="trsvg685"><tspan id="trsvg142">Electric</tspan></text>
+                <text systemLanguage="es" id="trsvg686"><tspan id="trsvg143">El&#xE9;ctrico</tspan></text>
+                <text systemLanguage="fi" id="trsvg687"><tspan id="trsvg144">S&#xE4;hk&#xF6;</tspan></text>
+                <text systemLanguage="fr" font-size="11" id="trsvg688"><tspan id="trsvg145">&#xC9;lectrique</tspan></text>
+                <text systemLanguage="he" id="trsvg689"><tspan id="trsvg146">&#x5D7;&#x5E9;&#x5DE;&#x5DC;</tspan></text>
+                <text systemLanguage="hi" id="trsvg690"><tspan id="trsvg147">&#x907;&#x932;&#x947;&#x915;&#x94D;&#x91F;&#x94D;&#x930;&#x93F;&#x915;</tspan></text>
+                <text systemLanguage="hu" font-size="11" id="trsvg691"><tspan id="trsvg148">Elektromos</tspan></text>
+                <text systemLanguage="id" id="trsvg692"><tspan id="trsvg149">Listrik</tspan></text>
+                <text systemLanguage="is" id="trsvg693"><tspan id="trsvg150">Elding</tspan></text>
+                <text systemLanguage="it" id="trsvg694"><tspan id="trsvg151">Elettro</tspan></text>
+                <text systemLanguage="ja" id="trsvg695"><tspan id="trsvg152">&#x3067;&#x3093;&#x304D;</tspan></text>
+                <text systemLanguage="ko" id="trsvg696"><tspan id="trsvg153">&#xC804;&#xAE30;</tspan></text>
+                <text systemLanguage="ms" id="trsvg697"><tspan id="trsvg154">Elektrik</tspan></text>
+                <text systemLanguage="nl" font-size="12" id="trsvg698"><tspan id="trsvg155">Elektrisch</tspan></text>
+                <text systemLanguage="pl" font-size="10" id="trsvg699"><tspan id="trsvg156">Elektryczny</tspan></text>
+                <text systemLanguage="pt" id="trsvg700"><tspan id="trsvg157">El&#xE9;trico</tspan></text>
+                <text systemLanguage="ro" font-size="12" id="trsvg701"><tspan id="trsvg158">Electricitate</tspan></text>
+                <text systemLanguage="ru" id="trsvg702"><tspan id="trsvg159">&#x42D;&#x43B;&#x435;&#x43A;&#x442;&#x440;&#x43E;</tspan></text>
+                <text systemLanguage="th" id="trsvg703"><tspan id="trsvg160">&#xE44;&#xE1F;&#xE1F;&#xE49;&#xE32;</tspan></text>
+                <text systemLanguage="tr" id="trsvg704"><tspan id="trsvg161">Elektrik</tspan></text>
+                <text systemLanguage="vi" id="trsvg705"><tspan id="trsvg162">&#x110;i&#x1EC7;n</tspan></text>
+                
+                
+                
+            <text systemLanguage="da" font-size="13" id="trsvg682"><tspan id="trsvg139">Elektrisk</tspan></text><text systemLanguage="no" font-size="13" id="trsvg682"><tspan id="trsvg139">Elektrisk</tspan></text><text systemLanguage="sv" font-size="13" id="trsvg682"><tspan id="trsvg139">Elektrisk</tspan></text><text systemLanguage="zh" id="trsvg706"><tspan id="trsvg163">&#x96FB;</tspan></text><text id="trsvg708-yue" systemLanguage="yue"><tspan id="trsvg165-yue">&#x96FB;</tspan></text><text id="trsvg708"><tspan id="trsvg165">Electric</tspan></text></switch>
+        </g>
+        <g transform="translate(79,215)">
+            <switch id="ice"><text systemLanguage="zh-cn" id="trsvg737"><tspan id="trsvg194">&#x51B0;</tspan></text><text systemLanguage="zh-hk" id="trsvg737"><tspan id="trsvg194">&#x51B0;</tspan></text><text systemLanguage="zh-tw" id="trsvg737"><tspan id="trsvg194">&#x51B0;</tspan></text><text systemLanguage="zh-hans" id="trsvg737"><tspan id="trsvg194">&#x51B0;</tspan></text><text systemLanguage="zh-hant" id="trsvg737"><tspan id="trsvg194">&#x51B0;</tspan></text>
+                <text systemLanguage="cs" id="trsvg709"><tspan id="trsvg166">Ledov&#xFD;</tspan></text>
+                <text systemLanguage="da" id="trsvg710"><tspan id="trsvg167">Is</tspan></text>
+                <text systemLanguage="de" id="trsvg711"><tspan id="trsvg168">Eis</tspan></text>
+                <text systemLanguage="el" id="trsvg712"><tspan id="trsvg169">&#x3A0;&#x3AC;&#x3B3;&#x3BF;&#x3C5;</tspan></text>
+                <text systemLanguage="en" id="trsvg713"><tspan id="trsvg170">Ice</tspan></text>
+                <text systemLanguage="es" id="trsvg714"><tspan id="trsvg171">Hielo</tspan></text>
+                <text systemLanguage="fi" id="trsvg715"><tspan id="trsvg172">J&#xE4;&#xE4;</tspan></text>
+                <text systemLanguage="fr" id="trsvg716"><tspan id="trsvg173">Glace</tspan></text>
+                <text systemLanguage="he" id="trsvg717"><tspan id="trsvg174">&#x5E7;&#x5E8;&#x5D7;</tspan></text>
+                <text systemLanguage="hi" id="trsvg718"><tspan id="trsvg175">&#x906;&#x907;&#x938;</tspan></text>
+                <text systemLanguage="hu" id="trsvg719"><tspan id="trsvg176">J&#xE9;g</tspan></text>
+                <text systemLanguage="id" id="trsvg720"><tspan id="trsvg177">Es</tspan></text>
+                <text systemLanguage="is" id="trsvg721"><tspan id="trsvg178">&#xCD;s</tspan></text>
+                <text systemLanguage="it" id="trsvg722"><tspan id="trsvg179">Ghiaccio</tspan></text>
+                <text systemLanguage="ja" id="trsvg723"><tspan id="trsvg180">&#x3053;&#x304A;&#x308A;</tspan></text>
+                <text systemLanguage="ko" id="trsvg724"><tspan id="trsvg181">&#xC5BC;&#xC74C;</tspan></text>
+                <text systemLanguage="ms" id="trsvg725"><tspan id="trsvg182">Ais</tspan></text>
+                <text systemLanguage="nl" id="trsvg726"><tspan id="trsvg183">IJs</tspan></text>
+                <text systemLanguage="no" id="trsvg727"><tspan id="trsvg184">Is</tspan></text>
+                <text systemLanguage="pl" id="trsvg728"><tspan id="trsvg185">Lodowy</tspan></text>
+                <text systemLanguage="pt" id="trsvg729"><tspan id="trsvg186">Gelo</tspan></text>
+                <text systemLanguage="ro" id="trsvg730"><tspan id="trsvg187">Ghea&#x21B;&#x103;</tspan></text>
+                <text systemLanguage="ru" id="trsvg731"><tspan id="trsvg188">&#x41B;&#x451;&#x434;</tspan></text>
+                <text systemLanguage="sk" id="trsvg732"><tspan id="trsvg189">&#x13D;adov&#xFD;</tspan></text>
+                <text systemLanguage="sv" id="trsvg733"><tspan id="trsvg190">Is</tspan></text>
+                <text systemLanguage="th" id="trsvg734"><tspan id="trsvg191">&#xE19;&#xE49;&#xE33;&#xE41;&#xE02;&#xE47;&#xE07;</tspan></text>
+                <text systemLanguage="tr" id="trsvg735"><tspan id="trsvg192">Buz</tspan></text>
+                <text systemLanguage="vi" id="trsvg736"><tspan id="trsvg193">B&#x103;ng</tspan></text>
+                
+                
+            <text systemLanguage="zh" id="trsvg737"><tspan id="trsvg194">&#x51B0;</tspan></text><text id="trsvg738-yue" systemLanguage="yue"><tspan id="trsvg195-yue">&#x51B0;</tspan></text><text id="trsvg738"><tspan id="trsvg195">Ice</tspan></text></switch>
+        </g>
+    </g>
+    <g transform="translate(79,237)">
+        <switch id="fighting"><text systemLanguage="zh-hans" id="trsvg766"><tspan id="trsvg223">&#x683C;&#x6597;</tspan></text><text systemLanguage="zh-hk" id="trsvg765"><tspan id="trsvg222">&#x683C;&#x9B25;</tspan></text><text systemLanguage="zh-cn" id="trsvg765"><tspan id="trsvg222">&#x683C;&#x9B25;</tspan></text><text systemLanguage="zh-tw" id="trsvg765"><tspan id="trsvg222">&#x683C;&#x9B25;</tspan></text><text systemLanguage="zh-hant" id="trsvg765"><tspan id="trsvg222">&#x683C;&#x9B25;</tspan></text>
+            <text systemLanguage="cs" id="trsvg739"><tspan id="trsvg196">Bojov&#xFD;</tspan></text>
+            <text systemLanguage="da" id="trsvg740"><tspan id="trsvg197">Kamp</tspan></text>
+            <text systemLanguage="de" id="trsvg741"><tspan id="trsvg198">Kampf</tspan></text>
+            <text systemLanguage="el" id="trsvg742"><tspan id="trsvg199">&#x39C;&#x3B1;&#x3C7;&#x3B7;&#x3C4;&#x3AE;&#x3C2;</tspan></text>
+            <text systemLanguage="en" id="trsvg743"><tspan id="trsvg200">Fighting</tspan></text>
+            <text systemLanguage="es" id="trsvg744"><tspan id="trsvg201">Lucha</tspan></text>
+            <text systemLanguage="fi" id="trsvg745"><tspan id="trsvg202">Taistelu</tspan></text>
+            <text systemLanguage="fr" id="trsvg746"><tspan id="trsvg203">Combat</tspan></text>
+            <text systemLanguage="he" id="trsvg747"><tspan id="trsvg204">&#x5DC;&#x5D7;&#x5D9;&#x5DE;&#x5D4;</tspan></text>
+            <text systemLanguage="hi" id="trsvg748"><tspan id="trsvg205">&#x92B;&#x93C;&#x93E;&#x907;&#x91F;&#x93F;&#x902;&#x917;</tspan></text>
+            <text systemLanguage="hu" id="trsvg749"><tspan id="trsvg206">Harcos</tspan></text>
+            <text systemLanguage="id" id="trsvg750"><tspan id="trsvg207">Petarung</tspan></text>
+            <text systemLanguage="it" id="trsvg751"><tspan id="trsvg208">Lotta</tspan></text>
+            <text systemLanguage="ja" id="trsvg752"><tspan id="trsvg209">&#x304B;&#x304F;&#x3068;&#x3046;</tspan></text>
+            <text systemLanguage="ko" id="trsvg753"><tspan id="trsvg210">&#xACA9;&#xD22C;</tspan></text>
+            <text systemLanguage="ms" id="trsvg754"><tspan id="trsvg211">Berlawan</tspan></text>
+            <text systemLanguage="nl" id="trsvg755"><tspan id="trsvg212">Vecht</tspan></text>
+            <text systemLanguage="no" id="trsvg756"><tspan id="trsvg213">Sl&#xE5;ss</tspan></text>
+            <text systemLanguage="pl" font-size="13" id="trsvg757"><tspan id="trsvg214">Walcz&#x105;cy</tspan></text>
+            <text systemLanguage="pt" id="trsvg758"><tspan id="trsvg215">Luta</tspan></text>
+            <text systemLanguage="ro" id="trsvg759"><tspan id="trsvg216">Lupt&#x103;</tspan></text>
+            <text systemLanguage="ru" id="trsvg760"><tspan id="trsvg217">&#x421;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x435;</tspan></text>
+            <text systemLanguage="sv" id="trsvg761"><tspan id="trsvg218">Strids</tspan></text>
+            <text systemLanguage="th" id="trsvg762"><tspan id="trsvg219">&#xE15;&#xE48;&#xE2D;&#xE2A;&#xE39;&#xE49;</tspan></text>
+            <text systemLanguage="tr" id="trsvg763"><tspan id="trsvg220">D&#xF6;v&#xFC;&#x15F;&#xE7;&#xFC;</tspan></text>
+            <text systemLanguage="vi" id="trsvg764"><tspan id="trsvg221">Gi&#xE1;c &#x111;&#x1EA5;u</tspan></text>
+            
+            
+            
+        <text systemLanguage="zh" id="trsvg765"><tspan id="trsvg222">&#x683C;&#x9B25;</tspan></text><text id="trsvg767-yue" systemLanguage="yue"><tspan id="trsvg224-yue">&#x683C;&#x9B25;</tspan></text><text id="trsvg767"><tspan id="trsvg224">Fighting</tspan></text></switch>
+    </g>
+    <g transform="translate(79,259)">
+        <switch id="poison"><text systemLanguage="zh-cn" id="trsvg794"><tspan id="trsvg251">&#x6BD2;</tspan></text><text systemLanguage="zh-hk" id="trsvg794"><tspan id="trsvg251">&#x6BD2;</tspan></text><text systemLanguage="zh-tw" id="trsvg794"><tspan id="trsvg251">&#x6BD2;</tspan></text><text systemLanguage="zh-hans" id="trsvg794"><tspan id="trsvg251">&#x6BD2;</tspan></text><text systemLanguage="zh-hant" id="trsvg794"><tspan id="trsvg251">&#x6BD2;</tspan></text>
+            <text systemLanguage="cs" id="trsvg768"><tspan id="trsvg225">Jedovat&#xFD;</tspan></text>
+            <text systemLanguage="da" id="trsvg769"><tspan id="trsvg226">Gift</tspan></text>
+            <text systemLanguage="de" id="trsvg770"><tspan id="trsvg227">Gift</tspan></text>
+            <text systemLanguage="el" font-size="12" id="trsvg771"><tspan id="trsvg228">&#x394;&#x3B7;&#x3BB;&#x3B7;&#x3C4;&#x3B7;&#x3C1;&#x3AF;&#x3BF;&#x3C5;</tspan></text>
+            <text systemLanguage="en" id="trsvg772"><tspan id="trsvg229">Poison</tspan></text>
+            <text systemLanguage="es" id="trsvg773"><tspan id="trsvg230">Veneno</tspan></text>
+            <text systemLanguage="fi" id="trsvg774"><tspan id="trsvg231">Myrkky</tspan></text>
+            <text systemLanguage="fr" id="trsvg775"><tspan id="trsvg232">Poison</tspan></text>
+            <text systemLanguage="he" id="trsvg776"><tspan id="trsvg233">&#x5E8;&#x5E2;&#x5DC;</tspan></text>
+            <text systemLanguage="hi" id="trsvg777"><tspan id="trsvg234">&#x92A;&#x949;&#x907;&#x91C;&#x93C;&#x928;</tspan></text>
+            <text systemLanguage="hu" id="trsvg778"><tspan id="trsvg235">M&#xE9;reg</tspan></text>
+            <text systemLanguage="id" id="trsvg779"><tspan id="trsvg236">Racun</tspan></text>
+            <text systemLanguage="it" id="trsvg780"><tspan id="trsvg237">Veleno</tspan></text>
+            <text systemLanguage="ja" id="trsvg781"><tspan id="trsvg238">&#x3069;&#x304F;</tspan></text>
+            <text systemLanguage="ko" id="trsvg782"><tspan id="trsvg239">&#xB3C5;</tspan></text>
+            <text systemLanguage="ms" id="trsvg783"><tspan id="trsvg240">Racun</tspan></text>
+            <text systemLanguage="nl" id="trsvg784"><tspan id="trsvg241">Gif</tspan></text>
+            <text systemLanguage="no" id="trsvg785"><tspan id="trsvg242">Gift</tspan></text>
+            <text systemLanguage="pl" id="trsvg786"><tspan id="trsvg243">Truj&#x105;cy</tspan></text>
+            <text systemLanguage="pt" id="trsvg787"><tspan id="trsvg244">Veneno</tspan></text>
+            <text systemLanguage="ro" id="trsvg788"><tspan id="trsvg245">Otrav&#x103;</tspan></text>
+            <text systemLanguage="ru" id="trsvg789"><tspan id="trsvg246">&#x42F;&#x434;</tspan></text>
+            <text systemLanguage="sv" id="trsvg790"><tspan id="trsvg247">Gift</tspan></text>
+            <text systemLanguage="th" id="trsvg791"><tspan id="trsvg248">&#xE1E;&#xE34;&#xE29;</tspan></text>
+            <text systemLanguage="tr" id="trsvg792"><tspan id="trsvg249">Zehir</tspan></text>
+            <text systemLanguage="vi" id="trsvg793"><tspan id="trsvg250">&#x110;&#x1ED9;c</tspan></text>
+            
+            
+        <text systemLanguage="zh" id="trsvg794"><tspan id="trsvg251">&#x6BD2;</tspan></text><text id="trsvg795-yue" systemLanguage="yue"><tspan id="trsvg252-yue">&#x6BD2;</tspan></text><text id="trsvg795"><tspan id="trsvg252">Poison</tspan></text></switch>
+    </g>
+    <g transform="translate(79,281)">
+        <switch id="ground"><text systemLanguage="pt-br" font-size="12" id="trsvg816"><tspan id="trsvg273">Terrestre</tspan></text><text systemLanguage="zh-cn" id="trsvg823"><tspan id="trsvg280">&#x5730;&#x9762;</tspan></text><text systemLanguage="zh-hk" id="trsvg823"><tspan id="trsvg280">&#x5730;&#x9762;</tspan></text><text systemLanguage="zh-tw" id="trsvg823"><tspan id="trsvg280">&#x5730;&#x9762;</tspan></text><text systemLanguage="zh-hans" id="trsvg823"><tspan id="trsvg280">&#x5730;&#x9762;</tspan></text><text systemLanguage="zh-hant" id="trsvg823"><tspan id="trsvg280">&#x5730;&#x9762;</tspan></text>
+            <text systemLanguage="cs" id="trsvg796"><tspan id="trsvg253">Zemn&#xED;</tspan></text>
+            <text systemLanguage="da" id="trsvg797"><tspan id="trsvg254">Jord</tspan></text>
+            <text systemLanguage="de" id="trsvg798"><tspan id="trsvg255">Boden</tspan></text>
+            <text systemLanguage="el" id="trsvg799"><tspan id="trsvg256">&#x395;&#x3B4;&#x3AC;&#x3C6;&#x3BF;&#x3C5;&#x3C2;</tspan></text>
+            <text systemLanguage="en" id="trsvg800"><tspan id="trsvg257">Ground</tspan></text>
+            <text systemLanguage="es" id="trsvg801"><tspan id="trsvg258">Tierra</tspan></text>
+            <text systemLanguage="fi" id="trsvg802"><tspan id="trsvg259">Maa</tspan></text>
+            <text systemLanguage="fr" id="trsvg803"><tspan id="trsvg260">Sol</tspan></text>
+            <text systemLanguage="he" id="trsvg804"><tspan id="trsvg261">&#x5D0;&#x5D3;&#x5DE;&#x5D4;</tspan></text>
+            <text systemLanguage="hi" id="trsvg805"><tspan id="trsvg262">&#x92D;&#x942;&#x92E;&#x93F;</tspan></text>
+            <text systemLanguage="hu" id="trsvg806"><tspan id="trsvg263">F&#xF6;ld</tspan></text>
+            <text systemLanguage="id" id="trsvg807"><tspan id="trsvg264">Tanah</tspan></text>
+            <text systemLanguage="it" id="trsvg808"><tspan id="trsvg265">Terra</tspan></text>
+            <text systemLanguage="ja" id="trsvg809"><tspan id="trsvg266">&#x3058;&#x3081;&#x3093;</tspan></text>
+            <text systemLanguage="ko" id="trsvg810"><tspan id="trsvg267">&#xB545;</tspan></text>
+            <text systemLanguage="ms" id="trsvg811"><tspan id="trsvg268">Darat</tspan></text>
+            <text systemLanguage="nl" id="trsvg812"><tspan id="trsvg269">Grond</tspan></text>
+            <text systemLanguage="no" id="trsvg813"><tspan id="trsvg270">Grund</tspan></text>
+            <text systemLanguage="pl" id="trsvg814"><tspan id="trsvg271">Ziemny</tspan></text>
+            <text systemLanguage="pt" id="trsvg815"><tspan id="trsvg272">Terra</tspan></text>
+            
+            <text systemLanguage="ro" id="trsvg817"><tspan id="trsvg274">P&#x103;m&#xE2;nt</tspan></text>
+            <text systemLanguage="ru" id="trsvg818"><tspan id="trsvg275">&#x417;&#x435;&#x43C;&#x43B;&#x44F;</tspan></text>
+            <text systemLanguage="sv" id="trsvg819"><tspan id="trsvg276">Mark</tspan></text>
+            <text systemLanguage="th" id="trsvg820"><tspan id="trsvg277">&#xE14;&#xE34;&#xE19;</tspan></text>
+            <text systemLanguage="tr" id="trsvg821"><tspan id="trsvg278">Yer</tspan></text>
+            <text systemLanguage="vi" id="trsvg822"><tspan id="trsvg279">&#x110;&#x1EA5;t</tspan></text>
+            
+            
+        <text systemLanguage="zh" id="trsvg823"><tspan id="trsvg280">&#x5730;&#x9762;</tspan></text><text id="trsvg824-yue" systemLanguage="yue"><tspan id="trsvg281-yue">&#x5730;&#x9762;</tspan></text><text id="trsvg824"><tspan id="trsvg281">Ground</tspan></text></switch>
+    </g>
+    <g transform="translate(79,303)">
+        <switch id="flying"><text systemLanguage="zh-hans" id="trsvg852"><tspan id="trsvg309">&#x98DE;&#x884C;</tspan></text><text systemLanguage="pt-br" id="trsvg844"><tspan id="trsvg301">Voador</tspan></text><text systemLanguage="zh-cn" id="trsvg851"><tspan id="trsvg308">&#x98DB;&#x884C;</tspan></text><text systemLanguage="zh-hant" id="trsvg851"><tspan id="trsvg308">&#x98DB;&#x884C;</tspan></text><text systemLanguage="zh-hk" id="trsvg851"><tspan id="trsvg308">&#x98DB;&#x884C;</tspan></text><text systemLanguage="zh-tw" id="trsvg851"><tspan id="trsvg308">&#x98DB;&#x884C;</tspan></text>
+            <text font-size="12" systemLanguage="no" id="trsvg825"><tspan id="trsvg282">Flyvende</tspan></text>
+            <text systemLanguage="cs" id="trsvg826"><tspan id="trsvg283">L&#xE9;taj&#xED;c&#xED;</tspan></text>
+            <text systemLanguage="da" id="trsvg827"><tspan id="trsvg284">Flyve</tspan></text>
+            <text systemLanguage="de" id="trsvg828"><tspan id="trsvg285">Flug</tspan></text>
+            <text systemLanguage="el" font-size="12" id="trsvg829"><tspan id="trsvg286">&#x399;&#x3C0;&#x3C4;&#x3AC;&#x3BC;&#x3B5;&#x3BD;&#x3BF;&#x3C2;</tspan></text>
+            <text systemLanguage="en" id="trsvg830"><tspan id="trsvg287">Flying</tspan></text>
+            <text systemLanguage="es" id="trsvg831"><tspan id="trsvg288">Volador</tspan></text>
+            <text systemLanguage="fi" id="trsvg832"><tspan id="trsvg289">Lento</tspan></text>
+            <text systemLanguage="fr" id="trsvg833"><tspan id="trsvg290">Vol</tspan></text>
+            <text systemLanguage="he" id="trsvg834"><tspan id="trsvg291">&#x5DE;&#x5E2;&#x5D5;&#x5E4;&#x5E3;</tspan></text>
+            <text systemLanguage="hi" id="trsvg835"><tspan id="trsvg292">&#x92B;&#x93C;&#x94D;&#x932;&#x93E;&#x907;&#x902;&#x917;</tspan></text>
+            <text systemLanguage="hu" id="trsvg836"><tspan id="trsvg293">Rep&#xFC;l&#x151;</tspan></text>
+            <text systemLanguage="id" id="trsvg837"><tspan id="trsvg294">Terbang</tspan></text>
+            <text systemLanguage="it" id="trsvg838"><tspan id="trsvg295">Volante</tspan></text>
+            <text systemLanguage="ja" id="trsvg839"><tspan id="trsvg296">&#x3072;&#x3053;&#x3046;</tspan></text>
+            <text systemLanguage="ko" id="trsvg840"><tspan id="trsvg297">&#xBE44;&#xD589;</tspan></text>
+            <text systemLanguage="ms" id="trsvg841"><tspan id="trsvg298">Terbang</tspan></text>
+            <text systemLanguage="nl" id="trsvg842"><tspan id="trsvg299">Vlieg</tspan></text>
+            <text systemLanguage="pl" id="trsvg843"><tspan id="trsvg300">Lataj&#x105;cy</tspan></text>
+            
+            <text systemLanguage="ro" id="trsvg845"><tspan id="trsvg302">Zbor</tspan></text>
+            <text systemLanguage="ru" id="trsvg846"><tspan id="trsvg303">&#x41B;&#x435;&#x442;&#x430;&#x44E;&#x449;&#x438;&#x439;</tspan></text>
+            <text systemLanguage="sv" id="trsvg847"><tspan id="trsvg304">Flygande</tspan></text>
+            <text systemLanguage="th" id="trsvg848"><tspan id="trsvg305">&#xE1A;&#xE34;&#xE19;</tspan></text>
+            <text systemLanguage="tr" id="trsvg849"><tspan id="trsvg306">U&#xE7;an</tspan></text>
+            <text systemLanguage="vi" id="trsvg850"><tspan id="trsvg307">Bay</tspan></text>
+            
+            
+            
+        <text systemLanguage="pt" id="trsvg844"><tspan id="trsvg301">Voador</tspan></text><text systemLanguage="zh" id="trsvg851"><tspan id="trsvg308">&#x98DB;&#x884C;</tspan></text><text id="trsvg853-yue" systemLanguage="yue"><tspan id="trsvg310-yue">&#x98DB;&#x884C;</tspan></text><text id="trsvg853"><tspan id="trsvg310">Flying</tspan></text></switch>
+    </g>
+    <g transform="translate(79,325)">
+        <switch id="psychic"><text systemLanguage="fr-ca" font-size="11" id="trsvg862"><tspan id="trsvg319">Psychique</tspan></text><text systemLanguage="pt-br" id="trsvg874"><tspan id="trsvg331">Ps&#xED;quico</tspan></text><text systemLanguage="zh-cn" id="trsvg881"><tspan id="trsvg338">&#x8D85;&#x80FD;&#x529B;</tspan></text><text systemLanguage="zh-hk" id="trsvg881"><tspan id="trsvg338">&#x8D85;&#x80FD;&#x529B;</tspan></text><text systemLanguage="zh-tw" id="trsvg881"><tspan id="trsvg338">&#x8D85;&#x80FD;&#x529B;</tspan></text><text systemLanguage="zh-hans" id="trsvg881"><tspan id="trsvg338">&#x8D85;&#x80FD;&#x529B;</tspan></text><text systemLanguage="zh-hant" id="trsvg881"><tspan id="trsvg338">&#x8D85;&#x80FD;&#x529B;</tspan></text>
+            <text systemLanguage="cs" font-size="12" id="trsvg854"><tspan id="trsvg311">Psychick&#xFD;</tspan></text>
+            <text systemLanguage="da" id="trsvg855"><tspan id="trsvg312">Synsk</tspan></text>
+            <text systemLanguage="de" id="trsvg856"><tspan id="trsvg313">Psycho</tspan></text>
+            <text systemLanguage="el" font-size="13" id="trsvg857"><tspan id="trsvg314">&#x39C;&#x3AD;&#x3BD;&#x3C4;&#x3B9;&#x3BF;&#x3C5;&#x3BC;</tspan></text>
+            <text systemLanguage="en" id="trsvg858"><tspan id="trsvg315">Psychic</tspan></text>
+            <text systemLanguage="es" id="trsvg859"><tspan id="trsvg316">Ps&#xED;quico</tspan></text>
+            <text systemLanguage="fi" id="trsvg860"><tspan id="trsvg317">Meedio</tspan></text>
+            <text systemLanguage="fr" id="trsvg861"><tspan id="trsvg318">Psy</tspan></text>
+            
+            <text systemLanguage="he" id="trsvg863"><tspan id="trsvg320">&#x5E2;&#x5DC; &#x5D7;&#x5D5;&#x5E9;&#x5D9;</tspan></text>
+            <text systemLanguage="hi" id="trsvg864"><tspan id="trsvg321">&#x938;&#x93E;&#x907;&#x915;&#x93F;&#x915;</tspan></text>
+            <text systemLanguage="hu" font-size="11" id="trsvg865"><tspan id="trsvg322">Pszichikus</tspan></text>
+            <text systemLanguage="id" id="trsvg866"><tspan id="trsvg323">Psychic</tspan></text>
+            <text systemLanguage="it" id="trsvg867"><tspan id="trsvg324">Psico</tspan></text>
+            <text systemLanguage="ja" id="trsvg868"><tspan id="trsvg325">&#x30A8;&#x30B9;&#x30D1;&#x30FC;</tspan></text>
+            <text systemLanguage="ko" id="trsvg869"><tspan id="trsvg326">&#xC5D0;&#xC2A4;&#xD37C;</tspan></text>
+            <text systemLanguage="ms" id="trsvg870"><tspan id="trsvg327">Psikik</tspan></text>
+            <text systemLanguage="nl" font-size="12" id="trsvg871"><tspan id="trsvg328">Psychisch</tspan></text>
+            <text systemLanguage="no" id="trsvg872"><tspan id="trsvg329">Psykisk</tspan></text>
+            <text systemLanguage="pl" font-size="11" id="trsvg873"><tspan id="trsvg330">Psychiczny</tspan></text>
+            
+            <text systemLanguage="ro" id="trsvg875"><tspan id="trsvg332">Psihic</tspan></text>
+            <text systemLanguage="ru" id="trsvg876"><tspan id="trsvg333">&#x41F;&#x441;&#x438;&#x445;&#x43E;</tspan></text>
+            <text systemLanguage="sv" id="trsvg877"><tspan id="trsvg334">Psykisk</tspan></text>
+            <text systemLanguage="th" id="trsvg878"><tspan id="trsvg335">&#xE1E;&#xE25;&#xE31;&#xE07;&#xE08;&#xE34;&#xE15;</tspan></text>
+            <text systemLanguage="tr" id="trsvg879"><tspan id="trsvg336">Psi&#x15F;ik</tspan></text>
+            <text systemLanguage="vi" font-size="12" id="trsvg880"><tspan id="trsvg337">Si&#xEA;u n&#x103;ng</tspan></text>
+            
+            
+        <text systemLanguage="pt" id="trsvg874"><tspan id="trsvg331">Ps&#xED;quico</tspan></text><text systemLanguage="zh" id="trsvg881"><tspan id="trsvg338">&#x8D85;&#x80FD;&#x529B;</tspan></text><text id="trsvg882-yue" systemLanguage="yue"><tspan id="trsvg339-yue">&#x8D85;&#x80FD;&#x529B;</tspan></text><text id="trsvg882"><tspan id="trsvg339">Psychic</tspan></text></switch>
+    </g>
+    <g transform="translate(79,347)">
+        <switch id="bug"><text systemLanguage="pt-br" id="trsvg903"><tspan id="trsvg360">Inseto</tspan></text><text systemLanguage="zh-hans" id="trsvg911"><tspan id="trsvg368">&#x866B;</tspan></text><text systemLanguage="zh-cn" id="trsvg910"><tspan id="trsvg367">&#x87F2;</tspan></text><text systemLanguage="zh-hant" id="trsvg910"><tspan id="trsvg367">&#x87F2;</tspan></text><text systemLanguage="zh-hk" id="trsvg910"><tspan id="trsvg367">&#x87F2;</tspan></text><text systemLanguage="zh-tw" id="trsvg910"><tspan id="trsvg367">&#x87F2;</tspan></text>
+            <text systemLanguage="cs" id="trsvg883"><tspan id="trsvg340">Hmyz&#xED;</tspan></text>
+            <text systemLanguage="da" id="trsvg884"><tspan id="trsvg341">Kryb</tspan></text>
+            <text systemLanguage="de" id="trsvg885"><tspan id="trsvg342">K&#xE4;fer</tspan></text>
+            <text systemLanguage="el" id="trsvg886"><tspan id="trsvg343">&#x395;&#x3BD;&#x3C4;&#x3CC;&#x3BC;&#x3BF;&#x3C5;</tspan></text>
+            <text systemLanguage="en" id="trsvg887"><tspan id="trsvg344">Bug</tspan></text>
+            <text systemLanguage="es" id="trsvg888"><tspan id="trsvg345">Bicho</tspan></text>
+            <text systemLanguage="fi" id="trsvg889"><tspan id="trsvg346">&#xD6;t&#xF6;kk&#xE4;</tspan></text>
+            <text systemLanguage="fr" id="trsvg890"><tspan id="trsvg347">Insecte</tspan></text>
+            <text systemLanguage="he" id="trsvg891"><tspan id="trsvg348">&#x5D7;&#x5E8;&#x5E7;</tspan></text>
+            <text systemLanguage="hi" id="trsvg892"><tspan id="trsvg349">&#x92C;&#x917;</tspan></text>
+            <text systemLanguage="hu" id="trsvg893"><tspan id="trsvg350">Bog&#xE1;r</tspan></text>
+            <text systemLanguage="id" id="trsvg894"><tspan id="trsvg351">Serangga</tspan></text>
+            <text systemLanguage="it" font-size="12" id="trsvg895"><tspan id="trsvg352">Coleottero</tspan></text>
+            <text systemLanguage="ja" id="trsvg896"><tspan id="trsvg353">&#x3080;&#x3057;</tspan></text>
+            <text systemLanguage="ko" id="trsvg897"><tspan id="trsvg354">&#xBC8C;&#xB808;</tspan></text>
+            <text systemLanguage="ms" id="trsvg898"><tspan id="trsvg355">Serangga</tspan></text>
+            <text systemLanguage="nl" id="trsvg899"><tspan id="trsvg356">Insect</tspan></text>
+            <text systemLanguage="no" id="trsvg900"><tspan id="trsvg357">Insekt</tspan></text>
+            <text systemLanguage="pl" id="trsvg901"><tspan id="trsvg358">Robak</tspan></text>
+            <text systemLanguage="pt" id="trsvg902"><tspan id="trsvg359">Insecto</tspan></text>
+            
+            <text systemLanguage="ro" id="trsvg904"><tspan id="trsvg361">Insect&#x103;</tspan></text>
+            <text systemLanguage="ru" id="trsvg905"><tspan id="trsvg362">&#x41D;&#x430;&#x441;&#x435;&#x43A;&#x43E;&#x43C;&#x43E;&#x435;</tspan></text>
+            <text systemLanguage="sv" id="trsvg906"><tspan id="trsvg363">Insekt</tspan></text>
+            <text systemLanguage="th" id="trsvg907"><tspan id="trsvg364">&#xE41;&#xE21;&#xE25;&#xE07;</tspan></text>
+            <text systemLanguage="tr" id="trsvg908"><tspan id="trsvg365">B&#xF6;cek</tspan></text>
+            <text systemLanguage="vi" font-size="12" id="trsvg909"><tspan id="trsvg366">C&#xF4;n tr&#xF9;ng</tspan></text>
+            
+            
+            
+        <text systemLanguage="zh" id="trsvg910"><tspan id="trsvg367">&#x87F2;</tspan></text><text id="trsvg912-yue" systemLanguage="yue"><tspan id="trsvg369-yue">&#x87F2;</tspan></text><text id="trsvg912"><tspan id="trsvg369">Bug</tspan></text></switch>
+    </g>
+    <g transform="translate(79,369)">
+        <switch id="rock"><text systemLanguage="pt-br" id="trsvg932"><tspan id="trsvg389">Pedra</tspan></text><text systemLanguage="zh-cn" id="trsvg939"><tspan id="trsvg396">&#x5CA9;&#x77F3;</tspan></text><text systemLanguage="zh-hans" id="trsvg939"><tspan id="trsvg396">&#x5CA9;&#x77F3;</tspan></text><text systemLanguage="zh-hant" id="trsvg939"><tspan id="trsvg396">&#x5CA9;&#x77F3;</tspan></text><text systemLanguage="zh-hk" id="trsvg939"><tspan id="trsvg396">&#x5CA9;&#x77F3;</tspan></text><text systemLanguage="zh-tw" id="trsvg939"><tspan id="trsvg396">&#x5CA9;&#x77F3;</tspan></text>
+            <text font-size="12" systemLanguage="cs" id="trsvg913"><tspan id="trsvg370">Kamenn&#xFD;</tspan></text>
+            <text systemLanguage="da" id="trsvg914"><tspan id="trsvg371">Sten</tspan></text>
+            <text systemLanguage="de" id="trsvg915"><tspan id="trsvg372">Gestein</tspan></text>
+            <text systemLanguage="el" id="trsvg916"><tspan id="trsvg373">&#x3A0;&#x3AD;&#x3C4;&#x3C1;&#x3B1;&#x3C2;</tspan></text>
+            <text systemLanguage="en" id="trsvg917"><tspan id="trsvg374">Rock</tspan></text>
+            <text systemLanguage="es" id="trsvg918"><tspan id="trsvg375">Roca</tspan></text>
+            <text systemLanguage="fi" id="trsvg919"><tspan id="trsvg376">Kivi</tspan></text>
+            <text systemLanguage="fr" id="trsvg920"><tspan id="trsvg377">Roche</tspan></text>
+            <text systemLanguage="he" id="trsvg921"><tspan id="trsvg378">&#x5E1;&#x5DC;&#x5E2;</tspan></text>
+            <text systemLanguage="hi" id="trsvg922"><tspan id="trsvg379">&#x930;&#x949;&#x915;</tspan></text>
+            <text systemLanguage="hu" id="trsvg923"><tspan id="trsvg380">Szikla</tspan></text>
+            <text systemLanguage="id" id="trsvg924"><tspan id="trsvg381">Bebatuan</tspan></text>
+            <text systemLanguage="it" id="trsvg925"><tspan id="trsvg382">Roccia</tspan></text>
+            <text systemLanguage="ja" id="trsvg926"><tspan id="trsvg383">&#x3044;&#x308F;</tspan></text>
+            <text systemLanguage="ko" id="trsvg927"><tspan id="trsvg384">&#xBC14;&#xC704;</tspan></text>
+            <text systemLanguage="ms" id="trsvg928"><tspan id="trsvg385">Batu</tspan></text>
+            <text systemLanguage="nl" id="trsvg929"><tspan id="trsvg386">Steen</tspan></text>
+            <text systemLanguage="no" id="trsvg930"><tspan id="trsvg387">Stein</tspan></text>
+            <text systemLanguage="pl" font-size="12" id="trsvg931"><tspan id="trsvg388">Kamienny</tspan></text>
+            
+            <text systemLanguage="ro" id="trsvg933"><tspan id="trsvg390">Piatr&#x103;</tspan></text>
+            <text systemLanguage="ru" id="trsvg934"><tspan id="trsvg391">&#x41A;&#x430;&#x43C;&#x435;&#x43D;&#x44C;</tspan></text>
+            <text systemLanguage="sv" id="trsvg935"><tspan id="trsvg392">Sten</tspan></text>
+            <text systemLanguage="th" id="trsvg936"><tspan id="trsvg393">&#xE2B;&#xE34;&#xE19;</tspan></text>
+            <text systemLanguage="tr" id="trsvg937"><tspan id="trsvg394">Kaya</tspan></text>
+            <text systemLanguage="vi" id="trsvg938"><tspan id="trsvg395">&#x110;&#xE1;</tspan></text>
+            
+            
+        <text systemLanguage="pt" id="trsvg932"><tspan id="trsvg389">Pedra</tspan></text><text systemLanguage="zh" id="trsvg939"><tspan id="trsvg396">&#x5CA9;&#x77F3;</tspan></text><text id="trsvg940-yue" systemLanguage="yue"><tspan id="trsvg397-yue">&#x5CA9;&#x77F3;</tspan></text><text id="trsvg940"><tspan id="trsvg397">Rock</tspan></text></switch>
+    </g>
+    <g transform="translate(79,391)">
+        <switch id="ghost"><text systemLanguage="zh-hans" id="trsvg969"><tspan id="trsvg426">&#x5E7D;&#x7075;</tspan></text><text font-size="12" systemLanguage="pt-br" id="trsvg947"><tspan id="trsvg404">Fantasma</tspan></text><text systemLanguage="zh-hk" id="trsvg968"><tspan id="trsvg425">&#x5E7D;&#x9748;</tspan></text><text systemLanguage="zh-cn" id="trsvg968"><tspan id="trsvg425">&#x5E7D;&#x9748;</tspan></text><text systemLanguage="zh-tw" id="trsvg968"><tspan id="trsvg425">&#x5E7D;&#x9748;</tspan></text><text systemLanguage="zh-hant" id="trsvg968"><tspan id="trsvg425">&#x5E7D;&#x9748;</tspan></text>
+            <text font-size="12" systemLanguage="bg" id="trsvg941"><tspan id="trsvg398">&#x41F;&#x440;&#x438;&#x437;&#x440;&#x430;&#x447;&#x43D;&#x438;</tspan></text>
+            <text font-size="12" systemLanguage="da" id="trsvg942"><tspan id="trsvg399">Sp&#xF8;gelse</tspan></text>
+            <text font-size="12" systemLanguage="el" id="trsvg943"><tspan id="trsvg400">&#x3A6;&#x3AC;&#x3BD;&#x3C4;&#x3B1;&#x3C3;&#x3BC;&#x3B1;</tspan></text>
+            <text font-size="12" systemLanguage="es" id="trsvg944"><tspan id="trsvg401">Fantasma</tspan></text>
+            <text font-size="12" systemLanguage="fi" id="trsvg945"><tspan id="trsvg402">Kummitus</tspan></text>
+            <text font-size="12" systemLanguage="no" id="trsvg946"><tspan id="trsvg403">Sp&#xF8;kelse</tspan></text>
+            
+            <text font-size="12" systemLanguage="ru" id="trsvg948"><tspan id="trsvg405">&#x41F;&#x440;&#x438;&#x432;&#x438;&#x434;&#x435;&#x43D;&#x438;&#x435;</tspan></text>
+            <text systemLanguage="cs" id="trsvg949"><tspan id="trsvg406">Duchov&#xFD;</tspan></text>
+            <text systemLanguage="de" id="trsvg950"><tspan id="trsvg407">Geist</tspan></text>
+            <text systemLanguage="en" id="trsvg951"><tspan id="trsvg408">Ghost</tspan></text>
+            <text systemLanguage="fr" id="trsvg952"><tspan id="trsvg409">Spectre</tspan></text>
+            <text systemLanguage="he" id="trsvg953"><tspan id="trsvg410">&#x5E8;&#x5D5;&#x5D7;</tspan></text>
+            <text systemLanguage="hi" id="trsvg954"><tspan id="trsvg411">&#x918;&#x94B;&#x938;&#x94D;&#x91F;</tspan></text>
+            <text systemLanguage="hu" id="trsvg955"><tspan id="trsvg412">Szellem</tspan></text>
+            <text systemLanguage="id" id="trsvg956"><tspan id="trsvg413">Hantu</tspan></text>
+            <text systemLanguage="it" id="trsvg957"><tspan id="trsvg414">Spettro</tspan></text>
+            <text systemLanguage="ja" id="trsvg958"><tspan id="trsvg415">&#x30B4;&#x30FC;&#x30B9;&#x30C8;</tspan></text>
+            <text systemLanguage="ko" id="trsvg959"><tspan id="trsvg416">&#xACE0;&#xC2A4;&#xD2B8;</tspan></text>
+            <text systemLanguage="ms" id="trsvg960"><tspan id="trsvg417">Hantu</tspan></text>
+            <text systemLanguage="nl" id="trsvg961"><tspan id="trsvg418">Geest</tspan></text>
+            <text systemLanguage="pl" id="trsvg962"><tspan id="trsvg419">Duch</tspan></text>
+            <text systemLanguage="ro" id="trsvg963"><tspan id="trsvg420">Fantom&#x103;</tspan></text>
+            <text systemLanguage="sv" id="trsvg964"><tspan id="trsvg421">Sp&#xF6;ke</tspan></text>
+            <text systemLanguage="th" id="trsvg965"><tspan id="trsvg422">&#xE1C;&#xE35;</tspan></text>
+            <text systemLanguage="tr" id="trsvg966"><tspan id="trsvg423">Hayalet</tspan></text>
+            <text systemLanguage="vi" id="trsvg967"><tspan id="trsvg424">Ma</tspan></text>
+            
+            
+            
+        <text font-size="12" systemLanguage="pt" id="trsvg947"><tspan id="trsvg404">Fantasma</tspan></text><text systemLanguage="zh" id="trsvg968"><tspan id="trsvg425">&#x5E7D;&#x9748;</tspan></text><text id="trsvg970-yue" systemLanguage="yue"><tspan id="trsvg427-yue">&#x9B3C;&#x9B42;</tspan></text><text id="trsvg970"><tspan id="trsvg427">Ghost</tspan></text></switch>
+    </g>
+    <g transform="translate(79,413)">
+        <switch id="dragon"><text systemLanguage="zh-hans" id="trsvg998"><tspan id="trsvg455">&#x9F99;</tspan></text><text systemLanguage="pt-br" id="trsvg990"><tspan id="trsvg447">Drag&#xE3;o</tspan></text><text systemLanguage="zh-hk" id="trsvg997"><tspan id="trsvg454">&#x9F8D;</tspan></text><text systemLanguage="zh-cn" id="trsvg997"><tspan id="trsvg454">&#x9F8D;</tspan></text><text systemLanguage="zh-tw" id="trsvg997"><tspan id="trsvg454">&#x9F8D;</tspan></text><text systemLanguage="zh-hant" id="trsvg997"><tspan id="trsvg454">&#x9F8D;</tspan></text>
+            <text systemLanguage="cs" id="trsvg971"><tspan id="trsvg428">Dra&#x10D;&#xED;</tspan></text>
+            <text systemLanguage="da" id="trsvg972"><tspan id="trsvg429">Drage</tspan></text>
+            <text systemLanguage="de" id="trsvg973"><tspan id="trsvg430">Drache</tspan></text>
+            <text systemLanguage="el" id="trsvg974"><tspan id="trsvg431">&#x394;&#x3C1;&#x3AC;&#x3BA;&#x3BF;&#x3C5;</tspan></text>
+            <text systemLanguage="en" id="trsvg975"><tspan id="trsvg432">Dragon</tspan></text>
+            <text systemLanguage="es" id="trsvg976"><tspan id="trsvg433">Drag&#xF3;n</tspan></text>
+            <text systemLanguage="fi" id="trsvg977"><tspan id="trsvg434">Lohik&#xE4;&#xE4;rme</tspan></text>
+            <text systemLanguage="fr" id="trsvg978"><tspan id="trsvg435">Dragon</tspan></text>
+            <text systemLanguage="he" id="trsvg979"><tspan id="trsvg436">&#x5D3;&#x5E8;&#x5E7;&#x5D5;&#x5DF;</tspan></text>
+            <text systemLanguage="hi" id="trsvg980"><tspan id="trsvg437">&#x921;&#x94D;&#x930;&#x948;&#x917;&#x928;</tspan></text>
+            <text systemLanguage="hu" id="trsvg981"><tspan id="trsvg438">S&#xE1;rk&#xE1;ny</tspan></text>
+            <text systemLanguage="id" id="trsvg982"><tspan id="trsvg439">Naga</tspan></text>
+            <text systemLanguage="it" id="trsvg983"><tspan id="trsvg440">Drago</tspan></text>
+            <text systemLanguage="ja" id="trsvg984"><tspan id="trsvg441">&#x30C9;&#x30E9;&#x30B4;&#x30F3;</tspan></text>
+            <text systemLanguage="ko" id="trsvg985"><tspan id="trsvg442">&#xB4DC;&#xB798;&#xACE4;</tspan></text>
+            <text systemLanguage="ms" id="trsvg986"><tspan id="trsvg443">Naga</tspan></text>
+            <text systemLanguage="nl" id="trsvg987"><tspan id="trsvg444">Draak</tspan></text>
+            <text systemLanguage="no" id="trsvg988"><tspan id="trsvg445">Drage</tspan></text>
+            <text systemLanguage="pl" id="trsvg989"><tspan id="trsvg446">Smok</tspan></text>
+            
+            <text systemLanguage="ro" id="trsvg991"><tspan id="trsvg448">Dragon</tspan></text>
+            <text systemLanguage="ru" id="trsvg992"><tspan id="trsvg449">&#x414;&#x440;&#x430;&#x43A;&#x43E;&#x43D;</tspan></text>
+            <text systemLanguage="sv" id="trsvg993"><tspan id="trsvg450">Drake</tspan></text>
+            <text systemLanguage="th" id="trsvg994"><tspan id="trsvg451">&#xE21;&#xE31;&#xE07;&#xE01;&#xE23;</tspan></text>
+            <text systemLanguage="tr" id="trsvg995"><tspan id="trsvg452">Ejderha</tspan></text>
+            <text systemLanguage="vi" id="trsvg996"><tspan id="trsvg453">R&#x1ED3;ng</tspan></text>
+            
+            
+            
+        <text systemLanguage="pt" id="trsvg990"><tspan id="trsvg447">Drag&#xE3;o</tspan></text><text systemLanguage="zh" id="trsvg997"><tspan id="trsvg454">&#x9F8D;</tspan></text><text id="trsvg999-yue" systemLanguage="yue"><tspan id="trsvg456-yue">&#x9F8D;</tspan></text><text id="trsvg999"><tspan id="trsvg456">Dragon</tspan></text></switch>
+    </g>
+    <g transform="translate(79,435)">
+        <switch id="dark"><text systemLanguage="pt-br" id="trsvg1020"><tspan id="trsvg477">Sombrio</tspan></text><text systemLanguage="zh-hans" id="trsvg1028"><tspan id="trsvg485">&#x6076;</tspan></text><text systemLanguage="zh-hk" id="trsvg1027"><tspan id="trsvg484">&#x60E1;</tspan></text><text systemLanguage="zh-cn" id="trsvg1027"><tspan id="trsvg484">&#x60E1;</tspan></text><text systemLanguage="zh-tw" id="trsvg1027"><tspan id="trsvg484">&#x60E1;</tspan></text><text systemLanguage="zh-hant" id="trsvg1027"><tspan id="trsvg484">&#x60E1;</tspan></text>
+            <text systemLanguage="cs" id="trsvg1000"><tspan id="trsvg457">Temn&#xFD;</tspan></text>
+            <text systemLanguage="da" id="trsvg1001"><tspan id="trsvg458">M&#xF8;rke</tspan></text>
+            <text systemLanguage="de" id="trsvg1002"><tspan id="trsvg459">Unlicht</tspan></text>
+            <text systemLanguage="el" font-size="12" id="trsvg1003"><tspan id="trsvg460">&#x3A3;&#x3BA;&#x3BF;&#x3C4;&#x3B1;&#x3B4;&#x3B9;&#x3BF;&#x3CD;</tspan></text>
+            <text systemLanguage="en" id="trsvg1004"><tspan id="trsvg461">Dark</tspan></text>
+            <text systemLanguage="es" font-size="12" id="trsvg1005"><tspan id="trsvg462">Siniestro</tspan></text>
+            <text systemLanguage="fi" id="trsvg1006"><tspan id="trsvg463">Pimeys</tspan></text>
+            <text systemLanguage="fr" font-size="12" id="trsvg1007"><tspan id="trsvg464">T&#xE9;n&#xE8;bres</tspan></text>
+            <text systemLanguage="he" id="trsvg1008"><tspan id="trsvg465">&#x5D0;&#x5D5;&#x5E4;&#x5DC;</tspan></text>
+            <text systemLanguage="hi" id="trsvg1009"><tspan id="trsvg466">&#x921;&#x93E;&#x930;&#x94D;&#x915;</tspan></text>
+            <text systemLanguage="hu" id="trsvg1010"><tspan id="trsvg467">S&#xF6;t&#xE9;t</tspan></text>
+            <text systemLanguage="id" font-size="12" id="trsvg1011"><tspan id="trsvg468">Kegelapan</tspan></text>
+            <text systemLanguage="it" id="trsvg1012"><tspan id="trsvg469">Buio</tspan></text>
+            <text systemLanguage="ja" id="trsvg1013"><tspan id="trsvg470">&#x3042;&#x304F;</tspan></text>
+            <text systemLanguage="ko" id="trsvg1014"><tspan id="trsvg471">&#xC545;</tspan></text>
+            <text systemLanguage="ms" id="trsvg1015"><tspan id="trsvg472">Gelap</tspan></text>
+            <text systemLanguage="nl" id="trsvg1016"><tspan id="trsvg473">Duister</tspan></text>
+            <text systemLanguage="no" id="trsvg1017"><tspan id="trsvg474">M&#xF8;rk</tspan></text>
+            <text systemLanguage="pl" id="trsvg1018"><tspan id="trsvg475">Mroczny</tspan></text>
+            <text systemLanguage="pt" font-size="12" id="trsvg1019"><tspan id="trsvg476">Escurid&#xE3;o</tspan></text>
+            
+            <text systemLanguage="ro" font-size="12" id="trsvg1021"><tspan id="trsvg478">&#xCE;ntuneric</tspan></text>
+            <text systemLanguage="ru" id="trsvg1022"><tspan id="trsvg479">&#x422;&#x435;&#x43C;&#x43D;&#x43E;&#x442;&#x430;</tspan></text>
+            <text systemLanguage="sv" id="trsvg1023"><tspan id="trsvg480">M&#xF6;rker</tspan></text>
+            <text systemLanguage="th" id="trsvg1024"><tspan id="trsvg481">&#xE21;&#xE37;&#xE14;</tspan></text>
+            <text systemLanguage="tr" id="trsvg1025"><tspan id="trsvg482">Karanl&#x131;k</tspan></text>
+            <text systemLanguage="vi" id="trsvg1026"><tspan id="trsvg483">B&#xF3;ng t&#x1ED1;i</tspan></text>
+            
+            
+            
+        <text systemLanguage="zh" id="trsvg1027"><tspan id="trsvg484">&#x60E1;</tspan></text><text id="trsvg1029-yue" systemLanguage="yue"><tspan id="trsvg486-yue">&#x60E1;</tspan></text><text id="trsvg1029"><tspan id="trsvg486">Dark</tspan></text></switch>
+    </g>
+    <g transform="translate(79,457)">
+        <switch id="steel"><text systemLanguage="zh-hans" id="trsvg1057"><tspan id="trsvg514">&#x94A2;</tspan></text><text systemLanguage="pt-br" id="trsvg1049"><tspan id="trsvg506">A&#xE7;o</tspan></text><text systemLanguage="zh-hk" id="trsvg1056"><tspan id="trsvg513">&#x92FC;</tspan></text><text systemLanguage="zh-cn" id="trsvg1056"><tspan id="trsvg513">&#x92FC;</tspan></text><text systemLanguage="zh-tw" id="trsvg1056"><tspan id="trsvg513">&#x92FC;</tspan></text><text systemLanguage="zh-hant" id="trsvg1056"><tspan id="trsvg513">&#x92FC;</tspan></text>
+            <text systemLanguage="cs" id="trsvg1030"><tspan id="trsvg487">Ocelov&#xFD;</tspan></text>
+            <text systemLanguage="da" id="trsvg1031"><tspan id="trsvg488">St&#xE5;l</tspan></text>
+            <text systemLanguage="de" id="trsvg1032"><tspan id="trsvg489">Stahl</tspan></text>
+            <text systemLanguage="el" font-size="13" id="trsvg1033"><tspan id="trsvg490">&#x39C;&#x3B5;&#x3C4;&#x3AC;&#x3BB;&#x3BB;&#x3BF;&#x3C5;</tspan></text>
+            <text systemLanguage="en" id="trsvg1034"><tspan id="trsvg491">Steel</tspan></text>
+            <text systemLanguage="es" id="trsvg1035"><tspan id="trsvg492">Acero</tspan></text>
+            <text systemLanguage="fi" id="trsvg1036"><tspan id="trsvg493">Ter&#xE4;s</tspan></text>
+            <text systemLanguage="fr" id="trsvg1037"><tspan id="trsvg494">Acier</tspan></text>
+            <text systemLanguage="he" id="trsvg1038"><tspan id="trsvg495">&#x5E4;&#x5DC;&#x5D3;&#x5D4;</tspan></text>
+            <text systemLanguage="hi" id="trsvg1039"><tspan id="trsvg496">&#x938;&#x94D;&#x91F;&#x940;&#x932;</tspan></text>
+            <text systemLanguage="hu" id="trsvg1040"><tspan id="trsvg497">Ac&#xE9;l</tspan></text>
+            <text systemLanguage="id" id="trsvg1041"><tspan id="trsvg498">Logam</tspan></text>
+            <text systemLanguage="it" id="trsvg1042"><tspan id="trsvg499">Acciaio</tspan></text>
+            <text systemLanguage="ja" id="trsvg1043"><tspan id="trsvg500">&#x306F;&#x304C;&#x306D;</tspan></text>
+            <text systemLanguage="ko" id="trsvg1044"><tspan id="trsvg501">&#xAC15;&#xCCA0;</tspan></text>
+            <text systemLanguage="ms" id="trsvg1045"><tspan id="trsvg502">Besi</tspan></text>
+            <text systemLanguage="nl" id="trsvg1046"><tspan id="trsvg503">Staal</tspan></text>
+            <text systemLanguage="no" id="trsvg1047"><tspan id="trsvg504">St&#xE5;l</tspan></text>
+            <text systemLanguage="pl" id="trsvg1048"><tspan id="trsvg505">Stalowy</tspan></text>
+            
+            <text systemLanguage="ro" id="trsvg1050"><tspan id="trsvg507">O&#x21B;el</tspan></text>
+            <text systemLanguage="ru" id="trsvg1051"><tspan id="trsvg508">&#x421;&#x442;&#x430;&#x43B;&#x44C;</tspan></text>
+            <text systemLanguage="sv" id="trsvg1052"><tspan id="trsvg509">St&#xE5;l</tspan></text>
+            <text systemLanguage="th" id="trsvg1053"><tspan id="trsvg510">&#xE42;&#xE25;&#xE2B;&#xE30;</tspan></text>
+            <text systemLanguage="tr" id="trsvg1054"><tspan id="trsvg511">&#xC7;elik</tspan></text>
+            <text systemLanguage="vi" id="trsvg1055"><tspan id="trsvg512">Th&#xE9;p</tspan></text>
+            
+            
+            
+        <text systemLanguage="pt" id="trsvg1049"><tspan id="trsvg506">A&#xE7;o</tspan></text><text systemLanguage="zh" id="trsvg1056"><tspan id="trsvg513">&#x92FC;</tspan></text><text id="trsvg1058-yue" systemLanguage="yue"><tspan id="trsvg515-yue">&#x92FC;</tspan></text><text id="trsvg1058"><tspan id="trsvg515">Steel</tspan></text></switch>
+    </g>
+    <g transform="translate(79,479)">
+        <switch id="fairy"><text systemLanguage="pt-br" id="trsvg1078"><tspan id="trsvg535">Fada</tspan></text><text systemLanguage="zh-hk" id="trsvg1085"><tspan id="trsvg542">&#x5996;&#x7CBE;</tspan></text><text systemLanguage="zh-cn" id="trsvg1085"><tspan id="trsvg542">&#x5996;&#x7CBE;</tspan></text><text systemLanguage="zh-tw" id="trsvg1085"><tspan id="trsvg542">&#x5996;&#x7CBE;</tspan></text><text systemLanguage="zh-hant" id="trsvg1085"><tspan id="trsvg542">&#x5996;&#x7CBE;</tspan></text><text systemLanguage="zh-hans" id="trsvg1085"><tspan id="trsvg542">&#x5996;&#x7CBE;</tspan></text>
+            <text systemLanguage="cs" id="trsvg1059"><tspan id="trsvg516">V&#xED;l&#xED;</tspan></text>
+            <text systemLanguage="da" id="trsvg1060"><tspan id="trsvg517">Fe</tspan></text>
+            <text systemLanguage="de" id="trsvg1061"><tspan id="trsvg518">Fee</tspan></text>
+            <text systemLanguage="el" id="trsvg1062"><tspan id="trsvg519">&#x39D;&#x3B5;&#x3C1;&#x3AC;&#x3B9;&#x3B4;&#x3B1;</tspan></text>
+            <text systemLanguage="en" id="trsvg1063"><tspan id="trsvg520">Fairy</tspan></text>
+            <text systemLanguage="es" id="trsvg1064"><tspan id="trsvg521">Hada</tspan></text>
+            <text systemLanguage="fi" id="trsvg1065"><tspan id="trsvg522">Keiju</tspan></text>
+            <text systemLanguage="fr" id="trsvg1066"><tspan id="trsvg523">F&#xE9;e</tspan></text>
+            <text systemLanguage="he" id="trsvg1067"><tspan id="trsvg524">&#x5E4;&#x5D9;&#x5D4;</tspan></text>
+            <text systemLanguage="hi" id="trsvg1068"><tspan id="trsvg525">&#x92B;&#x93C;&#x947;&#x930;&#x940;</tspan></text>
+            <text systemLanguage="hu" id="trsvg1069"><tspan id="trsvg526">T&#xFC;nd&#xE9;r</tspan></text>
+            <text systemLanguage="id" id="trsvg1070"><tspan id="trsvg527">Peri</tspan></text>
+            <text systemLanguage="it" id="trsvg1071"><tspan id="trsvg528">Folletto</tspan></text>
+            <text systemLanguage="ja" id="trsvg1072"><tspan id="trsvg529">&#x30D5;&#x30A7;&#x30A2;&#x30EA;&#x30FC;</tspan></text>
+            <text systemLanguage="ko" id="trsvg1073"><tspan id="trsvg530">&#xD398;&#xC5B4;&#xB9AC;</tspan></text>
+            <text systemLanguage="ms" id="trsvg1074"><tspan id="trsvg531">Pari</tspan></text>
+            <text systemLanguage="nl" id="trsvg1075"><tspan id="trsvg532">Fairy</tspan></text>
+            <text systemLanguage="no" id="trsvg1076"><tspan id="trsvg533">Fe</tspan></text>
+            <text systemLanguage="pl" font-size="13" id="trsvg1077"><tspan id="trsvg534">Ba&#x15B;niowy</tspan></text>
+            
+            <text systemLanguage="ro" id="trsvg1079"><tspan id="trsvg536">Z&#xE2;n&#x103;</tspan></text>
+            <text systemLanguage="ru" id="trsvg1080"><tspan id="trsvg537">&#x424;&#x435;&#x44F;</tspan></text>
+            <text systemLanguage="sv" id="trsvg1081"><tspan id="trsvg538">Fe</tspan></text>
+            <text systemLanguage="th" id="trsvg1082"><tspan id="trsvg539">&#xE41;&#xE1F;&#xE23;&#xE35;&#xE48;</tspan></text>
+            <text systemLanguage="tr" id="trsvg1083"><tspan id="trsvg540">Peri</tspan></text>
+            <text systemLanguage="vi" id="trsvg1084"><tspan id="trsvg541">Ti&#xEA;n</tspan></text>
+            
+            
+        <text systemLanguage="pt" id="trsvg1078"><tspan id="trsvg535">Fada</tspan></text><text systemLanguage="zh" id="trsvg1085"><tspan id="trsvg542">&#x5996;&#x7CBE;</tspan></text><text id="trsvg1086-yue" systemLanguage="yue"><tspan id="trsvg543-yue">&#x5996;&#x7CBE;</tspan></text><text id="trsvg1086"><tspan id="trsvg543">Fairy</tspan></text></switch>
+    </g>
+    <g transform="rotate(90)">
+        <use xlink:href="#normal" transform="translate(79,-97)"/>
+        <use xlink:href="#fire" transform="translate(79,-119)"/>
+        <use xlink:href="#water" transform="translate(79,-141)"/>
+        <use xlink:href="#grass" transform="translate(79,-163)"/>
+        <g fill="#000">
+            <use xlink:href="#electric" transform="translate(79,-185)"/>
+            <use xlink:href="#ice" transform="translate(79,-207)"/>
+        </g>
+        <use xlink:href="#fighting" transform="translate(79,-229)"/>
+        <use xlink:href="#poison" transform="translate(79,-251)"/>
+        <use xlink:href="#ground" transform="translate(79,-273)"/>
+        <use xlink:href="#flying" transform="translate(79,-295)"/>
+        <use xlink:href="#psychic" transform="translate(79,-317)"/>
+        <use xlink:href="#bug" transform="translate(79,-339)"/>
+        <use xlink:href="#rock" transform="translate(79,-361)"/>
+        <use xlink:href="#ghost" transform="translate(79,-383)"/>
+        <use xlink:href="#dragon" transform="translate(79,-405)"/>
+        <use xlink:href="#dark" transform="translate(79,-427)"/>
+        <use xlink:href="#steel" transform="translate(79,-449)"/>
+        <use xlink:href="#fairy" transform="translate(79,-471)"/>
+    </g>
+  </g>
+  <rect x="90" y="90" height="396" width="396" fill="url(#g)" stroke="#000">
+    <title>1&#xD7;</title>
+  </rect>
+  <use xlink:href="#d" y="132"/>
+  <use xlink:href="#e" y="286"/>
+  <use xlink:href="#f" x="22" y="22"/>
+  <use xlink:href="#d" x="22" y="44"/>
+  <use xlink:href="#f" x="22" y="66"/>
+  <use xlink:href="#f" x="22" y="110"/>
+  <use xlink:href="#d" x="22" y="176"/>
+  <use xlink:href="#f" x="22" y="242"/>
+  <use xlink:href="#d" x="22" y="264"/>
+  <use xlink:href="#f" x="22" y="352"/>
+  <use xlink:href="#f" x="22" y="374"/>
+  <use xlink:href="#f" x="44" y="22"/>
+  <use xlink:href="#f" x="44" y="44"/>
+  <use xlink:href="#d" x="44" y="66"/>
+  <use xlink:href="#d" x="44" y="88"/>
+  <use xlink:href="#f" x="44" y="110"/>
+  <use xlink:href="#f" x="44" y="352"/>
+  <use xlink:href="#d" x="66" y="22"/>
+  <use xlink:href="#f" x="66" y="44"/>
+  <use xlink:href="#f" x="66" y="66"/>
+  <use xlink:href="#f" x="66" y="88"/>
+  <use xlink:href="#d" x="66" y="110"/>
+  <use xlink:href="#d" x="66" y="154"/>
+  <use xlink:href="#d" x="66" y="198"/>
+  <use xlink:href="#f" x="66" y="176"/>
+  <use xlink:href="#d" x="66" y="242"/>
+  <use xlink:href="#f" x="88" y="88"/>
+  <use xlink:href="#f" x="110" y="110"/>
+  <use xlink:href="#d" x="88" y="176"/>
+  <use xlink:href="#f" x="88" y="198"/>
+  <use xlink:href="#f" x="88" y="352"/>
+  <use xlink:href="#d" x="110" y="22"/>
+  <use xlink:href="#d" x="110" y="132"/>
+  <use xlink:href="#d" x="110" y="264"/>
+  <use xlink:href="#d" x="110" y="352"/>
+  <use xlink:href="#d" x="132" y="374"/>
+  <use xlink:href="#f" x="132" y="330"/>
+  <use xlink:href="#f" x="132" y="264"/>
+  <use xlink:href="#f" x="132" y="242"/>
+  <use xlink:href="#d" x="132" y="220"/>
+  <use xlink:href="#d" x="132" y="198"/>
+  <use xlink:href="#f" x="154" y="66"/>
+  <use xlink:href="#f" x="154" y="132"/>
+  <use xlink:href="#f" x="154" y="154"/>
+  <use xlink:href="#d" x="154" y="176"/>
+  <use xlink:href="#d" x="154" y="220"/>
+  <use xlink:href="#f" x="154" y="242"/>
+  <use xlink:href="#f" x="154" y="374"/>
+  <use xlink:href="#e" x="176" y="88"/>
+  <use xlink:href="#d" x="176" y="66"/>
+  <use xlink:href="#d" x="176" y="44"/>
+  <use xlink:href="#d" x="176" y="110"/>
+  <use xlink:href="#f" x="176" y="154"/>
+  <use xlink:href="#f" x="176" y="264"/>
+  <use xlink:href="#f" x="198" y="242"/>
+  <use xlink:href="#d" x="198" y="264"/>
+  <use xlink:href="#e" x="198" y="176"/>
+  <use xlink:href="#f" x="198" y="132"/>
+  <use xlink:href="#d" x="198" y="110"/>
+  <use xlink:href="#d" x="198" y="88"/>
+  <use xlink:href="#f" x="198" y="66"/>
+  <use xlink:href="#f" x="220" y="132"/>
+  <use xlink:href="#d" x="220" y="330"/>
+  <use xlink:href="#d" x="220" y="286"/>
+  <use xlink:href="#d" x="220" y="242"/>
+  <use xlink:href="#f" x="220" y="220"/>
+  <use xlink:href="#d" x="242" y="22"/>
+  <use xlink:href="#d" x="242" y="198"/>
+  <use xlink:href="#d" x="242" y="264"/>
+  <use xlink:href="#f" x="242" y="176"/>
+  <use xlink:href="#f" x="242" y="132"/>
+  <use xlink:href="#f" x="242" y="66"/>
+  <use xlink:href="#f" x="264"/>
+  <use xlink:href="#f" x="264" y="22"/>
+  <use xlink:href="#d" x="264" y="44"/>
+  <use xlink:href="#d" x="264" y="66"/>
+  <use xlink:href="#d" x="264" y="132"/>
+  <use xlink:href="#d" x="264" y="176"/>
+  <use xlink:href="#f" x="264" y="154"/>
+  <use xlink:href="#f" x="264" y="198"/>
+  <use xlink:href="#d" x="264" y="352"/>
+  <use xlink:href="#e" x="286"/>
+  <use xlink:href="#e" x="286" y="132"/>
+  <use xlink:href="#f" x="286" y="154"/>
+  <use xlink:href="#f" x="286" y="242"/>
+  <use xlink:href="#d" x="286" y="330"/>
+  <use xlink:href="#d" x="286" y="286"/>
+  <use xlink:href="#f" x="308" y="22"/>
+  <use xlink:href="#f" x="308" y="44"/>
+  <use xlink:href="#f" x="308" y="66"/>
+  <use xlink:href="#f" x="308" y="88"/>
+  <use xlink:href="#d" x="308" y="110"/>
+  <use xlink:href="#d" x="308" y="374"/>
+  <use xlink:href="#d" x="308" y="308"/>
+  <use xlink:href="#d" x="330" y="132"/>
+  <use xlink:href="#e" x="330" y="220"/>
+  <use xlink:href="#d" x="330" y="242"/>
+  <use xlink:href="#f" x="330" y="286"/>
+  <use xlink:href="#f" x="330" y="330"/>
+  <use xlink:href="#d" x="330" y="374"/>
+  <use xlink:href="#f" x="352"/>
+  <use xlink:href="#d" x="352" y="22"/>
+  <use xlink:href="#f" x="352" y="66"/>
+  <use xlink:href="#f" x="352" y="110"/>
+  <use xlink:href="#d" x="352" y="132"/>
+  <use xlink:href="#e" x="352" y="154"/>
+  <use xlink:href="#d" x="352" y="176"/>
+  <use xlink:href="#f" x="352" y="198"/>
+  <use xlink:href="#f" x="352" y="220"/>
+  <use xlink:href="#f" x="352" y="242"/>
+  <use xlink:href="#f" x="352" y="308"/>
+  <use xlink:href="#f" x="352" y="264"/>
+  <use xlink:href="#f" x="352" y="352"/>
+  <use xlink:href="#f" x="352" y="374"/>
+  <use xlink:href="#d" x="374" y="352"/>
+  <use xlink:href="#f" x="374" y="330"/>
+  <use xlink:href="#e" x="374" y="308"/>
+  <use xlink:href="#f" x="374" y="242"/>
+  <use xlink:href="#d" x="374" y="154"/>
+  <use xlink:href="#f" x="374" y="132"/>
+</svg>

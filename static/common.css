@@ -8,8 +8,8 @@
   --font-h1-size: 28px;
   --font-h2-size: 22px;
   --font-h3-size: 19px;
-  --font-base-size: 17px;
-  --font-aside-size: 16px;
+  --font-base-size: 16px;
+  --font-aside-size: 15px;
 }
 
 html {
@@ -20,10 +20,18 @@ body {
   font-family: open_sans, Verdana;
   margin: 40px auto;
   max-width: var(--body-max-width);
-  line-height: 1.4;
+  line-height: 1.5;
   font-size: var(--font-base-size);
   color: var(--text-color);
   padding: 0 10px 70px 10px;
+}
+
+.small-caps {
+  font-variant-caps: small-caps;
+}
+
+.fraction {
+  font-variant-numeric: diagonal-fractions;
 }
 
 header h1 {
