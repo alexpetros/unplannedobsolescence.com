@@ -798,7 +798,7 @@ I use a copy of ["Techno's Prep Doc"](https://www.smogon.com/forums/threads/draf
 You put in the teams and it generates tons of useful information about the matchup.
 It has a great interface, support for a variety of formats, scannable visuals, and even auto-complete.
 
-I was curious about the formula for priority move lookup was.
+I was curious about the formula for finding priority moves.
 It's gnarly.
 
 ```
@@ -860,5 +860,5 @@ I believe there are a great many problems like that in the world, and a lot of i
 * I joined the draft league in Season 3, lost in finals, then won Seasons 4 and 5. We just started Season 6. [If you want it, you can have the crown](https://www.youtube.com/watch?v=jMkhsamX-2I).
 * The Prolog implementation I used in this blog post is [Scryer Prolog](https://www.scryer.pl/), a modern Prolog implementation written in Rust. The creator, Markus Triska, has a terrific online book, ["The Power of Prolog,"](https://www.metalevel.at/prolog) and accompanying [YouTube channel](https://www.youtube.com/@ThePowerOfProlog) that I've watched most of at this point.
 * Scryer Prolog is also designed to encourage more constructs that [preserve logical completeness and monotonicity](https://www.youtube.com/watch?v=6G-3DqyJ_l8), which means I'm not really supposed to use the `\+/2` or `->/2` predicates. I couldn't really figure out how to express what I wanted with the replacements offered, though. Happy to edit if anyone wants to help.
-* Also, on Markus' website: "My goal is to provide programs that work as intended, reliably and conveniently, with zero surprises. Programs that you can run for multiple decades without any issues such as crashes, resource leaks or other unexpected behaviour." This guy and I have some [similar interests!](@/talks/building-the-hundred-year-web-service.md)
+* Also, [on Markus' website](https://www.metalevel.at/): "My goal is to provide programs that work as intended, reliably and conveniently, with zero surprises. Programs that you can run for multiple decades without any issues such as crashes, resource leaks or other unexpected behaviour." This guy and I have some [similar interests!](@/talks/building-the-hundred-year-web-service.md)
 * I did [some fun metaprogrogramming](https://github.com/alexpetros/prologdex/blob/6fd8d2ed1e7f9e35f36b76dd60bd2535f70f5164/scripts/generate-dex.js) to get all the data into Prolog predicates using the [Pokemon Showdown](https://github.com/smogon/pokemon-showdown) NodeJS API.
