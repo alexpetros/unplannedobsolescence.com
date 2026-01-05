@@ -1,6 +1,6 @@
 +++
-title = "Prolog Basics Explained with Pokemon"
-description = "Demonstrating the basics of logic programming with data from the Pokemon games."
+title = "Prolog Basics Explained with Pokémon"
+description = "Demonstrating the basics of logic programming with data from the Pokémon games."
 date = 2026-01-05
 +++
 
@@ -37,15 +37,15 @@ The project that inspired this post is a little silly—I am about to describe t
 This exercise has taught me a lot about the kinds of interfaces I'm trying to build in [somewhat more practical domains](https://alexanderpetros.com/triptych/).
 For certain kinds of relationships, logic programming is by far the most concise and expressive programming system I've ever used.
 
-To understand why, let's talk about Pokemon.
+To understand why, let's talk about Pokémon.
 
 
-## Pokemon basics
+## Pokémon basics
 
-Pokemon is a video game series/multimedia franchise/lifestyle brand set in a world where humans live alongside a menagerie of colorful animal characters.
+Pokémon is a video game series/multimedia franchise/lifestyle brand set in a world where humans live alongside a menagerie of colorful animal characters.
 
-"Pokemon" is both the name of the franchise and the generic term for the animal characters themselves, which all have their own individual species names.
-There are over a thousand distinct species of Pokemon, from Bulbasaur ([#1](https://bulbapedia.bulbagarden.net/wiki/Bulbasaur_(Pok%C3%A9mon))) to Pecharunt ([#1025](https://bulbapedia.bulbagarden.net/wiki/Pecharunt_(game))).
+"Pokémon" is both the name of the franchise and the generic term for the animal characters themselves, which all have their own individual species names.
+There are over a thousand distinct species of Pokémon, from Bulbasaur ([#1](https://bulbapedia.bulbagarden.net/wiki/Bulbasaur_(Pok%C3%A9mon))) to Pecharunt ([#1025](https://bulbapedia.bulbagarden.net/wiki/Pecharunt_(game))).
 
 <figure>
   <div class="inline-figure">
@@ -54,7 +54,7 @@ There are over a thousand distinct species of Pokemon, from Bulbasaur ([#1](http
     <img src="./images/dipplin.png" height=100, width=100 alt="the pokemon dipplin, which kind of looks like a candy apple that fell on the ground">
   </div>
   <figcaption>
-    Popular Pokemon include (from left to right):<br>
+    Popular Pokémon include (from left to right):<br>
     Pikachu <a href="https://bulbapedia.bulbagarden.net/wiki/Pikachu_(Pok%C3%A9mon)">(#25)</a>, Archeops
     <a href="https://bulbapedia.bulbagarden.net/wiki/Archeops_(Pok%C3%A9mon)">(#567)</a>
     , and Dipplin <a href="https://bulbapedia.bulbagarden.net/wiki/Dipplin_(Pok%C3%A9mon)">(#1101)</a>.
@@ -63,12 +63,12 @@ There are over a thousand distinct species of Pokemon, from Bulbasaur ([#1](http
 
 <aside>I rarely include images on this blog and I am very excited that this post warrants them.</aside>
 
-There are all sorts of Pokemon games now, but the main series has always been about catching and battling them.
-During a battle, your team of six Pokemon faces off against another team.
-Each Pokemon is equipped with four moves that it can choose to (usually) do damage to their opponent.
-You need to reduce the HP (Hit Points) of all your opponent's Pokemon to zero before they are able to do so to you.
+There are all sorts of Pokémon games now, but the main series has always been about catching and battling them.
+During a battle, your team of six Pokémon faces off against another team.
+Each Pokémon is equipped with four moves that it can choose to (usually) do damage to their opponent.
+You need to reduce the HP (Hit Points) of all your opponent's Pokémon to zero before they are able to do so to you.
 
-Each Pokemon has unique traits that affects how it battles.
+Each Pokémon has unique traits that affects how it battles.
 They have a set of base stats, a large pool of possible moves, a handful of abilities, and a typing.
 As you will see in a moment, the immense number of combinations here is the motivation for trying to track this with software.
 
@@ -84,14 +84,14 @@ Defense and Special Defense affect how much damage they take.
 </aside>
 
 Typing is especially important.
-Moves have a type, like Fire or Rock, and Pokemon can have up to two types.
-A move with a type that is Super Effective against the opposing Pokemon will do double damage; a move that is Not Very Effective will do half damage.
+Moves have a type, like Fire or Rock, and Pokémon can have up to two types.
+A move with a type that is Super Effective against the opposing Pokémon will do double damage; a move that is Not Very Effective will do half damage.
 
 It's a little more intuitive with examples.
-The Fire-type move <span class="move">Flamethrower</span> will do 2x to Grass-type Pokemon, because Grass is weak to Fire, but the Water-type move <span class="move">Surf</span> will only do &half; damage to them, because Grass resists Water.
+The Fire-type move <span class="move">Flamethrower</span> will do 2x to Grass-type Pokémon, because Grass is weak to Fire, but the Water-type move <span class="move">Surf</span> will only do &half; damage to them, because Grass resists Water.
 
 <figure>
-    <img src="./images/surf.png" alt="Miltoic using Surf against a Lunatone in a Generation 3 Pokemon game.">
+    <img src="./images/surf.png" alt="Miltoic using Surf against a Lunatone in a Generation 3 Pokémon game.">
   <figcaption>
     <a href="https://bulbapedia.bulbagarden.net/wiki/Lunatone_(Pok%C3%A9mon)">Lunatone</a> is a Rock/Psychic Type. Rock is weak to Water, and Psychic is neutral to it, so <span class=move>Surf</span> will do 2x damage.
   </figcaption>
@@ -104,20 +104,20 @@ Electric is weak to Water, but Ground is immune, so if you use an Electric type 
 Naturally, there is a chart to help you keep track.
 
 <figure>
-<img src="./images/type-chart.svg" alt="The Pokemon type chart.">
+<img src="./images/type-chart.svg" alt="The Pokémon type chart.">
 <figcaption>
-  Pokemon Type Chart (via <a href="https://commons.wikimedia.org/wiki/File:Pokemon_Type_Chart.svg">Wikimedia</a>)
+  Pokémon Type Chart (via <a href="https://commons.wikimedia.org/wiki/File:Pokemon_Type_Chart.svg">Wikimedia</a>)
 </figcaption>
 </figure>
 
-Those are effectively the mechanics of the Pokemon video games as I understood them when I was 8.
+Those are effectively the mechanics of the Pokémon video games as I understood them when I was 8.
 Click moves to do damage, try to click moves with good type matchups.
 These games are for children and, at the surface level, they're not very hard.
 
 ## Prolog basics
 
-Before I explain how wonky the Pokemon mechanics can get under the hood, I first need to explain how logic programming works.
-Pokemon is a great fit for logic programming because Pokemon battles are essentially an extremely intricate rules engine.
+Before I explain how wonky the Pokémon mechanics can get under the hood, I first need to explain how logic programming works.
+Pokémon is a great fit for logic programming because Pokémon battles are essentially an extremely intricate rules engine.
 
 Let's start by creating a file with a bunch of facts.
 
@@ -145,7 +145,7 @@ You can then have it display one more solution, all the solutions, or stop entir
 
 In this first example, we type `pokemon(squirtle).` and hit Enter.
 The top-level replies `true.`
-[Squirtle](https://bulbapedia.bulbagarden.net/wiki/Squirtle_(Pok%C3%A9mon)) is, in fact, a Pokemon.
+[Squirtle](https://bulbapedia.bulbagarden.net/wiki/Squirtle_(Pok%C3%A9mon)) is, in fact, a Pokémon.
 
 ```name=top-level
 ?- pokemon(squirtle).
@@ -156,14 +156,14 @@ The top-level replies `true.`
   If you want to follow along at home, check out <a href="https://github.com/alexpetros/prologdex">the repo</a>, which has quick setup instructions.
 </aside>
 
-Not all things are Pokemon.
+Not all things are Pokémon.
 
 ```name=top-level
 ?- pokemon(alex).
    false.
 ```
 
-Let's add Pokemon types in there, as the predicate `type/2`.
+Let's add Pokémon types in there, as the predicate `type/2`.
 
 ```prolog
 type(bulbasaur, grass).
@@ -182,10 +182,10 @@ type(blastoise, water).
 ```
 
 <aside>
-The actual dataset includes different forms for Pokemon, like their Mega Evolutions, because they have different stats and typing. Those are omitted here for clarity.
+The actual dataset includes different forms for Pokémon, like their Mega Evolutions, because they have different stats and typing. Those are omitted here for clarity.
 </aside>
 
-Recall that some Pokemon have just one type while others have two.
+Recall that some Pokémon have just one type while others have two.
 In the latter case, that's modeled with two `type` facts.
 [Bulbasaur](https://bulbapedia.bulbagarden.net/wiki/Bulbasaur_(Pok%C3%A9mon)) is a Grass type, and Bulbasaur is a Poison type; both are true.
 The paradigm is similar to a One-To-Many relation in a SQL database.
@@ -218,7 +218,7 @@ In Prolog, names that start with an upper-case letter are variables.
 Prolog tries to "unify" the predicate with all possible matches for the variable.
 There's only one way to make this particular predicate true though: `Type` has to be `water`, because Squirtle's only type is Water.
 
-For Pokemon with two types, the predicate unifies twice.
+For Pokémon with two types, the predicate unifies twice.
 
 ```name=top-level
 ?- type(venusaur, Type).
@@ -255,7 +255,7 @@ This output is the result of me entering the query, pressing "n" a couple of tim
 I cut it off, but the prompt would happily would list all 164 of them.
 
 Commas can be used to list multiple predicates—Prolog will unify the variables such that all of them are true.
-Listing all the Water/Ice types is just a matter of asking what Pokemon exist that unify with both the Water and Ice types.
+Listing all the Water/Ice types is just a matter of asking what Pokémon exist that unify with both the Water and Ice types.
 
 ```name=top-level
 ?- type(Pokemon, water), type(Pokemon, ice).
@@ -290,8 +290,8 @@ Therefore, subbing in  `dewgong` for the `Pokemon` variable satisfies the query.
 Squirtle, by contrast, is just a Water type: `pokemon(squirtle, water)` exists, but not `pokemon(squirtle, ice)`.
 The query requires both to unify, so `squirtle` is not a possible value for `Pokemon`.
 
-Pokemon have lots of data that you can play around with.
-[Iron Bundle](https://bulbapedia.bulbagarden.net/wiki/Iron_Bundle_(Pok%C3%A9mon)) is a strong Water/Ice-type Pokemon with high Special Attack.
+Pokémon have lots of data that you can play around with.
+[Iron Bundle](https://bulbapedia.bulbagarden.net/wiki/Iron_Bundle_(Pok%C3%A9mon)) is a strong Water/Ice-type Pokémon with high Special Attack.
 How high exactly?
 
 ```name=top-level
@@ -320,7 +320,7 @@ What Special moves does Iron Bundle know?
 ```
 
 <span class=move>Freeze-Dry</span> is a particularly good Special move.
-Here's a query for all Ice-type Pokemon with Special Attack greater than 120 that learn <span class=move>Freeze-Dry</span>.
+Here's a query for all Ice-type Pokémon with Special Attack greater than 120 that learn <span class=move>Freeze-Dry</span>.
 
 ```name=top-level
 ?- pokemon_spa(Pokemon, SpA), SpA #> 120, learns(Pokemon, freezedry), type(Pokemon, ice).
@@ -409,7 +409,7 @@ The SQL query would become unmanageably complex if we continued to add clauses, 
 
 With the basics established, here's some context on the project I'm working on.
 
-Pokemon battles have an outrageous number of number of mechanics that all interact in complex and probabilistic ways.
+Pokémon battles have an outrageous number of number of mechanics that all interact in complex and probabilistic ways.
 Part of the appeal of these games is the futile attempt to keep them all in your head better than your opponent, using that information to out-predict and out-maneuver their plans.
 It's a sort of like very silly Poker.
 
@@ -418,13 +418,13 @@ It's a sort of like very silly Poker.
 
 <ul>
   <li> Some moves miss a certain percentage of the time, doing no damage.
-  <li> Some moves raise or lower a Pokemon's stats.
-  <li> Pokemon can hold items that have various effects.
+  <li> Some moves raise or lower a Pokémon's stats.
+  <li> Pokémon can hold items that have various effects.
   <li> Damage calculations aren't constant; moves do normally-distributed damage within the calculated range.
-  <li> Pokemon can get frozen, burned, paralyzed, poisoned, or fall asleep; these all have various adverse effects.
+  <li> Pokémon can get frozen, burned, paralyzed, poisoned, or fall asleep; these all have various adverse effects.
   <li> There are a variety of field effects (like weather, terrain, Trick Room) which alter move damage, turn order, and other things.
-  <li> Pokemon each have an ability that has various effects i.e Levitate makes you immune to ground moves, Drizzle turns the weather to Rain when the Pokemon switches in, Sheer Force disables a move's side effects but multiplies its damage by 1.3x.
-  <li> Players have points they (invisibly) allocate to each Pokemon before the game, to boost chosen stats. Depending on they built the team, each Pokemon might do more damage or take hits better than you were expecting.
+  <li> Pokémon each have an ability that has various effects i.e Levitate makes you immune to ground moves, Drizzle turns the weather to Rain when the Pokemon switches in, Sheer Force disables a move's side effects but multiplies its damage by 1.3x.
+  <li> Players have points they (invisibly) allocate to each Pokémon before the game, to boost chosen stats. Depending on they built the team, each Pokemon might do more damage or take hits better than you were expecting.
 </ul>
 
 </details>
@@ -441,16 +441,16 @@ Prolog is stunningly good at this, for two main reasons:
 The logicians in the audience would probably like me to note that the query model and the data model are, in fact, the exact same.
 </aside>
 
-To illustrate that, here's how I implemented priority moves for my Pokemon draft league.
+To illustrate that, here's how I implemented priority moves for my Pokémon draft league.
 
-Pokemon draft is pretty much what it sounds like.
-Pokemon are given a point value based on how good they are, each player is given a certain amount of points to spend, and you draft until every player has spent their points.
-Your team ends up with about 8-11 Pokemon and each week you go head to head against another person in the league.
+Pokémon draft is pretty much what it sounds like.
+Pokémon are given a point value based on how good they are, each player is given a certain amount of points to spend, and you draft until every player has spent their points.
+Your team ends up with about 8-11 Pokémon and each week you go head to head against another person in the league.
 My friend and [WMI](https://wemakeinter.net/) collaborator [Morry](https://wttdotm.com/) invited me to his a couple years ago and I've been hooked on the format ever since.
 
 The games are 6v6, so a big part of the battle is preparing for all the possible combinations of six your opponent could bring, and putting together six of your own that can handle all of them.
 
-Naturally, you can only build teams with the Pokemon you drafted.
+Naturally, you can only build teams with the Pokémon you drafted.
 I just made that predicate my name: `alex/1`.
 
 ```prolog
@@ -471,7 +471,7 @@ I'm not proud of having drafted a rain team.
 It just worked out that way.
 </aside>
 
-What Pokemon do I have that learn <span class=move>Freeze-Dry</span>?
+What Pokémon do I have that learn <span class=move>Freeze-Dry</span>?
 
 ```name=top-level
 ?- alex(Pokemon), learns(Pokemon, freezedry).
@@ -481,8 +481,8 @@ What Pokemon do I have that learn <span class=move>Freeze-Dry</span>?
 None. Rats.
 
 One very important type of move is priority moves.
-Earlier I mentioned that the Speed stat controls which Pokemon moves first.
-Some nuance: the Pokemon that used the move with the highest priority goes first, and if they both selected a move of the same priority, then the one with the higher Speed goes first.
+Earlier I mentioned that the Speed stat controls which Pokémon moves first.
+Some nuance: the Pokémon that used the move with the highest priority goes first, and if they both selected a move of the same priority, then the one with the higher Speed goes first.
 
 Most moves have a priority of zero.
 
@@ -502,10 +502,10 @@ Most moves have a priority of zero.
 ```
 
 Ah, but not all! <span class="move">Accelerock</span> has a priority of 1.
-A Pokemon that uses <span class="move">Accelerock</span> will move before
-any Pokemon that uses a move with priority 0 (or less), even if the latter Pokemon has a higher Speed stat.
+A Pokémon that uses <span class="move">Accelerock</span> will move before
+any Pokémon that uses a move with priority 0 (or less), even if the latter Pokémon has a higher Speed stat.
 
-I define a `learns_priority/3` predicate that unifies with a Pokemon, the priority move it learns, and what priority that move is.
+I define a `learns_priority/3` predicate that unifies with a Pokémon, the priority move it learns, and what priority that move is.
 
 ```prolog
 learns_priority(Pokemon, Move, P) :-
@@ -693,10 +693,10 @@ It's even more useful to look up what priority moves my *opponent* for the week 
 ```
 
 At this point, I showed the program to Morry and he hit me with a challenge.
-Pokemon with the Prankster ability get an additional +1 priority on their status moves.
+Pokémon with the Prankster ability get an additional +1 priority on their status moves.
 Could the rule be extended to note that?
 
-I happen to have one such Pokemon on my team.
+I happen to have one such Pokémon on my team.
 
 ```name=top-level
 ?- alex(Pokemon), pokemon_ability(Pokemon, prankster).
@@ -770,10 +770,10 @@ That has implications if you, like me, are interested in the [judicious use of d
 The other lesson is what kinds of tools work for *non*-programmers.
 
 I'm not the first person to think "it would be nice to know what priority moves my opponent's team has."
-The Pokemon community has resources like this, built in the best programming interface of all time: the humble spreadsheet.
+The Pokémon community has resources like this, built in the best programming interface of all time: the humble spreadsheet.
 
 <figure>
-  <img src="./images/matchup-sheet.png" alt="A screenshot of a spreadsheet listing Pokemon that know various useful moves.">
+  <img src="./images/matchup-sheet.png" alt="A screenshot of a spreadsheet listing Pokémon that know various useful moves.">
   <figcaption>Much prettier to look at, too.</figcaption>
 </figure>
 
@@ -796,10 +796,10 @@ It's effectively a hard-coded version of my Prolog query.
   <img src="./images/priority-backend-list.png" alt="">
 </figure>
 
-The lookup formula does some filtering, VLOOKUP-ing, and kinda-metaprogramming (INDIRECT [returns a cell reference](https://support.google.com/docs/answer/3093377?hl=en)) to find all the Pokemon on your team that are in that Backend list, and display them.
+The lookup formula does some filtering, VLOOKUP-ing, and kinda-metaprogramming (INDIRECT [returns a cell reference](https://support.google.com/docs/answer/3093377?hl=en)) to find all the Pokémon on your team that are in that Backend list, and display them.
 
 There are a number of reasons that I, personally, would prefer to work on a version of this database implemented in Prolog instead of one implemented with spreadsheet VLOOKUPs.
-I plan to built webapps with this that do things the existing suite of Pokemon tooling can't. (If I can ever [get scryer-prolog to compile to WASM](https://github.com/mthom/scryer-prolog/issues/3196), that is.)
+I plan to built webapps with this that do things the existing suite of Pokémon tooling can't. (If I can ever [get scryer-prolog to compile to WASM](https://github.com/mthom/scryer-prolog/issues/3196), that is.)
 
 Furthermore, the Prolog paradigm is clearly more extensible.
 The spreadsheet backend is a hard-coded list of notable moves;
@@ -842,7 +842,7 @@ I already know why I don't do all my programming in spreadsheets.
 A question I find very important is: What is it about this particular problem, and the kinds of people who were motivated to solve it, where the most well-maintained solution available is a spreadsheet?
 
 <aside>
-When I say it's the most well-maintained: Techno's prep doc supports Pokemon that aren't even <em>released</em> yet.
+When I say it's the most well-maintained: Techno's prep doc supports Pokémon that aren't even <em>released</em> yet.
 </aside>
 
 I believe there are a great many problems like that in the world, and a lot of improvements on that programming paradigm yet to be properly realized.
@@ -856,4 +856,5 @@ I believe there are a great many problems like that in the world, and a lot of i
 * The Prolog implementation I'm using is [Scryer Prolog](https://www.scryer.pl/), a modern Prolog implementation that emphasizes standards and formal correctness. The creator, Markus Triska, has a terrific online book, ["The Power of Prolog,"](https://www.metalevel.at/prolog) and accompanying [YouTube channel](https://www.youtube.com/@ThePowerOfProlog) that has soundtracked my breakfast for weeks.
 * Scryer Prolog is also designed to encourage more constructs that [preserve logical completeness and monotonicity](https://www.youtube.com/watch?v=6G-3DqyJ_l8), which means I'm not really supposed to use the `\+/2` or `->/2` predicates. I couldn't really figure out how to express what I wanted with the replacements offered, though. Happy to edit if anyone wants to help.
 * Also, [on Markus' website](https://www.metalevel.at/): "My goal is to provide programs that work as intended, reliably and conveniently, with zero surprises. Programs that you can run for multiple decades without any issues such as crashes, resource leaks or other unexpected behaviour." This guy and I have some [similar interests!](@/talks/building-the-hundred-year-web-service.md)
-* I did [some fun metaprogrogramming](https://github.com/alexpetros/prologdex/blob/6fd8d2ed1e7f9e35f36b76dd60bd2535f70f5164/scripts/generate-dex.js) to get all the data into Prolog predicates using the [Pokemon Showdown](https://github.com/smogon/pokemon-showdown) NodeJS API.
+* I did [some fun metaprogrogramming](https://github.com/alexpetros/prologdex/blob/6fd8d2ed1e7f9e35f36b76dd60bd2535f70f5164/scripts/generate-dex.js) to get all the data into Prolog predicates using the [Pokémon Showdown](https://github.com/smogon/pokemon-showdown) NodeJS API.
+* Yes, putting the accent on the "e" everywhere but the code blocks was very annoying.
