@@ -140,7 +140,7 @@ Instead of writing HTML...
 ```
 ...you can write JSX, a JavaScript syntax extension that supports tags.
 
-```jsx,name=JSX
+```tsx,name=JSX
 const header = <h1>Classic Movies</h1>
 const paragraph = <p>
   Louis, I think this is the beginning of a beautiful website.
@@ -157,7 +157,7 @@ Can we start abstracting away CSS too?
 
 Sure can! This example uses [styled-components](https://styled-components.com/).
 
-```jsx, name=JSX
+```tsx, name=JSX
 const Button = styled.button({
   color: 'gray',
 })
