@@ -468,7 +468,8 @@ alex(dusclops).
 
 <aside>
 I'm not proud of having drafted a rain team.
-It just worked out that way.
+This is probably the worst draft I've had since I started;
+it just happens sometimes.
 </aside>
 
 What Pokémon do I have that learn <span class=move>Freeze-Dry</span>?
@@ -799,7 +800,7 @@ It's effectively a hard-coded version of my Prolog query.
 The lookup formula does some filtering, VLOOKUP-ing, and kinda-metaprogramming (INDIRECT [returns a cell reference](https://support.google.com/docs/answer/3093377?hl=en)) to find all the Pokémon on your team that are in that Backend list, and display them.
 
 There are a number of reasons that I, personally, would prefer to work on a version of this database implemented in Prolog instead of one implemented with spreadsheet VLOOKUPs.
-I plan to built webapps with this that do things the existing suite of Pokémon tooling can't. (If I can ever [get scryer-prolog to compile to WASM](https://github.com/mthom/scryer-prolog/issues/3196), that is.)
+I plan to build webapps with this that do things the existing suite of Pokémon tooling can't. (If I can ever [get scryer-prolog to compile to WASM](https://github.com/mthom/scryer-prolog/issues/3196), that is.)
 
 Furthermore, the Prolog paradigm is clearly more extensible.
 The spreadsheet backend is a hard-coded list of notable moves;
