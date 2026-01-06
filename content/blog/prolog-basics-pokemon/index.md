@@ -409,7 +409,7 @@ The SQL query would become unmanageably complex if we continued to add clauses, 
 
 With the basics established, here's some context on the project I'm working on.
 
-Pokémon battles have an outrageous number of number of mechanics that all interact in complex and probabilistic ways.
+Pokémon battles have an outrageous number of mechanics that all interact in complex and probabilistic ways.
 Part of the appeal of these games is the futile attempt to keep them all in your head better than your opponent, using that information to out-predict and out-maneuver their plans.
 It's a sort of like very silly Poker.
 
